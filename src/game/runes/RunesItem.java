@@ -1,4 +1,4 @@
 package game.runes;
 
-public class RunesItem extends Runes {
+public class RunesItem implements Runes {
 }
