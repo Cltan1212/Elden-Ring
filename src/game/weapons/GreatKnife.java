@@ -4,10 +4,10 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 
-public class Grossmesser extends WeaponItem {
+public class GreatKnife extends WeaponItem {
 
-    public Grossmesser() {
-        super("Grossmesser", '?',115, "", 85);
+    public GreatKnife() {
+        super("Great Knife", '/',75,"",70);
     }
 
     @Override

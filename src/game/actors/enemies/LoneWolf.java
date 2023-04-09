@@ -32,7 +32,6 @@ public class LoneWolf extends Enemy{
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
         this.behaviours.put(999, new WanderBehaviour());
-        setAttackAccuracy(95);
     }
 
     @Override
@@ -42,7 +41,8 @@ public class LoneWolf extends Enemy{
 
     @Override
     public boolean successAttack(){
-        return getRandomInt(100) <= this.getAttackAccuracy();
+        // TODO: implement somethings here
+        return false;
     }
 
     @Override

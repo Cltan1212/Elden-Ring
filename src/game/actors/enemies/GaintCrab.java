@@ -2,31 +2,36 @@ package game.actors.enemies;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import edu.monash.fit2099.engine.weapons.Weapon;
-import game.weapons.Grossmesser;
+import game.behaviours.Behaviour;
 
-import static game.utils.RandomNumberGenerator.getRandomInt;
+import java.util.HashMap;
+import java.util.Map;
 
-public class HeavySkeletalSwordsman extends Enemy {
-    private final Weapon weapon = new Grossmesser();
+public class GaintCrab extends Enemy {
+    private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
-    public HeavySkeletalSwordsman() {
-        super("Heavy Skeletal Swordsman", 'q',153);
+    public GaintCrab() {
+        super("Gaint Crab",'C', 407);
     }
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         // TODO: add valid behaviour to the list of behaviours
-        // TODO: get action from the behaviour list
-        return null;
+        return new DoNothingAction();
     }
 
     @Override
     public boolean successAttack() {
-        return weapon.chanceToHit() <= getRandomInt(100);
+        return false;
+    }
+
+    @Override
+    public IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(208, "slams", 90);
     }
 
     @Override

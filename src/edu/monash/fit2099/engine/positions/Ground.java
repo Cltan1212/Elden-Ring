@@ -13,7 +13,7 @@ import java.util.List;
  */
 public abstract class Ground implements Capable, Printable {
 
-	private final CapabilitySet capabilitySet = new CapabilitySet();
+	protected final CapabilitySet capabilitySet = new CapabilitySet();
 	private char displayChar;
 
 	/**

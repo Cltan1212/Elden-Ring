@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Enemy extends Actor implements Resettable {
-    private int attackAccuracy;
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
     /**
@@ -36,13 +35,6 @@ public abstract class Enemy extends Actor implements Resettable {
      */
     public abstract boolean successAttack();
 
-    protected final void setAttackAccuracy(int attackAccuracy){
-        this.attackAccuracy = attackAccuracy;
-    }
-
-    public int getAttackAccuracy(){
-        return attackAccuracy;
-    }
 
     /**
      * At each turn, select a valid action to perform.
@@ -76,6 +68,7 @@ public abstract class Enemy extends Actor implements Resettable {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
+        // TODO: check otherActor is not the same type as actor
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
             // HINT 1: The AttackAction above allows you to attak the enemy with your intrinsic weapon.

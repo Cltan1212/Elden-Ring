@@ -3,11 +3,12 @@ package game.weapons;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.AttackAction;
 
-public class Grossmesser extends WeaponItem {
+public class Uchigatana extends WeaponItem {
 
-    public Grossmesser() {
-        super("Grossmesser", '?',115, "", 85);
+    public Uchigatana() {
+        super("Uchigatana",')',115, "", 80);
     }
 
     @Override

@@ -50,12 +50,13 @@ public class AttackAction extends Action {
 		this.weapon = weapon;
 	}
 
-	public AttackAction(Actor target, String direction, Weapon weapon, AttackType attackType) {
-		this.target = target;
-		this.direction = direction;
-		this.weapon = weapon;
-		this.attackType = attackType;
-	}
+	// constructor with attackType?
+//	public AttackAction(Actor target, String direction, Weapon weapon, AttackType attackType) {
+//		this.target = target;
+//		this.direction = direction;
+//		this.weapon = weapon;
+//		this.attackType = attackType;
+//	}
 
 	/**
 	 * Constructor with intrinsic weapon as default
