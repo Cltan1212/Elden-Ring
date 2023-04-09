@@ -5,3 +5,29 @@
 Team members:
 
 ## Design Rationale
+
+## Notes
+A. Ground:
+
+(a) Attributes:
+- enemies for spawn (enemy)
+- chance for spawn (int)
+
+B. Enemies:
+
+(a) attributes:
+- damage (int)
+- attack accuracy (int)
+- weapon (weapon)
+
+Weapons:
+
+(a) attributes:
+- damage (int)
+- attack accuracy (int)
+
+Action:
+
+Behaviour:
+
+- 

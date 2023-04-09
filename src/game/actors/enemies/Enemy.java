@@ -1,4 +1,4 @@
-package game;
+package game.actors.enemies;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -6,25 +6,42 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import edu.monash.fit2099.engine.weapons.Weapon;
+import game.actions.AttackAction;
+import game.behaviours.Behaviour;
+import game.reset.Resettable;
+import game.utils.Status;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * BEHOLD, DOG!
- *
- * Created by:
- * @author Adrian Kristanto
- * Modified by:
- *
- */
-public class LoneWolf extends Actor {
+public abstract class Enemy extends Actor implements Resettable {
+    private int attackAccuracy;
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
-    public LoneWolf() {
-        super("Lone Wolf", 'h', 102);
-        this.behaviours.put(999, new WanderBehaviour());
+    /**
+     * Constructor.
+     *
+     * @param name        the name of the Actor
+     * @param displayChar the character that will represent the Actor in the display
+     * @param hitPoints   the Actor's starting hit points
+     */
+    public Enemy(String name, char displayChar, int hitPoints) {
+        super(name, displayChar, hitPoints);
+    }
+
+    /**
+     * a method to check if the enemy successfully attacks the target
+     * @return true if it successfully lands an attack, else false
+     */
+    public abstract boolean successAttack();
+
+    protected final void setAttackAccuracy(int attackAccuracy){
+        this.attackAccuracy = attackAccuracy;
+    }
+
+    public int getAttackAccuracy(){
+        return attackAccuracy;
     }
 
     /**
@@ -36,8 +53,10 @@ public class LoneWolf extends Actor {
      * @param display    the I/O object to which messages may be written
      * @return the valid action that can be performed in that iteration or null if no valid action is found
      */
+
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        // add valid behaviour to the list of behaviours
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
             if(action != null)
@@ -61,13 +80,11 @@ public class LoneWolf extends Actor {
             actions.add(new AttackAction(this, direction));
             // HINT 1: The AttackAction above allows you to attak the enemy with your intrinsic weapon.
             // HINT 1: How would you attack the enemy with a weapon?
+            for (Weapon weapon: otherActor.getWeaponInventory()){
+                actions.add(new AttackAction(this, direction, weapon));
+
+            }
         }
         return actions;
-    }
-
-
-    @Override
-    public IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(97, "bites", 95);
     }
 }

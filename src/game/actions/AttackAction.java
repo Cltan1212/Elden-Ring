@@ -1,4 +1,4 @@
-package game;
+package game.actions;
 
 import java.util.Random;
 
@@ -36,6 +36,8 @@ public class AttackAction extends Action {
 	 */
 	private Weapon weapon;
 
+	private AttackType attackType;
+
 	/**
 	 * Constructor.
 	 * 
@@ -46,6 +48,13 @@ public class AttackAction extends Action {
 		this.target = target;
 		this.direction = direction;
 		this.weapon = weapon;
+	}
+
+	public AttackAction(Actor target, String direction, Weapon weapon, AttackType attackType) {
+		this.target = target;
+		this.direction = direction;
+		this.weapon = weapon;
+		this.attackType = attackType;
 	}
 
 	/**
