@@ -2,6 +2,6 @@
 # Elden Ring
 
 ## XX_LabYYTeamZZ
-Team members:
+Team members: Tan Chun Ling, Jack Wan, King Jean Lynn
 
 ## Design Rationale
