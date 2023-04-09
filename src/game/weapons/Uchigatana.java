@@ -1,4 +1,4 @@
-package game.Weapons;
+package game.weapons;
 
 public class Uchigatana {
 }
