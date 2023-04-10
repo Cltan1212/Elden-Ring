@@ -25,11 +25,6 @@ public class GaintCrab extends Enemy {
     }
 
     @Override
-    public boolean successAttack() {
-        return false;
-    }
-
-    @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(208, "slams", 90);
     }

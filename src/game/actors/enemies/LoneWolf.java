@@ -39,11 +39,7 @@ public class LoneWolf extends Enemy{
         return new IntrinsicWeapon(97, "bites", 95);
     }
 
-    @Override
-    public boolean successAttack(){
-        // TODO: implement somethings here
-        return false;
-    }
+
 
     @Override
     public void reset() {

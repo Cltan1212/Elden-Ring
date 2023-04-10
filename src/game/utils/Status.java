@@ -9,6 +9,9 @@ public enum Status {
     HOSTILE_TO_ENEMY,
     RESPAWNABLE,
     RESTING,
-    // SELLABLE
+    SELLABLE,
+    SPECIAL_SKILL,
+    // CAN_PURCHASE: The player can only purchase the weapon is sellable
+    // SPECIAL_SKILL: check if the weapon can perform special skill
 
 }

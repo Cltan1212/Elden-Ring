@@ -27,13 +27,9 @@ public abstract class Enemy extends Actor implements Resettable {
      */
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
+        this.addCapability(Status.RESPAWNABLE);
     }
 
-    /**
-     * a method to check if the enemy successfully attacks the target
-     * @return true if it successfully lands an attack, else false
-     */
-    public abstract boolean successAttack();
 
 
     /**

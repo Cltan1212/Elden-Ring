@@ -25,11 +25,6 @@ public class HeavySkeletalSwordsman extends Enemy {
     }
 
     @Override
-    public boolean successAttack() {
-        return weapon.chanceToHit() <= getRandomInt(100);
-    }
-
-    @Override
     public void reset() {
 
     }
