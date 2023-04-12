@@ -57,11 +57,9 @@ public class Player extends Actor implements Resettable {
 
 
 	@Override
-	public void reset() {
+	public void reset(GameMap map) {
 		// player's hit point will be reset to maximum
 		this.resetMaxHp(getMaxHp());
-
-
 
 
 	}

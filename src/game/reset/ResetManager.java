@@ -1,5 +1,7 @@
 package game.reset;
 
+import edu.monash.fit2099.engine.positions.GameMap;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import java.util.List;
  */
 public class ResetManager {
     private List<Resettable> resettables;
+    private List<GameMap> maps;
     private static ResetManager instance; // to ensure that only one instance of ResetManager can exist
 
     /**
@@ -21,6 +24,8 @@ public class ResetManager {
      */
     private ResetManager() {
         this.resettables = new ArrayList<>();
+        this.maps = new ArrayList<>();
+
     }
 
     public static ResetManager getInstance(){  // referring to Bootcamp week 5
@@ -37,7 +42,9 @@ public class ResetManager {
         // so can coordinate and manage the resetting of multiple game objects or components
 
         for (Resettable resettable: resettables){
-            resettable.reset();
+            for (GameMap map: maps) {
+                resettable.reset(map);
+            }
         }
     }
 
@@ -47,5 +54,17 @@ public class ResetManager {
 
     public void removeResettable(Resettable resettable) {
         resettables.remove(resettable);
+    }
+
+    public List<GameMap> getMaps() {
+        return maps;
+    }
+
+    public void setMaps(List<GameMap> maps) {
+        this.maps = maps;
+    }
+
+    public void addMap(GameMap map){
+        maps.add(map);
     }
 }

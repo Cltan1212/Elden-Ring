@@ -25,7 +25,7 @@ public class Trader extends Actor implements Resettable {
     }
 
     @Override
-    public void reset() {
+    public void reset(GameMap map) {
 
     }
 }

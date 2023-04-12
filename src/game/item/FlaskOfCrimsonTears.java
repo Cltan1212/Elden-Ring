@@ -1,6 +1,7 @@
 package game.item;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
 
 public class FlaskOfCrimsonTears extends ConsumableItem {
 
@@ -21,7 +22,7 @@ public class FlaskOfCrimsonTears extends ConsumableItem {
     }
 
     @Override
-    public void reset() {
+    public void reset(GameMap map) {
         // reset flask of crimson tears to maximum number of uses
         this.numOfUsesAvailable = 2;
 

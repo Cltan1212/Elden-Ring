@@ -1,6 +1,7 @@
 package game.actors.enemies;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
 import game.reset.Resettable;
 
 public abstract class Enemies extends Actor implements Resettable{
@@ -19,11 +20,9 @@ public abstract class Enemies extends Actor implements Resettable{
 
     }
 
-
-
     @Override
-    public void reset(){
-//        removeActor(this);
+    public void reset(GameMap map){
+        map.removeActor(this);
 
     }
 

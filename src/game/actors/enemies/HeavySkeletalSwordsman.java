@@ -87,7 +87,7 @@ public class HeavySkeletalSwordsman extends Enemies {
     }
 
     @Override
-    public void reset() {
+    public void reset(GameMap map) {
 
     }
 }
