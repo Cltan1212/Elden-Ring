@@ -12,6 +12,7 @@ import static game.utils.RandomNumberGenerator.getRandomInt;
 
 public class HeavySkeletalSwordsman extends Enemy {
     private final Weapon weapon = new Grossmesser();
+    private PileOfBones pileOfBones;
 
     public HeavySkeletalSwordsman() {
         super("Heavy Skeletal Swordsman", 'q',153);
