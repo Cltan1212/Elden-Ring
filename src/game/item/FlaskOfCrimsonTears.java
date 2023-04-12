@@ -1,11 +1,8 @@
 package game.item;
 
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
-import game.reset.Resettable;
-import game.item.Consumable;
 
-public class FlaskOfCrimsonTears extends Consumable{
+public class FlaskOfCrimsonTears extends ConsumableItem {
 
 
     // starting weapon of player
