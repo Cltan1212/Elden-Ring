@@ -1,4 +1,4 @@
-package game.enemies;
+package game.actors.enemies;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -23,7 +23,7 @@ import java.util.Map;
  * Modified by:
  *
  */
-public class LoneWolf extends Actor {
+public class LoneWolf extends Enemies {
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
     public LoneWolf() {
