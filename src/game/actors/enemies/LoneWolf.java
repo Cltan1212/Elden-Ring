@@ -24,11 +24,15 @@ import java.util.Map;
  *
  */
 public class LoneWolf extends Enemies {
+
+    // represented by 'h'
+    // bits other creatures, including the player, dealing 97 damage with 95%  accuracy
+    // can drop any amount of runes between 55, 1470
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
-        this.behaviours.put(999, new WanderBehaviour());
+        this.behaviours.put(999, new WanderBehaviour()); // one of the behavior of Lone Wolf
     }
 
     /**
@@ -73,5 +77,10 @@ public class LoneWolf extends Enemies {
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(97, "bites", 95);
+    }
+
+    @Override
+    public void reset() {
+
     }
 }

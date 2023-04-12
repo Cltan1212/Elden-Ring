@@ -4,11 +4,17 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
+import game.runes.RunesManager;
 import game.weapons.Club;
 import game.reset.Resettable;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Class representing the Player. It implements the Resettable interface.
@@ -21,6 +27,7 @@ import game.reset.Resettable;
 public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
+	public int runes;
 
 	/**
 	 * Constructor.
@@ -32,7 +39,9 @@ public class Player extends Actor implements Resettable {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
-		this.addWeaponToInventory(new Club());
+		this.addWeaponToInventory(new Club()); // add new Club() or flaskofCrimson??
+		RunesManager.setPlayer(this);
+		runes = 0;
 	}
 
 	@Override
@@ -45,6 +54,18 @@ public class Player extends Actor implements Resettable {
 		return menu.showMenu(this, actions, display);
 	}
 
+
+
 	@Override
-	public void reset() {}
+	public void reset() {
+		// player's hit point will be reset to maximum
+		this.resetMaxHp(getMaxHp());
+
+
+
+
+	}
+
+
+
 }

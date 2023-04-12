@@ -2,6 +2,8 @@ package game.actors.enemies;
 
 public class PilesOfBones {
 
+    // represented by 'X'
+
     private int turnsRemaining;
     private int maxTurns;
     private boolean isRevived;

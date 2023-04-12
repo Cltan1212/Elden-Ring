@@ -8,11 +8,17 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.behaviour.Behaviour;
 import game.behaviour.WanderBehaviour;
+import game.reset.Resettable;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class GiantCrab extends Enemies {
+
+    // represented by C
+    // Giant crab may decide to slamm all creatues within the surrounding
+    // Slamming all creatures in their surroundings is the special skill of Giant Crab
+    // can drop any amount of runes between 318, 4961
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
     /**
      * Constructor.
@@ -37,5 +43,10 @@ public class GiantCrab extends Enemies {
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(208, "slam", 90);
+    }
+
+    @Override
+    public void reset() {
+
     }
 }
