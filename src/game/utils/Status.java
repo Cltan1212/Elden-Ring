@@ -11,6 +11,7 @@ public enum Status {
     RESTING,
     SELLABLE,
     SPECIAL_SKILL,
+    TURN_BONE
     // CAN_PURCHASE: The player can only purchase the weapon is sellable
     // SPECIAL_SKILL: check if the weapon can perform special skill
 
