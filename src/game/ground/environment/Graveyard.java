@@ -12,24 +12,13 @@ public class Graveyard extends Ground {
         super('n');
     }
 
-    @Override
-    public ActionList allowableActions(Actor actor, Location location, String direction){
-        return super.allowableActions(actor, location, direction); // call the super class implementation
-    }
 
-    @Override
-    public boolean canActorEnter(Actor actor){
-        return super.canActorEnter(actor);
-    }
 
     @Override
     public void tick(Location location){
         super.tick(location);
     }
 
-    @Override
-    public boolean blocksThrownObjects(){
-        return super.blocksThrownObjects();
-    }
+
 
 }

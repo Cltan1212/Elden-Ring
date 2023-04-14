@@ -22,7 +22,7 @@ public abstract class Enemies extends Actor implements Resettable{
 
     @Override
     public void reset(GameMap map){
-        map.removeActor(this);
+        map.removeActor(this);  // all enemies will be removed from the ground once reset
 
     }
 

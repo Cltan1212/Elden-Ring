@@ -36,4 +36,7 @@ public class FlaskOfCrimsonTears extends ConsumableItem {
         this.numOfUsesAvailable -= 1;
         actor.heal(250);
     }
+
+    // display number of uses the Flask of Crimson Tears has left on the console
+
 }

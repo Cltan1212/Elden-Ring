@@ -37,4 +37,5 @@ public class PilesOfBones {
 
 
     }
+    // Implement despawn for Pile of Bones when reset
 }

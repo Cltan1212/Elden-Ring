@@ -17,5 +17,7 @@ public abstract class ConsumableItem extends Item implements Resettable {
 
     public abstract void consumeItem(Actor actor);
 
+    // implement reset so all items will be remove when reset
+
 
 }
