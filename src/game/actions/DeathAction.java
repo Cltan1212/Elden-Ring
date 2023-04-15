@@ -42,8 +42,8 @@ public class DeathAction extends Action {
         String result = "";
         if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             if (target.hasCapability(Status.TURN_BONE)){
-                Location newBone = map.locationOf(target);
-                map.addActor(new PileOfBones(), newBone);
+                Location currentLocation = map.locationOf(target);
+                map.addActor(new PileOfBones(target), currentLocation);
             }
             else{
                 DropRunesBehaviour behaviour = new DropRunesBehaviour();

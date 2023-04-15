@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.utils.Status;
 import game.weapons.Grossmesser;
 
 import static game.utils.RandomNumberGenerator.getRandomInt;
@@ -18,6 +19,7 @@ public class HeavySkeletalSwordsman extends Enemy {
 
     public HeavySkeletalSwordsman() {
         super("Heavy Skeletal Swordsman", 'q',153);
+        this.addCapability(Status.TURN_BONE);
     }
 
     @Override
@@ -42,8 +44,4 @@ public class HeavySkeletalSwordsman extends Enemy {
 
     }
 
-    public void specialDeath(){
-        pileOfBones = new PileOfBones();
-        heavySkeletalSwordsman = null;
-    }
 }
