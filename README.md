@@ -5,3 +5,4 @@
 Team members: Tan Chun Ling, Wan Jack Liang, King Jean Lynn
 
 ## Design Rationale
+Design rationale is located inside the 'docs' folder.
