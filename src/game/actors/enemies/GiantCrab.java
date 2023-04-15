@@ -8,12 +8,11 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.behaviour.Behaviour;
 import game.behaviour.WanderBehaviour;
-import game.reset.Resettable;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class GiantCrab extends Enemies {
+public class GiantCrab extends Enemy {
 
     // represented by C
     // Giant crab may decide to slamm all creatues within the surrounding

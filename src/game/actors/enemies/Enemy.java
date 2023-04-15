@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.reset.Resettable;
 
-public abstract class Enemies extends Actor implements Resettable{
+public abstract class Enemy extends Actor implements Resettable{
 
 
     /**
@@ -14,7 +14,7 @@ public abstract class Enemies extends Actor implements Resettable{
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public Enemies(String name, char displayChar, int hitPoints) {
+    public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
 
 

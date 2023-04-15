@@ -23,7 +23,7 @@ import java.util.Map;
  * Modified by:
  *
  */
-public class LoneWolf extends Enemies {
+public class LoneWolf extends Enemy {
 
     // represented by 'h'
     // bits other creatures, including the player, dealing 97 damage with 95%  accuracy
@@ -67,7 +67,7 @@ public class LoneWolf extends Enemies {
         ActionList actions = new ActionList();
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
-            // HINT 1: The AttackAction above allows you to attak the enemy with your intrinsic weapon.
+            // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
             // HINT 1: How would you attack the enemy with a weapon?
         }
         return actions;

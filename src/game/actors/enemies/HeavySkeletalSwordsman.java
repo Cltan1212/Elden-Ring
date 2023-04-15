@@ -7,13 +7,12 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.behaviour.Behaviour;
-import game.reset.Resettable;
 import game.weapons.Grossmesser;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class HeavySkeletalSwordsman extends Enemies {
+public class HeavySkeletalSwordsman extends Enemy {
 
 
     // can become a Pile of Bone represented by X for 2 turns if killed by other enemies or the player
