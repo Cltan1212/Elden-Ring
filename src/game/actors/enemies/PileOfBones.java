@@ -11,7 +11,7 @@ import edu.monash.fit2099.engine.positions.Location;
 public class PileOfBones extends Actor {
     private int remaining;
     private PileOfBones pileOfBones;
-    private Actor saveActor; // turn back to their own status
+    private Actor skeletalEnemy; // turn back to their own status
 
     public PileOfBones(Actor saveActor){
         super("Pile Of Bones",'X',0);
@@ -39,7 +39,7 @@ public class PileOfBones extends Actor {
         remaining -= 1;
         if (remaining == 0){
             Location currentLocation = map.locationOf(pileOfBones);
-            map.addActor(saveActor, currentLocation);
+            map.addActor(skeletalEnemy, currentLocation);
             map.removeActor(pileOfBones);
         }
         return new DoNothingAction();
