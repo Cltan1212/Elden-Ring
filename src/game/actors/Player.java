@@ -6,9 +6,10 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
-import game.weapons.Club;
 import game.reset.Resettable;
+import game.runes.Runes;
 import game.utils.Status;
+import game.weapons.Club;
 
 /**
  * Class representing the Player. It implements the Resettable interface.
@@ -22,6 +23,8 @@ public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
 
+	public Runes runesItem;
+
 	/**
 	 * Constructor.
 	 *
@@ -31,6 +34,7 @@ public class Player extends Actor implements Resettable {
 	 */
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
+		runesItem = new Runes(0);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addWeaponToInventory(new Club());
 	}
@@ -44,6 +48,7 @@ public class Player extends Actor implements Resettable {
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
+
 
 	@Override
 	public void reset() {}

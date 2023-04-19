@@ -1,4 +1,25 @@
 package game.runes;
 
+import game.actors.Player;
+
 public class RunesManager {
+    private static Player player;
+
+    public void setPlayer(Player player){
+        RunesManager.player = player;
+    }
+
+    public static void addRunesValue(int values){
+        RunesManager.player.runesItem.addRunes(values);
+    }
+
+    public static void subtractRunesValue(int values){
+        RunesManager.player.runesItem.subtractRunes(values);
+    }
+
+    public static int getRunesValue(){
+        return RunesManager.player.runesItem.getRunesValue();
+    }
+
+
 }
