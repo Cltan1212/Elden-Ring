@@ -1,10 +1,13 @@
 package game.weapons;
+
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.utils.Status;
 
-public class CurvedSword extends WeaponItem{
+public class CurvedSword extends WeaponItem {
 
-    // both Grossmesser & scimitar spinning attack
+
     /**
      * Constructor.
      *
@@ -16,10 +19,12 @@ public class CurvedSword extends WeaponItem{
      */
     public CurvedSword(String name, char displayChar, int damage, String verb, int hitRate) {
         super(name, displayChar, damage, verb, hitRate);
+
         // if an instance of the CurvedSword class is stored in the player's inventory,
         // then the player will also own this capability
         this.addCapability(Status.SPINNING_ATTACK);
     }
 
-
+    @Override
+    public void tick(Location currentLocation, Actor actor) {}
 }

@@ -6,14 +6,10 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 
 public class Uchigatana extends WeaponItem {
 
-    /**
-     * Constructor.
-
-     */
-    public Uchigatana() {
+    public Uchigatana(){
         super("Uchigatana", ')', 115, "", 80);
     }
 
     @Override
-    public void tick(Location currentLocation, Actor actor) {}
+    public void tick(Location currentLocation, Actor actor){}
 }
