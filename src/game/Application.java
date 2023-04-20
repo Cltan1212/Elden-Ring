@@ -13,6 +13,7 @@ import game.grounds.Dirt;
 import game.grounds.Floor;
 import game.grounds.Wall;
 import game.utils.FancyMessage;
+import game.utils.MenuToDisplayClass;
 
 /**
  * The main class to start the game.
@@ -24,6 +25,8 @@ import game.utils.FancyMessage;
 public class Application {
 
 	public static void main(String[] args) {
+
+//		MenuToDisplayClass menuDisplay = new MenuToDisplayClass();
 
 		World world = new World(new Display());
 
@@ -68,6 +71,7 @@ public class Application {
 		}
 
 		gameMap.at(23, 17).addActor(new LoneWolf());
+
 
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300);

@@ -6,10 +6,16 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import game.combat.Bandit;
+import game.combat.Sarumai;
+import game.combat.Wretch;
 import game.reset.Resettable;
 import game.runes.Runes;
+import game.utils.MenuToDisplayClass;
 import game.utils.Status;
 import game.weapons.Club;
+import game.weapons.GreatKnife;
+import game.weapons.Uchigatana;
 
 /**
  * Class representing the Player. It implements the Resettable interface.
@@ -20,6 +26,8 @@ import game.weapons.Club;
  *
  */
 public class Player extends Actor implements Resettable {
+
+	MenuToDisplayClass menuDisplay = new MenuToDisplayClass();
 
 	private final Menu menu = new Menu();
 
@@ -36,7 +44,23 @@ public class Player extends Actor implements Resettable {
 		super(name, displayChar, hitPoints);
 		runesItem = new Runes(0);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
-		this.addWeaponToInventory(new Club());
+
+		char choice = selectClass();
+		if (choice == 'b'){
+			new Bandit();
+			this.addWeaponToInventory(new GreatKnife());
+		} else if (choice == 's'){
+			new Sarumai();
+			this.addWeaponToInventory(new Uchigatana());
+		} else if (choice == 'w'){
+			new Wretch();
+			this.addWeaponToInventory(new Club());
+		}
+	}
+
+	public char selectClass(){
+		char choice = menuDisplay.menuToDisplayClass();
+		return choice;
 	}
 
 	@Override
