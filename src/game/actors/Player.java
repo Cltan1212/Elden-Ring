@@ -4,15 +4,13 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.reset.Resettable;
 import game.runes.Runes;
 import game.utils.Status;
 import game.weapons.Club;
-import game.weapons.GreatKnife;
-import game.weapons.Uchigatana;
-import game.utils.MenuToDisplayClass;
 
 /**
  * Class representing the Player. It implements the Resettable interface.
@@ -26,9 +24,7 @@ public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
 
-	MenuToDisplayClass menuDisplay = new MenuToDisplayClass(); // for menu display for 3 different class/modes of game
-
-	public Runes runesItem;
+	public Runes runesItem; // use this for tracing
 
 	/**
 	 * Constructor.
@@ -39,17 +35,12 @@ public class Player extends Actor implements Resettable {
 	 */
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
-		runesItem = new Runes(0);
-		this.addCapability(Status.HOSTILE_TO_ENEMY);
 
-		char choice = menuDisplay.menuToDisplayClass();
-		if (choice == 'b'){
-			this.addWeaponToInventory(new GreatKnife());
-		} else if (choice == 's'){
-			this.addWeaponToInventory(new Uchigatana());
-		} else if (choice == 'w'){
-			this.addWeaponToInventory(new Club());
-		}
+		runesItem = new Runes(0);
+		this.addItemToInventory(runesItem);
+
+		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		this.addWeaponToInventory(new Club());
 	}
 
 	@Override
