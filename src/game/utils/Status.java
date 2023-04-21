@@ -11,6 +11,7 @@ public enum Status {
     RESTING,
 
     // trading status
+    TRADING,
     BUYING,
     SELLING,
 

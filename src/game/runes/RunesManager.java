@@ -1,6 +1,8 @@
 package game.runes;
 
+import edu.monash.fit2099.engine.items.Item;
 import game.actors.Player;
+import game.utils.Status;
 
 public class RunesManager {
     private static Player player;

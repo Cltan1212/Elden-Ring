@@ -18,6 +18,12 @@ public class ResetManager {
      * HINT 1: where have we seen a private constructor before?
      * HINT 2: see the instance attribute above.
      */
+
+    public static ResetManager getInstance(){
+        if (instance == null)
+            instance = new ResetManager();
+        return new ResetManager();
+    }
     private ResetManager() {
         this.resettables = new ArrayList<>();
     }

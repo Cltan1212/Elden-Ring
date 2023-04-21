@@ -8,8 +8,11 @@ import game.actions.runesActions.DropRunesAction;
 import game.actions.runesActions.PickUpRunesAction;
 import game.actions.runesActions.TransferRunesAction;
 import game.reset.Resettable;
+import game.utils.Status;
 
 public class Runes extends Item implements Resettable,Pickable,Dropable{
+
+
 
 
     private int runesValue;
@@ -17,6 +20,7 @@ public class Runes extends Item implements Resettable,Pickable,Dropable{
     public Runes(int initialRunesValue) {
         super("Runes", '$', true);
         runesValue = initialRunesValue;
+        this.addCapability(Status.TRADING);
     }
 
     @Override
@@ -31,6 +35,10 @@ public class Runes extends Item implements Resettable,Pickable,Dropable{
         if (portable)
             return new DropRunesAction(this);
         return null;
+    }
+
+    public void setRunesValue(int runesValue) {
+        this.runesValue = runesValue;
     }
 
     public void addRunes(int value) {
