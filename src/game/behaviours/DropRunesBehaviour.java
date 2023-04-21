@@ -15,7 +15,7 @@ public class DropRunesBehaviour implements Behaviour{
 
     private final Actor target;
 
-    DropRunesBehaviour(Actor subject){
+    public DropRunesBehaviour(Actor subject){
         this.target = subject;
     }
     @Override
