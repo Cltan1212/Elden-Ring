@@ -9,8 +9,11 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.reset.Resettable;
 import game.runes.Runes;
+import game.utils.MenuToDisplayClass;
 import game.utils.Status;
 import game.weapons.Club;
+import game.weapons.GreatKnife;
+import game.weapons.Uchigatana;
 
 /**
  * Class representing the Player. It implements the Resettable interface.
@@ -23,6 +26,8 @@ import game.weapons.Club;
 public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
+
+	MenuToDisplayClass menuDisplay = new MenuToDisplayClass(); // for menu display for 3 different class/modes of game
 
 	public Runes runesItem; // use this for tracing
 
@@ -40,7 +45,15 @@ public class Player extends Actor implements Resettable {
 		this.addItemToInventory(runesItem);
 
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
-		this.addWeaponToInventory(new Club());
+
+		char choice = menuDisplay.menuToDisplayClass();
+		if (choice == 'b'){
+			this.addWeaponToInventory(new GreatKnife());
+		} else if (choice == 's'){
+			this.addWeaponToInventory(new Uchigatana());
+		} else if (choice == 'w'){
+			this.addWeaponToInventory(new Club());
+		}
 	}
 
 	@Override
