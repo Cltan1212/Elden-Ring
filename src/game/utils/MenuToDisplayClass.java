@@ -1,7 +1,6 @@
 package game.utils;
-import game.combat.Bandit;
-import game.combat.Sarumai;
-import game.combat.Wretch;
+
+
 
 import java.util.Scanner;
 
@@ -19,4 +18,5 @@ public class MenuToDisplayClass {
 
         return choiceChar;
     }
+
 }

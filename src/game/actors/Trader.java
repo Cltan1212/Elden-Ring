@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.weapons.Weapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.tradingActions.PurchaseAction;
 import game.actions.tradingActions.SellAction;
@@ -46,15 +45,21 @@ public class Trader extends Actor {
 
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actionList = new ActionList();
+
+        // purchase weapon actions
         if (otherActor.hasCapability(Status.BUYING)){
             for (Map.Entry<WeaponItem, Integer> weaponItem: sellItem.entrySet()){
                 actionList.add(new PurchaseAction(weaponItem.getKey(), weaponItem.getValue()));
             }
         }
+
+        // sell weapon actions
         if (otherActor.hasCapability(Status.SELLING)){
             for (Map.Entry<WeaponItem, Integer> weaponItem: acceptedItem.entrySet()){
-                if (otherActor.getWeaponInventory().contains(weaponItem.getKey())){
-                    actionList.add(new SellAction(weaponItem.getKey(), weaponItem.getValue()));
+                for (WeaponItem actorWeapon : otherActor.getWeaponInventory()) {
+                    if (weaponItem.getKey().toString().equals(actorWeapon.toString())) {
+                        actionList.add(new SellAction(actorWeapon, weaponItem.getValue()));
+                    }
                 }
             }
         }
