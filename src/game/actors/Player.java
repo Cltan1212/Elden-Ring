@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.reset.Resettable;
 import game.runes.Runes;
+import game.runes.RunesManager;
 import game.utils.Status;
 import game.weapons.Club;
 
@@ -39,8 +40,15 @@ public class Player extends Actor implements Resettable {
 		runesItem = new Runes(10000);
 		this.addItemToInventory(runesItem);
 
+		//
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
+
+		// trading capabilities
+		this.addCapability(Status.BUYING);
+		this.addCapability(Status.SELLING);
 		this.addWeaponToInventory(new Club());
+
+		RunesManager.setPlayer(this);
 	}
 
 	@Override

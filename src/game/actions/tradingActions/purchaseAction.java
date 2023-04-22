@@ -35,6 +35,7 @@ public class purchaseAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         String message = "";
+
         if (actor.hasCapability(Status.BUYING) && RunesManager.getRunesValue() >= getPrice()){
             RunesManager.subtractRunesValue(price);
             actor.addWeaponToInventory(weaponItem);
@@ -48,6 +49,6 @@ public class purchaseAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return actor + " purchase " + weaponItem.toString() + " with $" + price;
     }
 }

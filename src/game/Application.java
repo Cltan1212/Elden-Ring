@@ -7,13 +7,16 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.Trader;
 import game.actors.enemies.LoneWolf;
 import game.actors.Player;
 import game.grounds.Dirt;
 import game.grounds.Floor;
 import game.grounds.Wall;
+import game.runes.Runes;
 import game.utils.FancyMessage;
+import game.weapons.Club;
 
 /**
  * The main class to start the game.
@@ -74,8 +77,14 @@ public class Application {
 		Player player = new Player("Tarnished", '@', 300);
 		world.addPlayer(player, gameMap.at(36, 10));
 
+		// Testing purpose
 		Trader trader = new Trader("Merchant Kale", 'K', 100);
-		world.addPlayer(trader, gameMap.at(30, 10));
+		world.addPlayer(trader, gameMap.at(35, 10));
+
+		// Testing purpose
+		Runes runes = new Runes(100);
+		WeaponItem weapon = new Club();
+		gameMap.at(37,10).addItem(runes);
 
 		world.run();
 	}

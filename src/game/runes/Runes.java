@@ -18,27 +18,25 @@ public class Runes extends Item implements Resettable,Pickable,Dropable{
     private int runesValue;
 
     public Runes(int initialRunesValue) {
-        super("Runes", '$', false);
+        super("Runes", '$', true);
         runesValue = initialRunesValue;
         this.addCapability(Status.TRADING);
     }
 
     @Override
     public PickUpAction getPickUpAction(Actor actor) {
-        if (portable)
+        // only player are allowed to pick up runes
+        if (actor.hasCapability(Status.HOSTILE_TO_ENEMY))
             return new PickUpRunesAction(this);
         return null;
     }
 
     @Override
     public DropAction getDropAction(Actor actor) {
-        if (portable)
+        // only when player die will perform drop runes action
+        if (!actor.isConscious())
             return new DropRunesAction(this);
         return null;
-    }
-
-    public void setRunesValue(int runesValue) {
-        this.runesValue = runesValue;
     }
 
     public void addRunes(int value) {
@@ -52,11 +50,6 @@ public class Runes extends Item implements Resettable,Pickable,Dropable{
     public int getRunesValue() {
         return runesValue;
     }
-
-//    @Override
-//    public List<Action> getAllowableActions() {
-//        return super.getAllowableActions();
-//    }
 
     @Override
     public String pick(Actor actor, GameMap map) {

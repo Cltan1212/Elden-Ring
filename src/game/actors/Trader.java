@@ -47,15 +47,21 @@ public class Trader extends Actor {
 
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actionList = new ActionList();
+
+        // purchase weapon actions
         if (otherActor.hasCapability(Status.BUYING)){
             for (Map.Entry<WeaponItem, Integer> weaponItem: sellItem.entrySet()){
                 actionList.add(new purchaseAction(weaponItem.getKey(), weaponItem.getValue()));
             }
         }
+
+        // sell weapon actions
         if (otherActor.hasCapability(Status.SELLING)){
             for (Map.Entry<WeaponItem, Integer> weaponItem: acceptedItem.entrySet()){
-                if (otherActor.getWeaponInventory().contains(weaponItem.getKey())){
-                    actionList.add(new sellAction(weaponItem.getKey(), weaponItem.getValue()));
+                for (WeaponItem actorWeapon : otherActor.getWeaponInventory()) {
+                    if (weaponItem.getKey().toString().equals(actorWeapon.toString())) {
+                        actionList.add(new sellAction(actorWeapon, weaponItem.getValue()));
+                    }
                 }
             }
         }
