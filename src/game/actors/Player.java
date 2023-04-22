@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.reset.Resettable;
 import game.runes.Runes;
+import game.runes.RunesManager;
 import game.utils.MenuToDisplayClass;
 import game.utils.Status;
 import game.weapons.Club;
@@ -46,9 +47,11 @@ public class Player extends Actor implements Resettable {
 
 		runesItem = new Runes(0);
 		this.addItemToInventory(runesItem);
+		RunesManager.setPlayer(this);
 
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
-		this.addCapability(Status.RESTING); // player has the capability of resting at SiteOfLostGrace
+		this.addCapability(Status.BUYING);
+		this.addCapability(Status.SELLING);
 
 		char choice = menuDisplay.menuToDisplayClass();
 		if (choice == 'b'){
@@ -65,6 +68,9 @@ public class Player extends Actor implements Resettable {
 
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+		// Display Hp and runes value
+		display.println(name + " " + printHp() + ", runes: " + runesItem.getRunesValue());
+
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
