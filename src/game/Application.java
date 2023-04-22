@@ -71,15 +71,15 @@ public class Application {
 			}
 		}
 
-		gameMap.at(23, 17).addActor(new LoneWolf());
+		gameMap.at(30, 10).addActor(new LoneWolf());
 
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300);
 		world.addPlayer(player, gameMap.at(36, 10));
 
 		// Testing purpose
-		Trader trader = new Trader("Merchant Kale", 'K', 100);
-		world.addPlayer(trader, gameMap.at(35, 10));
+//		Trader trader = new Trader("Merchant Kale", 'K', 100);
+//		world.addPlayer(trader, gameMap.at(35, 10));
 
 		// Testing purpose
 		Runes runes = new Runes(100);
