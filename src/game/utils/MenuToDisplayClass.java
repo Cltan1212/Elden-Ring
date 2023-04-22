@@ -1,8 +1,6 @@
 package game.utils;
 
-import game.combat.Bandit;
-import game.combat.Sarumai;
-import game.combat.Wretch;
+
 
 import java.util.Scanner;
 
@@ -17,14 +15,6 @@ public class MenuToDisplayClass {
         System.out.println("Select one: ");
         String choiceString = sel.nextLine();
         char choiceChar = choiceString.charAt(0);  // convert user input to character
-
-        if (choiceChar == 'b'){
-            new Bandit();
-        } else if (choiceChar == 's'){
-            new Sarumai();
-        } else if (choiceChar == 'w'){
-            new Wretch();
-        }
 
         return choiceChar;
     }

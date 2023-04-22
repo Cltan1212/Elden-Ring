@@ -14,6 +14,9 @@ import game.utils.Status;
 import game.weapons.Club;
 import game.weapons.GreatKnife;
 import game.weapons.Uchigatana;
+import game.combat.Bandit;
+import game.combat.Sarumai;
+import game.combat.Wretch;
 
 /**
  * Class representing the Player. It implements the Resettable interface.
@@ -48,10 +51,13 @@ public class Player extends Actor implements Resettable {
 
 		char choice = menuDisplay.menuToDisplayClass();
 		if (choice == 'b'){
+			new Bandit();
 			this.addWeaponToInventory(new GreatKnife());
 		} else if (choice == 's'){
+			new Sarumai();
 			this.addWeaponToInventory(new Uchigatana());
 		} else if (choice == 'w'){
+			new Wretch();
 			this.addWeaponToInventory(new Club());
 		}
 	}
