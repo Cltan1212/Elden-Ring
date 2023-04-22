@@ -48,6 +48,7 @@ public class Player extends Actor implements Resettable {
 		this.addItemToInventory(runesItem);
 
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		this.addCapability(Status.RESTING); // player has the capability of resting at SiteOfLostGrace
 
 		char choice = menuDisplay.menuToDisplayClass();
 		if (choice == 'b'){
