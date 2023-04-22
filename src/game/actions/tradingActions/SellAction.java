@@ -35,14 +35,22 @@ public class SellAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         String message = "";
+
+        // remove the weapon from inventory
         actor.removeWeaponFromInventory(weaponItem);
-        RunesManager.subtractRunesValue(getPrice());
-        message = actor + " successfully sold " + weaponItem.toString();
+        map.locationOf(actor).removeItem(weaponItem);
+
+        // add runes to player
+        RunesManager.addRunesValue(getPrice());
+
+        // print the status
+        message += actor + " successfully sold " + weaponItem.toString();
+
         return message;
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return actor + " sell " + weaponItem.toString() + " with $" + price;
     }
 }

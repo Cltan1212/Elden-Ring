@@ -5,7 +5,7 @@ import game.actors.Player;
 public class RunesManager {
     private static Player player;
 
-    public void setPlayer(Player player){
+    public static void setPlayer(Player player){
         RunesManager.player = player;
     }
 
