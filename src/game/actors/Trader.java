@@ -29,15 +29,15 @@ public class Trader extends Actor {
         super(name, displayChar, hitPoints);
 
         // the items that can be purchased and sold by Merchant Kale
-        if (name.equals("Merchant Kale")){
-            sellItem.put(new Uchigatana(), 5000);
-            sellItem.put(new GreatKnife(), 3500);
-            sellItem.put(new Club(), 600);
-            acceptedItem.put(new Uchigatana(), 500);
-            acceptedItem.put(new GreatKnife(), 350);
-            acceptedItem.put(new Club(), 100);
-            acceptedItem.put(new Grossmesser(), 100);
-        }
+//        if (name.equals("Merchant Kale")){
+//            sellItem.put(new Uchigatana(), 5000);
+//            sellItem.put(new GreatKnife(), 3500);
+//            sellItem.put(new Club(), 600);
+//            acceptedItem.put(new Uchigatana(), 500);
+//            acceptedItem.put(new GreatKnife(), 350);
+//            acceptedItem.put(new Club(), 100);
+//            acceptedItem.put(new Grossmesser(), 100);
+//        }
     }
 
     @Override
