@@ -37,7 +37,7 @@ public class LoneWolf extends Actor{
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
 //        this.behaviours.put(0, new AttackBehaviour());
-        this.behaviours.put(1, new DespawnedBehaviour()); // not sure SHOULD IT BE 1???
+//        this.behaviours.put(1, new DespawnedBehaviour()); // not sure SHOULD IT BE 1???
         this.behaviours.put(2, new FollowBehaviour(player));
         this.behaviours.put(999, new WanderBehaviour());
     }
@@ -90,7 +90,7 @@ public class LoneWolf extends Actor{
         ActionList actions = new ActionList();
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
-            // HINT 1: The AttackAction above allows you to attak the enemy with your intrinsic weapon.
+            // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
             // HINT 1: How would you attack the enemy with a weapon?
         }
         return actions;
