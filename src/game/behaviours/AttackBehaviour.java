@@ -30,6 +30,9 @@ public class AttackBehaviour implements Behaviour {
         // if contains, then create an attack else null -> no action performed
         // return new xxAction();
         // else
+        if (!map.contains(actor) || !map.contains(targetAttack)){
+            return null;
+        }
 
         Location here = map.locationOf(actor); // get location of current actor
 
@@ -37,7 +40,8 @@ public class AttackBehaviour implements Behaviour {
         for (Exit exit: here.getExits()){
             // check if an exit contains an actor that is hostile to enemy
             if (exit.getDestination().containsAnActor() && exit.getDestination().getActor().hasCapability(Status.HOSTILE_TO_ENEMY)){
-                return new AttackAction(exit.getDestination().getActor(), exit.getName()); // current actor calls AttackAction on the other actor
+                String direction = exit.getName();
+                return new AttackAction(exit.getDestination().getActor(), direction); // current actor calls AttackAction on the other actor
             }
         }
 

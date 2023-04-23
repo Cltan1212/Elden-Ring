@@ -7,9 +7,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.behaviours.Behaviour;
+import game.behaviours.*;
 import game.utils.Status;
-import game.behaviours.WanderBehaviour;
 import game.actions.actorActions.AttackAction;
 
 import java.util.HashMap;
@@ -28,6 +27,9 @@ public class LoneWolf extends Actor {
 
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
+//        this.behaviours.put(0, new AttackBehaviour());
+//        this.behaviours.put(1, new DespawnedBehaviour());
+//        this.behaviours.put(2, new FollowBehaviour());
         this.behaviours.put(999, new WanderBehaviour());
     }
 
