@@ -88,6 +88,10 @@ public class AttackAction extends Action {
 		return result;
 	}
 
+	public Actor getTarget(){
+		return target;
+	}
+
 	/**
 	 * Describes which target the actor is attacking with which weapon
 	 *
