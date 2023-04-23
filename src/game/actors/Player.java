@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import game.combat.CombatArchetypes;
 import game.reset.Resettable;
 import game.runes.Runes;
 import game.runes.RunesManager;
@@ -33,6 +34,7 @@ public class Player extends Actor implements Resettable {
 
 	MenuToDisplayClass menuDisplay = new MenuToDisplayClass(); // for menu display for 3 different class/modes of game
 
+	CombatArchetypes combatChoice;
 	public Runes runesItem; // use this for tracing
 
 	/**
@@ -55,14 +57,18 @@ public class Player extends Actor implements Resettable {
 
 		char choice = menuDisplay.menuToDisplayClass();
 		if (choice == 'b'){
-			new Bandit();
-			this.addWeaponToInventory(new GreatKnife());
+			combatChoice = new Bandit();
+			resetMaxHp(combatChoice.getStartingHitPoint());
+			this.addWeaponToInventory(combatChoice.getStartingWeapon());  // Great Knife
 		} else if (choice == 's'){
-			new Sarumai();
-			this.addWeaponToInventory(new Uchigatana());
+			combatChoice = new Sarumai();
+			resetMaxHp(combatChoice.getStartingHitPoint());
+			this.addWeaponToInventory(combatChoice.getStartingWeapon()); // Uchigatana
+
 		} else if (choice == 'w'){
-			new Wretch();
-			this.addWeaponToInventory(new Club());
+			combatChoice = new Wretch();
+			resetMaxHp(combatChoice.getStartingHitPoint());
+			this.addWeaponToInventory(combatChoice.getStartingWeapon());  // Club
 		}
 	}
 
