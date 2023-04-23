@@ -108,7 +108,8 @@ public class Application {
 
 
 		// HINT: what does it mean to prefer composition to inheritance?
-		Player player = new Player("Tarnished", '@', 300);
+//		Player player = new Player("Tarnished", '@', 300);
+		Player player = Player.getInstance("Tarnished", '@', 300);
 		Trader trader = new Trader("Merchant Kale", 'K', 0);
 		world.addPlayer(player, gameMap.at(36, 10));
 		world.addPlayer(trader, gameMap.at(40, 12));
