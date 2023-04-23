@@ -1,4 +1,11 @@
 package game.combat;
 
-public class Bandit {
+import game.weapons.GreatKnife;
+
+public class Bandit extends CombatArchetypes {
+
+    // starting weapon is Great Knife
+    public Bandit(){
+        super(new GreatKnife(), 414);
+    }
 }
