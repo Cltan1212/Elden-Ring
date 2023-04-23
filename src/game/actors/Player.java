@@ -37,6 +37,8 @@ public class Player extends Actor implements Resettable {
 	MenuToDisplayClass menuDisplay = new MenuToDisplayClass(); // for menu display for 3 different class/modes of game
 	CombatArchetypes combatChoice;
 
+	private static Player instance;
+
 	public Runes runesItem; // use this for tracing
 
 	/**
@@ -46,7 +48,7 @@ public class Player extends Actor implements Resettable {
 	 * @param displayChar Character to represent the player in the UI
 	 * @param hitPoints   Player's starting number of hitpoints
 	 */
-	public Player(String name, char displayChar, int hitPoints) {
+	private Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 
 		runesItem = new Runes(0);
@@ -71,6 +73,20 @@ public class Player extends Actor implements Resettable {
 			resetMaxHp(combatChoice.getStartingHitPoint());
 			this.addWeaponToInventory(combatChoice.getStartingWeapon());  // Club
 		}
+	}
+
+	public static Player getInstance(String name, char displayChar, int hitPoints){
+		if (name == null){  // cuz when I create Player in enemy, the name will be null. so it will reference to the same Player object as defined in Application.java
+			return instance;
+		} else if (instance == null){
+			instance = new Player(name, displayChar, hitPoints);
+		}
+		return instance;
+
+
+		//		if (instance == null){
+//			instance = new Player(name, displayChar, hitPoints);
+//		}
 	}
 
 	@Override
