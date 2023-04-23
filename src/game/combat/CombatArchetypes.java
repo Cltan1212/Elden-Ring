@@ -4,10 +4,18 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 
 public abstract class CombatArchetypes {
     private WeaponItem startingWeapon;
-    private int startingHitRate;
+    private int startingHitPoint;
 
-    public CombatArchetypes(WeaponItem startingWeapon, int startingHitRate) {
+    public CombatArchetypes(WeaponItem startingWeapon, int startingHitPoint) {
         this.startingWeapon = startingWeapon;
-        this.startingHitRate = startingHitRate;
+        this.startingHitPoint = startingHitPoint;
+    }
+
+    public WeaponItem getStartingWeapon() {
+        return startingWeapon;
+    }
+
+    public int getStartingHitPoint() {
+        return startingHitPoint;
     }
 }
