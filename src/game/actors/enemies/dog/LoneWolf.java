@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.actorActions.DespawnedAction;
 import game.actors.Player;
+import game.actors.enemies.Enemy;
 import game.behaviours.*;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
@@ -25,21 +26,21 @@ import java.util.Map;
  * Modified by:
  *
  */
-public class LoneWolf extends Actor{
+public class LoneWolf extends Enemy {
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
-    private final int despawnChance = 10;
+//    private final int despawnChance = 10;
 
-    // this will give the reference to the same player object created in application.java
-    // Singleton pattern, null, '\n', 0, those value are ignored when retrieving the singleton instance
-    Player player = Player.getInstance(null, '\0', 0);
+//    // this will give the reference to the same player object created in application.java
+//    // Singleton pattern, null, '\n', 0, those value are ignored when retrieving the singleton instance
+//    Player player = Player.getInstance(null, '\0', 0);
 
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
 //        this.behaviours.put(0, new AttackBehaviour());
 //        this.behaviours.put(1, new DespawnedBehaviour()); // not sure SHOULD IT BE 1???
-        this.behaviours.put(2, new FollowBehaviour(player));
-        this.behaviours.put(999, new WanderBehaviour());
+//        this.behaviours.put(2, new FollowBehaviour(player));
+//        this.behaviours.put(999, new WanderBehaviour());
     }
 
     /**
@@ -54,6 +55,8 @@ public class LoneWolf extends Actor{
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
+        return super.playTurn(actions, lastAction, map, display);
+
 //        for (Behaviour behaviour : behaviours.values()) {
 //            Action action = behaviour.getAction(this, map);
 //            if(action != null)
@@ -61,19 +64,20 @@ public class LoneWolf extends Actor{
 //        }
 //        return new DoNothingAction();
 
-        int randomNum = RandomNumberGenerator.getRandomInt(100);
-        if (randomNum <= despawnChance && behaviours.get(2).getAction(this, map) != null){
-            return new DespawnedAction();
-        }
-        for (Behaviour behaviour : behaviours.values()) {
-            Action action = behaviour.getAction(this, map);
-            if(action != null)
-
-                return action;
-        }
-        return new DoNothingAction();
 
 
+//        int randomNum = RandomNumberGenerator.getRandomInt(100);
+//        if (randomNum <= despawnChance && behaviours.get(2).getAction(this, map) != null){  // if not following and <= despawnChance, can call DespawnedAction()
+//            return new DespawnedAction();
+//        }
+
+//        for (Behaviour behaviour : behaviours.values()) {
+//            Action action = behaviour.getAction(this, map);
+//            if(action != null)
+//
+//                return action;
+//        }
+//        return new DoNothingAction();
 
     }
 
@@ -103,4 +107,8 @@ public class LoneWolf extends Actor{
     }
 
 
+    @Override
+    public void reset() {
+
+    }
 }

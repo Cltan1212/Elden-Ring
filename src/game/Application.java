@@ -1,6 +1,7 @@
 package game;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import edu.monash.fit2099.engine.displays.Display;
@@ -11,6 +12,10 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actors.enemies.dog.LoneWolf;
 import game.actors.Player;
 import game.actors.Trader;
+import game.combat.Bandit;
+import game.combat.CombatArchetypes;
+import game.combat.Sarumai;
+import game.combat.Wretch;
 import game.grounds.Dirt;
 import game.grounds.Floor;
 import game.grounds.SiteOfLostGrace;
@@ -20,6 +25,7 @@ import game.grounds.environments.GustOfWind;
 import game.grounds.environments.PuddleOfWater;
 import game.utils.FancyMessage;
 import game.utils.MenuToDisplayClass;
+import game.utils.Status;
 
 /**
  * The main class to start the game.
@@ -105,14 +111,32 @@ public class Application {
 
 		gameMap.at(23, 17).addActor(new LoneWolf());
 
+		HashMap<Character, CombatArchetypes> characterToRoleMap = new HashMap<Character, CombatArchetypes>();
+		characterToRoleMap.put('s', new Sarumai());
+		characterToRoleMap.put('b', new Bandit());
+		characterToRoleMap.put('w', new Wretch());
+
+		Display display = new Display();
+		display.println("Select your role: ");
+		for (Character key: characterToRoleMap.keySet()){
+			display.println(key + ":" + characterToRoleMap.get(key));
+		}
+		char choiceChar = display.readChar();
+		while (!characterToRoleMap.containsKey(choiceChar)){
+			choiceChar = display.readChar();
+		}
 
 
 		// HINT: what does it mean to prefer composition to inheritance?
-//		Player player = new Player("Tarnished", '@', 300);
-		Player player = Player.getInstance("Tarnished", '@', 300);
+		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
+//		Player player = Player.getInstance("Tarnished", '@', 300, c);
+//		System.out.println(player.findCapabilitiesByType(Status.class));  // will return [HOSTILE_TO_ENEMY, BUYING, SELLING]
 		Trader trader = new Trader("Merchant Kale", 'K', 0);
 		world.addPlayer(player, gameMap.at(36, 10));
 		world.addPlayer(trader, gameMap.at(40, 12));
+
+
+
 
 		world.run();
 	}

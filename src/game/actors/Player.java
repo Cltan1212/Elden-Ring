@@ -40,6 +40,7 @@ public class Player extends Actor implements Resettable {
 	private static Player instance;
 
 	public Runes runesItem; // use this for tracing
+	public CombatArchetypes role;
 
 	/**
 	 * Constructor.
@@ -48,8 +49,9 @@ public class Player extends Actor implements Resettable {
 	 * @param displayChar Character to represent the player in the UI
 	 * @param hitPoints   Player's starting number of hitpoints
 	 */
-	private Player(String name, char displayChar, int hitPoints) {
+	public Player(String name, char displayChar, int hitPoints, CombatArchetypes role) {
 		super(name, displayChar, hitPoints);
+		this.role = role;
 
 		runesItem = new Runes(0);
 		this.addItemToInventory(runesItem);
@@ -59,35 +61,37 @@ public class Player extends Actor implements Resettable {
 		this.addCapability(Status.BUYING);
 		this.addCapability(Status.SELLING);
 
-		char choice = menuDisplay.menuToDisplayClass();
-		if (choice == 'b'){
-			combatChoice = new Bandit();
-			resetMaxHp(combatChoice.getStartingHitPoint());
-			this.addWeaponToInventory(combatChoice.getStartingWeapon());  // Great Knife
-		} else if (choice == 's'){
-			combatChoice = new Sarumai();
-			resetMaxHp(combatChoice.getStartingHitPoint());
-			this.addWeaponToInventory(combatChoice.getStartingWeapon()); // Uchigatana
-		} else if (choice == 'w'){
-			combatChoice = new Wretch();
-			resetMaxHp(combatChoice.getStartingHitPoint());
-			this.addWeaponToInventory(combatChoice.getStartingWeapon());  // Club
-		}
+		resetMaxHp(role.getStartingHitPoint());
+		this.addWeaponToInventory(role.getStartingWeapon());
+
+//		if (role == new Bandit()){
+////			combatChoice = new Bandit();
+//			resetMaxHp(combatChoice.getStartingHitPoint());
+//			this.addWeaponToInventory(combatChoice.getStartingWeapon());  // Great Knife
+//		} else if (choice == 's'){
+//			combatChoice = new Sarumai();
+//			resetMaxHp(combatChoice.getStartingHitPoint());
+//			this.addWeaponToInventory(combatChoice.getStartingWeapon()); // Uchigatana
+//		} else if (choice == 'w'){
+//			combatChoice = new Wretch();
+//			resetMaxHp(combatChoice.getStartingHitPoint());
+//			this.addWeaponToInventory(combatChoice.getStartingWeapon());  // Club
+//		}
 	}
 
-	public static Player getInstance(String name, char displayChar, int hitPoints){
-		if (name == null){  // cuz when I create Player in enemy, the name will be null. so it will reference to the same Player object as defined in Application.java
-			return instance;
-		} else if (instance == null){
-			instance = new Player(name, displayChar, hitPoints);
-		}
-		return instance;
+//	public static Player getInstance(String name, char displayChar, int hitPoints){
+//		if (name == null){  // cuz when I create Player in enemy, the name will be null. so it will reference to the same Player object as defined in Application.java
+//			return instance;
+//		} else if (instance == null){
+//			instance = new Player(name, displayChar, hitPoints);
+//		}
+//		return instance;
 
 
 		//		if (instance == null){
 //			instance = new Player(name, displayChar, hitPoints);
 //		}
-	}
+
 
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
