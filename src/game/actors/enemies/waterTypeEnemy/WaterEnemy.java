@@ -1,8 +1,10 @@
 package game.actors.enemies.waterTypeEnemy;
 
 import game.actors.enemies.Enemy;
+import game.runes.RunesManager;
+import game.utils.RandomNumberGenerator;
 
-public class WaterEnemy extends Enemy {
+public abstract class WaterEnemy extends Enemy {
     /**
      * Constructor.
      *
@@ -12,5 +14,11 @@ public class WaterEnemy extends Enemy {
      */
     public WaterEnemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
+        RunesManager.getInstance().registerRuneSource(this);
+    }
+
+    @Override
+    public int generateRunes() {
+        return RandomNumberGenerator.getRandomInt(318,4961);
     }
 }

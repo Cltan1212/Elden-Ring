@@ -25,8 +25,6 @@ public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
 
-	public Runes runesItem; // use this for tracing
-
 	/**
 	 * Constructor.
 	 *
@@ -37,24 +35,16 @@ public class Player extends Actor implements Resettable {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 
-		runesItem = new Runes(10000);
-		this.addItemToInventory(runesItem);
-
-		//
+		RunesManager.getInstance().registerRunesHeld(this, 0);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
-
-		// trading capabilities
-		this.addCapability(Status.BUYING);
-		this.addCapability(Status.SELLING);
 		this.addWeaponToInventory(new Club());
 
-		RunesManager.setPlayer(this);
 	}
 
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Print Hp
-		display.println(name + " " + printHp() + ", runes: " + runesItem.getRunesValue());
+		display.println(name + " " + printHp() + ", runes: " + RunesManager.getInstance().getRunes(this));
 
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)

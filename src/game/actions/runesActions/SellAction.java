@@ -1,17 +1,16 @@
-package game.actions.tradingActions;
+package game.actions.runesActions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.runes.RunesManager;
-import game.utils.Status;
 
-public class sellAction extends Action {
+public class SellAction extends Action {
     private WeaponItem weaponItem;
 
     private int price;
-    public sellAction(WeaponItem weaponItem, int price){
+    public SellAction(WeaponItem weaponItem, int price){
         setWeaponItem(weaponItem);
         setPrice(price);
     }

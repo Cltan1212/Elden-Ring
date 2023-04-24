@@ -4,11 +4,16 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.actorActions.AreaAttackAction;
+import game.actions.runesActions.SellAction;
+import game.actors.MerchantKale;
+import game.items.Purchasable;
+import game.items.Sellable;
 import game.utils.Status;
 
-public class Grossmesser extends WeaponItem {
+public class Grossmesser extends WeaponItem implements Sellable {
     public Grossmesser() {
         super("Grossmesser", '?',115, "", 85);
+        MerchantKale.getInstance().registerSellableItem(this);
     }
 
     @Override
@@ -16,4 +21,8 @@ public class Grossmesser extends WeaponItem {
         return new AreaAttackAction();
     }
 
+    @Override
+    public SellAction createSellAction() {
+        return new SellAction(this,100);
+    }
 }

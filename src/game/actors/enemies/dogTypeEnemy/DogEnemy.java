@@ -1,8 +1,10 @@
 package game.actors.enemies.dogTypeEnemy;
 
 import game.actors.enemies.Enemy;
+import game.runes.RunesManager;
+import game.utils.RandomNumberGenerator;
 
-public class DogEnemy extends Enemy {
+public abstract class DogEnemy extends Enemy {
     /**
      * Constructor.
      *
@@ -12,5 +14,11 @@ public class DogEnemy extends Enemy {
      */
     public DogEnemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
+        RunesManager.getInstance().registerRuneSource(this);
+    }
+
+    @Override
+    public int generateRunes() {
+        return RandomNumberGenerator.getRandomInt(55,1470);
     }
 }

@@ -1,8 +1,10 @@
 package game.actors.enemies.skeletalTypeEnemy;
 
 import game.actors.enemies.Enemy;
+import game.runes.RunesManager;
+import game.utils.RandomNumberGenerator;
 
-public class SkeletalEnemy extends Enemy {
+public abstract class SkeletalEnemy extends Enemy {
     /**
      * Constructor.
      *
@@ -12,5 +14,11 @@ public class SkeletalEnemy extends Enemy {
      */
     public SkeletalEnemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
+        RunesManager.getInstance().registerRuneSource(this);
+    }
+
+    @Override
+    public int generateRunes() {
+        return RandomNumberGenerator.getRandomInt(35,892);
     }
 }

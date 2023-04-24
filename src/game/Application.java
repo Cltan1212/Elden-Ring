@@ -9,9 +9,11 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.enemies.dogTypeEnemy.LoneWolf;
 import game.actors.Player;
+import game.actors.enemies.enemySpawn.EnemyWest;
 import game.grounds.Dirt;
 import game.grounds.Floor;
 import game.grounds.Wall;
+import game.grounds.enviroments.Graveyard;
 import game.utils.FancyMessage;
 
 /**
@@ -107,6 +109,15 @@ public class Application {
 
 //		Trader trader = new Trader("Trader", 'K', 0);
 //		world.addPlayer(trader, gameMap.at(40, 12));
+
+		// set ground as graveyard
+		for (int y = 3; y <= 7; y++){
+			gameMap.at(0,y).setGround(new Graveyard(new EnemyWest()));
+			gameMap.at(2,y).setGround(new Graveyard(new EnemyWest()));
+		}
+
+		// set ground as puddle of water
+
 
 		world.run();
 	}

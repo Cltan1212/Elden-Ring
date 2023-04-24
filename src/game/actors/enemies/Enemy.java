@@ -10,18 +10,21 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.actorActions.AttackAction;
+import game.actions.actorActions.DeathAction;
 import game.behaviours.*;
+import game.runes.RuneSource;
+import game.runes.Runes;
+import game.runes.RunesManager;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Enemy extends Actor {
+public abstract class Enemy extends Actor implements RuneSource {
 
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
-    protected boolean followPlayer;
-    protected boolean attacked = false;
+    Actor attacker;
 
     /**
      * Constructor.
@@ -33,7 +36,6 @@ public abstract class Enemy extends Actor {
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.RESPAWNABLE);
-        followPlayer = false;
 
         this.behaviours.put(999, new WanderBehaviour());
     }
@@ -79,6 +81,10 @@ public abstract class Enemy extends Actor {
             }
         }
 
+        if (!this.isConscious()){
+            RunesManager.getInstance().transferRunes(this, )
+        }
+
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
             if(action != null)
@@ -107,5 +113,7 @@ public abstract class Enemy extends Actor {
     }
 
 
-
+    public int generateRunes() {
+        return 0;
+    }
 }
