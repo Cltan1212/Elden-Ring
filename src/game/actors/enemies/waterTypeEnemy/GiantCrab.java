@@ -1,4 +1,4 @@
-package game.actors.enemies;
+package game.actors.enemies.waterTypeEnemy;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -6,6 +6,10 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.actorActions.AttackAction;
+import game.actors.enemies.Enemy;
+import game.actors.enemies.EnemyType;
 import game.behaviours.Behaviour;
 import game.behaviours.WanderBehaviour;
 import game.utils.Status;
@@ -13,7 +17,7 @@ import game.utils.Status;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GiantCrab extends Enemy{
+public class GiantCrab extends WaterEnemy {
 
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
@@ -27,11 +31,6 @@ public class GiantCrab extends Enemy{
 
         // add behaviours
         this.behaviours.put(999, new WanderBehaviour());
-    }
-
-    @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        return super.playTurn(actions, lastAction, map, display);
     }
 
     @Override

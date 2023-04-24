@@ -1,4 +1,4 @@
-package game.actors.enemies;
+package game.actors.enemies.skeletalTypeEnemy;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actors.enemies.Enemy;
 import game.reset.Resettable;
 
 public class PileOfBones extends Enemy implements Resettable {

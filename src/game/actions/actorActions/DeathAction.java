@@ -2,18 +2,15 @@ package game.actions.actorActions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.runesActions.DropRunesAction;
 import game.actors.enemies.EnemyType;
-import game.actors.enemies.PileOfBones;
+import game.actors.enemies.skeletalTypeEnemy.PileOfBones;
 import game.behaviours.DropRunesBehaviour;
 import game.reset.ResetManager;
-import game.runes.Runes;
 import game.utils.FancyMessage;
 import game.utils.Status;
 

@@ -7,16 +7,12 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actors.Trader;
-import game.actors.enemies.LoneWolf;
+import game.actors.enemies.dogTypeEnemy.LoneWolf;
 import game.actors.Player;
 import game.grounds.Dirt;
 import game.grounds.Floor;
 import game.grounds.Wall;
-import game.runes.Runes;
 import game.utils.FancyMessage;
-import game.weapons.Club;
 
 /**
  * The main class to start the game.
@@ -32,6 +28,7 @@ public class Application {
 		World world = new World(new Display());
 
 		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor());
+
 
 		List<String> map = Arrays.asList(
 				"...........................................................................",
@@ -58,6 +55,37 @@ public class Application {
 				"..####__###..................................................._.....__.#...",
 				"..............................................................###..__###...",
 				"...........................................................................");
+
+		// After Enemy class is implemented, can uncomment below to test
+//		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new SiteOfLostGrace());
+//		List<String> map = Arrays.asList(
+//				"..nnnn................................................~~~~~~~~~~~~~~~~~~~~~",
+//				"......................#####....######..................~~~~~~~~~~~~~~~~~~~~",
+//				"..nnnn................#..___....____#...................~~~~~~~~~~~~~~~~~~~",
+//				"..................................__#....................~~~~~~~~~~~~~~~~~~",
+//				"......................._____........#.....................~~~~~~~~~~~~~~~~~",
+//				"......................#............_#......................~~~~~~~~~~~~~~~~",
+//				"......................#...........###......................................",
+//				"...........................................................................",
+//				"...........................................................................",
+//				"~~~~~~~~~~~.......................###___###................................",
+//				"~~~~~~~~~~~~......................________#....nnnn........................",
+//				"~~~~~~~~~~~~~.....................#___U____................................",
+//				"~~~~~~~~~~~~......................#_______#....nnnn........................",
+//				"~~~~~~~~~~~.......................###___###................................",
+//				"~~~~~~~~~~..........................#___#..................................",
+//				"...........................................................................",
+//				"...........................................................................",
+//				"...........................................................................",
+//				"..####__##...........................................&&&......######..##...",
+//				"..#.....__...........................................&&&......#....____....",
+//				"..#___..............&&&..............................&&&........__.....#...",
+//				"..####__###.........&&&......................................._.....__.#...",
+//				"....................&&&.......................................###..__###...",
+//				"...........................................................................");
+//
+
+
 		GameMap gameMap = new GameMap(groundFactory, map);
 		world.addGameMap(gameMap);
 
@@ -71,20 +99,14 @@ public class Application {
 			}
 		}
 
-		gameMap.at(30, 10).addActor(new LoneWolf());
+		gameMap.at(23, 17).addActor(new LoneWolf());
 
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300);
 		world.addPlayer(player, gameMap.at(36, 10));
 
-		// Testing purpose
-//		Trader trader = new Trader("Merchant Kale", 'K', 100);
-//		world.addPlayer(trader, gameMap.at(35, 10));
-
-		// Testing purpose
-		Runes runes = new Runes(100);
-		WeaponItem weapon = new Club();
-		gameMap.at(37,10).addItem(runes);
+//		Trader trader = new Trader("Trader", 'K', 0);
+//		world.addPlayer(trader, gameMap.at(40, 12));
 
 		world.run();
 	}

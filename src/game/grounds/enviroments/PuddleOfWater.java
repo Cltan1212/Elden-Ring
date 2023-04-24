@@ -3,7 +3,7 @@ package game.grounds.enviroments;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actors.enemies.GiantCrab;
+import game.actors.enemies.waterTypeEnemy.GiantCrab;
 import game.utils.Status;
 
 import static game.utils.RandomNumberGenerator.getRandomInt;

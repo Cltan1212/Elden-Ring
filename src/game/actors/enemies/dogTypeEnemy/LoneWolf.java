@@ -1,13 +1,20 @@
-package game.actors.enemies;
+package game.actors.enemies.dogTypeEnemy;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actors.enemies.Enemy;
+import game.actors.enemies.EnemyType;
+import game.behaviours.AttackBehaviour;
+import game.behaviours.FollowBehaviour;
+import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 import game.behaviours.WanderBehaviour;
 import game.actions.actorActions.AttackAction;
@@ -24,8 +31,7 @@ import java.util.Map;
  * Modified by:
  *
  */
-public class LoneWolf extends Actor {
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
+public class LoneWolf extends DogEnemy {
 
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
@@ -34,27 +40,6 @@ public class LoneWolf extends Actor {
         this.addCapability(EnemyType.DOG);
         this.addCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
-
-        this.behaviours.put(999, new WanderBehaviour());
-    }
-
-    /**
-     * At each turn, select a valid action to perform.
-     *
-     * @param actions    collection of possible Actions for this Actor
-     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-     * @param map        the map containing the Actor
-     * @param display    the I/O object to which messages may be written
-     * @return the valid action that can be performed in that iteration or null if no valid action is found
-     */
-    @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        for (Behaviour behaviour : behaviours.values()) {
-            Action action = behaviour.getAction(this, map);
-            if(action != null)
-                return action;
-        }
-        return new DoNothingAction();
     }
 
 
