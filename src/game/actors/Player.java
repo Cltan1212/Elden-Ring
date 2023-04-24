@@ -24,8 +24,6 @@ public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
 
-	public Runes runesItem; // use this for tracing
-
 	public CombatArchetypes role;
 
 	/**
@@ -39,13 +37,8 @@ public class Player extends Actor implements Resettable {
 		super(name, displayChar, hitPoints);
 		this.role = role;
 
-		runesItem = new Runes(0);
-		this.addItemToInventory(runesItem);
-		RunesManager.setPlayer(this);
-
+		RunesManager.getInstance().registerRunesHeld(this, 0);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
-		this.addCapability(Status.BUYING);
-		this.addCapability(Status.SELLING);
 
 		resetMaxHp(role.getStartingHitPoint());  // to set starting hit point based on role
 		this.addWeaponToInventory(role.getStartingWeapon()); // to set starting inventory based on role
@@ -55,7 +48,7 @@ public class Player extends Actor implements Resettable {
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Display Hp and runes value
-		display.println(name + " " + printHp() + ", runes: " + runesItem.getRunesValue());
+		display.println(name + " " + printHp() + ", runes: " + RunesManager.getInstance().getRunes(this));
 
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
