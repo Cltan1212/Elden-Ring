@@ -7,6 +7,8 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import game.actions.actorActions.ConsumeAction;
+import game.items.FlaskOfCrimsonTears;
 import game.reset.Resettable;
 import game.runes.Runes;
 import game.runes.RunesManager;
@@ -34,7 +36,7 @@ public class Player extends Actor implements Resettable {
 	MenuToDisplayClass menuDisplay = new MenuToDisplayClass(); // for menu display for 3 different class/modes of game
 
 	public Runes runesItem; // use this for tracing
-
+	public FlaskOfCrimsonTears flaskOfCrimsonTears;
 	/**
 	 * Constructor.
 	 *
@@ -47,12 +49,13 @@ public class Player extends Actor implements Resettable {
 
 		runesItem = new Runes(0);
 		this.addItemToInventory(runesItem);
+		this.flaskOfCrimsonTears = new FlaskOfCrimsonTears();
 		RunesManager.setPlayer(this);
 
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.BUYING);
 		this.addCapability(Status.SELLING);
-
+		this.addCapability(Status.CONSUMABLE);
 		char choice = menuDisplay.menuToDisplayClass();
 		if (choice == 'b'){
 			new Bandit();
@@ -75,6 +78,10 @@ public class Player extends Actor implements Resettable {
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
+		//jack trying.
+		if(this.hasCapability(Status.CONSUMABLE)){
+			actions.add(new ConsumeAction(flaskOfCrimsonTears));
+		}
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
