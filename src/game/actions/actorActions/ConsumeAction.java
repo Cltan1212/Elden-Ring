@@ -10,7 +10,7 @@ import game.utils.FancyMessage;
 import game.utils.Status;
 
 public class ConsumeAction extends Action {
-    private final ConsumableItem item;
+    private ConsumableItem item;
 
     public ConsumeAction(ConsumableItem consumeItem){
         this.item = consumeItem;
@@ -18,8 +18,8 @@ public class ConsumeAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        String returnString = item.consume(actor);
-        return returnString;
+        item.consume(actor);
+        return actor + " consumed " + item;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class ConsumeAction extends Action {
         return actor + " consumes " + item;
     }
 
-    public String hotkey() {
-        return "f";
-    }
+//    public String hotkey() {
+//        return "f";
+//    }
 }
