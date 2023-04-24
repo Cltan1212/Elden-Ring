@@ -14,6 +14,8 @@ public class ResetManager {
     private List<Resettable> resettables;
     private static ResetManager instance;
 
+    private boolean resettable;
+
     /**
      * HINT 1: where have we seen a private constructor before?
      * HINT 2: see the instance attribute above.
@@ -28,9 +30,19 @@ public class ResetManager {
         this.resettables = new ArrayList<>();
     }
 
-    public void run() {}
 
-    public void registerResettable(Resettable resettable) {}
+    public void run() {
+        for (Resettable resettable: resettables){
+            resettable.reset();
+        }
+    }
 
-    public void removeResettable(Resettable resettable) {}
+    public void registerResettable(Resettable resettable) {
+        resettables.add(resettable);
+    }
+
+    public void removeResettable(Resettable resettable) {
+        resettables.remove(resettable);
+    }
+
 }
