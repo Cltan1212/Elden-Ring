@@ -4,21 +4,13 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.combat.CombatArchetypes;
 import game.reset.Resettable;
 import game.runes.Runes;
 import game.runes.RunesManager;
-import game.utils.MenuToDisplayClass;
 import game.utils.Status;
-import game.weapons.Club;
-import game.weapons.GreatKnife;
-import game.weapons.Uchigatana;
-import game.combat.Bandit;
-import game.combat.Sarumai;
-import game.combat.Wretch;
 
 /**
  * Class representing the Player. It implements the Resettable interface.
@@ -32,10 +24,9 @@ public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
 
-	MenuToDisplayClass menuDisplay = new MenuToDisplayClass(); // for menu display for 3 different class/modes of game
-
-	CombatArchetypes combatChoice;
 	public Runes runesItem; // use this for tracing
+
+	public CombatArchetypes role;
 
 	/**
 	 * Constructor.
@@ -44,8 +35,9 @@ public class Player extends Actor implements Resettable {
 	 * @param displayChar Character to represent the player in the UI
 	 * @param hitPoints   Player's starting number of hitpoints
 	 */
-	public Player(String name, char displayChar, int hitPoints) {
+	public Player(String name, char displayChar, int hitPoints, CombatArchetypes role) {
 		super(name, displayChar, hitPoints);
+		this.role = role;
 
 		runesItem = new Runes(0);
 		this.addItemToInventory(runesItem);
@@ -55,21 +47,9 @@ public class Player extends Actor implements Resettable {
 		this.addCapability(Status.BUYING);
 		this.addCapability(Status.SELLING);
 
-		char choice = menuDisplay.menuToDisplayClass();
-		if (choice == 'b'){
-			combatChoice = new Bandit();
-			resetMaxHp(combatChoice.getStartingHitPoint());
-			this.addWeaponToInventory(combatChoice.getStartingWeapon());  // Great Knife
-		} else if (choice == 's'){
-			combatChoice = new Sarumai();
-			resetMaxHp(combatChoice.getStartingHitPoint());
-			this.addWeaponToInventory(combatChoice.getStartingWeapon()); // Uchigatana
+		resetMaxHp(role.getStartingHitPoint());  // to set starting hit point based on role
+		this.addWeaponToInventory(role.getStartingWeapon()); // to set starting inventory based on role
 
-		} else if (choice == 'w'){
-			combatChoice = new Wretch();
-			resetMaxHp(combatChoice.getStartingHitPoint());
-			this.addWeaponToInventory(combatChoice.getStartingWeapon());  // Club
-		}
 	}
 
 	@Override

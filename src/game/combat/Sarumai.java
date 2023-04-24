@@ -7,7 +7,7 @@ public class Sarumai extends CombatArchetypes {
 
     // starting weapon is Uchigatana
     public Sarumai() {
-        super(new Uchigatana(), 455);
+        super('s',"Sarumai", new Uchigatana(), 455);
     }
 }
 
