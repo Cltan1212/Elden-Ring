@@ -43,43 +43,15 @@ public abstract class Enemy extends Actor implements RuneSource {
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
-//        for (Exit exits : map.locationOf(this).getExits()) {
-//            Location location = exits.getDestination();
-//
-//            // if there is any actor surrounding
-//            if (location.containsAnActor()) {
-//                Actor otherActor = location.getActor();
-//
-//                // behaviour when encounter a player
-//                if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-//
-//                    // enemy attack player when is being attacked -> how??
-//                    // what is the use of allowable action or last action?
-//                    // last actions?
-//                    if (attacked){
-//                        this.behaviours.put(5, new AttackBehaviour(otherActor));
-//                    }
-//
-//                    // follow the player
-//                    else{
-//                        this.behaviours.put(10, new FollowBehaviour(otherActor));
-//                    }
-//
-//                }
-//
-//                // suppose an enemy of one type is close to another type of enemy
-//                // in that case, they will attack without following them
-//                if (otherActor.hasCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY)) {
-//                    this.behaviours.put(5, new AttackBehaviour(otherActor));
-//                }
-//            }
-//        }
+        for (Exit exits : map.locationOf(this).getExits()) {
+            Location location = exits.getDestination();
 
-        if (!this.isConscious()){
-            // if attacker is player -> transfer to the player (how should I do this?)
-            // then remove this from map
-           map.removeActor(this);
-
+            // if there is any actor surrounding
+            if (location.containsAnActor()) {
+                Actor otherActor = location.getActor();
+                this.behaviours.put(0, new AttackBehaviour());
+                this.behaviours.put(1, new FollowBehaviour(otherActor));
+            }
         }
 
         for (Behaviour behaviour : behaviours.values()) {
