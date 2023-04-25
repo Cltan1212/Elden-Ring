@@ -10,6 +10,7 @@ public enum Status {
     RESPAWNABLE,
     RESTING,
 
+    CONSUMABLE,
     // enemy status
     HOSTILE_TO_SKELETAL_TYPE_ENEMY,
     HOSTILE_TO_DOG_TYPE_ENEMY,
