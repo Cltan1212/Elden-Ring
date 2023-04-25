@@ -1,5 +1,7 @@
 package game.reset;
 
+import edu.monash.fit2099.engine.positions.GameMap;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,8 @@ import java.util.List;
  */
 public class ResetManager {
     private List<Resettable> resettables;
+
+    private List<GameMap> allMap;
     private static ResetManager instance;
 
     private boolean resettable;
@@ -30,10 +34,16 @@ public class ResetManager {
         this.resettables = new ArrayList<>();
     }
 
+    public void addMap(GameMap map){
+        allMap.add(map);
+    }
 
     public void run() {
         for (Resettable resettable: resettables){
-            resettable.reset();
+            for (GameMap map : allMap){
+                resettable.reset(map);
+            }
+
         }
     }
 
