@@ -14,15 +14,16 @@ import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.reset.Resettable;
+import game.runes.RuneSource;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Enemy extends Actor implements Resettable {
+public abstract class Enemy extends Actor implements Resettable, RuneSource {
 
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
+    protected Map<Integer, Behaviour> behaviours = new HashMap<>();
     private final int DESPAWN_CHANCE = 10;
 
     /**
@@ -84,5 +85,12 @@ public abstract class Enemy extends Actor implements Resettable {
         return actions;
     }
 
+    public int generateRunes() {
+        return 0;
+    }
 
+    @Override
+    public void reset() {
+
+    }
 }

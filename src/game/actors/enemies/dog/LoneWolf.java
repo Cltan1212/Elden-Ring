@@ -23,7 +23,7 @@ import java.util.Map;
  * Modified by:
  *
  */
-public class LoneWolf extends Actor {
+public class LoneWolf extends Dog{
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
     public LoneWolf() {
