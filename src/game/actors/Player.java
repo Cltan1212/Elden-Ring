@@ -50,6 +50,7 @@ public class Player extends Actor implements Resettable {
 		runesItem = new Runes(0);
 		this.addItemToInventory(runesItem);
 		this.flaskOfCrimsonTears = new FlaskOfCrimsonTears();
+		this.registerInstance();
 		RunesManager.setPlayer(this);
 
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
