@@ -35,7 +35,7 @@ public abstract class Enemy extends Actor implements Resettable {
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.RESPAWNABLE);
-        this.behaviours.put(999, new WanderBehaviour);
+        this.behaviours.put(999, new WanderBehaviour());
     }
 
     @Override
