@@ -35,6 +35,7 @@ public class PileOfBones extends Enemy implements Resettable {
             map.addActor(skeletalEnemy, currentLocation);
             map.removeActor(this);
         }
+
         return new DoNothingAction();
     }
 

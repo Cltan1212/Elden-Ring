@@ -13,7 +13,6 @@ import game.utils.Status;
 public class Grossmesser extends WeaponItem implements Sellable {
     public Grossmesser() {
         super("Grossmesser", '?',115, "", 85);
-        MerchantKale.getInstance().registerSellableItem(this);
     }
 
     @Override

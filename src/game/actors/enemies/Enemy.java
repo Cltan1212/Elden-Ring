@@ -42,47 +42,44 @@ public abstract class Enemy extends Actor implements RuneSource {
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        // chance of being despawned unless they are following the player
-        if (!followPlayer){
-            if (RandomNumberGenerator.getRandomInt(100) < 10){
-                this.behaviours.put(0, new DespawnedBehaviour());
-            }
-        }
 
-        for (Exit exits : map.locationOf(this).getExits()) {
-            Location location = exits.getDestination();
-
-            // if there is any actor surrounding
-            if (location.containsAnActor()) {
-                Actor otherActor = location.getActor();
-
-                // behaviour when encounter a player
-                if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-
-                    // enemy attack player when is being attacked -> how??
-                    // last actions?
-                    if (attacked){
-                        this.behaviours.put(5, new AttackBehaviour(otherActor));
-                        followPlayer = true;
-                    }
-
-                    // follow the player
-                    else{
-                        this.behaviours.put(10, new FollowBehaviour(otherActor));
-                    }
-
-                }
-
-                // suppose an enemy of one type is close to another type of enemy
-                // in that case, they will attack without following them
-                if (otherActor.hasCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY)) {
-                    this.behaviours.put(5, new AttackBehaviour(otherActor));
-                }
-            }
-        }
+//        for (Exit exits : map.locationOf(this).getExits()) {
+//            Location location = exits.getDestination();
+//
+//            // if there is any actor surrounding
+//            if (location.containsAnActor()) {
+//                Actor otherActor = location.getActor();
+//
+//                // behaviour when encounter a player
+//                if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+//
+//                    // enemy attack player when is being attacked -> how??
+//                    // what is the use of allowable action or last action?
+//                    // last actions?
+//                    if (attacked){
+//                        this.behaviours.put(5, new AttackBehaviour(otherActor));
+//                    }
+//
+//                    // follow the player
+//                    else{
+//                        this.behaviours.put(10, new FollowBehaviour(otherActor));
+//                    }
+//
+//                }
+//
+//                // suppose an enemy of one type is close to another type of enemy
+//                // in that case, they will attack without following them
+//                if (otherActor.hasCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY)) {
+//                    this.behaviours.put(5, new AttackBehaviour(otherActor));
+//                }
+//            }
+//        }
 
         if (!this.isConscious()){
-            RunesManager.getInstance().transferRunes(this, )
+            // if attacker is player -> transfer to the player (how should I do this?)
+            // then remove this from map
+           map.removeActor(this);
+
         }
 
         for (Behaviour behaviour : behaviours.values()) {
@@ -96,8 +93,7 @@ public abstract class Enemy extends Actor implements RuneSource {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        // enemy attack player and other enemies
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) || otherActor.hasCapability(Status.RESPAWNABLE)) {
+        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new AttackAction(this, direction));
             for (WeaponItem weaponItem: otherActor.getWeaponInventory()){
 

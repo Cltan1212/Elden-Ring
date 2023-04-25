@@ -1,5 +1,10 @@
 package game.actors.enemies.skeletalTypeEnemy;
 
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
+import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.enemies.Enemy;
 import game.runes.RunesManager;
 import game.utils.RandomNumberGenerator;
@@ -21,4 +26,13 @@ public abstract class SkeletalEnemy extends Enemy {
     public int generateRunes() {
         return RandomNumberGenerator.getRandomInt(35,892);
     }
+
+    @Override
+    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        if (!this.isConscious()){
+            // turn into pile of bones
+        }
+        return new DoNothingAction();
+    }
 }
+

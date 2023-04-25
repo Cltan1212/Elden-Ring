@@ -20,8 +20,6 @@ public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
      */
     public GreatKnife(String name, char displayChar, int damage, String verb, int hitRate) {
         super(name, displayChar, damage, verb, hitRate);
-        MerchantKale.getInstance().registerPurchasableItem(this);
-        MerchantKale.getInstance().registerSellableItem(this);
     }
 
     @Override

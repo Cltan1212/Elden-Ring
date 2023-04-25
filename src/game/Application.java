@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.MerchantKale;
 import game.actors.enemies.dogTypeEnemy.LoneWolf;
 import game.actors.Player;
 import game.actors.enemies.enemySpawn.EnemyWest;
@@ -107,14 +108,14 @@ public class Application {
 		Player player = new Player("Tarnished", '@', 300);
 		world.addPlayer(player, gameMap.at(36, 10));
 
-//		Trader trader = new Trader("Trader", 'K', 0);
-//		world.addPlayer(trader, gameMap.at(40, 12));
+		MerchantKale trader = new MerchantKale();
+		world.addPlayer(trader, gameMap.at(38, 10));
 
 		// set ground as graveyard
-		for (int y = 3; y <= 7; y++){
-			gameMap.at(0,y).setGround(new Graveyard(new EnemyWest()));
-			gameMap.at(2,y).setGround(new Graveyard(new EnemyWest()));
-		}
+//		for (int y = 3; y <= 7; y++){
+//			gameMap.at(0,y).setGround(new Graveyard(new EnemyWest()));
+//			gameMap.at(2,y).setGround(new Graveyard(new EnemyWest()));
+//		}
 
 		// set ground as puddle of water
 
