@@ -51,7 +51,7 @@ public class DeathAction extends Action {
                     drop.execute(target, map);
 
                 // transfer runes to target
-                result += target + " drops " + RunesManager.getInstance().transferRunes(target, attacker) + " runes.";
+                result += "\n" +target + " drops " + RunesManager.getInstance().transferRunes(target, attacker) + " runes.";
             }
         }
 

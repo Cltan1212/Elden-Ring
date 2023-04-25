@@ -131,8 +131,8 @@ public class Application {
 		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
 		world.addPlayer(player, gameMap.at(36, 10));
 
-//		MerchantKale trader = new Trader("Merchant Kale", 'K', 0);
-//		world.addPlayer(trader, gameMap.at(40, 12));
+//		MerchantKale trader = new MerchantKale();
+//		gameMap.at(40,12).addActor(trader);
 
 		world.run();
 	}
