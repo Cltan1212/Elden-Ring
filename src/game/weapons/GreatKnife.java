@@ -14,8 +14,6 @@ public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
 
     public GreatKnife(){
         super("Great Knife", '/', 75,"", 70);
-        MerchantKale.getInstance().registerPurchasableItem(this);
-        MerchantKale.getInstance().registerSellableItem(this);
 
         // allow the user to perform quickstep
     }

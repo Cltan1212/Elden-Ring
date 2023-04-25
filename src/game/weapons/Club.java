@@ -24,8 +24,6 @@ public class Club extends WeaponItem implements Sellable, Purchasable {
      */
     public Club() {
         super("Club", '!', 103, "bonks", 80);
-        MerchantKale.getInstance().registerPurchasableItem(this);
-        MerchantKale.getInstance().registerSellableItem(this);
     }
 
     @Override
