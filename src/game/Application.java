@@ -10,11 +10,14 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actors.MerchantKale;
 import game.actors.enemies.dogTypeEnemy.LoneWolf;
 import game.actors.Player;
+import game.actors.enemies.enemySpawn.EnemyEast;
 import game.actors.enemies.enemySpawn.EnemyWest;
 import game.grounds.Dirt;
 import game.grounds.Floor;
+import game.grounds.SiteOfLostGrace;
 import game.grounds.Wall;
 import game.grounds.enviroments.Graveyard;
+import game.grounds.enviroments.PuddleOfWater;
 import game.utils.FancyMessage;
 
 /**
@@ -111,13 +114,43 @@ public class Application {
 		MerchantKale trader = new MerchantKale();
 		world.addPlayer(trader, gameMap.at(38, 10));
 
-		// set ground as graveyard
-//		for (int y = 3; y <= 7; y++){
-//			gameMap.at(0,y).setGround(new Graveyard(new EnemyWest()));
-//			gameMap.at(2,y).setGround(new Graveyard(new EnemyWest()));
-//		}
+		// set graveyard
+		for (int x = 3; x <= 7; x++){
+			gameMap.at(x,1).setGround(new Graveyard(new EnemyWest()));
+			gameMap.at(x,3).setGround(new Graveyard(new EnemyWest()));
+		}
 
-		// set ground as puddle of water
+		for (int x = 47; x <= 50; x++){
+			gameMap.at(x,1).setGround(new Graveyard(new EnemyEast()));
+			gameMap.at(x,3).setGround(new Graveyard(new EnemyEast()));
+		}
+
+		// set puddle of water
+		for (int x = 47; x <= 68; x++){
+			gameMap.at(x,1).setGround(new PuddleOfWater(new EnemyEast()));
+		}
+		for (int x = 48; x <= 68; x++){
+			gameMap.at(x,2).setGround(new PuddleOfWater(new EnemyEast()));
+		}
+		for (int x = 49; x <= 68; x++){
+			gameMap.at(x,3).setGround(new PuddleOfWater(new EnemyEast()));
+		}
+		for (int x = 50; x <= 68; x++){
+			gameMap.at(x,4).setGround(new PuddleOfWater(new EnemyEast()));
+		}
+		for (int x = 51; x <= 68; x++){
+			gameMap.at(x,5).setGround(new PuddleOfWater(new EnemyEast()));
+		}
+		for (int x = 52; x <= 68; x++){
+			gameMap.at(x,6).setGround(new PuddleOfWater(new EnemyEast()));
+		}
+
+		for (int x = ){
+			gameMap.at(x, y = )
+		}
+
+		// set site of lost grace
+		gameMap.at(38,12).setGround(new SiteOfLostGrace("The First Step"));
 
 
 		world.run();
