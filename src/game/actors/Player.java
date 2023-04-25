@@ -44,6 +44,8 @@ public class Player extends Actor implements Resettable {
 		this.addCapability(Status.CONSUMABLE);
 		resetMaxHp(role.getStartingHitPoint());  // to set starting hit point based on role
 		this.addWeaponToInventory(role.getStartingWeapon()); // to set starting inventory based on role
+
+		this.registerInstance(); // Register the Player created as resettable and add to the list of resettable.
 	}
 
 	@Override
