@@ -59,7 +59,7 @@ public class DeathAction extends Action {
         else if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
             // reset the game
-//            result += new ResetAction();
+            result += new ResetAction();
         }
 
         // remove actor
