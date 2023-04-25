@@ -1,4 +1,4 @@
-package game.actors.enemies.skeletalTypeEnemy;
+package game.actors.enemies;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -31,11 +31,9 @@ public class PileOfBones extends Enemy implements Resettable {
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         remaining -= 1;
         if (remaining == 0){
-            Location currentLocation = map.locationOf(this);
-            map.addActor(skeletalEnemy, currentLocation);
+            map.locationOf(this).addActor(skeletalEnemy);
             map.removeActor(this);
         }
-
         return new DoNothingAction();
     }
 

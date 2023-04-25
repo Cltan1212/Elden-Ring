@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.enemies.Enemy;
+import game.actors.enemies.PileOfBones;
 import game.runes.RunesManager;
 import game.utils.RandomNumberGenerator;
 
@@ -30,7 +31,8 @@ public abstract class SkeletalEnemy extends Enemy {
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         if (!this.isConscious()){
-            // turn into pile of bones
+            map.removeActor(this);
+            map.locationOf(this).addActor(new PileOfBones(this));
         }
         return new DoNothingAction();
     }
