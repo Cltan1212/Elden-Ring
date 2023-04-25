@@ -10,7 +10,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.enemies.dog.LoneWolf;
 import game.actors.Player;
-import game.actors.Trader;
+import game.actors.MerchantKale;
 import game.combat.Bandit;
 import game.combat.CombatArchetypes;
 import game.combat.Sarumai;
@@ -128,9 +128,9 @@ public class Application {
 		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
 //		Player player = Player.getInstance("Tarnished", '@', 300, c);
 //		System.out.println(player.findCapabilitiesByType(Status.class));  // will return [HOSTILE_TO_ENEMY, BUYING, SELLING]
-		Trader trader = new Trader("Merchant Kale", 'K', 0);
+//		MerchantKale trader = new MerchantKale("Merchant Kale", 'K', 0);
 		world.addPlayer(player, gameMap.at(36, 10));
-		world.addPlayer(trader, gameMap.at(40, 12));
+		world.addPlayer(new MerchantKale(), gameMap.at(40, 12));
 
 
 

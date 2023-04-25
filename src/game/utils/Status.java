@@ -10,11 +10,15 @@ public enum Status {
     RESPAWNABLE,
     RESTING,
 
+    TRADING,
+
     // enemy status
     HOSTILE_TO_SKELETAL_TYPE_ENEMY,
     HOSTILE_TO_DOG_TYPE_ENEMY,
     HOSTILE_TO_WATER_TYPE_ENEMY,
 
     // Weapon status
-    SPINNING_ATTACK
+    SPINNING_ATTACK,
+    SLAMMING_ATTACK,
+    UNSHEATHE
 }

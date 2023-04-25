@@ -5,13 +5,24 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+
+import game.actions.actorActions.AreaAttackAction;
 import game.actions.actorActions.AttackAction;
 import game.utils.Status;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
 
 /**
  * A class that automatically calls AttackAction on the actor's surroundings if there is another actor
  */
 public class AttackBehaviour implements Behaviour {
+
+//    private Map<Actor, String> nearbyEnemies = new HashMap<>();  // store the actor nearby and its direction
+
+    List<Actor> nearbyEnemies = new ArrayList<>();
 
     // Purpose of this class: Enemies attack player???
     private final Actor targetAttack;
@@ -42,7 +53,6 @@ public class AttackBehaviour implements Behaviour {
         // maybe can have a specialAttack in giantCrab and heavyskeletal, so if != null, can perform AreaAttackAction
 
 
-
         Location here = map.locationOf(actor); // get location of current actor
 
         // iterate through all actor's exists (8 locations)
@@ -50,8 +60,25 @@ public class AttackBehaviour implements Behaviour {
             // check if an exit contains an actor that is hostile to enemy
             if (exit.getDestination().containsAnActor() && exit.getDestination().getActor().hasCapability(Status.HOSTILE_TO_ENEMY)){
                 String direction = exit.getName();
-                return new AttackAction(exit.getDestination().getActor(), direction); // current actor calls AttackAction on the other actor
+                nearbyEnemies.add(exit.getDestination().getActor());
+
+                // originally given code
+//                return new AttackAction(exit.getDestination().getActor(), direction); // current actor calls AttackAction on the other actor
             }
+        }
+
+        // how to check if actor is enemy?
+        if (!nearbyEnemies.isEmpty() && (actor.hasCapability(Status.SLAMMING_ATTACK) || actor.hasCapability(Status.SPINNING_ATTACK))){
+            Actor targetOn = nearbyEnemies.get(0);
+            if (nearbyEnemies.size() <= 1){
+                return new AttackAction(targetOn, "at", actor.getWeaponInventory().get(0));  // how to retrieve the weapon
+            } else{
+                return new AreaAttackAction(nearbyEnemies, "at", actor.getWeaponInventory().get(0));
+            }
+        } else if (!nearbyEnemies.isEmpty()){
+            Actor targetOn = nearbyEnemies.get(0);
+            return new AttackAction(targetOn, "at", actor.getWeaponInventory().get(0));
+
         }
 
         return null; // if no action is called

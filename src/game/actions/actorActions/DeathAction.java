@@ -9,7 +9,6 @@ import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.enemies.EnemyType;
 import game.actors.enemies.PileOfBones;
-import game.behaviours.DropRunesBehaviour;
 import game.reset.ResetManager;
 import game.utils.FancyMessage;
 import game.utils.Status;
@@ -62,8 +61,8 @@ public class DeathAction extends Action {
                     drop.execute(target, map);
 
                 // transfer runes to target
-                DropRunesBehaviour dropRunesBehaviour = new DropRunesBehaviour(target);
-                result += dropRunesBehaviour.getAction(attacker,map).execute(attacker, map);
+//                DropRunesBehaviour dropRunesBehaviour = new DropRunesBehaviour(target);
+//                result += dropRunesBehaviour.getAction(attacker,map).execute(attacker, map);
             }
         }
 

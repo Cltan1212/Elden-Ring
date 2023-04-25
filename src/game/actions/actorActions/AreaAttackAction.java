@@ -28,13 +28,24 @@ public class AreaAttackAction extends Action {
      * Weapon used for the attack
      */
     private Weapon weapon;
+
+    public AreaAttackAction(List<Actor> target, String direction, Weapon weapon) {
+        this.target = target;
+        this.direction = direction;
+        this.weapon = weapon;
+    }
+
     @Override
     public String execute(Actor actor, GameMap map) {
+        for (Actor targetActor: target){
+            new AttackAction(targetActor, "at");
+        }
+
         return null;
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return actor + " performs a area attack";
     }
 }

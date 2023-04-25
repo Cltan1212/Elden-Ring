@@ -16,10 +16,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HeavySkeletalSwordsman extends Skeletal {
+
+
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
     public HeavySkeletalSwordsman() {
         super("Heavy Skeletal Swordsman", 'q', 153);
         this.addWeaponToInventory(new Grossmesser());
+        this.addCapability(Status.SPINNING_ATTACK);
+        this.setSpecialAttack("Spinning Attack");  // might not needed
+
 
     }
 

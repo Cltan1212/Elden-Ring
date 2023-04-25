@@ -13,7 +13,7 @@ import game.utils.Status;
 public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
 
     public GreatKnife(){
-        super("Great Knife", '/', 75,"", 70);
+        super("Great Knife", '/', 75,"slashes", 70);
         MerchantKale.getInstance().registerPurchasableItem(this);
         MerchantKale.getInstance().registerSellableItem(this);
 

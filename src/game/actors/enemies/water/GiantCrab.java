@@ -20,6 +20,8 @@ public class GiantCrab extends WaterType {
     public GiantCrab() {
         super("Giant Crab", 'C', 407);
         this.addWeaponToInventory(new GiantCrabSlam());
+        this.addCapability(Status.SLAMMING_ATTACK);
+        this.setSpecialAttack("Slamming attack");
 
     }
 
