@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.actors.Trader;
+import game.actors.MerchantKale;
 import game.actors.enemies.dog.LoneWolf;
 import game.actors.Player;
 import game.combat.Bandit;
@@ -131,7 +131,7 @@ public class Application {
 		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
 		world.addPlayer(player, gameMap.at(36, 10));
 
-//		Trader trader = new Trader("Merchant Kale", 'K', 0);
+//		MerchantKale trader = new Trader("Merchant Kale", 'K', 0);
 //		world.addPlayer(trader, gameMap.at(40, 12));
 
 		world.run();
