@@ -37,15 +37,15 @@ public class AreaAttackAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
+        String result = actor + "attacks their surrounding!";
         for (Actor targetActor: target){
             new AttackAction(targetActor, "at");
         }
-
-        return null;
+        return result;
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " performs a area attack";
+        return actor + " attacks anything in the surrounding with " + this.weapon;
     }
 }
