@@ -3,11 +3,8 @@ package game.behaviours;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.actions.runesActions.DropRunesAction;
-import game.actions.runesActions.TransferRunesAction;
 import game.actors.enemies.EnemyType;
 import game.runes.Runes;
-import game.utils.Status;
 
 import static game.utils.RandomNumberGenerator.getRandomInt;
 
