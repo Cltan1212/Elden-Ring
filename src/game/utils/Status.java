@@ -9,7 +9,6 @@ public enum Status {
     HOSTILE_TO_ENEMY,
     RESPAWNABLE,
     RESTING,
-
     CONSUMABLE,
     // enemy status
     HOSTILE_TO_SKELETAL_TYPE_ENEMY,
@@ -17,5 +16,7 @@ public enum Status {
     HOSTILE_TO_WATER_TYPE_ENEMY,
 
     // weapon status
-    SPINNING_ATTACK
+    SPINNING_ATTACK,
+
+    TRADING
 }
