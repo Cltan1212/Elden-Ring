@@ -52,7 +52,8 @@ public class RunesManager {
         runesHeld.put(runeHolder, amount);
     }
 
-    public int transferRunes(RuneSource runeSource, Actor runeHolder){
+    public int transferRunes(Actor Enemy, Actor runeHolder){
+        RuneSource runeSource = findRuneSource(Enemy);
         Integer currentRunesHeld = runesHeld.get(runeHolder);
         if (runeSource != null && currentRunesHeld != null){
             int transferredRunes = runeSource.generateRunes();
