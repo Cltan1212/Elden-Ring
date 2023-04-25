@@ -1,15 +1,20 @@
 package game;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.actors.Trader;
+import game.actors.MerchantKale;
 import game.actors.enemies.dog.LoneWolf;
 import game.actors.Player;
+import game.combat.Bandit;
+import game.combat.CombatArchetypes;
+import game.combat.Sarumai;
+import game.combat.Wretch;
 import game.grounds.Dirt;
 import game.grounds.Floor;
 import game.grounds.SiteOfLostGrace;
@@ -106,11 +111,27 @@ public class Application {
 
 		gameMap.at(23, 17).addActor(new LoneWolf());
 
+		HashMap<Character, CombatArchetypes> characterToRoleMap = new HashMap<Character, CombatArchetypes>();
+		characterToRoleMap.put('s', new Sarumai());
+		characterToRoleMap.put('b', new Bandit());
+		characterToRoleMap.put('w', new Wretch());
+
+		Display display = new Display();
+		display.println("Select your role: ");
+		for (Character key: characterToRoleMap.keySet()){
+			display.println(key + ":" + characterToRoleMap.get(key));
+		}
+		char choiceChar = display.readChar();
+		while (!characterToRoleMap.containsKey(choiceChar)){
+			choiceChar = display.readChar();
+		}
+
+
 		// HINT: what does it mean to prefer composition to inheritance?
-		Player player = new Player("Tarnished", '@', 300);
+		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
 		world.addPlayer(player, gameMap.at(36, 10));
 
-//		Trader trader = new Trader("Trader", 'K', 0);
+//		MerchantKale trader = new Trader("Merchant Kale", 'K', 0);
 //		world.addPlayer(trader, gameMap.at(40, 12));
 
 		world.run();
