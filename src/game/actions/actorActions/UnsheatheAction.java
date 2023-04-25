@@ -15,16 +15,17 @@ public class UnsheatheAction extends Action {
     public UnsheatheAction(WeaponItem weapon, Actor target){
         this.weapon = weapon;
         this.target = target;
+
     }
 
     // 60% chance to hit the enemy
     @Override
     public String execute(Actor actor, GameMap map) {
-        String result = actor + " unsheathes their " + weapon + " and strikes!";
-        if (RandomNumberGenerator.getRandomInt(100) < 60){
+        String result = actor + " unsheathes with " + weapon + " and strikes!";
+        if (RandomNumberGenerator.getRandomInt(100) <= 60){
             int damage = 2 * weapon.damage();
-            actor.hurt(damage);
-            result += "\n" + actor + " deals " + damage + " damage.";
+            this.target.hurt(damage);
+            result += "\n" + this.target + " deals " + damage + " damage.";
 
         } else{
             result += "\n" + actor + " misses their attack!";
@@ -35,6 +36,6 @@ public class UnsheatheAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " unsheathes " + weapon + " on " + target;
+        return actor + " unsheathes " + weapon + " on " + this.target;
     }
 }
