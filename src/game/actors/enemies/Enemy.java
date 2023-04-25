@@ -90,7 +90,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
     }
 
     @Override
-    public void reset() {
+    public void reset(GameMap map) {
 
     }
 }

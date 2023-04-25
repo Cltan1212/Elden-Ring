@@ -38,7 +38,7 @@ public class PileOfBones extends Enemy implements Resettable {
     }
 
     @Override
-    public void reset() {
+    public void reset(GameMap map) {
 
     }
 }
