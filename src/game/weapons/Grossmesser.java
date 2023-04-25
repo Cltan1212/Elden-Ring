@@ -1,6 +1,8 @@
 package game.weapons;
 
-public class Grossmesser extends CurvedSword {
+import edu.monash.fit2099.engine.weapons.WeaponItem;
+
+public class Grossmesser extends WeaponItem {
 
     // carried by Heavy Skeleton Swordsman
     // attack a single enemy or spinning attack, which attack all creatues/players within surroundings
@@ -10,10 +12,10 @@ public class Grossmesser extends CurvedSword {
      *
      *
      */
+
     public Grossmesser() {
         super("Grossmesser", '?', 115, " ", 85);
+
     }
-
-
 
 }

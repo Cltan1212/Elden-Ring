@@ -27,77 +27,9 @@ import java.util.Map;
  *
  */
 public class LoneWolf extends Enemy {
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
-
-//    private final int despawnChance = 10;
-
-//    // this will give the reference to the same player object created in application.java
-//    // Singleton pattern, null, '\n', 0, those value are ignored when retrieving the singleton instance
-//    Player player = Player.getInstance(null, '\0', 0);
 
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
-//        this.behaviours.put(0, new AttackBehaviour());
-//        this.behaviours.put(1, new DespawnedBehaviour()); // not sure SHOULD IT BE 1???
-//        this.behaviours.put(2, new FollowBehaviour(player));
-//        this.behaviours.put(999, new WanderBehaviour());
-    }
-
-    /**
-     * At each turn, select a valid action to perform.
-     *
-     * @param actions    collection of possible Actions for this Actor
-     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-     * @param map        the map containing the Actor
-     * @param display    the I/O object to which messages may be written
-     * @return the valid action that can be performed in that iteration or null if no valid action is found
-     */
-    @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-
-        return super.playTurn(actions, lastAction, map, display);
-
-//        for (Behaviour behaviour : behaviours.values()) {
-//            Action action = behaviour.getAction(this, map);
-//            if(action != null)
-//                return action;
-//        }
-//        return new DoNothingAction();
-
-
-
-//        int randomNum = RandomNumberGenerator.getRandomInt(100);
-//        if (randomNum <= despawnChance && behaviours.get(2).getAction(this, map) != null){  // if not following and <= despawnChance, can call DespawnedAction()
-//            return new DespawnedAction();
-//        }
-
-//        for (Behaviour behaviour : behaviours.values()) {
-//            Action action = behaviour.getAction(this, map);
-//            if(action != null)
-//
-//                return action;
-//        }
-//        return new DoNothingAction();
-
-    }
-
-    /**
-     * The lone wolf can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
-     *
-     * @param otherActor the Actor that might be performing attack
-     * @param direction  String representing the direction of the other Actor
-     * @param map        current GameMap
-     * @return
-     */
-    @Override
-    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        ActionList actions = new ActionList();
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-            actions.add(new AttackAction(this, direction));
-            // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
-            // HINT 1: How would you attack the enemy with a weapon?
-        }
-        return actions;
     }
 
 
@@ -105,6 +37,7 @@ public class LoneWolf extends Enemy {
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(97, "bites", 95);
     }
+
 
 
     @Override

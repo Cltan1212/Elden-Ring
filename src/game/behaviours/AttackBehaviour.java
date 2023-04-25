@@ -34,6 +34,15 @@ public class AttackBehaviour implements Behaviour {
             return null;
         }
 
+        // LOOK for enemies around actor
+        // if more then one enemy -> AreaAttackAction (constructor of AreaAttackAction take in list of enemies to attack)
+        // which loop through the list and attack each of them
+        // if only one enemy -> AttackAction
+
+        // maybe can have a specialAttack in giantCrab and heavyskeletal, so if != null, can perform AreaAttackAction
+
+
+
         Location here = map.locationOf(actor); // get location of current actor
 
         // iterate through all actor's exists (8 locations)

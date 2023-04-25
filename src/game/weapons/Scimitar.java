@@ -1,6 +1,8 @@
 package game.weapons;
 
-public class Scimitar extends CurvedSword {
+import edu.monash.fit2099.engine.weapons.WeaponItem;
+
+public class Scimitar extends WeaponItem {
 
     /**
      * Constructor.

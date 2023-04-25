@@ -7,7 +7,6 @@ import java.util.List;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.enemies.dog.LoneWolf;
 import game.actors.Player;
@@ -24,8 +23,6 @@ import game.grounds.environments.Graveyard;
 import game.grounds.environments.GustOfWind;
 import game.grounds.environments.PuddleOfWater;
 import game.utils.FancyMessage;
-import game.utils.MenuToDisplayClass;
-import game.utils.Status;
 
 /**
  * The main class to start the game.

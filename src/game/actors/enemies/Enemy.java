@@ -25,11 +25,8 @@ import java.util.Map;
 
 public abstract class Enemy extends Actor implements Resettable {
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
-    private final int despawnChance = 10;
+    private final int DESPAWN_CHANCE = 10;
 
-    // this will give the reference to the same player object created in application.java
-    // Singleton pattern, null, '\n', 0, those value are ignored when retrieving the singleton instance
-//    Player player = Player.getInstance(null, '\0', 0);
 
     /**
      * Constructor.
@@ -41,12 +38,9 @@ public abstract class Enemy extends Actor implements Resettable {
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.RESPAWNABLE);
-//        this.behaviours(1, new AttackBehaviour())
-//        this.behaviours.put(2, new FollowBehaviour(player));
+
         this.behaviours.put(999, new WanderBehaviour());
     }
-
-
 
     /**
      * At each turn, select a valid action to perform.
@@ -62,9 +56,23 @@ public abstract class Enemy extends Actor implements Resettable {
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
         int randomNum = RandomNumberGenerator.getRandomInt(100);
-        if (randomNum <= despawnChance && behaviours.get(2).getAction(this, map) != null){  // if not following and <= despawnChance, can call DespawnedAction()
+        // if not following and randomNum generated is less or equal to DESPAWN_CHANCE
+
+        if (!behaviours.containsKey(1)){
+            if (randomNum <= DESPAWN_CHANCE){
+                return new DespawnedAction();
+            }
+        }
+        else if (randomNum <= DESPAWN_CHANCE && behaviours.get(2).getAction(this, map) != null){
             return new DespawnedAction();
         }
+
+//        if (behaviours.containsKey(1) && randomNum <= DESPAWN_CHANCE){
+//            if (behaviours.get(1).getAction(this,map) != null){
+//                return new DespawnedAction();
+//            }
+//        }
+
         // add valid behaviour to the list of behaviours
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
@@ -88,11 +96,12 @@ public abstract class Enemy extends Actor implements Resettable {
         // TODO: check otherActor is not the same type as actor
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
-            // HINT 1: The AttackAction above allows you to attak the enemy with your intrinsic weapon.
+            this.behaviours.put(0, new AttackBehaviour(otherActor));
+            this.behaviours.put(1, new FollowBehaviour(otherActor));
+            // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
             // HINT 1: How would you attack the enemy with a weapon?
-            for (Weapon weapon: otherActor.getWeaponInventory()){
+            for (Weapon weapon: otherActor.getWeaponInventory()){ // attack with weapon
                 actions.add(new AttackAction(this, direction, weapon));
-
             }
         } else if (otherActor.hasCapability(Status.SPINNING_ATTACK)){
 //            to add: AreaAttackAction if have SPINNING_ATTACK

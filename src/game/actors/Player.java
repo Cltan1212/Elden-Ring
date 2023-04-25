@@ -4,23 +4,13 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.combat.CombatArchetypes;
 import game.reset.Resettable;
 import game.runes.Runes;
 import game.runes.RunesManager;
-import game.utils.MenuToDisplayClass;
 import game.utils.Status;
-import game.weapons.Club;
-import game.weapons.GreatKnife;
-import game.weapons.Uchigatana;
-import game.combat.Bandit;
-import game.combat.Sarumai;
-import game.combat.Wretch;
-
-import javax.swing.*;
 
 /**
  * Class representing the Player. It implements the Resettable interface.
@@ -34,8 +24,8 @@ public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
 
-	MenuToDisplayClass menuDisplay = new MenuToDisplayClass(); // for menu display for 3 different class/modes of game
-	CombatArchetypes combatChoice;
+//	MenuToDisplayClass menuDisplay = new MenuToDisplayClass(); // for menu display for 3 different class/modes of game
+//	CombatArchetypes combatChoice;
 
 	private static Player instance;
 
