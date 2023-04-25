@@ -13,7 +13,7 @@ public class AreaAttackAction extends Action {
     /**
      * The list of Actors that will be attacked
      */
-    private List<Actor> target;
+//    private List<Actor> target;
     /**
      * The direction of incoming attack.
      */
@@ -22,25 +22,30 @@ public class AreaAttackAction extends Action {
     /**
      * Random number generator
      */
-    private Random rand = new Random();
+//    private Random rand = new Random();
+
+    private Actor target;
 
     /**
      * Weapon used for the attack
      */
     private Weapon weapon;
 
-    public AreaAttackAction(List<Actor> target, String direction, Weapon weapon) {
+    public AreaAttackAction(Actor target, Weapon weapon) {
         this.target = target;
-        this.direction = direction;
+//        this.direction = direction;
         this.weapon = weapon;
     }
 
     @Override
     public String execute(Actor actor, GameMap map) {
         String result = actor + "attacks their surrounding!";
-        for (Actor targetActor: target){
-            new AttackAction(targetActor, "at");
-        }
+
+        // need to implement -> different actor have different probability of getting attack
+
+//        for (Actor targetActor: target){
+//            new AttackAction(targetActor, "at");
+//        }
         return result;
     }
 

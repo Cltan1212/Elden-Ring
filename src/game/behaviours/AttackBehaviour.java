@@ -35,24 +35,9 @@ public class AttackBehaviour implements Behaviour {
     public Action getAction(Actor actor, GameMap map) {
         // this method should return a target Action for the actor to attack
 
-        // check if target and actor are present in map
-        // if either not present, return null -> no action performed
-        // else iterates over the location near, and check if there is any actor
-        // having capability Status.HOSTILE_TO_ENEMY
-        // if contains, then create an attack else null -> no action performed
-        // return new xxAction();
-        // else
         if (!map.contains(actor) || !map.contains(targetAttack)) {
             return null;
         }
-
-        // LOOK for enemies around actor
-        // if more then one enemy -> AreaAttackAction (constructor of AreaAttackAction take in list of enemies to attack)
-        // which loop through the list and attack each of them
-        // if only one enemy -> AttackAction
-
-        // maybe can have a specialAttack in giantCrab and heavyskeletal, so if != null, can perform AreaAttackAction
-
 
         Location here = map.locationOf(actor); // get location of current actor
 
@@ -65,20 +50,39 @@ public class AttackBehaviour implements Behaviour {
             } else if (exit.getDestination().containsAnActor()) {
                 attackList.add(exit.getName());
             }
-//                nearbyEnemies.add(exit.getDestination().getActor());
-
-            // originally given code
-//                return new AttackAction(exit.getDestination().getActor(), direction); // current actor calls AttackAction on the other actor
-
         }
 
         if (attackList.size() > 1) {
             return actor.getWeaponInventory().get(0).getSkill(actor);
-        } else {
+        } else if (attackList.size() == 1) {
             return actor.getWeaponInventory().get(0).getSkill(actor, attackList.get(0));
         }
+        return null;
     }
 }
+
+
+
+// check if target and actor are present in map
+// if either not present, return null -> no action performed
+// else iterates over the location near, and check if there is any actor
+// having capability Status.HOSTILE_TO_ENEMY
+// if contains, then create an attack else null -> no action performed
+// return new xxAction();
+// else
+// LOOK for enemies around actor
+// if more then one enemy -> AreaAttackAction (constructor of AreaAttackAction take in list of enemies to attack)
+// which loop through the list and attack each of them
+// if only one enemy -> AttackAction
+
+// maybe can have a specialAttack in giantCrab and heavyskeletal, so if != null, can perform AreaAttackAction
+
+//                nearbyEnemies.add(exit.getDestination().getActor());
+
+    // originally given code
+//                return new AttackAction(exit.getDestination().getActor(), direction); // current actor calls AttackAction on the other actor
+
+
 
         // how to check if actor is enemy?
 //        if (!nearbyEnemies.isEmpty() && (actor.hasCapability(Status.SLAMMING_ATTACK) || actor.hasCapability(Status.SPINNING_ATTACK))){
