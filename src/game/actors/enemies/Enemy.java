@@ -98,13 +98,20 @@ public abstract class Enemy extends Actor implements Resettable {
         // TODO: check otherActor is not the same type as actor
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new AttackAction(this, direction));
-            this.behaviours.put(0, new AttackBehaviour(otherActor));
+            this.behaviours.put(0, new AttackBehaviour(otherActor)); // using intrinsic weapon
             this.behaviours.put(1, new FollowBehaviour(otherActor));
             // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
             // HINT 1: How would you attack the enemy with a weapon?
             for (WeaponItem weapon : otherActor.getWeaponInventory()) { // attack with weapon
+
+                // skill for area attack
                 actions.add(weapon.getSkill(this));
-                actions.add(new AttackAction(this, direction, weapon));
+
+                // skill for target attack
+                actions.add(weapon.getSkill(this, direction));
+
+//                actions.add(weapon.getSkill(this));
+//                actions.add(new AttackAction(this, direction, weapon));
             }
 //        } else if (otherActor.hasCapability(Status.SPINNING_ATTACK)){
 ////            to add: AreaAttackAction if have SPINNING_ATTACK

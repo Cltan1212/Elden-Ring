@@ -54,14 +54,12 @@ public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
      */
     @Override
     public Action getSkill(Actor holder){
-        if (this.isUnsheatheable()){
+        if (this.hasCapability(Status.UNSHEATHE)){
             return new UnsheatheAction(this, holder);
         }else{
             return null;
         }
 
     }
-
-
 
 }

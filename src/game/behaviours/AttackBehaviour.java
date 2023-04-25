@@ -22,11 +22,12 @@ public class AttackBehaviour implements Behaviour {
 
 //    private Map<Actor, String> nearbyEnemies = new HashMap<>();  // store the actor nearby and its direction
 
-    List<Actor> nearbyEnemies = new ArrayList<>();
+    List<String> attackList = new ArrayList<>();
 
     // Purpose of this class: Enemies attack player???
     private final Actor targetAttack;
-    public AttackBehaviour(Actor targetAttack){
+
+    public AttackBehaviour(Actor targetAttack) {
         this.targetAttack = targetAttack;
     }
 
@@ -41,7 +42,7 @@ public class AttackBehaviour implements Behaviour {
         // if contains, then create an attack else null -> no action performed
         // return new xxAction();
         // else
-        if (!map.contains(actor) || !map.contains(targetAttack)){
+        if (!map.contains(actor) || !map.contains(targetAttack)) {
             return null;
         }
 
@@ -56,32 +57,44 @@ public class AttackBehaviour implements Behaviour {
         Location here = map.locationOf(actor); // get location of current actor
 
         // iterate through all actor's exists (8 locations)
-        for (Exit exit: here.getExits()){
+        for (Exit exit : here.getExits()) {
             // check if an exit contains an actor that is hostile to enemy
-            if (exit.getDestination().containsAnActor() && exit.getDestination().getActor().hasCapability(Status.HOSTILE_TO_ENEMY)){
+            if (exit.getDestination().containsAnActor() && exit.getDestination().getActor().hasCapability(Status.HOSTILE_TO_ENEMY)) {
                 String direction = exit.getName();
-                nearbyEnemies.add(exit.getDestination().getActor());
+                attackList.add(0, direction);
+            } else if (exit.getDestination().containsAnActor()) {
+                attackList.add(exit.getName());
+            }
+//                nearbyEnemies.add(exit.getDestination().getActor());
 
-                // originally given code
+            // originally given code
 //                return new AttackAction(exit.getDestination().getActor(), direction); // current actor calls AttackAction on the other actor
-            }
-        }
-
-        // how to check if actor is enemy?
-        if (!nearbyEnemies.isEmpty() && (actor.hasCapability(Status.SLAMMING_ATTACK) || actor.hasCapability(Status.SPINNING_ATTACK))){
-            Actor targetOn = nearbyEnemies.get(0);
-            if (nearbyEnemies.size() <= 1){
-                return new AttackAction(targetOn, "at", actor.getWeaponInventory().get(0));  // how to retrieve the weapon
-            } else{
-                return new AreaAttackAction(nearbyEnemies, "at", actor.getWeaponInventory().get(0));
-            }
-        } else if (!nearbyEnemies.isEmpty()){
-            Actor targetOn = nearbyEnemies.get(0);
-            return new AttackAction(targetOn, "at", actor.getWeaponInventory().get(0));
 
         }
 
-        return null; // if no action is called
-
+        if (attackList.size() > 1) {
+            return actor.getWeaponInventory().get(0).getSkill(actor);
+        } else {
+            return actor.getWeaponInventory().get(0).getSkill(actor, attackList.get(0));
+        }
     }
 }
+
+        // how to check if actor is enemy?
+//        if (!nearbyEnemies.isEmpty() && (actor.hasCapability(Status.SLAMMING_ATTACK) || actor.hasCapability(Status.SPINNING_ATTACK))){
+//            Actor targetOn = nearbyEnemies.get(0);
+//            if (nearbyEnemies.size() <= 1){
+//                return new AttackAction(targetOn, "at", actor.getWeaponInventory().get(0));  // how to retrieve the weapon
+//            } else{
+//                return new AreaAttackAction(nearbyEnemies, "at", actor.getWeaponInventory().get(0));
+//            }
+//        } else if (!nearbyEnemies.isEmpty()){
+//            Actor targetOn = nearbyEnemies.get(0);
+//            return new AttackAction(targetOn, "at", actor.getWeaponInventory().get(0));
+//
+//        }
+//
+//        return null; // if no action is called
+
+//    }
+

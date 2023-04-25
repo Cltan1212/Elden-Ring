@@ -20,5 +20,6 @@ public enum Status {
     // Weapon status
     SPINNING_ATTACK,
     SLAMMING_ATTACK,
-    UNSHEATHE
+    UNSHEATHE,
+    QUICKSTEP
 }
