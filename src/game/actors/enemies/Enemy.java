@@ -46,5 +46,8 @@ public abstract class Enemy extends Actor {
         return actions;
     }
 
-
+    @Override
+    public int generateRunes(){
+        return 0;
+    }
 }
