@@ -9,4 +9,9 @@ package game.reset;
  */
 public interface Resettable {
     void reset();
+
+    default void registerInstance(){
+        ResetManager.getInstance().registerResettable(this);
+    }
 }
+
