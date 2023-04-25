@@ -2,6 +2,7 @@ package game.items;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.actorActions.ConsumeAction;
 import game.reset.ResetManager;
 
@@ -36,7 +37,8 @@ public class FlaskOfCrimsonTears extends ConsumableItem{
     }
 
     @Override
-    public void reset(){
+    public void reset(GameMap map){
         this.remainingConsume = maximumUse;
     }
+
 }

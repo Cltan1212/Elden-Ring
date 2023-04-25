@@ -24,5 +24,9 @@ public class ConsumeAction extends Action {
         return actor + " consumes " + item;
     }
 
+    @Override
+    public String hotkey(){
+        return "f";
+    }
 }
 

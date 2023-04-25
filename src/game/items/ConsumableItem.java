@@ -23,6 +23,6 @@ public abstract class ConsumableItem extends Item implements Resettable, Consuma
         return super.toString();
     }
     @Override
-    public void reset(){
+    public void reset(GameMap map){
     }
 }
