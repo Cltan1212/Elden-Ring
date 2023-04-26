@@ -106,7 +106,7 @@ public class Application {
 			}
 		}
 
-		gameMap.at(23, 17).addActor(new LoneWolf());
+//		gameMap.at(23, 17).addActor(new LoneWolf());
 
 		HashMap<Character, CombatArchetypes> characterToRoleMap = new HashMap<Character, CombatArchetypes>();
 		characterToRoleMap.put('s', new Sarumai());

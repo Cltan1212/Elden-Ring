@@ -47,7 +47,7 @@ public class QuickStepAction extends Action {
             }
 
         }else{
-            result += "\n" + actor + " misses their attack.";
+            result += "\n" + actor + " misses the attack";
         }
         return result;
     }

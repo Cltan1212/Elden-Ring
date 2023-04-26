@@ -25,19 +25,21 @@ public class AttackBehaviour implements Behaviour {
     List<String> attackList = new ArrayList<>();
 
     // Purpose of this class: Enemies attack player???
-    private final Actor targetAttack;
+//    private final Actor targetAttack;
 
-    public AttackBehaviour(Actor targetAttack) {
-        this.targetAttack = targetAttack;
-    }
+//    public AttackBehaviour(Actor targetAttack) {
+//        this.targetAttack = targetAttack;
+//    }
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
         // this method should return a target Action for the actor to attack
 
-        if (!map.contains(actor) || !map.contains(targetAttack)) {
-            return null;
-        }
+
+
+        // LOOP THROUGH ALL LOCATION, ADD Actor opponent = destination.getActor()
+        // THEN CALL ATTACKAREAATTACK, ATTACKACTION -> (GET SKILL, INTRINSIC WEAPON)
+        // IF GETINVENTORY > 0 smtg
 
         Location here = map.locationOf(actor); // get location of current actor
 
@@ -52,10 +54,12 @@ public class AttackBehaviour implements Behaviour {
             }
         }
 
-        if (attackList.size() > 1) {
+        if (attackList.size() > 1 && actor.getWeaponInventory().size()!= 0) {  // more than one actor -> AreaAttackAction
             return actor.getWeaponInventory().get(0).getSkill(actor);
-        } else if (attackList.size() == 1) {
-            return actor.getWeaponInventory().get(0).getSkill(actor, attackList.get(0));
+        } else if (attackList.size() == 1 && actor.getWeaponInventory().size() != 0) {
+            if (actor.getWeaponInventory().size() != 0){
+                return actor.getWeaponInventory().get(0).getSkill(actor, attackList.get(0));
+            }
         }
         return null;
     }

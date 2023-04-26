@@ -11,7 +11,7 @@ public class SkeletalBandit extends Skeletal {
     public SkeletalBandit() {
         super("Skeletal Bandit", 'b', 184);
         this.addWeaponToInventory(new Scimitar());
-        this.addCapability(Status.SPINNING_ATTACK);
+//        this.addCapability(Status.SPINNING_ATTACK);
     }
 
     @Override

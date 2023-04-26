@@ -5,7 +5,9 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.actorActions.AreaAttackAction;
@@ -27,8 +29,6 @@ import java.util.Map;
 public abstract class Enemy extends Actor implements Resettable {
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
     private final int DESPAWN_CHANCE = 10;
-    private String specialAttack;
-
 
     /**
      * Constructor.
@@ -40,8 +40,8 @@ public abstract class Enemy extends Actor implements Resettable {
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.RESPAWNABLE);
-        this.specialAttack = null;
-
+//        this.specialAttack = null;
+        this.behaviours.put(1, new AttackBehaviour())
         this.behaviours.put(999, new WanderBehaviour());
     }
 
@@ -61,6 +61,7 @@ public abstract class Enemy extends Actor implements Resettable {
         int randomNum = RandomNumberGenerator.getRandomInt(100);
         // if not following and randomNum generated is less or equal to DESPAWN_CHANCE
 
+        // check 10% chance to despawn NEED TO IMPLEMENT
         if (!behaviours.containsKey(1)) {
             if (randomNum <= DESPAWN_CHANCE) {
                 return new DespawnedAction();
@@ -69,11 +70,6 @@ public abstract class Enemy extends Actor implements Resettable {
             return new DespawnedAction();
         }
 
-//        if (behaviours.containsKey(1) && randomNum <= DESPAWN_CHANCE){
-//            if (behaviours.get(1).getAction(this,map) != null){
-//                return new DespawnedAction();
-//            }
-//        }
 
         // add valid behaviour to the list of behaviours
         for (Behaviour behaviour : behaviours.values()) {
@@ -84,7 +80,9 @@ public abstract class Enemy extends Actor implements Resettable {
         return new DoNothingAction();
     }
 
+
     /**
+     * Returns a new collection of the Actions that the otherActor can do to the current Actor.
      * The lone wolf can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
      *
      * @param otherActor the Actor that might be performing attack
@@ -95,14 +93,28 @@ public abstract class Enemy extends Actor implements Resettable {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
+
+
+        // SMTG LIKE if (otherActor.hasCapability(Status.HOSTILE.ENEMY) && this.hasCapability(Status.FOLLOWING){
+        //                  this.behaviour.put(2, followBehaviour(this));
+        //  else{
+
+
+
+
         // TODO: check otherActor is not the same type as actor
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-            actions.add(new AttackAction(this, direction));
-            this.behaviours.put(0, new AttackBehaviour(otherActor)); // using intrinsic weapon
-            this.behaviours.put(1, new FollowBehaviour(otherActor));
+
             // HINT 1: The AttackAction above allows you to attack the enemy with your intrinsic weapon.
             // HINT 1: How would you attack the enemy with a weapon?
+
+            actions.add(new AttackAction(this, direction)); // using intrinsic weapon
+
+            this.behaviours.put(1, new FollowBehaviour(otherActor));
+
             for (WeaponItem weapon : otherActor.getWeaponInventory()) { // attack with weapon
+
+                // ONLY DISPLAY AREA ATTACK OPTION WHEN THERE ARE MORE THAN ONE ENEMY AROUND
 
                 // skill for area attack
                 actions.add(weapon.getSkill(this));
@@ -110,24 +122,28 @@ public abstract class Enemy extends Actor implements Resettable {
                 // skill for target attack
                 actions.add(weapon.getSkill(this, direction));
 
-//                actions.add(weapon.getSkill(this));
-//                actions.add(new AttackAction(this, direction, weapon));
             }
-//        } else if (otherActor.hasCapability(Status.SPINNING_ATTACK)){
-////            to add: AreaAttackAction if have SPINNING_ATTACK
-////            actions.add(new AreaAttackAction());
+        } else if (otherActor.hasCapability(Status.RESPAWNABLE)){
+//            this.behaviours.put(4, new FollowBehaviour(otherActor));
+            this.behaviours.put(3, new AttackBehaviour(otherActor));
         }
         return actions;
     }
-
-    public String getSpecialAttack() {
-        return specialAttack;
-    }
-
-
-    public void setSpecialAttack(String specialAttack) {
-        this.specialAttack = specialAttack;
-    }
 }
+
+
+//        this.getWeaponInventory().get(0).getSkill(this);
+//        this.getWeaponInventory().get(0).getSkill(this);
+
+//        Actor otherActor;
+//        for (Exit exit: map.locationOf(this).getExits()){
+//            Location destination = exit.getDestination();
+//            if (destination.containsAnActor()){
+//                otherActor = map.getActorAt(destination);
+//                if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+//                    this.behaviours.put(0, new AttackBehaviour(otherActor));
+//                }
+//            }
+//        }
 
 

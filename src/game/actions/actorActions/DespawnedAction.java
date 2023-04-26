@@ -11,12 +11,12 @@ public class DespawnedAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         map.removeActor(actor);
-        return actor + " has been removed from the map";
-    }
+        return menuDescription(actor);
+}
 
     @Override
     public String menuDescription(Actor actor) {
-        return null; // The menuDescription is not needed as it will never be displayed on the console menu.
+        return actor + " has been removed from the map"; // The menuDescription is not needed as it will never be displayed on the console menu.
     }
 
 }

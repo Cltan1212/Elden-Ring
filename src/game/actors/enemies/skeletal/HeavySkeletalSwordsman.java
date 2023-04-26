@@ -22,8 +22,8 @@ public class HeavySkeletalSwordsman extends Skeletal {
     public HeavySkeletalSwordsman() {
         super("Heavy Skeletal Swordsman", 'q', 153);
         this.addWeaponToInventory(new Grossmesser());
-        this.addCapability(Status.SPINNING_ATTACK);
-        this.setSpecialAttack("Spinning Attack");  // might not needed
+//        this.addCapability(Status.SPINNING_ATTACK);
+//        this.setSpecialAttack("Spinning Attack");  // might not needed
 
 
     }

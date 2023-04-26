@@ -25,7 +25,7 @@ public class UnsheatheAction extends Action {
         if (RandomNumberGenerator.getRandomInt(100) <= 60){
             int damage = 2 * weapon.damage();
             this.target.hurt(damage);
-            result += "\n" + actor + "slashes " + this.target + " for " + damage + " damage.";
+            result += "\n" + actor + " slashes " + this.target + " for " + damage + " damage.";
 
         } else{
             result += "\n" + actor + " misses their attack!";
