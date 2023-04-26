@@ -23,7 +23,6 @@ public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
 
         // perform "Unsheathe"
         this.addCapability(Status.UNSHEATHE);
-        this.unsheatheale = true;
     }
 
     @Override
@@ -41,9 +40,6 @@ public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
         return new SellAction(this, 500);
     }
 
-    public boolean isUnsheatheable(){
-        return this.unsheatheale;
-    }
 
     /**
      * Get an active skill action from the weapon. This should be used for weapon skills that do not involve a target actor
@@ -52,7 +48,11 @@ public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
      * @return a special Action that can be performed by this weapon (heal the player, etc.)
      */
     @Override
-    public Action getSkill(Actor holder){
+    public Action getSkill(Actor holder, String direction){
+
+//        if (!holder.hasCapability(Status.HOSTILE_TO_ENEMY)){
+//
+//        }
         if (this.hasCapability(Status.UNSHEATHE)){
             return new UnsheatheAction(this, holder);
         }else{

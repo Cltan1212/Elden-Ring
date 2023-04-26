@@ -4,10 +4,12 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actors.enemies.EnemyType;
 import game.behaviours.WanderBehaviour;
 import game.utils.Status;
+import game.weapons.GiantCrabSlam;
 
 public class GiantCrab extends Crustracean{
     public GiantCrab() {
         super("Giant Crab",'C',407);
+        this.addWeaponToInventory(new GiantCrabSlam());
     }
 
     @Override

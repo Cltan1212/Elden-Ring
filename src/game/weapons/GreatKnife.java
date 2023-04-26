@@ -35,9 +35,9 @@ public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
     }
 
     @Override
-    public Action getSkill(Actor holder){
+    public Action getSkill(Actor target, String direction){
         if (this.hasCapability(Status.QUICKSTEP)){
-            return new QuickStepAction(this, holder);
+            return new QuickStepAction(this, target, direction);
         }else{
             return null;
         }

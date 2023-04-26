@@ -13,9 +13,9 @@ import game.utils.Status;
 
 public class Grossmesser extends WeaponItem implements Sellable {
     public Grossmesser() {
-        super("Grossmesser", '?',115, "", 85);
+        super("Grossmesser", '?',115, "strikes", 85);
 //        MerchantKale.getInstance().registerSellableItem(this);
-//        this.addCapability(Status.SPINNING_ATTACK);
+        this.addCapability(Status.SPECIAL_SKILL);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Grossmesser extends WeaponItem implements Sellable {
 
     @Override
     public Action getSkill(Actor holder) {
-        if (this.hasCapability(Status.SPINNING_ATTACK)) {
+        if (this.hasCapability(Status.SPECIAL_SKILL)) {
             // holder -> attacker? (enemy)
             return new AreaAttackAction(holder, this);
         } else {

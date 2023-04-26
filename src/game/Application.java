@@ -14,7 +14,7 @@ import game.actors.enemies.enemyFactory.EastMapFactoryEnemy;
 import game.actors.enemies.enemyFactory.WestMapFactoryEnemy;
 import game.combat.Bandit;
 import game.combat.CombatArchetypes;
-import game.combat.Sarumai;
+import game.combat.Samurai;
 import game.combat.Wretch;
 import game.grounds.Dirt;
 import game.grounds.Floor;
@@ -82,7 +82,7 @@ public class Application {
 		}
 
 		HashMap<Character, CombatArchetypes> characterToRoleMap = new HashMap<Character, CombatArchetypes>();
-		characterToRoleMap.put('s', new Sarumai());
+		characterToRoleMap.put('s', new Samurai());
 		characterToRoleMap.put('b', new Bandit());
 		characterToRoleMap.put('w', new Wretch());
 

@@ -15,12 +15,12 @@ public class GiantCrabSlam extends WeaponItem {
 
     public GiantCrabSlam() {
         super("Giant Crab Slam", ' ', 208 , "slams", 90);
-        this.addCapability(Status.SLAMMING_ATTACK);
+        this.addCapability(Status.SPECIAL_SKILL);
     }
 
     @Override
     public Action getSkill(Actor holder){
-        if (this.hasCapability(Status.SLAMMING_ATTACK)){
+        if (this.hasCapability(Status.SPECIAL_SKILL)){
             // holder -> attacker? (enemy)
             return new AreaAttackAction(holder, this);
         }else{

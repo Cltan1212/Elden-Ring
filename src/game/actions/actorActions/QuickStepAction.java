@@ -17,9 +17,12 @@ public class QuickStepAction extends Action {
 
     private WeaponItem weapon;
 
-    public QuickStepAction(WeaponItem weapon, Actor target){
+    private String direction;
+
+    public QuickStepAction(WeaponItem weapon, Actor target, String direction){
         this.weapon = weapon;
         this.target = target;
+        this.direction = direction;
 
     }
 

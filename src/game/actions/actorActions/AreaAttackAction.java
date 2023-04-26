@@ -55,14 +55,16 @@ public class AreaAttackAction extends Action {
 
         for (Exit exit : actorLocation.getExits()) {
             Location destination = exit.getDestination();
-            if (destination.containsAnActor() && destination.getActor().hasCapability(Status.HOSTILE_TO_ENEMY)){
-                targets.add(destination.getActor());
+            if (destination.containsAnActor()){
+                String returnString = new AttackAction(destination.getActor(), destination.toString(), this.weapon).execute(destination.getActor(), map);
+                result += "\n" + returnString;
+//                targets.add(destination.getActor());
             }
 
         }
-        for (Actor targetActor: targets){
-            new AttackAction(targetActor,"", this.weapon);
-        }
+//        for (Actor targetActor: targets){
+//            new AttackAction(targetActor,"", this.weapon);
+//        }
 
         return result;
     }
