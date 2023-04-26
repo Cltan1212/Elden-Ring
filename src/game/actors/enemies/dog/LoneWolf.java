@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.behaviours.Behaviour;
+import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 import game.behaviours.WanderBehaviour;
 import game.actions.actorActions.AttackAction;
@@ -34,5 +35,10 @@ public class LoneWolf extends Dog{
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(97, "bites", 95);
+    }
+
+    @Override
+    public int generateRunes() {
+        return RandomNumberGenerator.getRandomInt(55,1470);
     }
 }
