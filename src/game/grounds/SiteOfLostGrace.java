@@ -14,7 +14,6 @@ public class SiteOfLostGrace extends Ground {
     public SiteOfLostGrace(String name) {
         super('U');
         this.name = name;
-        this.addCapability(Status.RESTING);
     }
 
     @Override
@@ -28,7 +27,6 @@ public class SiteOfLostGrace extends Ground {
         ActionList actions = new ActionList();
         if (actor.hasCapability(Status.RESTING)){
             actions.add(new RestAction(this.toString()));     //WILL NEED TO DEPEND ON RESTACTION METHOD
-
         }
         return actions;
 

@@ -23,6 +23,7 @@ import game.grounds.Wall;
 import game.grounds.environments.Graveyard;
 import game.grounds.environments.GustOfWind;
 import game.grounds.environments.PuddleOfWater;
+import game.reset.ResetManager;
 import game.utils.FancyMessage;
 
 /**
@@ -151,7 +152,9 @@ public class Application {
 
 		// site of lost grace
 		gameMap.at(38,12).setGround(new SiteOfLostGrace("The First Step"));
-
+		player.hurt(100);
+		// add GameMap to ResetManager
+		ResetManager.getInstance().addMap(gameMap);
 		world.run();
 	}
 }

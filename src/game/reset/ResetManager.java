@@ -32,6 +32,7 @@ public class ResetManager {
     }
     private ResetManager() {
         this.resettables = new ArrayList<>();
+        this.allMap = new ArrayList<>();
     }
 
     public void addMap(GameMap map){
@@ -39,11 +40,10 @@ public class ResetManager {
     }
 
     public void run() {
-        for (Resettable resettable: resettables){
-            for (GameMap map : allMap){
+        for (GameMap map : allMap){
+            for (Resettable resettable: resettables){
                 resettable.reset(map);
             }
-
         }
     }
 
