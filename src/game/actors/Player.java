@@ -48,7 +48,7 @@ public class Player extends Actor implements Resettable {
 		RunesManager.getInstance().registerRunesHeld(this, 0);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.CONSUMABLE);
-		this.addCapability(Status.RESTING);
+		this.addCapability(Status.RESTABLE);
 		resetMaxHp(role.getStartingHitPoint());  // to set starting hit point based on role
 		this.addWeaponToInventory(role.getStartingWeapon()); // to set starting inventory based on role
 

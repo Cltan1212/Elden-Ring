@@ -16,7 +16,9 @@ public class RestAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
+        actor.addCapability(Status.RESTING);
         new ResetAction().execute(actor, map);
+        actor.removeCapability(Status.RESTING);
         return actor + " rested at " + siteOfLostGrace;
     }
 

@@ -18,7 +18,6 @@ public class ResetManager {
     private List<GameMap> allMap;
     private static ResetManager instance;
 
-    private boolean resettable;
 
     /**
      * HINT 1: where have we seen a private constructor before?
@@ -28,7 +27,7 @@ public class ResetManager {
     public static ResetManager getInstance(){
         if (instance == null)
             instance = new ResetManager();
-        return new ResetManager();
+        return instance;
     }
     private ResetManager() {
         this.resettables = new ArrayList<>();
