@@ -25,6 +25,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
 
     protected Map<Integer, Behaviour> behaviours = new HashMap<>();
     protected final int DESPAWN_CHANCE = 10;
+    public boolean following = false;
 
     /**
      * Constructor.
@@ -55,11 +56,11 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         // if not following and randomNum generated is less or equal to DESPAWN_CHANCE
 
         if (!behaviours.containsKey(1)){
-            if (randomNum <= DESPAWN_CHANCE){
+            if (randomNum <= DESPAWN_CHANCE && !following){
                 return new DespawnedAction();
             }
         }
-        else if (randomNum <= DESPAWN_CHANCE && behaviours.get(1).getAction(this, map) != null){
+        else if (randomNum <= DESPAWN_CHANCE && behaviours.get(1).getAction(this, map) != null && !following){
             return new DespawnedAction();
         }
 
@@ -85,8 +86,9 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
         // enemy attack player and other enemies
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) || otherActor.hasCapability(Status.RESPAWNABLE)) {
+        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new AttackAction(this, direction));
+            following = true;
             this.behaviours.put(0, new AttackBehaviour(otherActor));
             this.behaviours.put(1, new FollowBehaviour(otherActor));
 
@@ -98,6 +100,9 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
                 // skill for target attack
                 actions.add(weaponItem.getSkill(otherActor, direction));
             }
+        }
+        else if (otherActor.hasCapability(Status.RESPAWNABLE)){
+            this.behaviours.put(3, new AttackBehaviour(otherActor));
         }
 
         return actions;
