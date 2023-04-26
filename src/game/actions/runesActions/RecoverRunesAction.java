@@ -18,12 +18,13 @@ public class RecoverRunesAction extends Action {
         if (actor == runes.getRunesHolder())
             RunesManager.getInstance().registerRunesHeld(actor, runes.generateRunes());
         RunesManager.getInstance().removeRuneSource(runes);
+        map.locationOf(actor).removeItem(runes);
 
-        return actor + " recovered runes of amount $ " + runes.generateRunes();
+        return actor + " retrieves Runes (value: " + runes.generateRunes() + ")";
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " recovered runes.";
+        return actor + " recovered runes";
     }
 }
