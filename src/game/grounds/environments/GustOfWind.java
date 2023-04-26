@@ -8,23 +8,21 @@ import game.actors.enemies.skeletal.HeavySkeletalSwordsman;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
-public class GustOfWind extends Ground {
+public class GustOfWind extends SpawnGround {
 
-
-    private static final int SPAWN_CHANCE = 33;
     public GustOfWind() {
-        super('&');
+        super('&', 33);
     }
 
-    @Override
-    public void tick(Location location){
-        int randomChance = RandomNumberGenerator.getRandomInt(100);
-        if (!location.containsAnActor() && (randomChance <= SPAWN_CHANCE)){
-            location.addActor(new LoneWolf()); // since Graveyard spawn LoneWolf
-        } else{
-            location.setGround(this);
-        }
-    }
+//    @Override
+//    public void tick(Location location){
+//        int randomChance = RandomNumberGenerator.getRandomInt(100);
+//        if (!location.containsAnActor() && (randomChance <= SPAWN_CHANCE)){
+//            location.addActor(new LoneWolf()); // since Graveyard spawn LoneWolf
+//        } else{
+//            location.setGround(this);
+//        }
+//    }
 
     @Override
     public boolean canActorEnter(Actor actor) {

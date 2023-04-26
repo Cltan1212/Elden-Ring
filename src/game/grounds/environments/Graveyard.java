@@ -8,22 +8,13 @@ import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
 
-public class Graveyard extends Ground {
-   private static final int SPAWN_CHANCE = 27;
+public class Graveyard extends SpawnGround {
+
     public Graveyard() {
-        super('n');
+        super('n', 27);
     }
 
-    @Override
-    public void tick(Location location){
-        int randomChance = RandomNumberGenerator.getRandomInt(100);
-        if (!location.containsAnActor() && (randomChance <= SPAWN_CHANCE)){
-            location.addActor(new HeavySkeletalSwordsman()); // since Graveyard spawn HeavySkeletalSwordsman
-        } else{
-            location.setGround(this);
-        }
 
-    }
 
     @Override
     public boolean canActorEnter(Actor actor) {

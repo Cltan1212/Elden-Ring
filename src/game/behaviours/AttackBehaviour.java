@@ -35,11 +35,10 @@ public class AttackBehaviour implements Behaviour {
     public Action getAction(Actor actor, GameMap map) {
         // this method should return a target Action for the actor to attack
 
-
-
-        // LOOP THROUGH ALL LOCATION, ADD Actor opponent = destination.getActor()
+        // LOOP THROUGH ALL LOCATION, ADD Actor opponent = destination.getActor(), loop through all nearby actor in AreaAttack action
         // THEN CALL ATTACKAREAATTACK, ATTACKACTION -> (GET SKILL, INTRINSIC WEAPON)
         // IF GETINVENTORY > 0 smtg
+        // return actions.get(0)
 
         Location here = map.locationOf(actor); // get location of current actor
 

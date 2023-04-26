@@ -41,7 +41,7 @@ public abstract class Enemy extends Actor implements Resettable {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.RESPAWNABLE);
 //        this.specialAttack = null;
-        this.behaviours.put(1, new AttackBehaviour())
+        this.behaviours.put(1, new AttackBehaviour());
         this.behaviours.put(999, new WanderBehaviour());
     }
 
@@ -92,6 +92,10 @@ public abstract class Enemy extends Actor implements Resettable {
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+
+        //  only either area and attack, behaviour only enemy
+
+
         ActionList actions = new ActionList();
 
 
@@ -99,7 +103,23 @@ public abstract class Enemy extends Actor implements Resettable {
         //                  this.behaviour.put(2, followBehaviour(this));
         //  else{
 
+        // if isCaucious
+        // if not on the same ground???
 
+        // have a variable STATUS.SPECIAL_SKILL
+        // if other.getWeaponInventory() >0{
+        //
+
+        // check if is concious
+        // capability if player or following, add behaviour following
+        // if not the same location, loop through getinventory, Action.weaponSkill otherActor.getSkill
+        // if weapon skill is not empty, then add actions,  And actions.add(new attackAction
+
+        // else if have special skill, get random int, (2)
+        // if skillchance == 0
+        // Then area attack acion with intrinsic
+        // then add
+        //
 
 
         // TODO: check otherActor is not the same type as actor
