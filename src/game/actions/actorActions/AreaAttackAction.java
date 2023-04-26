@@ -37,7 +37,6 @@ public class AreaAttackAction extends Action {
 
     public AreaAttackAction(Actor target, Weapon weapon) {
         this.target = target;
-//        this.direction = direction;
         this.weapon = weapon;
     }
 
