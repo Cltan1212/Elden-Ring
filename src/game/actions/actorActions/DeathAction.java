@@ -5,12 +5,8 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actors.enemies.EnemyType;
-import game.actors.enemies.PileOfBones;
-import game.reset.ResetManager;
-import game.utils.FancyMessage;
+import game.runes.RunesManager;
 import game.utils.Status;
 
 /**
@@ -42,13 +38,7 @@ public class DeathAction extends Action {
         // if the attacker is player
         if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
-            // special death action for skeletal type enemy
-            if (target.hasCapability(EnemyType.SKELETAL)){
-                Location currentLocation = map.locationOf(target);
-                map.addActor(new PileOfBones(target), currentLocation);
-            }
-
-            else {
+            if (!target.hasCapability(Status.SPECIAL_DEATH)){
 
                 ActionList dropActions = new ActionList();
 
@@ -61,21 +51,15 @@ public class DeathAction extends Action {
                     drop.execute(target, map);
 
                 // transfer runes to target
-//                DropRunesBehaviour dropRunesBehaviour = new DropRunesBehaviour(target);
-//                result += dropRunesBehaviour.getAction(attacker,map).execute(attacker, map);
+                result += "\n" +target + " drops " + RunesManager.getInstance().transferRunes(target, attacker) + " runes.";
             }
         }
 
         // if player die, and the attacker is enemy
         else if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
-            // only drop runes
-            for (Item item: target.getItemInventory())
-                if (item.hasCapability(Status.TRADING))
-                    item.getDropAction(target);
-
             // reset the game
-            ResetManager.getInstance().run();
+            result += new ResetAction();
         }
 
         // remove actor
@@ -88,9 +72,6 @@ public class DeathAction extends Action {
     public String menuDescription(Actor actor) {
         String result = "";
         result += actor + " is killed.";
-        if (actor.hasCapability(Status.HOSTILE_TO_ENEMY))
-            result += FancyMessage.YOU_DIED;
         return result;
     }
 }
-

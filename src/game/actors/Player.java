@@ -6,7 +6,13 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.positions.Location;
+import game.actions.actorActions.ConsumeAction;
+import game.actions.actorActions.ResetAction;
+import game.actions.actorActions.RestAction;
 import game.combat.CombatArchetypes;
+import game.grounds.SiteOfLostGrace;
+import game.items.FlaskOfCrimsonTears;
 import game.reset.Resettable;
 import game.runes.Runes;
 import game.runes.RunesManager;
@@ -24,6 +30,8 @@ public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
 
+	private SiteOfLostGrace lastSiteOfLostGrace;
+	private FlaskOfCrimsonTears flaskOfCrimsonTears;
 	public CombatArchetypes role;
 
 	/**
@@ -36,13 +44,15 @@ public class Player extends Actor implements Resettable {
 	public Player(String name, char displayChar, int hitPoints, CombatArchetypes role) {
 		super(name, displayChar, hitPoints);
 		this.role = role;
-
+		this.flaskOfCrimsonTears = new FlaskOfCrimsonTears();
 		RunesManager.getInstance().registerRunesHeld(this, 0);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
-
+		this.addCapability(Status.CONSUMABLE);
+		this.addCapability(Status.RESTABLE);
 		resetMaxHp(role.getStartingHitPoint());  // to set starting hit point based on role
 		this.addWeaponToInventory(role.getStartingWeapon()); // to set starting inventory based on role
 
+		this.registerInstance(); // Register the Player created as resettable and add to the list of resettable.
 	}
 
 	@Override
@@ -54,11 +64,19 @@ public class Player extends Actor implements Resettable {
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
-		// return/print the console menu
+		if(this.hasCapability(Status.CONSUMABLE)){
+			actions.add(new ConsumeAction(flaskOfCrimsonTears));
+		}
+
 		return menu.showMenu(this, actions, display);
 	}
 
 
 	@Override
-	public void reset() {}
+	public void reset(GameMap map) {
+		if (!this.hasCapability(Status.RESTING)){
+			RunesManager.getInstance().registerRunesHeld(this, 0);
+		}
+		this.resetMaxHp(this.getMaxHp());
+	}
 }

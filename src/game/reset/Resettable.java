@@ -1,5 +1,7 @@
 package game.reset;
 
+import edu.monash.fit2099.engine.positions.GameMap;
+
 /**
  * A resettable interface
  * Created by:
@@ -8,5 +10,10 @@ package game.reset;
  *
  */
 public interface Resettable {
-    void reset();
+    void reset(GameMap map);
+
+    default void registerInstance(){
+        ResetManager.getInstance().registerResettable(this);
+    }
 }
+

@@ -7,37 +7,31 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.runesActions.PurchaseAction;
+import game.actions.runesActions.SellAction;
 import game.items.Purchasable;
 import game.items.Sellable;
+import game.utils.Status;
+import game.weapons.Club;
+import game.weapons.GreatKnife;
+import game.weapons.Grossmesser;
+import game.weapons.Uchigatana;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MerchantKale extends Actor {
 
-    private static MerchantKale merchantKale;
-
-    private final ArrayList<Purchasable> purchasableItemList;
     private final ArrayList<Sellable> sellableItemList;
 
     public MerchantKale() {
         super("Merchant Kale", 'K', 100);
-        purchasableItemList = new ArrayList<>();
         sellableItemList = new ArrayList<>();
-    }
-
-    public static MerchantKale getInstance(){
-        if (merchantKale == null){
-            merchantKale = new MerchantKale();
-        }
-        return merchantKale;
-    }
-
-    public void registerPurchasableItem(Purchasable purchasableItem){
-        purchasableItemList.add(purchasableItem);
-    }
-
-    public void registerSellableItem(Sellable sellableItem){
-        sellableItemList.add(sellableItem);
+        sellableItemList.add(new Club());
+        sellableItemList.add(new GreatKnife());
+        sellableItemList.add(new Uchigatana());
+        sellableItemList.add(new Grossmesser());
     }
 
     @Override
@@ -47,6 +41,10 @@ public class MerchantKale extends Actor {
 
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actionList = new ActionList();
+        ArrayList<Purchasable> purchasableItemList = new ArrayList<>();
+        purchasableItemList.add(new Club());
+        purchasableItemList.add(new GreatKnife());
+        purchasableItemList.add(new Uchigatana());
 
         // purchase weapon actions
         for (Purchasable purchasableItem : purchasableItemList){
@@ -56,7 +54,7 @@ public class MerchantKale extends Actor {
         // sell weapon actions
         for (WeaponItem weaponItem: otherActor.getWeaponInventory()){
             for (Sellable sellableItem : sellableItemList){
-                if (weaponItem == sellableItem){
+                if (weaponItem.toString().equals(sellableItem.toString())){
                     actionList.add(sellableItem.createSellAction());
                 }
             }

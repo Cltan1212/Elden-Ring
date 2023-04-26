@@ -1,32 +1,18 @@
 package game.actors.enemies.water;
 
-import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.GameMap;
-import game.actions.actorActions.AttackAction;
-import game.actors.enemies.Enemy;
-import game.behaviours.Behaviour;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.actors.enemies.EnemyType;
+import game.behaviours.WanderBehaviour;
 import game.utils.Status;
-import game.weapons.GiantCrabSlam;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class GiantCrab extends WaterType {
-
+public class GiantCrab extends Crustracean{
     public GiantCrab() {
-        super("Giant Crab", 'C', 407);
-        this.addWeaponToInventory(new GiantCrabSlam());
-        this.addCapability(Status.SLAMMING_ATTACK);
-//        this.setSpecialAttack("Slamming attack");
-
+        super("Giant Crab",'C',407);
     }
 
     @Override
-    public void reset() {
-
+    public IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(208, "slams", 90);
     }
+
 }

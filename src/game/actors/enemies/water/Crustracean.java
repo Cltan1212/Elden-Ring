@@ -1,16 +1,20 @@
-package game.actors.enemies.dog;
+package game.actors.enemies.water;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.actorActions.AttackAction;
 import game.actors.enemies.Enemy;
 import game.actors.enemies.EnemyType;
 import game.behaviours.AttackBehaviour;
-import game.runes.RunesManager;
+import game.behaviours.FollowBehaviour;
+import game.behaviours.WanderBehaviour;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
-public abstract class Dog extends Enemy {
+public abstract class Crustracean extends Enemy {
+
     /**
      * Constructor.
      *
@@ -18,17 +22,18 @@ public abstract class Dog extends Enemy {
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public Dog(String name, char displayChar, int hitPoints) {
+    public Crustracean(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
-        this.addCapability(EnemyType.DOG);
-        this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
+        this.addCapability(EnemyType.WATER);
+        this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY);
-        RunesManager.getInstance().registerRuneSource(this);
+
+        this.behaviours.put(999, new WanderBehaviour());
     }
 
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        if (otherActor.hasCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY)){
+        if (otherActor.hasCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY)){
             this.behaviours.put(3, new AttackBehaviour(otherActor));
         }
         return super.allowableActions(otherActor, direction, map);
@@ -36,6 +41,7 @@ public abstract class Dog extends Enemy {
 
     @Override
     public int generateRunes() {
-        return RandomNumberGenerator.getRandomInt(55,1470);
+        return RandomNumberGenerator.getRandomInt(318,4961);
     }
+
 }
