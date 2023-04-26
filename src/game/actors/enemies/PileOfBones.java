@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.enemies.Enemy;
 import game.reset.Resettable;
+import game.weapons.Grossmesser;
 
 public class PileOfBones extends Enemy implements Resettable {
 
@@ -17,6 +18,7 @@ public class PileOfBones extends Enemy implements Resettable {
 
     public PileOfBones(Actor skeletalEnemy) {
         super("Pile Of Bones",'X',100);
+        this.addWeaponToInventory(new Grossmesser());
         this.skeletalEnemy = skeletalEnemy;
         setRemainingDeath(3);
         skeletalEnemy.resetMaxHp(153);

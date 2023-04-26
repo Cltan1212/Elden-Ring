@@ -1,7 +1,10 @@
 package game.actors.enemies.water;
 
 import game.actors.enemies.Enemy;
+import game.actors.enemies.EnemyType;
+import game.behaviours.WanderBehaviour;
 import game.utils.RandomNumberGenerator;
+import game.utils.Status;
 
 public abstract class Crustracean extends Enemy {
 
@@ -14,6 +17,11 @@ public abstract class Crustracean extends Enemy {
      */
     public Crustracean(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
+        this.addCapability(EnemyType.WATER);
+        this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
+        this.addCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY);
+
+        this.behaviours.put(999, new WanderBehaviour());
     }
 
     @Override

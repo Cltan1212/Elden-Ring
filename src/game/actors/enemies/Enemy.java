@@ -24,7 +24,7 @@ import java.util.Map;
 public abstract class Enemy extends Actor implements Resettable, RuneSource {
 
     protected Map<Integer, Behaviour> behaviours = new HashMap<>();
-    private final int DESPAWN_CHANCE = 10;
+    protected final int DESPAWN_CHANCE = 10;
 
     /**
      * Constructor.
@@ -39,6 +39,15 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         this.behaviours.put(999, new WanderBehaviour());
     }
 
+    /**
+     * At each turn, select a valid action to perform.
+     *
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return the valid action that can be performed in that iteration or null if no valid action is found
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         int randomNum = RandomNumberGenerator.getRandomInt(100);
@@ -56,13 +65,21 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         // add valid behaviour to the list of behaviours
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
-            if(action != null)
+            if (action != null)
                 return action;
         }
         return new DoNothingAction();
 
     }
 
+    /**
+     * The lone wolf can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
+     *
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();

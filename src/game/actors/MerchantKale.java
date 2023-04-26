@@ -23,17 +23,11 @@ import java.util.Map;
 
 public class MerchantKale extends Actor {
 
-    private final ArrayList<Purchasable> purchasableItemList;
     private final ArrayList<Sellable> sellableItemList;
 
     public MerchantKale() {
         super("Merchant Kale", 'K', 100);
-        purchasableItemList = new ArrayList<>();
         sellableItemList = new ArrayList<>();
-        purchasableItemList.add(new Club());
-        purchasableItemList.add(new GreatKnife());
-        purchasableItemList.add(new Uchigatana());
-
         sellableItemList.add(new Club());
         sellableItemList.add(new GreatKnife());
         sellableItemList.add(new Uchigatana());
@@ -47,6 +41,10 @@ public class MerchantKale extends Actor {
 
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actionList = new ActionList();
+        ArrayList<Purchasable> purchasableItemList = new ArrayList<>();
+        purchasableItemList.add(new Club());
+        purchasableItemList.add(new GreatKnife());
+        purchasableItemList.add(new Uchigatana());
 
         // purchase weapon actions
         for (Purchasable purchasableItem : purchasableItemList){

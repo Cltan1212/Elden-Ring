@@ -1,8 +1,10 @@
 package game.actors.enemies.dog;
 
 import game.actors.enemies.Enemy;
+import game.actors.enemies.EnemyType;
 import game.runes.RunesManager;
 import game.utils.RandomNumberGenerator;
+import game.utils.Status;
 
 public abstract class Dog extends Enemy {
     /**
@@ -14,6 +16,9 @@ public abstract class Dog extends Enemy {
      */
     public Dog(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
+        this.addCapability(EnemyType.DOG);
+        this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
+        this.addCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY);
         RunesManager.getInstance().registerRuneSource(this);
     }
 

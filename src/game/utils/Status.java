@@ -18,6 +18,4 @@ public enum Status {
 
     // weapon status
     SPINNING_ATTACK,
-
-    TRADING
 }
