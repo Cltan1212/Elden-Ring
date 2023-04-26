@@ -8,10 +8,12 @@ import game.utils.Status;
 
 public class SiteOfLostGrace extends Ground {
 
+    public final String name;
     // allow player to rest on it, when this happens, the entire game will be reset
 
-    public SiteOfLostGrace() {
+    public SiteOfLostGrace(String name) {
         super('U');
+        this.name = name;
     }
 
     @Override
