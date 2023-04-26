@@ -14,6 +14,7 @@ public class SiteOfLostGrace extends Ground {
     public SiteOfLostGrace(String name) {
         super('U');
         this.name = name;
+        this.addCapability(Status.RESTING);
     }
 
     @Override
