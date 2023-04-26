@@ -1,7 +1,14 @@
 package game.actors.enemies.water;
 
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.actorActions.AttackAction;
 import game.actors.enemies.Enemy;
 import game.actors.enemies.EnemyType;
+import game.behaviours.AttackBehaviour;
+import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
@@ -22,6 +29,14 @@ public abstract class Crustracean extends Enemy {
         this.addCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY);
 
         this.behaviours.put(999, new WanderBehaviour());
+    }
+
+    @Override
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+        if (otherActor.hasCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY)){
+            this.behaviours.put(3, new AttackBehaviour(otherActor));
+        }
+        return super.allowableActions(otherActor, direction, map);
     }
 
     @Override

@@ -96,13 +96,9 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
 
                 // skill for area attack
                 actions.add(weaponItem.getSkill(otherActor));
-
                 // skill for target attack
                 actions.add(weaponItem.getSkill(otherActor, direction));
             }
-        }
-        else if (otherActor.hasCapability(Status.RESPAWNABLE)){
-            this.behaviours.put(3, new AttackBehaviour(otherActor));
         }
 
         return actions;

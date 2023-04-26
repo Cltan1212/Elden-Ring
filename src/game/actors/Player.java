@@ -68,10 +68,6 @@ public class Player extends Actor implements Resettable {
 			actions.add(new ConsumeAction(flaskOfCrimsonTears));
 		}
 
-//		if (map.locationOf(this).getGround().hasCapability(Status.RESTING)){
-//			actions.add(new RestAction(map.locationOf(this).getGround().toString()));
-//		}
-		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
 

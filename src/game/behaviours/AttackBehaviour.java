@@ -2,7 +2,13 @@ package game.behaviours;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
+import game.utils.Status;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AttackBehaviour implements Behaviour {
 
@@ -14,19 +20,28 @@ public class AttackBehaviour implements Behaviour {
     @Override
     public Action getAction(Actor actor, GameMap map) {
 
-        if (!map.contains(actor) || !map.contains(targetAttack)){
-            return null;
+        Location here = map.locationOf(actor); // get location of current actor
+        List<String> attackList = new ArrayList<>();
+
+        // iterate through all actor's exists (8 locations)
+        for (Exit exit : here.getExits()) {
+            // check if an exit contains an actor that is hostile to enemy
+            if (exit.getDestination().containsAnActor() && exit.getDestination().getActor().hasCapability(Status.HOSTILE_TO_ENEMY)) {
+                String direction = exit.getName();
+                attackList.add(0, direction);
+            } else if (exit.getDestination().containsAnActor()) {
+                attackList.add(exit.getName());
+            }
         }
 
-        // LOOK for enemies around actor
-        // if more then one enemy -> AreaAttackAction (constructor of AreaAttackAction take in list of enemies to attack)
-        // which loop through the list and attack each of them
-        // if only one enemy -> AttackAction
-
-        // can have a specialAttack in giantCrab and heavyskeletal, so if != null, can perform AreaAttackAction
-
-
-
+        if (attackList.size() > 1 && actor.getWeaponInventory().size()!= 0) {  // more than one actor -> AreaAttackAction
+            return actor.getWeaponInventory().get(0).getSkill(actor);
+        } else if (attackList.size() == 1 && actor.getWeaponInventory().size() != 0) {
+            if (actor.getWeaponInventory().size() != 0){
+                return actor.getWeaponInventory().get(0).getSkill(actor, attackList.get(0));
+            }
+        }
         return null;
+
     }
 }

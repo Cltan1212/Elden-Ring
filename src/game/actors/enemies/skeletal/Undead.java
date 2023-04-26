@@ -3,12 +3,14 @@ package game.actors.enemies.skeletal;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.actorActions.DespawnedAction;
 import game.actors.enemies.Enemy;
 import game.actors.enemies.EnemyType;
 import game.actors.enemies.PileOfBones;
+import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
@@ -39,29 +41,20 @@ public abstract class Undead extends Enemy {
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        if (!this.isConscious()){
+        if (!this.isConscious()) {
             map.removeActor(this);
             map.locationOf(this).addActor(new PileOfBones(this));
+            return new DoNothingAction();
         }
-        int randomNum = RandomNumberGenerator.getRandomInt(100);
-        // if not following and randomNum generated is less or equal to DESPAWN_CHANCE
+        return super.playTurn(actions, lastAction, map, display);
+    }
 
-        if (!behaviours.containsKey(1)){
-            if (randomNum <= DESPAWN_CHANCE){
-                return new DespawnedAction();
-            }
+    @Override
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+        if (otherActor.hasCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY)){
+            this.behaviours.put(3, new AttackBehaviour(otherActor));
         }
-        else if (randomNum <= DESPAWN_CHANCE && behaviours.get(1).getAction(this, map) != null){
-            return new DespawnedAction();
-        }
-
-        // add valid behaviour to the list of behaviours
-        for (Behaviour behaviour : behaviours.values()) {
-            Action action = behaviour.getAction(this, map);
-            if (action != null)
-                return action;
-        }
-        return new DoNothingAction();
+        return super.allowableActions(otherActor, direction, map);
     }
 
 }
