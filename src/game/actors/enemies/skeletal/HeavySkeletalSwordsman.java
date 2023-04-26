@@ -15,13 +15,14 @@ import game.weapons.Grossmesser;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HeavySkeletalSwordsman extends Skeletal {
+public class HeavySkeletalSwordsman extends Undead {
 
 
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
+//    private Map<Integer, Behaviour> behaviours = new HashMap<>();
     public HeavySkeletalSwordsman() {
         super("Heavy Skeletal Swordsman", 'q', 153);
         this.addWeaponToInventory(new Grossmesser());
+
 //        this.addCapability(Status.SPINNING_ATTACK);
 //        this.setSpecialAttack("Spinning Attack");  // might not needed
 
@@ -58,8 +59,5 @@ public class HeavySkeletalSwordsman extends Skeletal {
 //    }
 //
 //
-    @Override
-    public void reset() {
 
-    }
 }

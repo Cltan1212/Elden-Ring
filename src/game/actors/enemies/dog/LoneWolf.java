@@ -26,7 +26,7 @@ import java.util.Map;
  * Modified by:
  *
  */
-public class LoneWolf extends Enemy {
+public class LoneWolf extends Dog {
 
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
@@ -39,9 +39,4 @@ public class LoneWolf extends Enemy {
     }
 
 
-
-    @Override
-    public void reset() {
-
-    }
 }

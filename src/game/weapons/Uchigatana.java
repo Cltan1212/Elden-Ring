@@ -20,8 +20,7 @@ public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
      */
     public Uchigatana() {
         super("Uchigatana", ')', 115, "slashes", 80);
-        MerchantKale.getInstance().registerPurchasableItem(this);
-        MerchantKale.getInstance().registerSellableItem(this);
+
         // perform "Unsheathe"
         this.addCapability(Status.UNSHEATHE);
         this.unsheatheale = true;

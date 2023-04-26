@@ -2,7 +2,7 @@ package game.actors.enemies.water;
 
 import game.weapons.GiantCrayFishPincer;
 
-public class GiantCrayFish extends WaterType {
+public class GiantCrayFish extends Crustracean {
 
     /**
      * Constructor.
@@ -12,8 +12,5 @@ public class GiantCrayFish extends WaterType {
         this.addWeaponToInventory(new GiantCrayFishPincer());
     }
 
-    @Override
-    public void reset() {
 
-    }
 }

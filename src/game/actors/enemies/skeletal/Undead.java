@@ -39,22 +39,23 @@ public abstract class Undead extends Enemy {
         return RandomNumberGenerator.getRandomInt(35,892);
     }
 
-    @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        if (!this.isConscious()) {
-            map.removeActor(this);
-            map.locationOf(this).addActor(new PileOfBones(this));
-            return new DoNothingAction();
-        }
-        return super.playTurn(actions, lastAction, map, display);
-    }
-
-    @Override
-    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        if (otherActor.hasCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY)){
-            this.behaviours.put(3, new AttackBehaviour(otherActor));
-        }
-        return super.allowableActions(otherActor, direction, map);
-    }
+//    @Override
+//    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+//        if (!this.isConscious()) {
+//            map.removeActor(this);
+//            map.locationOf(this).addActor(new PileOfBones(this));
+//            return new DoNothingAction();
+//        }
+//        return super.playTurn(actions, lastAction, map, display);
+//    }
+//
+//    @Override
+//    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+//        if (otherActor.hasCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY)){
+//            this.behaviours.put(3, new AttackBehaviour(otherActor));
+//        }
+//        return super.allowableActions(otherActor, direction, map);
+//    }
 
 }
+
