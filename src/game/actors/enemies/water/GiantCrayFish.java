@@ -5,7 +5,7 @@ import game.weapons.GiantCrabSlam;
 
 public class GiantCrayFish extends WaterType {
     public GiantCrayFish() {
-        super("Giant Cray Fish", 'R',4803);
+        super("Giant Cray Fish", 'R',4803, 1);
         this.addWeaponToInventory(new GiantCrabSlam());
     }
 

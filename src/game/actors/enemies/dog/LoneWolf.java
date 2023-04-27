@@ -15,7 +15,7 @@ import game.behaviours.WanderBehaviour;
 public class LoneWolf extends DogType {
 
     public LoneWolf() {
-        super("Lone Wolf", 'h', 102);
+        super("Lone Wolf", 'h', 102, 33);
         this.behaviours.put(999, new WanderBehaviour());
     }
 

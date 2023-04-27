@@ -6,7 +6,7 @@ import game.weapons.GiantDogHead;
 public class GiantDog extends DogType {
 
     public GiantDog() {
-        super("Giant Dog",'G',693);
+        super("Giant Dog",'G',693, 4);
         this.addWeaponToInventory(new GiantDogHead());
     }
 
