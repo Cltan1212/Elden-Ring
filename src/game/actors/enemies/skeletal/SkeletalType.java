@@ -22,8 +22,8 @@ public abstract class SkeletalType extends Enemy {
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public SkeletalType(String name, char displayChar, int hitPoints) {
-        super(name, displayChar, hitPoints);
+    public SkeletalType(String name, char displayChar, int hitPoints, int spawnChance) {
+        super(name, displayChar, hitPoints, spawnChance);
         this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
         this.addCapability(Status.SPECIAL_DEATH);

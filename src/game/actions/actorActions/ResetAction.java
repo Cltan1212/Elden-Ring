@@ -29,7 +29,7 @@ public class ResetAction extends Action {
             result = "\n" + FancyMessage.YOU_DIED;
             Location moveLocation = new Location(map, ResetManager.getInstance().getLastVisited().locationX,  ResetManager.getInstance().getLastVisited().locationY);
             map.moveActor(actor, moveLocation);
-            lastLocation.addItem(new Runes(actor, lastLocation));
+            lastLocation.addItem(new Runes(actor));
         }
         return result;
     }

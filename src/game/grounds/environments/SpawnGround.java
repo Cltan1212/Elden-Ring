@@ -2,13 +2,24 @@ package game.grounds.environments;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actors.enemies.Enemy;
 import game.actors.enemies.enemyFactory.EnemyFactory;
 import edu.monash.fit2099.engine.actors.Actor;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
+
+/**
+ * The abstract class to allows Ground that are able to spawn enemies to extends from it
+ * Created by:
+ * @author MY_LAB7_Group 6
+ * @version 3
+ */
 public abstract class SpawnGround extends Ground {
-    private final int SPAWN_CHANCE;
+
+    /**
+     *
+     */
     public final EnemyFactory enemyFactory;
 
     /**
@@ -22,14 +33,14 @@ public abstract class SpawnGround extends Ground {
 
     public SpawnGround(char displayChar, int spawnChance, EnemyFactory enemyFactory) {
         super(displayChar);
-        this.SPAWN_CHANCE = spawnChance;
+//        this.SPAWN_CHANCE = spawnChance;
         this.enemyFactory = enemyFactory;
     }
 
     @Override
     public void tick(Location location){
         int randomChance = RandomNumberGenerator.getRandomInt(100);
-        if (!location.containsAnActor() && (randomChance <= this.SPAWN_CHANCE)){
+        if (!location.containsAnActor() && (randomChance <= this.spawn().spawnChance)){
             location.addActor(this.spawn());
         } else{
             location.setGround(this);
@@ -44,7 +55,7 @@ public abstract class SpawnGround extends Ground {
     }
 
 
-    public Actor spawn(){
+    public Enemy spawn(){
         return null;
     }
 

@@ -5,7 +5,7 @@ import game.weapons.Scimitar;
 
 public class SkeletalBandit extends SkeletalType {
     public SkeletalBandit() {
-        super("Skeletal Bandit",'b',184);
+        super("Skeletal Bandit",'b',184, 27);
         this.addWeaponToInventory(new Scimitar());
     }
 

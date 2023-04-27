@@ -26,6 +26,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
     protected Map<Integer, Behaviour> behaviours = new HashMap<>();
     protected final int DESPAWN_CHANCE = 10;
     public boolean following = false;
+    public int spawnChance;
 
     /**
      * Constructor.
@@ -34,11 +35,12 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public Enemy(String name, char displayChar, int hitPoints) {
+    public Enemy(String name, char displayChar, int hitPoints, int spawnChance) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.RESPAWNABLE);
         this.behaviours.put(999, new WanderBehaviour());
         this.registerInstance();
+        this.spawnChance = spawnChance;
     }
 
     /**
@@ -55,14 +57,14 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         int randomNum = RandomNumberGenerator.getRandomInt(100);
         // if not following and randomNum generated is less or equal to DESPAWN_CHANCE
 
-//        if (!behaviours.containsKey(1)){
-//            if (randomNum <= DESPAWN_CHANCE && !following){
-//                return new DespawnedAction();
-//            }
-//        }
-//        else if (randomNum <= DESPAWN_CHANCE && behaviours.get(1).getAction(this, map) != null && !following){
-//            return new DespawnedAction();
-//        }
+        if (!behaviours.containsKey(1)){
+            if (randomNum <= DESPAWN_CHANCE && !following){
+                return new DespawnedAction();
+            }
+        }
+        else if (randomNum <= DESPAWN_CHANCE && behaviours.get(1).getAction(this, map) != null && !following){
+            return new DespawnedAction();
+        }
 
         // add valid behaviour to the list of behaviours
         for (Behaviour behaviour : behaviours.values()) {
