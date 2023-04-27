@@ -11,9 +11,13 @@ public class SiteOfLostGrace extends Ground {
 
     // allow player to rest on it, when this happens, the entire game will be reset
     private String name;
-    public SiteOfLostGrace(String name) {
+    public int locationX;
+    public int locationY;
+    public SiteOfLostGrace(String name, int locationX, int locationY) {
         super('U');
         this.name = name;
+        this.locationX = locationX;
+        this.locationY = locationY;
     }
 
     @Override

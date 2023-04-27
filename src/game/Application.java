@@ -7,11 +7,13 @@ import java.util.List;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.MerchantKale;
 import game.actors.Player;
 import game.actors.enemies.enemyFactory.EastMapFactoryEnemy;
 import game.actors.enemies.enemyFactory.WestMapFactoryEnemy;
+import game.actors.enemies.skeletal.SkeletalBandit;
 import game.combat.Bandit;
 import game.combat.CombatArchetypes;
 import game.combat.Samurai;
@@ -102,59 +104,65 @@ public class Application {
 		world.addPlayer(player, gameMap.at(36, 10));
 
 		MerchantKale trader = new MerchantKale();
-		gameMap.at(40,12).addActor(trader);
+//		gameMap.at(40,12).addActor(trader);
+//
+		gameMap.at(30,10).addActor(new SkeletalBandit());
+//		gameMap.at(31,10).addActor(new SkeletalBandit());
+//		gameMap.at(32,10).addActor(new SkeletalBandit());
 
 		// graveyard
-		for (int x = 2; x < 6; x ++){
-			gameMap.at(x,0).setGround(new Graveyard(new WestMapFactoryEnemy()));
-			gameMap.at(x,2).setGround(new Graveyard(new WestMapFactoryEnemy()));
-		}
-
-		for (int x = 47; x < 51; x++){
-			gameMap.at(x,10).setGround(new Graveyard(new EastMapFactoryEnemy()));
-			gameMap.at(x,12).setGround(new Graveyard(new EastMapFactoryEnemy()));
-		}
-
-		// puddle of water
-		int value = 0;
-		for (int y = 9; y < 12; y++){
-			value++;
-			for (int x = 0; x < 10 + value; x ++){
-				gameMap.at(x,y).setGround(new PuddleOfWater(new WestMapFactoryEnemy()));
-			}
-		}
-
-		for (int y = 12; y < 15; y++){
-			value--;
-			for (int x = 0; x < 10 + value; x ++){
-				gameMap.at(x,y).setGround(new PuddleOfWater(new WestMapFactoryEnemy()));
-			}
-		}
-
-		for (int y = 0; y < 6; y++){
-			for (int x = 54 + y; x < 54 + 21; x++){
-				gameMap.at(x,y).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
-			}
-		}
-
-		// gust of wind
-		for (int y = 18; y < 21; y++){
-			for (int x = 53; x < 56; x ++){
-				gameMap.at(x,y).setGround(new GustOfWind(new EastMapFactoryEnemy()));
-			}
-		}
-
-		for (int y = 20; y < 23; y++){
-			for (int x = 20; x < 23; x++){
-				gameMap.at(x,y).setGround(new GustOfWind(new WestMapFactoryEnemy()));
-			}
-		}
-
-		// site of lost grace
-		gameMap.at(38,11).setGround(new SiteOfLostGrace("The First Step"));
-		player.hurt(100);
-		// add GameMap to ResetManager
-		ResetManager.getInstance().addMap(gameMap);
+//		for (int x = 2; x < 6; x ++){
+//			gameMap.at(x,0).setGround(new Graveyard(new WestMapFactoryEnemy()));
+//			gameMap.at(x,2).setGround(new Graveyard(new WestMapFactoryEnemy()));
+//		}
+//
+//		for (int x = 47; x < 51; x++){
+//			gameMap.at(x,10).setGround(new Graveyard(new EastMapFactoryEnemy()));
+//			gameMap.at(x,12).setGround(new Graveyard(new EastMapFactoryEnemy()));
+//		}
+//
+//		// puddle of water
+//		int value = 0;
+//		for (int y = 9; y < 12; y++){
+//			value++;
+//			for (int x = 0; x < 10 + value; x ++){
+//				gameMap.at(x,y).setGround(new PuddleOfWater(new WestMapFactoryEnemy()));
+//			}
+//		}
+//
+//		for (int y = 12; y < 15; y++){
+//			value--;
+//			for (int x = 0; x < 10 + value; x ++){
+//				gameMap.at(x,y).setGround(new PuddleOfWater(new WestMapFactoryEnemy()));
+//			}
+//		}
+//
+//		for (int y = 0; y < 6; y++){
+//			for (int x = 54 + y; x < 54 + 21; x++){
+//				gameMap.at(x,y).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
+//			}
+//		}
+//
+//		// gust of wind
+//		for (int y = 18; y < 21; y++){
+//			for (int x = 53; x < 56; x ++){
+//				gameMap.at(x,y).setGround(new GustOfWind(new EastMapFactoryEnemy()));
+//			}
+//		}
+//
+//		for (int y = 20; y < 23; y++){
+//			for (int x = 20; x < 23; x++){
+//				gameMap.at(x,y).setGround(new GustOfWind(new WestMapFactoryEnemy()));
+//			}
+//		}
+//
+//		// site of lost grace
+//		SiteOfLostGrace theFirstStep = new SiteOfLostGrace("The First Step",38,11);
+//		gameMap.at(38,11).setGround(theFirstStep);
+//
+//		// add GameMap to ResetManager
+//		ResetManager.getInstance().addMap(gameMap);
+//		ResetManager.getInstance().addSiteOfLostGrace(theFirstStep);
 		world.run();
 	}
 }
