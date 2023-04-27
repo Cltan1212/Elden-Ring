@@ -7,11 +7,13 @@ import java.util.List;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.MerchantKale;
 import game.actors.Player;
 import game.actors.enemies.enemyFactory.EastMapFactoryEnemy;
 import game.actors.enemies.enemyFactory.WestMapFactoryEnemy;
+import game.actors.enemies.skeletal.SkeletalBandit;
 import game.combat.Bandit;
 import game.combat.CombatArchetypes;
 import game.combat.Samurai;
@@ -151,9 +153,12 @@ public class Application {
 		}
 
 		// site of lost grace
-		gameMap.at(38,11).setGround(new SiteOfLostGrace("The First Step"));
+		SiteOfLostGrace theFirstStep = new SiteOfLostGrace("The First Step",38,11);
+		gameMap.at(38,11).setGround(theFirstStep);
+
 		// add GameMap to ResetManager
 		ResetManager.getInstance().addMap(gameMap);
+		ResetManager.getInstance().addSiteOfLostGrace(theFirstStep);
 		world.run();
 	}
 }

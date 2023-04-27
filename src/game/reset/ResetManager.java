@@ -1,6 +1,7 @@
 package game.reset;
 
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.grounds.SiteOfLostGrace;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,8 @@ public class ResetManager {
     private List<GameMap> allMap;
     private static ResetManager instance;
 
+    private SiteOfLostGrace lastSiteOfLostGrace;
+
 
     /**
      * HINT 1: where have we seen a private constructor before?
@@ -29,9 +32,18 @@ public class ResetManager {
             instance = new ResetManager();
         return instance;
     }
+
     private ResetManager() {
         this.resettables = new ArrayList<>();
         this.allMap = new ArrayList<>();
+    }
+
+    public void addSiteOfLostGrace(SiteOfLostGrace siteOfLostGrace){
+        lastSiteOfLostGrace = siteOfLostGrace;
+    }
+
+    public SiteOfLostGrace getLastVisited(){
+        return lastSiteOfLostGrace;
     }
 
     public void addMap(GameMap map){

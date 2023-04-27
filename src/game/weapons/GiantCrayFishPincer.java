@@ -15,10 +15,7 @@ public class GiantCrayFishPincer extends WeaponItem {
 
     @Override
     public Action getSkill(Actor target, String direction){
-        if (RandomNumberGenerator.getRandomInt(100) < 50)
-            return new AttackAction(target, direction, this);
-        else
-            return new AreaAttackAction(this);
+        return new AreaAttackAction(this);
     }
 
     @Override

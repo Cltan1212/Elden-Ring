@@ -16,7 +16,6 @@ import java.util.Map;
 
 public class AttackBehaviour implements Behaviour {
 
-
     private Actor target;
     public AttackBehaviour(Actor target){
         this.target = target;
@@ -58,5 +57,4 @@ public class AttackBehaviour implements Behaviour {
         }
         return null;
     }
-
 }

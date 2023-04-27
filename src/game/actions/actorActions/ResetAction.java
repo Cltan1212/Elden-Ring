@@ -13,10 +13,7 @@ import game.utils.Status;
 public class ResetAction extends Action {
     private Location lastLocation;
 
-    private Location siteOfLostGrace;
-
-    public ResetAction(Location siteOfLostGrace, Location lastLocation){
-        this.siteOfLostGrace = siteOfLostGrace;
+    public ResetAction(Location lastLocation){
         this.lastLocation = lastLocation;
     }
 
@@ -29,9 +26,10 @@ public class ResetAction extends Action {
         ResetManager.getInstance().run();
 
         if(!actor.hasCapability(Status.RESTING)){
-            result = FancyMessage.YOU_DIED;
-            map.moveActor(actor, siteOfLostGrace);
-            lastLocation.addItem(new Runes(actor));
+            result = "\n" + FancyMessage.YOU_DIED;
+            Location moveLocation = new Location(map, ResetManager.getInstance().getLastVisited().locationX,  ResetManager.getInstance().getLastVisited().locationY);
+            map.moveActor(actor, moveLocation);
+            lastLocation.addItem(new Runes(actor, lastLocation));
         }
         return result;
     }
