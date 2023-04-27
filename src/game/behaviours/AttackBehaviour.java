@@ -16,34 +16,45 @@ import java.util.Map;
 
 public class AttackBehaviour implements Behaviour {
 
-    public AttackBehaviour(){
+    private Actor target;
+    public AttackBehaviour(Actor target){
+        this.target = target;
     }
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
 
         Location here = map.locationOf(actor); // get location of current actor
-        List<Exit> targetExit = new ArrayList<>();
+        String direction = "";
+        int numEnemies = 0;
 
         // iterate through all actor's exists (8 locations)
         for (Exit exit : here.getExits()) {
+
+            // since enemy can't attack their own type, we attack the target
+            if (exit.getDestination().getActor() == target) {
+                direction = exit.toString();
+            }
+
             // check if an exit contains an actor that is hostile to enemy
             if (exit.getDestination().containsAnActor() && exit.getDestination().getActor().hasCapability(Status.HOSTILE_TO_ENEMY)) {
-                targetExit.add(0, exit);
-            } else if (exit.getDestination().containsAnActor()) {
-                targetExit.add(exit);
+                numEnemies++;
+                target = exit.getDestination().getActor();
+                direction = exit.toString();
+            }
+            else if (exit.getDestination().containsAnActor()){
+                numEnemies++;
             }
         }
 
-        if (!targetExit.isEmpty()) {
-            if (!actor.getWeaponInventory().isEmpty()) { // use their special skill
+        if (numEnemies != 0) {
+            if (!actor.getWeaponInventory().isEmpty()) { // enemy have special skill
                 if (RandomNumberGenerator.getRandomInt(100) < 50) { // enemy have 50% chance to perform special skill
                     return actor.getWeaponInventory().get(0).getSkill(actor);
                 }
-            }
-            return new AttackAction(targetExit.get(0).getDestination().getActor(), targetExit.toString());
+            }  // use their intrinsic weapon
+            return new AttackAction(target, direction);
         }
         return null;
-
     }
 }

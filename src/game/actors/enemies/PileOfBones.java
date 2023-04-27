@@ -17,7 +17,7 @@ public class PileOfBones extends Enemy implements Resettable {
     private int remaining;
 
     public PileOfBones(Actor skeletalEnemy) {
-        super("Pile Of Bones",'X',100);
+        super("Pile Of Bones",'X',1);
         this.addWeaponToInventory(new Grossmesser());
         this.skeletalEnemy = skeletalEnemy;
         setRemainingDeath(3);

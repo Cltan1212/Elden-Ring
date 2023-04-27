@@ -7,15 +7,11 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.actorActions.DespawnedAction;
 import game.actors.enemies.Enemy;
-import game.actors.enemies.EnemyType;
 import game.actors.enemies.PileOfBones;
 import game.behaviours.AttackBehaviour;
-import game.behaviours.Behaviour;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
-import game.weapons.Grossmesser;
 
 public abstract class Undead extends Enemy {
 
@@ -28,7 +24,6 @@ public abstract class Undead extends Enemy {
      */
     public Undead(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
-        this.addCapability(EnemyType.SKELETAL);
         this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
         this.addCapability(Status.SPECIAL_DEATH);
@@ -53,7 +48,7 @@ public abstract class Undead extends Enemy {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         if (otherActor.hasCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY)){
-            this.behaviours.put(3, new AttackBehaviour());
+            this.behaviours.put(3, new AttackBehaviour(otherActor));
         }
         return super.allowableActions(otherActor, direction, map);
     }

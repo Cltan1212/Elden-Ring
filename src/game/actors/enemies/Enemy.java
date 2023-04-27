@@ -55,14 +55,14 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         int randomNum = RandomNumberGenerator.getRandomInt(100);
         // if not following and randomNum generated is less or equal to DESPAWN_CHANCE
 
-        if (!behaviours.containsKey(1)){
-            if (randomNum <= DESPAWN_CHANCE && !following){
-                return new DespawnedAction();
-            }
-        }
-        else if (randomNum <= DESPAWN_CHANCE && behaviours.get(1).getAction(this, map) != null && !following){
-            return new DespawnedAction();
-        }
+//        if (!behaviours.containsKey(1)){
+//            if (randomNum <= DESPAWN_CHANCE && !following){
+//                return new DespawnedAction();
+//            }
+//        }
+//        else if (randomNum <= DESPAWN_CHANCE && behaviours.get(1).getAction(this, map) != null && !following){
+//            return new DespawnedAction();
+//        }
 
         // add valid behaviour to the list of behaviours
         for (Behaviour behaviour : behaviours.values()) {
@@ -89,7 +89,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new AttackAction(this, direction));
             following = true;
-            this.behaviours.put(0, new AttackBehaviour());
+            this.behaviours.put(0, new AttackBehaviour(otherActor));
             this.behaviours.put(1, new FollowBehaviour(otherActor));
 
             for (WeaponItem weaponItem: otherActor.getWeaponInventory()){
