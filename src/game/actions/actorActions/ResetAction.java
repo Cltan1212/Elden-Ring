@@ -23,7 +23,6 @@ public class ResetAction extends Action {
     public String execute(Actor actor, GameMap map) {
         Location lastSite = map.at(ResetManager.getInstance().getLastVisited().locationX, ResetManager.getInstance().getLastVisited().locationY);
         String result = "";
-        ResetManager.getInstance().run();
 
         if(!actor.hasCapability(Status.RESTING)){
             result = "\n" + FancyMessage.YOU_DIED;
@@ -32,6 +31,7 @@ public class ResetAction extends Action {
             map.moveActor(actor, lastSite);
             lastLocation.addItem(new Runes(actor, lastLocation));
         }
+        ResetManager.getInstance().run();
         return result;
     }
 

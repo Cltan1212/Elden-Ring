@@ -9,9 +9,4 @@ public class HeavySkeletalSwordsman extends SkeletalType {
         this.addWeaponToInventory(new Grossmesser());
     }
 
-    @Override
-    public int generateRunes() {
-        return RandomNumberGenerator.getRandomInt(35,892);
-    }
-
 }

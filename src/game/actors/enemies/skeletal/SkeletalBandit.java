@@ -8,9 +8,4 @@ public class SkeletalBandit extends SkeletalType {
         super("Skeletal Bandit",'b',184, 27);
         this.addWeaponToInventory(new Scimitar());
     }
-
-    @Override
-    public int generateRunes() {
-        return RandomNumberGenerator.getRandomInt(35,892);
-    }
 }

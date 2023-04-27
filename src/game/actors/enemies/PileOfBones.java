@@ -9,9 +9,10 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.enemies.Enemy;
 import game.reset.Resettable;
+import game.utils.RandomNumberGenerator;
 import game.weapons.Grossmesser;
 
-public class PileOfBones extends Enemy implements Resettable {
+public class PileOfBones extends Enemy{
 
     private final Actor skeletalEnemy;
     private int remaining;
@@ -20,14 +21,9 @@ public class PileOfBones extends Enemy implements Resettable {
         super("Pile Of Bones",'X',1, 0);
         this.addWeaponToInventory(new Grossmesser());
         this.skeletalEnemy = skeletalEnemy;
-        setRemainingDeath(3);
+        this.remaining = 3;
         skeletalEnemy.resetMaxHp(153);
     }
-
-    public void setRemainingDeath(int remainingDeath) {
-        this.remaining = remainingDeath;
-    }
-
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
@@ -38,6 +34,11 @@ public class PileOfBones extends Enemy implements Resettable {
             previousLocation.addActor(skeletalEnemy);
         }
         return new DoNothingAction();
+    }
+
+    @Override
+    public int generateRunes() {
+        return RandomNumberGenerator.getRandomInt(35,892);
     }
 
 }

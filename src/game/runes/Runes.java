@@ -20,10 +20,10 @@ public class Runes extends Item implements RuneSource, Resettable{
     private final Location location;
     public Runes(Actor runesHolder, Location location){
         super("Runes", '$',false);
+        RunesManager.getInstance().registerRuneSource(this);
         this.runesAmount = RunesManager.getInstance().getRunes(runesHolder);
         this.runesHolder = runesHolder;
         this.location = location;
-        RunesManager.getInstance().registerRuneSource(this);
     }
 
     public Actor getRunesHolder() {
