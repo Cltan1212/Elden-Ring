@@ -1,11 +1,11 @@
 package game.actors.enemies.enemyFactory;
 
-import game.actors.enemies.dog.Dog;
-import game.actors.enemies.skeletal.Undead;
-import game.actors.enemies.water.Crustracean;
+import game.actors.enemies.dog.DogType;
+import game.actors.enemies.skeletal.SkeletalType;
+import game.actors.enemies.water.WaterType;
 
 public interface EnemyFactory {
-    public Dog createDog();
-    public Undead createUndead();
-    public Crustracean createCrustracean();
+    public DogType createDog();
+    public SkeletalType createUndead();
+    public WaterType createCrustracean();
 }

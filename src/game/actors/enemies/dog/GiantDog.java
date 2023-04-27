@@ -3,7 +3,7 @@ package game.actors.enemies.dog;
 import game.utils.RandomNumberGenerator;
 import game.weapons.GiantDogHead;
 
-public class GiantDog extends Dog {
+public class GiantDog extends DogType {
 
     public GiantDog() {
         super("Giant Dog",'G',693);
