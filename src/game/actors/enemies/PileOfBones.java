@@ -33,14 +33,11 @@ public class PileOfBones extends Enemy implements Resettable {
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         remaining -= 1;
         if (remaining == 0){
-            map.locationOf(this).addActor(skeletalEnemy);
+            Location previousLocation = map.locationOf(this);
             map.removeActor(this);
+            previousLocation.addActor(skeletalEnemy);
         }
         return new DoNothingAction();
     }
 
-    @Override
-    public void reset(GameMap map) {
-
-    }
 }

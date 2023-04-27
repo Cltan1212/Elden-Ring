@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import game.actions.actorActions.DespawnedAction;
 import game.actors.enemies.Enemy;
 import game.actors.enemies.EnemyType;
@@ -41,8 +42,9 @@ public abstract class Undead extends Enemy {
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         if (!this.isConscious()) {
+            Location previousLocation = map.locationOf(this);
             map.removeActor(this);
-            map.locationOf(this).addActor(new PileOfBones(this));
+            previousLocation.addActor(new PileOfBones(this));
             return new DoNothingAction();
         }
         return super.playTurn(actions, lastAction, map, display);

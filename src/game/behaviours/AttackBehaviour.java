@@ -37,13 +37,11 @@ public class AttackBehaviour implements Behaviour {
 
         if (!targetExit.isEmpty()) {
             if (!actor.getWeaponInventory().isEmpty()) { // use their special skill
-                if (RandomNumberGenerator.getRandomInt(100) < 50)  // enemy have 50% chance to perform special skill
+                if (RandomNumberGenerator.getRandomInt(100) < 50) { // enemy have 50% chance to perform special skill
                     return actor.getWeaponInventory().get(0).getSkill(actor);
-                else
-                    return new AttackAction(targetExit.get(0).getDestination().getActor(), targetExit.toString());
-            } else { // use their intrinsic weapon
-                return new AttackAction(targetExit.get(0).getDestination().getActor(), targetExit.toString());
+                }
             }
+            return new AttackAction(targetExit.get(0).getDestination().getActor(), targetExit.toString());
         }
         return null;
 
