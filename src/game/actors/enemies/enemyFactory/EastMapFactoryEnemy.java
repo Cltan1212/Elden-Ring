@@ -1,25 +1,25 @@
 package game.actors.enemies.enemyFactory;
 
-import game.actors.enemies.dog.Dog;
+import game.actors.enemies.dog.DogType;
 import game.actors.enemies.dog.GiantDog;
 import game.actors.enemies.skeletal.SkeletalBandit;
-import game.actors.enemies.skeletal.Undead;
-import game.actors.enemies.water.Crustracean;
+import game.actors.enemies.skeletal.SkeletalType;
+import game.actors.enemies.water.WaterType;
 import game.actors.enemies.water.GiantCrayFish;
 
 public class EastMapFactoryEnemy implements EnemyFactory{
     @Override
-    public Dog createDog() {
+    public DogType createDog() {
         return new GiantDog();
     }
 
     @Override
-    public Undead createUndead() {
+    public SkeletalType createUndead() {
         return new SkeletalBandit();
     }
 
     @Override
-    public Crustracean createCrustracean() {
+    public WaterType createCrustracean() {
         return new GiantCrayFish();
     }
 

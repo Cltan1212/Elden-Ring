@@ -1,20 +1,8 @@
 package game.actors.enemies.dog;
 
-import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.behaviours.Behaviour;
 import game.utils.RandomNumberGenerator;
-import game.utils.Status;
 import game.behaviours.WanderBehaviour;
-import game.actions.actorActions.AttackAction;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * BEHOLD, DOG!
@@ -24,10 +12,10 @@ import java.util.Map;
  * Modified by:
  *
  */
-public class LoneWolf extends Dog{
+public class LoneWolf extends DogType {
 
     public LoneWolf() {
-        super("Lone Wolf", 'h', 102);
+        super("Lone Wolf", 'h', 102, 33);
         this.behaviours.put(999, new WanderBehaviour());
     }
 

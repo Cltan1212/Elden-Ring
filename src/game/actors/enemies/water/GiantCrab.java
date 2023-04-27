@@ -4,9 +4,9 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.utils.RandomNumberGenerator;
 import game.weapons.GiantCrabSlam;
 
-public class GiantCrab extends Crustracean{
+public class GiantCrab extends WaterType {
     public GiantCrab() {
-        super("Giant Crab",'C',407);
+        super("Giant Crab",'C',407, 2);
         this.addWeaponToInventory(new GiantCrabSlam());
     }
 
