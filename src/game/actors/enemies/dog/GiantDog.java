@@ -1,11 +1,13 @@
 package game.actors.enemies.dog;
 
 import game.utils.RandomNumberGenerator;
+import game.weapons.GiantDogHead;
 
 public class GiantDog extends Dog {
 
     public GiantDog() {
         super("Giant Dog",'G',693);
+        this.addWeaponToInventory(new GiantDogHead());
     }
 
     @Override

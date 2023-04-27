@@ -9,6 +9,7 @@ import game.weapons.Grossmesser;
 public class HeavySkeletalSwordsman extends Undead{
     public HeavySkeletalSwordsman() {
         super("Heavy Skeletal Swordsman",'q',153);
+        this.addWeaponToInventory(new Grossmesser());
     }
 
     @Override

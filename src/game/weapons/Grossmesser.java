@@ -12,7 +12,12 @@ import game.utils.Status;
 
 public class Grossmesser extends WeaponItem implements Sellable {
     public Grossmesser() {
-        super("Grossmesser", '?',115, "", 85);
+        super("Grossmesser", '?',115, "perform spinning attack", 85);
+    }
+
+    @Override
+    public Action getSkill(Actor holder) {
+        return new AreaAttackAction(this);
     }
 
     @Override

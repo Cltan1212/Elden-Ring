@@ -15,28 +15,11 @@ import java.util.Random;
 public class AreaAttackAction extends Action {
 
     /**
-     * The list of Actors that will be attacked
-     */
-//    private List<Actor> target;
-    /**
-     * The direction of incoming attack.
-     */
-    private String direction;
-
-    /**
-     * Random number generator
-     */
-//    private Random rand = new Random();
-
-    private Actor target;
-
-    /**
      * Weapon used for the attack
      */
     private Weapon weapon;
 
-    public AreaAttackAction(Actor target, Weapon weapon) {
-        this.target = target;
+    public AreaAttackAction(Weapon weapon) {
         this.weapon = weapon;
     }
 
@@ -44,23 +27,14 @@ public class AreaAttackAction extends Action {
     public String execute(Actor actor, GameMap map) {
         String result = actor + " attacks their surrounding!";
 
-        List<Actor> targets = new ArrayList<Actor>();
-
-        // need to implement -> different actor have different probability of getting attack
-        if(!map.contains(actor))
-            return null;
-
         Location actorLocation = map.locationOf(actor);
 
         for (Exit exit : actorLocation.getExits()) {
             Location destination = exit.getDestination();
             if (destination.containsAnActor()){
-                String returnString = new AttackAction(destination.getActor(), destination.toString(), this.weapon).execute(destination.getActor(), map);
-                result += "\n" + returnString;
+                result += "\n" + new AttackAction(destination.getActor(), destination.toString(), this.weapon).execute(actor, map) + "\n";
             }
-
         }
-
         return result;
     }
 

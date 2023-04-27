@@ -31,7 +31,6 @@ public abstract class Undead extends Enemy {
         this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
         this.addCapability(Status.SPECIAL_DEATH);
-        this.addWeaponToInventory(new Grossmesser());
     }
 
     @Override
@@ -52,7 +51,7 @@ public abstract class Undead extends Enemy {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         if (otherActor.hasCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY)){
-            this.behaviours.put(3, new AttackBehaviour(otherActor));
+            this.behaviours.put(3, new AttackBehaviour());
         }
         return super.allowableActions(otherActor, direction, map);
     }
