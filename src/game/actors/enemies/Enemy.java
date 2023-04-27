@@ -52,16 +52,15 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-
-
         int randomNum = RandomNumberGenerator.getRandomInt(100);
         // if not following and randomNum generated is less or equal to DESPAWN_CHANCE
 
-        if (!behaviours.containsKey(2)) {
-            if (randomNum <= DESPAWN_CHANCE && !following) {
+        if (!behaviours.containsKey(1)){
+            if (randomNum <= DESPAWN_CHANCE && !following){
                 return new DespawnedAction();
             }
-        } else if (randomNum <= DESPAWN_CHANCE && behaviours.get(2).getAction(this, map) != null && !following) {
+        }
+        else if (randomNum <= DESPAWN_CHANCE && behaviours.get(1).getAction(this, map) != null && !following){
             return new DespawnedAction();
         }
 
@@ -72,10 +71,10 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
                 return action;
         }
         return new DoNothingAction();
+
     }
 
     /**
-     * Returns a new collection of the Actions that the otherActor can do to the current Actor.
      * The lone wolf can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
      *
      * @param otherActor the Actor that might be performing attack
@@ -87,13 +86,13 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
         // enemy attack player and other enemies
-        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new AttackAction(this, direction));
             following = true;
             this.behaviours.put(0, new AttackBehaviour());
             this.behaviours.put(1, new FollowBehaviour(otherActor));
 
-            for (WeaponItem weaponItem : otherActor.getWeaponInventory()) {
+            for (WeaponItem weaponItem: otherActor.getWeaponInventory()){
 
                 // attack action for normal weapon
                 actions.add(new AttackAction(this, direction, weaponItem));
@@ -102,31 +101,10 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
                 // special skill for target attack
                 actions.add(weaponItem.getSkill(this, direction));
             }
-        } else if (otherActor.hasCapability(Status.RESPAWNABLE)){
-            this.behaviours.put(3, new AttackBehaviour(otherActor));
         }
+
         return actions;
     }
-
-
-
-//        // enemy attack player and other enemies
-//        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-//            actions.add(new AttackAction(this, direction));
-//            following = true;
-////            this.behaviours.put(0, new AttackBehaviour(otherActor));
-//            this.behaviours.put(1, new FollowBehaviour(otherActor));
-//
-//            for (WeaponItem weaponItem: otherActor.getWeaponInventory()){
-//
-//                // skill for area attack
-//                actions.add(weaponItem.getSkill(otherActor));
-//                // skill for target attack
-//                actions.add(weaponItem.getSkill(otherActor, direction));
-//            }
-//        }
-
-
 
     public int generateRunes() {
         return 0;
@@ -137,3 +115,4 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         map.removeActor(this);
     }
 }
+

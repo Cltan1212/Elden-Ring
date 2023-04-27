@@ -9,6 +9,7 @@ import game.runes.Runes;
 import game.utils.FancyMessage;
 import game.utils.Status;
 
+
 public class ResetAction extends Action {
     private Location lastLocation;
 

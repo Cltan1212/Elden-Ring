@@ -73,3 +73,4 @@ public class DeathAction extends Action {
         return result;
     }
 }
+
