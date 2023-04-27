@@ -152,7 +152,6 @@ public class Application {
 
 		// site of lost grace
 		gameMap.at(38,11).setGround(new SiteOfLostGrace("The First Step"));
-		player.hurt(100);
 		// add GameMap to ResetManager
 		ResetManager.getInstance().addMap(gameMap);
 		world.run();

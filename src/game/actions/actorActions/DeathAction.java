@@ -60,7 +60,7 @@ public class DeathAction extends Action {
         else if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
             // reset the game
-            result += new ResetAction(map.locationOf(target)).execute(target, map);
+            result += new ResetAction().execute(target, map);
         }
         result += System.lineSeparator() + menuDescription(target);
         return result;

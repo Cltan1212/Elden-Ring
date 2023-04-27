@@ -17,12 +17,12 @@ public class Runes extends Item implements RuneSource, Resettable{
 
     private final int runesAmount;
     private final Actor runesHolder;
-    private final Location location;
-    public Runes(Actor runesHolder, Location location){
+//    private final Location location;
+    public Runes(Actor runesHolder){
         super("Runes", '$',false);
         this.runesAmount = RunesManager.getInstance().getRunes(runesHolder);
         this.runesHolder = runesHolder;
-        this.location = location;
+//        this.location = location;
         RunesManager.getInstance().registerRuneSource(this);
     }
 
@@ -46,7 +46,7 @@ public class Runes extends Item implements RuneSource, Resettable{
 
     @Override
     public void reset(GameMap map) {
-        RunesManager.getInstance().removeRuneSource(this);
-        location.removeItem(this);
+//        RunesManager.getInstance().removeRuneSource(this);
+//        location.removeItem(this);
     }
 }
