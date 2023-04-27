@@ -10,24 +10,18 @@ import game.actions.runesActions.SellAction;
 import game.actors.MerchantKale;
 import game.items.Purchasable;
 import game.items.Sellable;
-import game.utils.Status;
 
 public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
-    private boolean unsheatheale;
-
     /**
      * Constructor.
      */
-    public Uchigatana() {
-        super("Uchigatana", ')', 115, "slashes", 80);
-
-        // perform "Unsheathe"
-        this.addCapability(Status.UNSHEATHE);
+    public Uchigatana (){
+        super("Uchigatana", ')', 115,"unsheathe", 80);
     }
 
     @Override
-    public void tick(Location currentLocation, Actor actor) {
-        super.tick(currentLocation, actor);
+    public Action getSkill(Actor target, String direction) {
+        return new UnsheatheAction(this, target);
     }
 
     @Override
@@ -39,26 +33,4 @@ public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
     public SellAction createSellAction() {
         return new SellAction(this, 500);
     }
-
-
-    /**
-     * Get an active skill action from the weapon. This should be used for weapon skills that do not involve a target actor
-     * For instance, healing the holder of the weapon, switching current weapon's attack, e.g. from normal attack to fire attack
-     * @param holder weapon holder
-     * @return a special Action that can be performed by this weapon (heal the player, etc.)
-     */
-    @Override
-    public Action getSkill(Actor holder, String direction){
-
-//        if (!holder.hasCapability(Status.HOSTILE_TO_ENEMY)){
-//
-//        }
-        if (this.hasCapability(Status.UNSHEATHE)){
-            return new UnsheatheAction(this, holder);
-        }else{
-            return null;
-        }
-
-    }
-
 }

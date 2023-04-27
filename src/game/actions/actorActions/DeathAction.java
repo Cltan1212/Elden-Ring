@@ -52,6 +52,7 @@ public class DeathAction extends Action {
 
                 // transfer runes to target
                 result += "\n" +target + " drops " + RunesManager.getInstance().transferRunes(target, attacker) + " runes.";
+                map.removeActor(target);
             }
         }
 
@@ -59,11 +60,8 @@ public class DeathAction extends Action {
         else if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
             // reset the game
-            result += new ResetAction();
+            result += new ResetAction(map.locationOf(target)).execute(target, map);
         }
-
-        // remove actor
-        map.removeActor(target);
         result += System.lineSeparator() + menuDescription(target);
         return result;
     }

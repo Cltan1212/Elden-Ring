@@ -12,10 +12,7 @@ import game.actions.runesActions.SellAction;
 import game.items.Purchasable;
 import game.items.Sellable;
 import game.utils.Status;
-import game.weapons.Club;
-import game.weapons.GreatKnife;
-import game.weapons.Grossmesser;
-import game.weapons.Uchigatana;
+import game.weapons.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +29,7 @@ public class MerchantKale extends Actor {
         sellableItemList.add(new GreatKnife());
         sellableItemList.add(new Uchigatana());
         sellableItemList.add(new Grossmesser());
+        sellableItemList.add(new Scimitar());
     }
 
     @Override
@@ -45,6 +43,7 @@ public class MerchantKale extends Actor {
         purchasableItemList.add(new Club());
         purchasableItemList.add(new GreatKnife());
         purchasableItemList.add(new Uchigatana());
+        purchasableItemList.add(new Scimitar());
 
         // purchase weapon actions
         for (Purchasable purchasableItem : purchasableItemList){

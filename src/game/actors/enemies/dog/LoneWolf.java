@@ -7,12 +7,10 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.actions.actorActions.DespawnedAction;
-import game.actors.Player;
-import game.actors.enemies.Enemy;
-import game.behaviours.*;
+import game.behaviours.Behaviour;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
+import game.behaviours.WanderBehaviour;
 import game.actions.actorActions.AttackAction;
 
 import java.util.HashMap;
@@ -26,10 +24,11 @@ import java.util.Map;
  * Modified by:
  *
  */
-public class LoneWolf extends Dog {
+public class LoneWolf extends Dog{
 
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
+        this.behaviours.put(999, new WanderBehaviour());
     }
 
 
@@ -38,5 +37,8 @@ public class LoneWolf extends Dog {
         return new IntrinsicWeapon(97, "bites", 95);
     }
 
-
+    @Override
+    public int generateRunes() {
+        return RandomNumberGenerator.getRandomInt(55,1470);
+    }
 }

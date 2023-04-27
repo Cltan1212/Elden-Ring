@@ -13,14 +13,16 @@ import game.utils.Status;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Runes extends Item implements RuneSource{
+public class Runes extends Item implements RuneSource, Resettable{
 
     private final int runesAmount;
     private final Actor runesHolder;
-    public Runes(Actor runesHolder){
+    private final Location location;
+    public Runes(Actor runesHolder, Location location){
         super("Runes", '$',false);
         this.runesAmount = RunesManager.getInstance().getRunes(runesHolder);
         this.runesHolder = runesHolder;
+        this.location = location;
         RunesManager.getInstance().registerRuneSource(this);
     }
 
@@ -40,5 +42,11 @@ public class Runes extends Item implements RuneSource{
     @Override
     public int generateRunes() {
         return runesAmount;
+    }
+
+    @Override
+    public void reset(GameMap map) {
+        RunesManager.getInstance().removeRuneSource(this);
+        location.removeItem(this);
     }
 }
