@@ -30,7 +30,7 @@ public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
 
-	private SiteOfLostGrace lastSiteOfLostGrace;
+	private Location lastSiteOfLostGrace;
 	private FlaskOfCrimsonTears flaskOfCrimsonTears;
 	public CombatArchetypes role;
 
@@ -41,8 +41,9 @@ public class Player extends Actor implements Resettable {
 	 * @param displayChar Character to represent the player in the UI
 	 * @param hitPoints   Player's starting number of hitpoints
 	 */
-	public Player(String name, char displayChar, int hitPoints, CombatArchetypes role) {
+	public Player(String name, char displayChar, int hitPoints, CombatArchetypes role, Location lastSite) {
 		super(name, displayChar, hitPoints);
+		lastSiteOfLostGrace = lastSite;
 		this.role = role;
 		this.flaskOfCrimsonTears = new FlaskOfCrimsonTears();
 		RunesManager.getInstance().registerRunesHeld(this, 0);
@@ -78,5 +79,9 @@ public class Player extends Actor implements Resettable {
 			RunesManager.getInstance().registerRunesHeld(this, 0);
 		}
 		this.resetMaxHp(this.getMaxHp());
+	}
+
+	public Location getLastSiteOfLostGrace() {
+		return lastSiteOfLostGrace;
 	}
 }

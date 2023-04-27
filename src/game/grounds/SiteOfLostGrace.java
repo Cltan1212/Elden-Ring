@@ -30,7 +30,7 @@ public class SiteOfLostGrace extends Ground {
     public ActionList allowableActions(Actor actor, Location location, String direction){
         ActionList actions = new ActionList();
         if (actor.hasCapability(Status.RESTABLE)){
-            actions.add(new RestAction(this.toString()));     //WILL NEED TO DEPEND ON RESTACTION METHOD
+            actions.add(new RestAction(this));     //WILL NEED TO DEPEND ON RESTACTION METHOD
         }
         return actions;
 

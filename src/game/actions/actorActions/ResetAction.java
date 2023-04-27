@@ -21,13 +21,15 @@ public class ResetAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
+        Location lastSite = map.at(ResetManager.getInstance().getLastVisited().locationX, ResetManager.getInstance().getLastVisited().locationY);
         String result = "";
         ResetManager.getInstance().run();
 
         if(!actor.hasCapability(Status.RESTING)){
             result = "\n" + FancyMessage.YOU_DIED;
-            Location moveLocation = new Location(map, ResetManager.getInstance().getLastVisited().locationX,  ResetManager.getInstance().getLastVisited().locationY);
-            map.moveActor(actor, moveLocation);
+//            Location moveLocation = new Location(map, ResetManager.getInstance().getLastVisited().locationX,  ResetManager.getInstance().getLastVisited().locationY);
+//            map.at(ResetManager.getInstance().getLastVisited().locationX, ResetManager.getInstance().getLastVisited().locationY).addActor(actor);
+            map.moveActor(actor, lastSite);
             lastLocation.addItem(new Runes(actor, lastLocation));
         }
         return result;
