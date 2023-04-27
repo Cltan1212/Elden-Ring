@@ -58,13 +58,9 @@ public class AreaAttackAction extends Action {
             if (destination.containsAnActor()){
                 String returnString = new AttackAction(destination.getActor(), destination.toString(), this.weapon).execute(destination.getActor(), map);
                 result += "\n" + returnString;
-//                targets.add(destination.getActor());
             }
 
         }
-//        for (Actor targetActor: targets){
-//            new AttackAction(targetActor,"", this.weapon);
-//        }
 
         return result;
     }
