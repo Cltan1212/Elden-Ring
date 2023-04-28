@@ -4,8 +4,8 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.weapons.Weapon;
 import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.utils.RandomNumberGenerator;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
 public class QuickStepAction extends Action {
 
     private Actor target;
-    private Weapon weapon;
+    private WeaponItem weapon;
     private String direction;
 
     /**
@@ -24,7 +24,7 @@ public class QuickStepAction extends Action {
      * @param direction the direction in which the attack should be performed
      * @param weapon the weapon performing the QuickStepAction
      */
-    public QuickStepAction(Actor target, String direction, Weapon weapon){
+    public QuickStepAction(Actor target, String direction, WeaponItem weapon){
         this.target = target;
         this.direction = direction;
         this.weapon = weapon;
