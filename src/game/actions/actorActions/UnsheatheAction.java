@@ -3,6 +3,7 @@ package game.actions.actorActions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.Weapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.utils.RandomNumberGenerator;
 
@@ -10,9 +11,9 @@ public class UnsheatheAction extends Action {
 
     private Actor target;
 
-    private WeaponItem weapon;
+    private Weapon weapon;
 
-    public UnsheatheAction(WeaponItem weapon, Actor target){
+    public UnsheatheAction(Weapon weapon, Actor target){
         this.weapon = weapon;
         this.target = target;
 
@@ -21,15 +22,21 @@ public class UnsheatheAction extends Action {
     // 60% chance to hit the enemy
     @Override
     public String execute(Actor actor, GameMap map) {
-        String result = actor + " unsheathes " + weapon + " on " + this.target;
-        if (RandomNumberGenerator.getRandomInt(100) <= 60){
-            int damage = 2 * weapon.damage();
-            this.target.hurt(damage);
-            result += "\n" + actor + weapon.verb() + this.target + " for " + damage + " damage.";
-
-        } else{
-            result += "\n" + actor + " misses their attack!";
+        if (weapon == null) {
+            weapon = actor.getIntrinsicWeapon();
         }
+
+        if (!(RandomNumberGenerator.getRandomInt(100) <= 60)) {
+            return actor + " misses " + target + ".";
+        }
+
+        int damage = weapon.damage();
+        String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
+        target.hurt(damage);
+        if (!target.isConscious()) {
+            result += new DeathAction(actor).execute(target, map);
+        }
+
         return result;
     }
 
