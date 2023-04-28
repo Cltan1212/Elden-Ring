@@ -10,6 +10,7 @@ import game.utils.RandomNumberGenerator;
 public class GiantCrabSlam extends WeaponItem {
     public GiantCrabSlam() {
         super("Giant Crab Slam", ' ', 208 , "slams", 90);
+        portable = false;
     }
 
     @Override

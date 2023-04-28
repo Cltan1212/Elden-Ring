@@ -11,6 +11,7 @@ public class GiantDogHead extends WeaponItem {
 
     public GiantDogHead() {
         super("Giant Crab Slam", ' ', 208, "slams", 90);
+        portable = false;
     }
     @Override
     public Action getSkill(Actor target, String direction){

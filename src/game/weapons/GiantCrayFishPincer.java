@@ -11,6 +11,7 @@ public class GiantCrayFishPincer extends WeaponItem {
 
     public GiantCrayFishPincer() {
         super("Giant CrayFish Pincer", ' ', 527, "slams", 100);
+        portable = false;
     }
 
     @Override
