@@ -64,7 +64,9 @@ public class DeathAction extends Action {
         }
         // enemy attacks enemy
         else {
-            map.removeActor(target);
+            if (!target.hasCapability(Status.SPECIAL_DEATH)) {
+                map.removeActor(target);
+            }
         }
         result += System.lineSeparator() + menuDescription(target);
         return result;
