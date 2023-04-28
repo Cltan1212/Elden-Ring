@@ -39,7 +39,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
      */
     public Enemy(String name, char displayChar, int hitPoints, int spawnChance) {
         super(name, displayChar, hitPoints);
-        RunesManager.getInstance().removeRuneSource(this);
+        RunesManager.getInstance().registerRuneSource(this);
         this.addCapability(Status.RESPAWNABLE);
         this.behaviours.put(999, new WanderBehaviour());
         this.spawnChance = spawnChance;
