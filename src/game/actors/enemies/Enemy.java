@@ -15,6 +15,7 @@ import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.reset.Resettable;
 import game.runes.RuneSource;
+import game.runes.RunesManager;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
@@ -38,6 +39,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
      */
     public Enemy(String name, char displayChar, int hitPoints, int spawnChance) {
         super(name, displayChar, hitPoints);
+        RunesManager.getInstance().removeRuneSource(this);
         this.addCapability(Status.RESPAWNABLE);
         this.behaviours.put(999, new WanderBehaviour());
         this.spawnChance = spawnChance;
@@ -73,6 +75,11 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
             if (action != null)
                 return action;
         }
+
+        // remove attack behaviour after execution
+        this.behaviours.remove(0);
+        this.behaviours.remove(3);
+
         return new DoNothingAction();
 
     }
