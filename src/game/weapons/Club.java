@@ -35,7 +35,7 @@ public class Club extends WeaponItem implements Sellable, Purchasable {
 
     @Override
     public PurchaseAction createPurchaseAction() {
-        return new PurchaseAction(this, 5000);
+        return new PurchaseAction(this, 600);
     }
 
     @Override
