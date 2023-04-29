@@ -9,6 +9,10 @@ import game.runes.RunesManager;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
+/**
+ * Abstract class representing a physical DoyType enemy in the game world.
+ *
+ */
 public abstract class DogType extends Enemy {
     /**
      * Constructor.
@@ -24,16 +28,19 @@ public abstract class DogType extends Enemy {
         RunesManager.getInstance().registerRuneSource(this);
     }
 
+    /**
+     * The DoyType can be attacked by any actor that has the HOSTILE_TO_ENEMY and HOSTILE_TO_DOG_TYPE_ENEMY capability
+     *
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return a list of Actions that allowed otherActor to perform
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         if (otherActor.hasCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY)){
             this.behaviours.put(3, new AttackBehaviour(otherActor));
         }
         return super.allowableActions(otherActor, direction, map);
-    }
-
-    @Override
-    public int generateRunes() {
-        return RandomNumberGenerator.getRandomInt(55,1470);
     }
 }
