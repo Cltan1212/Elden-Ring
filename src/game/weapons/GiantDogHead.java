@@ -15,7 +15,7 @@ public class GiantDogHead extends WeaponItem {
     }
     @Override
     public Action getSkill(Actor target, String direction){
-        return new AreaAttackAction(this);
+        return new AttackAction(target, direction,this);
     }
 
     @Override

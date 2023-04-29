@@ -52,6 +52,9 @@ public class AttackBehaviour implements Behaviour {
                 if (RandomNumberGenerator.getRandomInt(100) < 50) { // enemy have 50% chance to perform special skill
                     return actor.getWeaponInventory().get(0).getSkill(actor);
                 }
+                else {
+                    return actor.getWeaponInventory().get(0).getSkill(target, direction);
+                }
             }  // use their intrinsic weapon
             return new AttackAction(target, direction);
         }
