@@ -10,7 +10,7 @@ import game.utils.RandomNumberGenerator;
 public class GiantDogHead extends WeaponItem {
 
     public GiantDogHead() {
-        super("Giant Crab Slam", ' ', 208, "slams", 90);
+        super("Giant Dog Slam", ' ', 208, "slams", 90);
         portable = false;
     }
     @Override
