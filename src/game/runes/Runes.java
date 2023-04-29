@@ -24,6 +24,7 @@ public class Runes extends Item implements RuneSource, Resettable{
         this.runesAmount = RunesManager.getInstance().getRunes(runesHolder);
         this.runesHolder = runesHolder;
         this.location = location;
+        this.registerInstance();
     }
 
     public Actor getRunesHolder() {
@@ -46,7 +47,9 @@ public class Runes extends Item implements RuneSource, Resettable{
 
     @Override
     public void reset(GameMap map) {
-        RunesManager.getInstance().removeRuneSource(this);
-        location.removeItem(this);
+        if (!runesHolder.hasCapability(Status.RESTING)) {
+            RunesManager.getInstance().removeRuneSource(this);
+            location.removeItem(this);
+        }
     }
 }
