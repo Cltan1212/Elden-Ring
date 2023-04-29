@@ -75,9 +75,6 @@ public class Player extends Actor implements Resettable {
 
 	@Override
 	public void reset(GameMap map) {
-		if (!this.hasCapability(Status.RESTING)){
-			RunesManager.getInstance().registerRunesHeld(this, 0);
-		}
 		this.resetMaxHp(this.getMaxHp());
 	}
 

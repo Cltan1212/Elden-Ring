@@ -22,6 +22,7 @@ public class Runes extends Item implements RuneSource, Resettable{
         super("Runes", '$',false);
         RunesManager.getInstance().registerRuneSource(this);
         this.runesAmount = RunesManager.getInstance().getRunes(runesHolder);
+        RunesManager.getInstance().registerRunesHeld(runesHolder,0);
         this.runesHolder = runesHolder;
         this.location = location;
         this.registerInstance();
