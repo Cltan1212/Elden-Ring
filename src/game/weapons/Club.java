@@ -28,10 +28,10 @@ public class Club extends WeaponItem implements Sellable, Purchasable {
         super("Club", '!', 103, "bonks", 80);
     }
 
-    @Override
-    public Action getSkill(Actor target, String direction) {
-        return new AttackAction(target, direction,this);
-    }
+//    @Override
+//    public Action getSkill(Actor target, String direction) {
+//        return new AttackAction(target, direction,this);
+//    }
 
     @Override
     public PurchaseAction createPurchaseAction() {
