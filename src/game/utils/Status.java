@@ -16,7 +16,4 @@ public enum Status {
     HOSTILE_TO_DOG_TYPE_ENEMY,
     HOSTILE_TO_WATER_TYPE_ENEMY,
     SPECIAL_DEATH,
-
-    // weapon status
-    SPINNING_ATTACK,
 }

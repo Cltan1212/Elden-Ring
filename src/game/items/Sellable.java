@@ -2,7 +2,15 @@ package game.items;
 
 import game.actions.runesActions.SellAction;
 
+/**
+ * An interface for creating different type of sell actions.
+ *
+ */
 public interface Sellable {
 
-    public SellAction createSellAction();
+    /**
+     *
+     * @return the instance of sell action
+     */
+    SellAction createSellAction();
 }
