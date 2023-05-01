@@ -7,6 +7,7 @@ import game.weapons.Uchigatana;
  * One of the starting game mode
  * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @version 3.0
+ * @see CombatArchetypes
  */
 public class Samurai extends CombatArchetypes {
 

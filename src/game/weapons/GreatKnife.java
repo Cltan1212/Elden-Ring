@@ -16,6 +16,7 @@ import game.utils.Status;
 /**
  * A weapon item representing a great knife.
  * Implements Purchasable and Sellable interfaces.
+ * @see WeaponItem
  * @see Purchasable
  * @see Sellable
  */

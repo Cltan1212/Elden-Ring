@@ -12,6 +12,7 @@ import game.utils.Status;
 
 /**
  * A heavy sword that deals high damage and can perform an area attack.
+ * @see WeaponItem
  * @see Purchasable
  */
 public class Grossmesser extends WeaponItem implements Sellable {

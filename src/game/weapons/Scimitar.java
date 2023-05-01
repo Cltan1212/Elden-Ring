@@ -11,6 +11,7 @@ import game.items.Sellable;
 
 /**
  * A weapon item representing a Scimitar.
+ * @see WeaponItem
  * @see Purchasable
  * @see Sellable
  */

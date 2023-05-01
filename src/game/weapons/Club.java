@@ -17,7 +17,9 @@ import game.items.Sellable;
  * Created by:
  * @author Adrian Kristanto
  * Modified by:
- *
+ * @see WeaponItem
+ * @see Sellable
+ * @see Purchasable
  */
 public class Club extends WeaponItem implements Sellable, Purchasable {
 

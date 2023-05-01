@@ -13,6 +13,7 @@ import game.utils.Status;
  * It extends Ground class
  * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @version 3.0
+ * @see Ground
  */
 public class SiteOfLostGrace extends Ground {
 

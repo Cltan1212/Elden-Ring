@@ -13,6 +13,7 @@ import game.utils.RandomNumberGenerator;
  * It extends SpawnGround class
  * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @version 3.0
+ * @see SpawnGround
  */
 public class GustOfWind extends SpawnGround {
 
