@@ -28,11 +28,23 @@ public class Club extends WeaponItem implements Sellable, Purchasable {
         super("Club", '!', 103, "bonks", 80);
     }
 
+    /**
+     * Creates a PurchaseAction that allows this Club to be purchased from a MerchantKale for 600 runes.
+     *
+     * @return a PurchaseAction for this Club
+     * @see PurchaseAction
+     */
     @Override
     public PurchaseAction createPurchaseAction() {
         return new PurchaseAction(this, 600);
     }
 
+    /**
+     * Creates a SellAction that allows this Club to be sold to a MerchantKale for 100 gold.
+     *
+     * @return a SellAction for this Club
+     * @see SellAction
+     */
     @Override
     public SellAction createSellAction() {
         return new SellAction(this,100);
