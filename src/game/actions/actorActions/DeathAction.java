@@ -63,6 +63,7 @@ public class DeathAction extends Action {
 
             // reset the game
             result += new ResetAction(map.locationOf(target)).execute(target, map);
+
         }
         // enemy attacks enemy
         else {

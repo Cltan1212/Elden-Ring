@@ -14,42 +14,73 @@ import java.util.List;
  *
  */
 public class ResetManager {
-    private List<Resettable> resettables;
-
-    private List<GameMap> allMap;
-    private static ResetManager instance;
-
-    private SiteOfLostGrace lastSiteOfLostGrace;
-
-
     /**
-     * HINT 1: where have we seen a private constructor before?
-     * HINT 2: see the instance attribute above.
-     */
 
+     A list of {@link Resettable} objects to be reset.
+     */
+    private List<Resettable> resettables;
+    /**
+
+     A list of {@link GameMap} objects that the reset manager can reset.
+     */
+    private List<GameMap> allMap;
+    /**
+
+     The last visited instance of {@link game.grounds.SiteOfLostGrace}.
+     */
+    private SiteOfLostGrace lastSiteOfLostGrace;
+    /**
+
+     The instance of the ResetManager class (singleton pattern).
+     */
+    private static ResetManager instance;
+    /**
+
+     Private constructor of ResetManager (singleton pattern).
+     */
+    private ResetManager() {
+        this.resettables = new ArrayList<>();
+        this.allMap = new ArrayList<>();
+    }
+    /**
+
+     Returns the instance of ResetManager (singleton pattern).
+     If there is no existing instance, a new instance is created.
+     @return The instance of ResetManager.
+     */
     public static ResetManager getInstance(){
         if (instance == null)
             instance = new ResetManager();
         return instance;
     }
+    /**
 
-    private ResetManager() {
-        this.resettables = new ArrayList<>();
-        this.allMap = new ArrayList<>();
-    }
-
+     Adds the last visited instance of {@link game.grounds.SiteOfLostGrace} to the reset manager.
+     @param siteOfLostGrace The last visited instance of {@link game.grounds.SiteOfLostGrace}.
+     */
     public void addSiteOfLostGrace(SiteOfLostGrace siteOfLostGrace){
         lastSiteOfLostGrace = siteOfLostGrace;
     }
+    /**
 
+     Returns the last visited instance of {@link game.grounds.SiteOfLostGrace}.
+     @return The last visited instance of {@link game.grounds.SiteOfLostGrace}.
+     */
     public SiteOfLostGrace getLastVisited(){
         return lastSiteOfLostGrace;
     }
+    /**
 
+     Adds a {@link GameMap} object to the reset manager's list of maps to reset.
+     @param map The {@link GameMap} object to add.
+     */
     public void addMap(GameMap map){
         allMap.add(map);
     }
+    /**
 
+     Resets all objects that implement the {@link Resettable} interface in all the maps in the reset manager's list.
+     */
     public void run() {
         for (GameMap map : allMap){
             for (Resettable resettable: resettables){
@@ -57,13 +88,20 @@ public class ResetManager {
             }
         }
     }
+    /**
 
+     Adds a {@link Resettable} object to the reset manager's list of objects to reset.
+     @param resettable The {@link Resettable} object to add.
+     */
     public void registerResettable(Resettable resettable) {
         resettables.add(resettable);
     }
+    /**
 
+     Removes a {@link Resettable} object from the reset manager's list of objects to reset.
+     @param resettable The {@link Resettable} object to remove.
+     */
     public void removeResettable(Resettable resettable) {
         resettables.remove(resettable);
     }
-
 }
