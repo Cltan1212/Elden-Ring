@@ -33,7 +33,6 @@ public abstract class SpawnGround extends Ground {
 
     public SpawnGround(char displayChar, int spawnChance, EnemyFactory enemyFactory) {
         super(displayChar);
-//        this.SPAWN_CHANCE = spawnChance;
         this.enemyFactory = enemyFactory;
     }
 
