@@ -98,9 +98,13 @@ public class Application {
 			choiceChar = display.readChar();
 		}
 
+		// site of lost grace
+		SiteOfLostGrace theFirstStep = new SiteOfLostGrace("The First Step",38,11);
+		Location location = gameMap.at(38,11);
+		gameMap.at(38,11).setGround(theFirstStep);
 
 		// HINT: what does it mean to prefer composition to inheritance?
-		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
+		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar), location);
 		world.addPlayer(player, gameMap.at(36, 10));
 
 		MerchantKale trader = new MerchantKale();
@@ -152,13 +156,11 @@ public class Application {
 			}
 		}
 
-		// site of lost grace
-		SiteOfLostGrace theFirstStep = new SiteOfLostGrace("The First Step",38,11);
-		gameMap.at(38,11).setGround(theFirstStep);
+
 
 		// add GameMap to ResetManager
-		ResetManager.getInstance().addMap(gameMap);
 		ResetManager.getInstance().addSiteOfLostGrace(theFirstStep);
+		ResetManager.getInstance().addMap(gameMap);
 		world.run();
 	}
 }

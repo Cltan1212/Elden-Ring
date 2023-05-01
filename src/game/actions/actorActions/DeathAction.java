@@ -10,10 +10,12 @@ import game.runes.RunesManager;
 import game.utils.Status;
 
 /**
- * An action executed if an actor is killed.
- * Created by:
+ * An action executed when an actor is killed. Drops all items and weapons carried by the target to the location on the game map where the target was.
+ * If the attacker is the player, transfers any runes held by the target to the player. If the player dies, resets the game.
+ * If the target has the capability SPECIAL_DEATH, then no items or weapons will be dropped and the target will not be removed from the game map.
+ * This action displays a menu description stating that the actor is killed.
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  *
  */
 public class DeathAction extends Action {
@@ -60,16 +62,25 @@ public class DeathAction extends Action {
         else if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
             // reset the game
-            result += new ResetAction().execute(target, map);
+            result += new ResetAction(map.locationOf(target)).execute(target, map);
+
         }
         // enemy attacks enemy
         else {
-            map.removeActor(target);
+            if (!target.hasCapability(Status.SPECIAL_DEATH)) {
+                map.removeActor(target);
+            }
         }
         result += System.lineSeparator() + menuDescription(target);
         return result;
     }
 
+    /**
+     * Returns a menu description stating that the actor is killed.
+     *
+     * @param actor The actor performing the action.
+     * @return A String describing the menu description of the action
+     */
     @Override
     public String menuDescription(Actor actor) {
         String result = "";
@@ -77,4 +88,3 @@ public class DeathAction extends Action {
         return result;
     }
 }
-

@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.positions.Ground;
  * Created by:
  * @author Riordan D. Alfredo
  * Modified by:
- *
+ * @see Ground
  */
 public class Wall extends Ground {
 

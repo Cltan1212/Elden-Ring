@@ -16,7 +16,7 @@ public class RecoverRunesAction extends Action {
     public String execute(Actor actor, GameMap map) {
 
         if (actor == runes.getRunesHolder())
-            RunesManager.getInstance().registerRunesHeld(actor, runes.generateRunes());
+            RunesManager.getInstance().addRunes(actor, runes.generateRunes());
         RunesManager.getInstance().removeRuneSource(runes);
         map.locationOf(actor).removeItem(runes);
 

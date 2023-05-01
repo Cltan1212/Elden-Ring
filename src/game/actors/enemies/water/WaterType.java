@@ -9,6 +9,10 @@ import game.behaviours.WanderBehaviour;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
+/**
+ * Abstract class representing a physical WaterType enemy in the game world.
+ *
+ */
 public abstract class WaterType extends Enemy {
 
     /**
@@ -33,10 +37,4 @@ public abstract class WaterType extends Enemy {
         }
         return super.allowableActions(otherActor, direction, map);
     }
-
-    @Override
-    public int generateRunes() {
-        return RandomNumberGenerator.getRandomInt(318,4961);
-    }
-
 }

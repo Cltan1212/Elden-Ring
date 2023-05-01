@@ -1,21 +1,34 @@
 package game.grounds.environments;
 
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Location;
 import game.actors.enemies.Enemy;
 import game.actors.enemies.enemyFactory.EnemyFactory;
-import game.utils.RandomNumberGenerator;
 
+/**
+ * Graveyard
+ * The Graveyard class is one of the ground in this game that can spawn enemies
+ * It extends SpawnGround class
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @version 3.0
+ * @see SpawnGround
+ */
 public class Graveyard extends SpawnGround {
 
+    /**
+     * This is the constructor for Graveyard
+     * It sets the displayCharacter and also pass in the enemyLocation
+     * @param enemyLocation the type of enemies that will spawn on the ground
+     */
     public Graveyard(EnemyFactory enemyLocation) {
-        super('n', 27, enemyLocation);
-
+        super('n', enemyLocation);
     }
 
+    /**
+     * A method to return the enemies spawn at Graveyard
+     * @return new HeavySkeletalSwordsman() or new SkeletalBandit() depend on the west or east side of map
+     */
     @Override
     public Enemy spawn(){
-        return enemyFactory.createUndead(); // since Graveyard spawn HeavySkeletalSwordsman
+        return enemyFactory.createSkeletal(); // since Graveyard spawn HeavySkeletalSwordsman
     }
 
 }

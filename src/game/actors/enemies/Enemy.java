@@ -15,11 +15,17 @@ import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.reset.Resettable;
 import game.runes.RuneSource;
+import game.runes.RunesManager;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
 import java.util.HashMap;
 import java.util.Map;
+
+/**
+ * Abstract base class representing a physical enemy in the game world.
+ *
+ */
 
 public abstract class Enemy extends Actor implements Resettable, RuneSource {
 
@@ -37,10 +43,11 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
      */
     public Enemy(String name, char displayChar, int hitPoints, int spawnChance) {
         super(name, displayChar, hitPoints);
+        RunesManager.getInstance().registerRuneSource(this);
         this.addCapability(Status.RESPAWNABLE);
         this.behaviours.put(999, new WanderBehaviour());
-        this.registerInstance();
         this.spawnChance = spawnChance;
+        this.registerInstance();
     }
 
     /**
@@ -62,27 +69,29 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
                 return new DespawnedAction();
             }
         }
-        else if (randomNum <= DESPAWN_CHANCE && behaviours.get(1).getAction(this, map) != null && !following){
-            return new DespawnedAction();
-        }
 
         // add valid behaviour to the list of behaviours
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
-            if (action != null)
+            if (action != null) {
+                // remove attack behaviour after execution
+                this.behaviours.remove(0);
+                this.behaviours.remove(3);
                 return action;
+            }
         }
+
         return new DoNothingAction();
 
     }
 
     /**
-     * The lone wolf can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
+     * The enemy can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
      *
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
-     * @return
+     * @return a list of Actions that allowed otherActor to perform
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
@@ -104,12 +113,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
                 actions.add(weaponItem.getSkill(this, direction));
             }
         }
-
         return actions;
-    }
-
-    public int generateRunes() {
-        return 0;
     }
 
     @Override
@@ -117,4 +121,3 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         map.removeActor(this);
     }
 }
-

@@ -20,63 +20,93 @@ import game.utils.Status;
 
 /**
  * Class representing the Player. It implements the Resettable interface.
- * It carries around a club to attack a hostile creature in the Lands Between.
- * Created by:
- * @author Adrian Kristanto
- * Modified by:
+ * It carries around an item called FlaskOfCrimsonTears that can be consumed to restore its own hitPoints.
  *
  */
 public class Player extends Actor implements Resettable {
 
+	/**
+	 * The menu used by the Player for selecting actions.
+	 */
 	private final Menu menu = new Menu();
 
-	private SiteOfLostGrace lastSiteOfLostGrace;
+	/**
+	 * The location of the last Site of Lost Grace visited by the Player.
+	 */
+	private Location lastSiteOfLostGrace;
+
+	/**
+	 * The FlaskOfCrimsonTears item carried by the Player.
+	 */
 	private FlaskOfCrimsonTears flaskOfCrimsonTears;
+
+	/**
+	 * The CombatArchetypes of the Player.
+	 */
 	public CombatArchetypes role;
 
 	/**
-	 * Constructor.
+	 * Creates a new Player object.
 	 *
-	 * @param name        Name to call the player in the UI
-	 * @param displayChar Character to represent the player in the UI
-	 * @param hitPoints   Player's starting number of hitpoints
+	 * @param name        the name of the Player
+	 * @param displayChar the character used to represent the Player in the map
+	 * @param hitPoints   the Player's hit points
+	 * @param role        the CombatArchetypes of the Player
+	 * @param lastSite    the last Site of Lost Grace visited by the Player
 	 */
-	public Player(String name, char displayChar, int hitPoints, CombatArchetypes role) {
+	public Player(String name, char displayChar, int hitPoints, CombatArchetypes role, Location lastSite) {
 		super(name, displayChar, hitPoints);
+		lastSiteOfLostGrace = lastSite;
 		this.role = role;
 		this.flaskOfCrimsonTears = new FlaskOfCrimsonTears();
 		RunesManager.getInstance().registerRunesHeld(this, 0);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.CONSUMABLE);
 		this.addCapability(Status.RESTABLE);
-		resetMaxHp(role.getStartingHitPoint());  // to set starting hit point based on role
-		this.addWeaponToInventory(role.getStartingWeapon()); // to set starting inventory based on role
-
-		this.registerInstance(); // Register the Player created as resettable and add to the list of resettable.
+		resetMaxHp(role.getStartingHitPoint());
+		this.addWeaponToInventory(role.getStartingWeapon());
+		this.registerInstance();
 	}
 
+	/**
+	 * Selects and returns an action for the Player to perform on their turn.
+	 *
+	 * @param actions    collection of possible Actions for this Actor
+	 * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+	 * @param map        the map containing the Actor
+	 * @param display    the I/O object to which messages may be written
+	 * @return the Action to be performed
+	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-		// Display Hp and runes value
 		display.println(name + " " + printHp() + ", runes: " + RunesManager.getInstance().getRunes(this));
 
-		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
-		if(this.hasCapability(Status.CONSUMABLE)){
+		if (this.hasCapability(Status.CONSUMABLE)) {
 			actions.add(new ConsumeAction(flaskOfCrimsonTears));
 		}
 
 		return menu.showMenu(this, actions, display);
 	}
 
-
+	/**
+	 * Resets the Player to their initial state.
+	 *
+	 * @param map the map containing the Player
+	 */
 	@Override
 	public void reset(GameMap map) {
-		if (!this.hasCapability(Status.RESTING)){
-			RunesManager.getInstance().registerRunesHeld(this, 0);
-		}
 		this.resetMaxHp(this.getMaxHp());
+	}
+
+	/**
+	 * Returns the location of the last Site of Lost Grace visited by the Player.
+	 *
+	 * @return the last Site of Lost Grace visited by the Player
+	 */
+	public Location getLastSiteOfLostGrace() {
+		return lastSiteOfLostGrace;
 	}
 }

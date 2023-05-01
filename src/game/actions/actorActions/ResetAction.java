@@ -9,31 +9,63 @@ import game.runes.Runes;
 import game.utils.FancyMessage;
 import game.utils.Status;
 
-
+/**
+ * An action that is executed when the game is reset.
+ * It resets the game by calling ResetManager.getInstance().run(), and moves the actor to the last visited location,
+ * adding a Rune to the location where the actor died if the actor is not in a resting state.
+ * This action is called when the player dies, or when the game is reset for other reasons.
+ * @see ResetManager
+ * @see Runes
+ */
 public class ResetAction extends Action {
+
     private Location lastLocation;
 
+    /**
+     * Default constructor for the ResetAction.
+     */
+    public ResetAction(){
+    }
+
+    /**
+     * Constructor for the ResetAction that takes in the last location of the actor.
+     *
+     * @param lastLocation lastLocation the last location of the actor
+     */
     public ResetAction(Location lastLocation){
         this.lastLocation = lastLocation;
     }
 
-    public ResetAction(){
-    }
-
+    /**
+     * Executes the action by resetting the game with ResetManager.getInstance().run(),
+     *  * moving the actor to the last visited location, and adding a Rune to the location where the actor died if the actor is not in a resting state.
+     *
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return A message that describes the result of the action
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
+        Location lastSite = map.at(ResetManager.getInstance().getLastVisited().locationX, ResetManager.getInstance().getLastVisited().locationY);
         String result = "";
         ResetManager.getInstance().run();
-
         if(!actor.hasCapability(Status.RESTING)){
             result = "\n" + FancyMessage.YOU_DIED;
-            Location moveLocation = new Location(map, ResetManager.getInstance().getLastVisited().locationX,  ResetManager.getInstance().getLastVisited().locationY);
-            map.moveActor(actor, moveLocation);
-            lastLocation.addItem(new Runes(actor));
+            Runes runes = new Runes(actor, lastLocation);
+            lastLocation.addItem(runes);
+            map.moveActor(actor, lastSite);
+
         }
+
         return result;
     }
 
+    /**
+     * Returns the description of the action to be displayed on the menu.
+     *
+     * @param actor The actor performing the action.
+     * @return A string that describes the menu option for this action.
+     */
     @Override
     public String menuDescription(Actor actor) {
         return null;
