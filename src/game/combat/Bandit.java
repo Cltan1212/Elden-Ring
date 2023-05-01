@@ -1,11 +1,22 @@
 package game.combat;
-
 import game.weapons.GreatKnife;
 
+/**
+ * Bandit
+ * One of the starting game mode
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @version 3.0
+ * @see CombatArchetypes
+ */
 public class Bandit extends CombatArchetypes {
 
-    // starting weapon is Great Knife
+    /**
+     * Constructor
+     *
+     * Set the display character, the starting weapon and starting hit point for this game mode
+     */
     public Bandit(){
+        // starting weapon is Great Knife
         super('b', "Bandit", new GreatKnife(), 414);
     }
 }

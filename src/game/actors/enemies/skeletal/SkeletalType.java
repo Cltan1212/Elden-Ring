@@ -13,6 +13,10 @@ import game.behaviours.AttackBehaviour;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
+/**
+ * Abstract class representing a physical SkeletalType enemy in the game world.
+ *
+ */
 public abstract class SkeletalType extends Enemy {
 
     /**
@@ -29,11 +33,15 @@ public abstract class SkeletalType extends Enemy {
         this.addCapability(Status.SPECIAL_DEATH);
     }
 
-    @Override
-    public int generateRunes() {
-        return RandomNumberGenerator.getRandomInt(35,892);
-    }
-
+    /**
+     * Turn into Pile Of Bones if this type of enemy is not conscious.
+     *
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return the valid action that can be performed in that iteration or null if no valid action is found
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         if (!this.isConscious()) {
@@ -45,12 +53,30 @@ public abstract class SkeletalType extends Enemy {
         return super.playTurn(actions, lastAction, map, display);
     }
 
+    /**
+     * The SkeletalType can be attacked by any actor that has the HOSTILE_TO_ENEMY and HOSTILE_TO_SKELETAL_TYPE_ENEMY capability
+     *
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return a list of Actions that allowed otherActor to perform
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         if (otherActor.hasCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY)){
             this.behaviours.put(3, new AttackBehaviour(otherActor));
         }
         return super.allowableActions(otherActor, direction, map);
+    }
+
+    /**
+     * Generate a random amount of runes.
+     *
+     * @return an integer that represent an amount of runes
+     */
+    @Override
+    public int generateRunes() {
+        return RandomNumberGenerator.getRandomInt(35,892);
     }
 
 }

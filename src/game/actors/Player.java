@@ -20,10 +20,7 @@ import game.utils.Status;
 
 /**
  * Class representing the Player. It implements the Resettable interface.
- * It carries around a club to attack a hostile creature in the Lands Between.
- * Created by:
- * @author Adrian Kristanto
- * Modified by:
+ * It carries around an item called FlaskOfCrimsonTears that can be consumed to restore its own hitPoints.
  *
  */
 public class Player extends Actor implements Resettable {
@@ -56,6 +53,15 @@ public class Player extends Actor implements Resettable {
 		this.registerInstance(); // Register the Player created as resettable and add to the list of resettable.
 	}
 
+	/**
+	 * Select and return an action to perform on the current turn.
+	 *
+	 * @param actions    collection of possible Actions for this Actor
+	 * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+	 * @param map        the map containing the Actor
+	 * @param display    the I/O object to which messages may be written
+	 * @return the Action to be performed
+	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Display Hp and runes value

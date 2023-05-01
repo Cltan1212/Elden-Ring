@@ -22,12 +22,16 @@ import game.utils.Status;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Abstract base class representing a physical enemy in the game world.
+ *
+ */
+
 public abstract class Enemy extends Actor implements Resettable, RuneSource {
 
     protected Map<Integer, Behaviour> behaviours = new HashMap<>();
     protected final int DESPAWN_CHANCE = 10;
     public boolean following = false;
-
     public int spawnChance;
 
     /**
@@ -65,9 +69,6 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
                 return new DespawnedAction();
             }
         }
-        else if (randomNum <= DESPAWN_CHANCE && behaviours.get(1).getAction(this, map) != null && !following){
-            return new DespawnedAction();
-        }
 
         // add valid behaviour to the list of behaviours
         for (Behaviour behaviour : behaviours.values()) {
@@ -85,12 +86,12 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
     }
 
     /**
-     * The lone wolf can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
+     * The enemy can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
      *
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
-     * @return
+     * @return a list of Actions that allowed otherActor to perform
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
@@ -112,12 +113,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
                 actions.add(weaponItem.getSkill(this, direction));
             }
         }
-
         return actions;
-    }
-
-    public int generateRunes() {
-        return 0;
     }
 
     @Override

@@ -7,11 +7,13 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.utils.RandomNumberGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * QuickStepAction, the special skill of weapon GreatKnife
+ * It extends Action class
+ */
 public class QuickStepAction extends Action {
 
     private Actor target;
@@ -71,6 +73,4 @@ public class QuickStepAction extends Action {
     public String menuDescription(Actor actor) {
         return actor + " attacks (quick step) " + this.target + " and moves away";
     }
-
-
 }

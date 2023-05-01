@@ -4,8 +4,26 @@ import game.actors.enemies.dog.DogType;
 import game.actors.enemies.skeletal.SkeletalType;
 import game.actors.enemies.water.WaterType;
 
+/**
+ * An interface for creating different type of enemies.
+ *
+ */
 public interface EnemyFactory {
-    public DogType createDog();
-    public SkeletalType createUndead();
-    public WaterType createCrustracean();
+    /**
+     *
+     * @return the instance of DogType enemy
+     */
+    DogType createDog();
+
+    /**
+     *
+     * @return the instance of SkeletalType enemy
+     */
+    SkeletalType createSkeletal();
+
+    /**
+     *
+     * @return the instance of WaterType enemy
+     */
+    WaterType createWaterType();
 }
