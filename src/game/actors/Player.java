@@ -31,11 +31,6 @@ public class Player extends Actor implements Resettable {
 	private final Menu menu = new Menu();
 
 	/**
-	 * The location of the last Site of Lost Grace visited by the Player.
-	 */
-	private Location lastSiteOfLostGrace;
-
-	/**
 	 * The CombatArchetypes of the Player.
 	 */
 	public CombatArchetypes role;
@@ -47,11 +42,9 @@ public class Player extends Actor implements Resettable {
 	 * @param displayChar the character used to represent the Player in the map
 	 * @param hitPoints   the Player's hit points
 	 * @param role        the CombatArchetypes of the Player
-	 * @param lastSite    the last Site of Lost Grace visited by the Player
 	 */
-	public Player(String name, char displayChar, int hitPoints, CombatArchetypes role, Location lastSite) {
+	public Player(String name, char displayChar, int hitPoints, CombatArchetypes role) {
 		super(name, displayChar, hitPoints);
-		lastSiteOfLostGrace = lastSite;
 		this.role = role;
 		RunesManager.getInstance().registerRunesHeld(this, 0);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
@@ -90,14 +83,5 @@ public class Player extends Actor implements Resettable {
 	@Override
 	public void reset(GameMap map) {
 		this.resetMaxHp(this.getMaxHp());
-	}
-
-	/**
-	 * Returns the location of the last Site of Lost Grace visited by the Player.
-	 *
-	 * @return the last Site of Lost Grace visited by the Player
-	 */
-	public Location getLastSiteOfLostGrace() {
-		return lastSiteOfLostGrace;
 	}
 }
