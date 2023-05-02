@@ -6,9 +6,18 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.runes.Runes;
 import game.runes.RunesManager;
 
+/**
+ * A class that represents an action of recovering runes from a {@link Runes} object
+ */
 public class RecoverRunesAction extends Action {
 
     private final Runes runes;
+
+    /**
+     * Constructor.
+     *
+     * @param runes a {@link Runes} object that the runes will be recovered from
+     */
     public RecoverRunesAction(Runes runes){
         this.runes = runes;
     }
@@ -23,6 +32,12 @@ public class RecoverRunesAction extends Action {
         return actor + " retrieves Runes (value: " + runes.generateRunes() + ")";
     }
 
+    /**
+     * Returns a description of the action that can be displayed in the menu.
+     *
+     * @param actor The actor performing the action.
+     * @return a message describing the result of the action.
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + " recovered runes";

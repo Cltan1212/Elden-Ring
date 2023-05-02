@@ -36,11 +36,6 @@ public class Player extends Actor implements Resettable {
 	private Location lastSiteOfLostGrace;
 
 	/**
-	 * The FlaskOfCrimsonTears item carried by the Player.
-	 */
-	private FlaskOfCrimsonTears flaskOfCrimsonTears;
-
-	/**
 	 * The CombatArchetypes of the Player.
 	 */
 	public CombatArchetypes role;
@@ -58,12 +53,12 @@ public class Player extends Actor implements Resettable {
 		super(name, displayChar, hitPoints);
 		lastSiteOfLostGrace = lastSite;
 		this.role = role;
-		this.flaskOfCrimsonTears = new FlaskOfCrimsonTears();
 		RunesManager.getInstance().registerRunesHeld(this, 0);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.CONSUMABLE);
 		this.addCapability(Status.RESTABLE);
 		resetMaxHp(role.getStartingHitPoint());
+		this.addItemToInventory(new FlaskOfCrimsonTears());
 		this.addWeaponToInventory(role.getStartingWeapon());
 		this.registerInstance();
 	}
@@ -83,10 +78,6 @@ public class Player extends Actor implements Resettable {
 
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
-
-		if (this.hasCapability(Status.CONSUMABLE)) {
-			actions.add(new ConsumeAction(flaskOfCrimsonTears));
-		}
 
 		return menu.showMenu(this, actions, display);
 	}
