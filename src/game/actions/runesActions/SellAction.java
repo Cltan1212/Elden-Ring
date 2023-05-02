@@ -6,15 +6,33 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.runes.RunesManager;
 
+/**
+ * A class that represents an action of selling a {@link WeaponItem} object to get runes
+ */
 public class SellAction extends Action {
     private final WeaponItem sellableItem;
 
     private final int price;
+
+    /**
+     * Constructor.
+     *
+     * @param sellableItem a {@link WeaponItem} object that is going to be sold
+     * @param price the price of the item in runes
+     */
     public SellAction(WeaponItem sellableItem, int price){
         this.sellableItem = sellableItem;
         this.price = price;
     }
 
+    /**
+     * Remove the {@link WeaponItem} object from the actor's inventory and the game map, and add the sell price into
+     * the actor's inventory.
+     *
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return a string describing the result of the action
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         String message = "";
@@ -38,6 +56,12 @@ public class SellAction extends Action {
         return message;
     }
 
+    /**
+     * Returns a string describing the action that will be displayed in the menu.
+     *
+     * @param actor The actor performing the action.
+     * @return a string describing the action
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + " sell " + sellableItem.toString() + " with $" + price;

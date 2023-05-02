@@ -3,6 +3,7 @@ package game.actions.actorActions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.items.Consumable;
 import game.items.ConsumableItem;
 
 /**
@@ -13,14 +14,14 @@ public class ConsumeAction extends Action {
     /**
      * The consumable item that will be consumed.
      */
-    private ConsumableItem item;
+    private Consumable item;
 
     /**
      * Constructor for ConsumeAction class.
      *
      * @param consumeItem The consumable item that will be consumed.
      */
-    public ConsumeAction(ConsumableItem consumeItem){
+    public ConsumeAction(Consumable consumeItem){
         this.item = consumeItem;
     }
 

@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.actorActions.ConsumeAction;
+import game.reset.ResetManager;
 import game.reset.Resettable;
 
 /**
@@ -12,6 +13,8 @@ import game.reset.Resettable;
  */
 public abstract class ConsumableItem extends Item implements Resettable, Consumable {
 
+    protected int maximumUse;
+    protected int remainingConsume;
     /**
      * Constructor.
      *
@@ -21,35 +24,16 @@ public abstract class ConsumableItem extends Item implements Resettable, Consuma
      */
     public ConsumableItem(String name, char displayChar, boolean portable){
         super(name, displayChar, portable);
+        this.addAction(new ConsumeAction(this));
+        ResetManager.getInstance().registerResettable(this);
     }
 
     /**
-     * Default implementation of the consume() method, which does nothing.
-     *
-     * @param actor  the Actor consuming this ConsumableItem
-     */
-    @Override
-    public void consume(Actor actor) {
-        // Do nothing
-    }
-
-    /**
-     * Returns a String representation of this ConsumableItem.
-     *
-     * @return a String, the name of this ConsumableItem
-     */
-    @Override
-    public String toString(){
-        return super.toString();
-    }
-
-    /**
-     * Default implementation of the reset() method, which does nothing.
-     *
-     * @param map  the GameMap to reset
+     * A method that reset the remaining consume to maximum consume
+     * @param map the map in which the Flask Of Crimson is on
      */
     @Override
     public void reset(GameMap map){
-        // Do nothing
+        this.remainingConsume = maximumUse;
     }
 }
