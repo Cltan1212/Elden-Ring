@@ -8,6 +8,7 @@ import game.runes.RunesManager;
 
 /**
  * A class that represents an action of selling a {@link WeaponItem} object to get runes
+ * @see Action
  */
 public class SellAction extends Action {
     private final WeaponItem sellableItem;
@@ -29,8 +30,8 @@ public class SellAction extends Action {
      * Remove the {@link WeaponItem} object from the actor's inventory and the game map, and add the sell price into
      * the actor's inventory.
      *
-     * @param actor The actor performing the action.
-     * @param map The map the actor is on.
+     * @param actor The {@link Actor} performing the action.
+     * @param map The {@link GameMap} the actor is on.
      * @return a string describing the result of the action
      */
     @Override
@@ -59,7 +60,7 @@ public class SellAction extends Action {
     /**
      * Returns a string describing the action that will be displayed in the menu.
      *
-     * @param actor The actor performing the action.
+     * @param actor The {@link Actor} performing the action.
      * @return a string describing the action
      */
     @Override

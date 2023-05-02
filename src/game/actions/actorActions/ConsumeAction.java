@@ -9,17 +9,18 @@ import game.items.ConsumableItem;
 /**
  * A class that represents the action of an actor consuming a consumable item.
  * This action allows the actor to consume the item, which triggers its effect.
+ * @see Action
  */
 public class ConsumeAction extends Action {
     /**
-     * The consumable item that will be consumed.
+     * The {@link Consumable} item that will be consumed.
      */
     private Consumable item;
 
     /**
      * Constructor for ConsumeAction class.
      *
-     * @param consumeItem The consumable item that will be consumed.
+     * @param consumeItem The {@link Consumable} item that will be consumed.
      */
     public ConsumeAction(Consumable consumeItem){
         this.item = consumeItem;
@@ -29,8 +30,8 @@ public class ConsumeAction extends Action {
      * Execute the ConsumeAction.
      * The actor consumes the item, which triggers its effect.
      *
-     * @param actor The actor performing the action.
-     * @param map The map the actor is on.
+     * @param actor The {@link Actor} performing the action.
+     * @param map The {@link GameMap} the actor is on.
      * @return A string describing the outcome of the action.
      */
     @Override
@@ -42,7 +43,7 @@ public class ConsumeAction extends Action {
     /**
      * Return a string describing this action in the menu.
      *
-     * @param actor The actor performing the action.
+     * @param actor The {@link Actor} performing the action.
      * @return
      */
     @Override

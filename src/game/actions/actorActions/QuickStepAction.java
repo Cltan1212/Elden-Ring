@@ -13,6 +13,8 @@ import java.util.List;
 /**
  * QuickStepAction, the special skill of weapon GreatKnife
  * It extends Action class
+ * @see Action
+ * @see game.weapons.GreatKnife
  */
 public class QuickStepAction extends Action {
 
@@ -24,7 +26,7 @@ public class QuickStepAction extends Action {
      * Constructor
      * @param target the target enemy to attack
      * @param direction the direction in which the attack should be performed
-     * @param weapon the weapon performing the QuickStepAction
+     * @param weapon the {@link WeaponItem} performing the QuickStepAction
      */
     public QuickStepAction(Actor target, String direction, WeaponItem weapon){
         this.target = target;
@@ -35,8 +37,8 @@ public class QuickStepAction extends Action {
     /**
      * Perform the Quick Step Action.
      *
-     * @param actor The actor performing the action.
-     * @param map The map the actor is on.
+     * @param actor The {@link Actor} performing the action.
+     * @param map The {@link GameMap} the actor is on.
      * @return a description of what happened that can be displayed to the user.
      */
     @Override
@@ -66,7 +68,7 @@ public class QuickStepAction extends Action {
     /**
      /**
      * Returns a menu descriptive string
-     * @param actor The actor performing the action.
+     * @param actor The {@link Actor} performing the action.
      * @return the text we put on the menu
      */
     @Override

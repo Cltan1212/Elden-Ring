@@ -14,18 +14,19 @@ import java.util.Random;
 
 /**
  * A class that represents an area attack action, which allows the actor to attack any adjacent actors with a given weapon.
+ * @see Action
  */
 public class AreaAttackAction extends Action {
 
     /**
-     * Weapon used for the attack
+     * {@link Weapon} used for the attack
      */
     private Weapon weapon;
 
     /**
      * Constructor.
      *
-     * @param weapon the weapon used for the attack.
+     * @param weapon the {@link Weapon} used for the attack.
      */
     public AreaAttackAction(Weapon weapon) {
         this.weapon = weapon;
@@ -34,8 +35,8 @@ public class AreaAttackAction extends Action {
     /**
      * Executes the area attack action by attacking any adjacent actors with the given weapon.
      *
-     * @param actor The actor performing the action.
-     * @param map The map the actor is on.
+     * @param actor The {@link Actor} performing the action.
+     * @param map The {@link GameMap} the {@link Actor} is on.
      * @return a String describing the result of the action.
      * @see AttackAction
      */
@@ -57,7 +58,7 @@ public class AreaAttackAction extends Action {
     /**
      * Returns a description of the area attack action to be displayed in the game menu.
      *
-     * @param actor The actor performing the action.
+     * @param actor The {@link Actor} performing the action.
      * @return a String describing the area attack action.
      */
     @Override

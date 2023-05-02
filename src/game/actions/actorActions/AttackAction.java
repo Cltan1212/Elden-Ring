@@ -12,12 +12,13 @@ import edu.monash.fit2099.engine.weapons.Weapon;
  * Created by:
  * @author Adrian Kristanto
  * Modified by:
+ * @see Action
  *
  */
 public class AttackAction extends Action {
 
 	/**
-	 * The Actor that is to be attacked
+	 * The {@link Actor} that is to be attacked
 	 */
 	private Actor target;
 
@@ -32,14 +33,14 @@ public class AttackAction extends Action {
 	private Random rand = new Random();
 
 	/**
-	 * Weapon used for the attack
+	 * {@link Weapon} used for the attack
 	 */
 	private Weapon weapon;
 
 	/**
 	 * Constructor.
 	 * 
-	 * @param target the Actor to attack
+	 * @param target the {@link Actor} to attack
 	 * @param direction the direction where the attack should be performed (only used for display purposes)
 	 */
 	public AttackAction(Actor target, String direction, Weapon weapon) {
@@ -51,7 +52,7 @@ public class AttackAction extends Action {
 	/**
 	 * Constructor with intrinsic weapon as default
 	 *
-	 * @param target the actor to attack
+	 * @param target the {@link Actor} to attack
 	 * @param direction the direction where the attack should be performed (only used for display purposes)
 	 */
 	public AttackAction(Actor target, String direction) {
@@ -63,8 +64,8 @@ public class AttackAction extends Action {
 	 * When executed, the chance to hit of the weapon that the Actor used is computed to determine whether
 	 * the actor will hit the target. If so, deal damage to the target and determine whether the target is killed.
 	 *
-	 * @param actor The actor performing the attack action.
-	 * @param map The map the actor is on.
+	 * @param actor The {@link Actor} performing the attack action.
+	 * @param map The {@link GameMap} the actor is on.
 	 * @return the result of the attack, e.g. whether the target is killed, etc.
 	 * @see DeathAction
 	 */
@@ -91,7 +92,7 @@ public class AttackAction extends Action {
 	/**
 	 * Describes which target the actor is attacking with which weapon
 	 *
-	 * @param actor The actor performing the action.
+	 * @param actor The {@link Actor} performing the action.
 	 * @return a description used for the menu UI
 	 */
 	@Override

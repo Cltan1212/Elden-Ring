@@ -8,6 +8,7 @@ import game.runes.RunesManager;
 
 /**
  * A class that represents an action of recovering runes from a {@link Runes} object
+ * @see Action
  */
 public class RecoverRunesAction extends Action {
 
@@ -35,7 +36,7 @@ public class RecoverRunesAction extends Action {
     /**
      * Returns a description of the action that can be displayed in the menu.
      *
-     * @param actor The actor performing the action.
+     * @param actor The {@link Actor} performing the action.
      * @return a message describing the result of the action.
      */
     @Override

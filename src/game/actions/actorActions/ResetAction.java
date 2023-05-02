@@ -37,11 +37,10 @@ public class ResetAction extends Action {
     }
 
     /**
-     * Executes the action by resetting the game with ResetManager.getInstance().run(),
-     *  * moving the actor to the last visited location, and adding a Rune to the location where the actor died if the actor is not in a resting state.
+     * Executes the action, moving the actor to the last visited location, and adding a Rune to the location where the actor died if the actor is not in a resting state.
      *
-     * @param actor The actor performing the action.
-     * @param map The map the actor is on.
+     * @param actor The {@link Actor} performing the action.
+     * @param map The {@link GameMap} the actor is on.
      * @return A message that describes the result of the action
      */
     @Override
@@ -63,7 +62,7 @@ public class ResetAction extends Action {
     /**
      * Returns the description of the action to be displayed on the menu.
      *
-     * @param actor The actor performing the action.
+     * @param actor The {@link Actor} performing the action.
      * @return A string that describes the menu option for this action.
      */
     @Override
