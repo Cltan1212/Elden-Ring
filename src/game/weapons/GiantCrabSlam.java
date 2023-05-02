@@ -19,19 +19,6 @@ public class GiantCrabSlam extends WeaponItem {
     }
 
     /**
-     * Returns an AttackAction with the target and direction for this weapon.
-     *
-     * @param target target actor
-     * @param direction the direction of the attack
-     * @return an AttackAction with the target and direction for this weapon
-     * @see AttackAction
-     */
-    @Override
-    public Action getSkill(Actor target, String direction){
-        return new AttackAction(target, direction,this);
-    }
-
-    /**
      * Returns an AreaAttackAction for this weapon.
      *
      * @param holder weapon holder

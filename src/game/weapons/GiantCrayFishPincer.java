@@ -22,19 +22,6 @@ public class GiantCrayFishPincer extends WeaponItem {
     }
 
     /**
-     * Returns an AttackAction targeting the given actor in the given direction with this GiantCrayFishPincer.
-     *
-     * @param target target actor
-     * @param direction the direction of the attack
-     * @return an AttackAction with this GiantCrayFishPincer
-     * @see AttackAction
-     */
-    @Override
-    public Action getSkill(Actor target, String direction){
-        return new AttackAction(target, direction,this);
-    }
-
-    /**
      * Returns an AreaAttackAction using this GiantCrayFishPincer.
      *
      * @param holder weapon holder

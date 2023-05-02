@@ -18,6 +18,18 @@ public class GiantDog extends DogType {
     }
 
     /**
+     * Creates and returns an {@link IntrinsicWeapon}.
+     *
+     * By default, the GiantDog 'slams' for 208 damage.
+     *
+     * @return a freshly-instantiated {@link IntrinsicWeapon}
+     */
+    @Override
+    public IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(208, "slams", 90);
+    }
+
+    /**
      * Generate a random amount of runes.
      *
      * @return an integer that represent an amount of runes

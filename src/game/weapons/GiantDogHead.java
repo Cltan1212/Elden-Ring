@@ -23,19 +23,6 @@ public class GiantDogHead extends WeaponItem {
     }
 
     /**
-     * Returns a new AttackAction targeting the given Actor in the given direction.
-     *
-     * @param target target actor
-     * @param direction the direction in which the Actor is being attacked
-     * @return a new AttackAction targeting the given Actor in the given direction
-     * @see AttackAction
-     */
-    @Override
-    public Action getSkill(Actor target, String direction){
-        return new AttackAction(target, direction,this);
-    }
-
-    /**
      * Returns a new AreaAttackAction.
      *
      * @param holder weapon holder
