@@ -14,6 +14,7 @@ public final class IntrinsicWeapon implements Weapon{
 	 * Constructor
 	 * @param damage damage to health
 	 * @param verb a word that will be printed in the action
+	 * @param hitRate the chance to hit target
 	 */
 	public IntrinsicWeapon(int damage, String verb, int hitRate) {
 		this.damage = damage;

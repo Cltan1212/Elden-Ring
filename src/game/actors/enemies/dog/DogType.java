@@ -22,6 +22,7 @@ public abstract class DogType extends Enemy {
      * @param name        the name of the Actor
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
+     * @param spawnChance the spawning rate
      */
     public DogType(String name, char displayChar, int hitPoints, int spawnChance) {
         super(name, displayChar, hitPoints, spawnChance);
