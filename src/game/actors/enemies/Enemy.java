@@ -64,9 +64,10 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         super(name, displayChar, hitPoints);
         RunesManager.getInstance().registerRuneSource(this);
         this.addCapability(Status.RESPAWNABLE);
+        this.addCapability(Status.DESPAWNABLE);
         this.behaviours.put(999, new WanderBehaviour());
         this.spawnChance = spawnChance;
-        this.registerInstance();
+//        this.registerInstance();
     }
 
     /**
@@ -140,7 +141,10 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
 
     @Override
     public void reset(GameMap map) {
-        map.removeActor(this);
-        new Display().println(this.toString() + " is removed.");
+        if (this.hasCapability(Status.DESPAWNABLE)){
+            new Display().println(new DespawnedAction().execute(this, map));
+        }
+//        map.removeActor(this);
+//        new Display().println(this.toString() + " is removed.");
     }
 }

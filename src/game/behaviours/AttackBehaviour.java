@@ -61,7 +61,7 @@ public class AttackBehaviour implements Behaviour {
             else if (exit.getDestination().containsAnActor()){
                 numEnemies++;
             }
-        }
+        }   
 
         if (numEnemies != 0) {
             if (!actor.getWeaponInventory().isEmpty()) { // enemy have special skill

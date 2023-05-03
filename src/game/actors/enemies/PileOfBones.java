@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.enemies.Enemy;
 import game.actors.enemies.skeletal.SkeletalType;
+import game.reset.ResetManager;
 import game.reset.Resettable;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
@@ -35,6 +36,7 @@ public class PileOfBones extends Enemy{
         this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
         this.addWeaponToInventory(new Grossmesser());
+        ResetManager.getInstance().registerResettable(this);
         this.skeletalEnemy = skeletalEnemy;
         this.remaining = 3;
         skeletalEnemy.resetMaxHp(153);

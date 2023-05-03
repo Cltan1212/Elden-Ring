@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.reset.ResetManager;
 import game.runes.RunesManager;
+import game.utils.FancyMessage;
 import game.utils.Status;
 
 /**
@@ -56,6 +57,7 @@ public class DeathAction extends Action {
 
                 // transfer runes to target
                 result += "\n" +target + " drops " + RunesManager.getInstance().transferRunes(target, attacker) + " runes.";
+                target.removeCapability(Status.DESPAWNABLE);
                 map.removeActor(target);
             }
         }
@@ -64,12 +66,14 @@ public class DeathAction extends Action {
         else if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
             // reset the game
+            result += "\n" + FancyMessage.YOU_DIED;
             result += new ResetAction(map.locationOf(target)).execute(target, map);
 
         }
         // enemy attacks enemy
         else {
             if (!target.hasCapability(Status.SPECIAL_DEATH)) {
+                target.removeCapability(Status.DESPAWNABLE);
                 map.removeActor(target);
             }
         }
