@@ -78,7 +78,7 @@ public class DeathAction extends Action {
                 map.removeActor(target);
             }
         }
-//        result += new ResetAction(map.locationOf(target)).execute(target, map);
+        result += System.lineSeparator() + menuDescription(target);
         return result;
     }
 
