@@ -6,6 +6,7 @@ import game.weapons.GiantDogHead;
 
 /**
  * Class representing a physical GiantDog in the game world.
+ * @see DogType
  */
 public class GiantDog extends DogType {
 
@@ -33,6 +34,7 @@ public class GiantDog extends DogType {
      * Generate a random amount of runes.
      *
      * @return an integer that represent an amount of runes
+     * @see game.runes.RuneSource
      */
     @Override
     public int generateRunes() {

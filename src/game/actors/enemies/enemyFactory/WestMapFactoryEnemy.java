@@ -9,12 +9,14 @@ import game.actors.enemies.water.GiantCrab;
 
 /**
  * A class that creates different type of enemies on west side of the map.
+ * @see EnemyFactory
  */
 public class WestMapFactoryEnemy implements EnemyFactory{
 
     /**
      *
-     * @return the instance of DogType enemy on the west side of the map
+     * @return the instance of {@link DogType} enemy on the west side of the map
+     * @see LoneWolf
      */
     @Override
     public DogType createDog() {
@@ -23,7 +25,8 @@ public class WestMapFactoryEnemy implements EnemyFactory{
 
     /**
      *
-     * @return the instance of SkeletalType enemy on the west side of the map
+     * @return the instance of {@link SkeletalType} enemy on the west side of the map
+     * @see HeavySkeletalSwordsman
      */
     @Override
     public SkeletalType createSkeletal() {
@@ -32,7 +35,8 @@ public class WestMapFactoryEnemy implements EnemyFactory{
 
     /**
      *
-     * @return the instance of WaterType enemy on the west side of the map
+     * @return the instance of {@link WaterType} enemy on the west side of the map
+     * @see GiantCrab
      */
     @Override
     public WaterType createWaterType() {

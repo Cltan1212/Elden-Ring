@@ -15,7 +15,7 @@ import game.utils.Status;
 
 /**
  * Abstract class representing a physical SkeletalType enemy in the game world.
- *
+ * @see Enemy
  */
 public abstract class SkeletalType extends Enemy {
 
@@ -34,7 +34,7 @@ public abstract class SkeletalType extends Enemy {
     }
 
     /**
-     * Turn into Pile Of Bones if this type of enemy is not conscious.
+     * Turn into {@link PileOfBones} if this type of enemy is not conscious.
      *
      * @param actions    collection of possible Actions for this Actor
      * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
@@ -60,6 +60,7 @@ public abstract class SkeletalType extends Enemy {
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
      * @return a list of Actions that allowed otherActor to perform
+     * @see AttackBehaviour
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
@@ -73,6 +74,7 @@ public abstract class SkeletalType extends Enemy {
      * Generate a random amount of runes.
      *
      * @return an integer that represent an amount of runes
+     * @see game.runes.RuneSource
      */
     @Override
     public int generateRunes() {

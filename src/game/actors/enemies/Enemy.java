@@ -24,14 +24,31 @@ import java.util.Map;
 
 /**
  * Abstract base class representing a physical enemy in the game world.
- *
+ * @see Actor
+ * @see Resettable
+ * @see RuneSource
  */
 
 public abstract class Enemy extends Actor implements Resettable, RuneSource {
 
+    /**
+     * The {@link Behaviour} that is Enemy can have.
+     */
     protected Map<Integer, Behaviour> behaviours = new HashMap<>();
+
+    /**
+     * The chance of getting despawn.
+     */
     protected final int DESPAWN_CHANCE = 10;
+
+    /**
+     * The status to indicate if this enemy is following the player.
+     */
     public boolean following = false;
+
+    /**
+     * The chance of getting spawn.
+     */
     public int spawnChance;
 
     /**
@@ -40,6 +57,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
      * @param name        the name of the Actor
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
+     * @see WanderBehaviour
      */
     public Enemy(String name, char displayChar, int hitPoints, int spawnChance) {
         super(name, displayChar, hitPoints);
@@ -58,6 +76,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
      * @param map        the map containing the Actor
      * @param display    the I/O object to which messages may be written
      * @return the valid action that can be performed in that iteration or null if no valid action is found
+     * @see DespawnedAction
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
@@ -92,6 +111,8 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
      * @return a list of Actions that allowed otherActor to perform
+     * @see AttackBehaviour
+     * @see FollowBehaviour
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {

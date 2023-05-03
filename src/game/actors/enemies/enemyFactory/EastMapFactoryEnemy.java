@@ -9,12 +9,14 @@ import game.actors.enemies.water.GiantCrayFish;
 
 /**
  * A class that creates different type of enemies on east side of the map.
+ * @see EnemyFactory
  */
 public class EastMapFactoryEnemy implements EnemyFactory{
 
     /**
      *
-     * @return the instance of DogType enemy on the east side of the map
+     * @return the instance of {@link DogType} enemy on the east side of the map
+     * @see GiantDog
      */
     @Override
     public DogType createDog() {
@@ -23,7 +25,8 @@ public class EastMapFactoryEnemy implements EnemyFactory{
 
     /**
      *
-     * @return the instance of SkeletalType enemy on the east side of the map
+     * @return the instance of {@link SkeletalType} enemy on the east side of the map
+     * @see SkeletalBandit
      */
     @Override
     public SkeletalType createSkeletal() {
@@ -32,7 +35,8 @@ public class EastMapFactoryEnemy implements EnemyFactory{
 
     /**
      *
-     * @return the instance of WaterType enemy on the east side of the map
+     * @return the instance of{@link WaterType} enemy on the east side of the map
+     * @see GiantCrayFish
      */
     @Override
     public WaterType createWaterType() {

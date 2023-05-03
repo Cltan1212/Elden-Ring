@@ -15,10 +15,16 @@ import java.util.ArrayList;
 
 /**
  * Class representing the Merchant Kale. Merchant Kale is a trader in the game world.
+ * @see Actor
+ * @see Sellable
+ * @see Purchasable
  *
  */
 public class MerchantKale extends Actor {
 
+    /**
+     * The ArrayList that contains {@link Sellable} items.
+     */
     private final ArrayList<Sellable> sellableItemList;
 
     /**

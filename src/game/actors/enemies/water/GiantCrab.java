@@ -6,6 +6,8 @@ import game.weapons.GiantCrabSlam;
 
 /**
  * Class representing a physical Giant Crab in the game world.
+ * @see WaterType
+ * @see GiantCrabSlam
  */
 public class GiantCrab extends WaterType {
     /**
@@ -32,6 +34,7 @@ public class GiantCrab extends WaterType {
      * Generate a random amount of runes.
      *
      * @return an integer that represent an amount of runes
+     * @see game.runes.RuneSource
      */
     @Override
     public int generateRunes() {
