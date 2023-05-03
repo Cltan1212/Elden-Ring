@@ -89,6 +89,7 @@ public class ResetManager {
                 resettable.reset(map);
             }
         }
+        resettables.clear();
     }
 
     /**

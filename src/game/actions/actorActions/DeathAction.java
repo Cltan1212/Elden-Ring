@@ -3,6 +3,7 @@ package game.actions.actorActions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
@@ -66,8 +67,7 @@ public class DeathAction extends Action {
         else if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
             // reset the game
-            result += "\n" + FancyMessage.YOU_DIED;
-            result += new ResetAction(map.locationOf(target)).execute(target, map);
+            new Display().println(FancyMessage.YOU_DIED);
 
         }
         // enemy attacks enemy
@@ -77,7 +77,7 @@ public class DeathAction extends Action {
                 map.removeActor(target);
             }
         }
-        result += System.lineSeparator() + menuDescription(target);
+        result += new ResetAction(map.locationOf(target)).execute(target, map);
         return result;
     }
 
