@@ -50,7 +50,7 @@ public class ResetAction extends Action {
         String result = "";
         ResetManager.getInstance().run();
         if(!actor.hasCapability(Status.RESTING)){
-            result = "\n" + FancyMessage.YOU_DIED;
+//            result = "\n" + FancyMessage.YOU_DIED;
             Runes runes = new Runes(actor, lastLocation);
             lastLocation.addItem(runes);
             map.moveActor(actor, lastSite);

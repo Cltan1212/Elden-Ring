@@ -2,6 +2,7 @@ package game.actions.actorActions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.utils.Status;
 
 /**
  * An action that removes an actor from the game map, typically used when the actor is despawned.
@@ -21,6 +22,7 @@ public class DespawnedAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
+        actor.removeCapability(Status.DESPAWNABLE);
         map.removeActor(actor);
         return menuDescription(actor);
     }
