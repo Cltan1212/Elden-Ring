@@ -13,6 +13,9 @@ import game.actions.actorActions.AreaAttackAction;
  * @see WeaponItem
  */
 public class GiantCrabSlam extends WeaponItem {
+    /**
+     * Constructor.
+     */
     public GiantCrabSlam() {
         super("Giant Crab Slam", ' ', 208 , "slams", 90);
         portable = false;
