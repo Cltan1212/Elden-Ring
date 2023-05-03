@@ -68,6 +68,7 @@ public class DeathAction extends Action {
 
             // reset the game
             new Display().println(FancyMessage.YOU_DIED);
+            result += new ResetAction(map.locationOf(target)).execute(target, map);
 
         }
         // enemy attacks enemy
@@ -77,7 +78,7 @@ public class DeathAction extends Action {
                 map.removeActor(target);
             }
         }
-        result += new ResetAction(map.locationOf(target)).execute(target, map);
+//        result += new ResetAction(map.locationOf(target)).execute(target, map);
         return result;
     }
 
