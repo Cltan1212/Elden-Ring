@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actors.enemies.Enemy;
 import game.actors.enemies.PileOfBones;
 import game.behaviours.AttackBehaviour;
+import game.behaviours.WanderBehaviour;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
@@ -49,6 +50,8 @@ public abstract class SkeletalType extends Enemy {
             Location previousLocation = map.locationOf(this);
             map.removeActor(this);
             previousLocation.addActor(new PileOfBones(this));
+            this.behaviours.clear();
+            this.behaviours.put(999, new WanderBehaviour());
             return new DoNothingAction();
         }
         return super.playTurn(actions, lastAction, map, display);
