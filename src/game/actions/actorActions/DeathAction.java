@@ -64,6 +64,7 @@ public class DeathAction extends Action {
                 // transfer runes to target
                 result += "\n" +target + " drops " + RunesManager.getInstance().transferRunes(target, attacker) + " runes.";
                 target.removeCapability(Status.DESPAWNABLE);
+                result += System.lineSeparator() + menuDescription(target);
                 map.removeActor(target);
             }
         }
@@ -72,7 +73,9 @@ public class DeathAction extends Action {
         else if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
             // reset the game
-            new Display().println(FancyMessage.YOU_DIED);
+            result += System.lineSeparator() + menuDescription(target);
+            result += "\n" + FancyMessage.YOU_DIED;
+//            new Display().println(FancyMessage.YOU_DIED);
             result += new ResetAction(map.locationOf(target)).execute(target, map);
 
         }
@@ -80,10 +83,11 @@ public class DeathAction extends Action {
         else {
             if (!target.hasCapability(Status.SPECIAL_DEATH)) {
                 target.removeCapability(Status.DESPAWNABLE);
+                result += System.lineSeparator() + menuDescription(target);
                 map.removeActor(target);
             }
         }
-        result += System.lineSeparator() + menuDescription(target);
+//        result += System.lineSeparator() + menuDescription(target);
         return result;
     }
 

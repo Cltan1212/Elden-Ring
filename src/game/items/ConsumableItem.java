@@ -43,7 +43,8 @@ public abstract class ConsumableItem extends Item implements Resettable, Consuma
      * @param map the {@link GameMap} in which the consumable item.
      */
     @Override
-    public void reset(GameMap map){
+    public String reset(GameMap map){
         this.remainingConsume = maximumUse;
+        return "\n" + this +  "reset to maximum consumption";
     }
 }

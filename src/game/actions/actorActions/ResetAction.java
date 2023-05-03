@@ -48,7 +48,7 @@ public class ResetAction extends Action {
     public String execute(Actor actor, GameMap map) {
         Location lastSite = map.at(ResetManager.getInstance().getLastVisited().locationX, ResetManager.getInstance().getLastVisited().locationY);
         String result = "";
-        ResetManager.getInstance().run();
+        result += ResetManager.getInstance().run();
         if(!actor.hasCapability(Status.RESTING)){
             Runes runes = new Runes(actor, lastLocation);
             lastLocation.addItem(runes);

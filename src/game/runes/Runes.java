@@ -79,11 +79,12 @@ public class Runes extends Item implements RuneSource, Resettable{
      * @param map the {@link GameMap} containing the Runes
      */
     @Override
-    public void reset(GameMap map) {
+    public String reset(GameMap map) {
         if (!runesHolder.hasCapability(Status.RESTING)) {
             RunesManager.getInstance().removeRuneSource(this);
-            new Display().println(this + " is removed.");
             location.removeItem(this);
+            return "\n" + this +  " is removed.";
         }
+        return "";
     }
 }
