@@ -45,7 +45,6 @@ public class ConsumeAction extends Action {
      * Return a string describing this action in the menu.
      *
      * @param actor The {@link Actor} performing the action.
-     * @return
      */
     @Override
     public String menuDescription(Actor actor) {

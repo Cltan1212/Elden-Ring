@@ -16,8 +16,13 @@ import game.reset.Resettable;
  * @see Consumable
  */
 public abstract class ConsumableItem extends Item implements Resettable, Consumable {
-
+    /**
+     * The maximum use of the consumable item.
+     */
     protected int maximumUse;
+    /**
+     * The remaining consume of the consumable item.
+     */
     protected int remainingConsume;
     /**
      * Constructor.
