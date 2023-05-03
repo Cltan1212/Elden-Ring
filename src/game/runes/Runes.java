@@ -3,6 +3,7 @@ package game.runes;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.*;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
@@ -81,6 +82,7 @@ public class Runes extends Item implements RuneSource, Resettable{
     public void reset(GameMap map) {
         if (!runesHolder.hasCapability(Status.RESTING)) {
             RunesManager.getInstance().removeRuneSource(this);
+            new Display().println(this + " is removed.");
             location.removeItem(this);
         }
     }

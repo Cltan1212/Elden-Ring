@@ -36,6 +36,7 @@ public class PileOfBones extends Enemy{
         this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
         this.addWeaponToInventory(new Grossmesser());
+        ResetManager.getInstance().registerResettable(this);
         this.skeletalEnemy = skeletalEnemy;
         this.remaining = 3;
         skeletalEnemy.resetMaxHp(153);

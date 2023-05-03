@@ -8,7 +8,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import game.reset.ResetManager;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
-import java.util.Map;
 
 /**
  * SpawnGround
@@ -39,13 +38,11 @@ public abstract class SpawnGround extends Ground {
     @Override
     public void tick(Location location){
         int randomChance = RandomNumberGenerator.getRandomInt(100);
-
         Enemy spawnEnemy = this.spawn();
-        if (!location.containsAnActor() && (randomChance <= this.spawn().spawnChance)){
+        if (!location.containsAnActor() && (randomChance <= spawnEnemy.spawnChance)){
             ResetManager.getInstance().registerResettable(spawnEnemy);
             location.addActor(spawnEnemy);
-        }
-        else{
+        } else{
             location.setGround(this);
         }
     }
