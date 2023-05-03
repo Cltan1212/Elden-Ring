@@ -15,6 +15,7 @@ import game.utils.Status;
 /**
  * Class representing the Player. It implements the {@link Resettable} interface.
  * It carries around an item called {@link FlaskOfCrimsonTears} that can be consumed to restore its own hitPoints.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Actor
  * @see Resettable
  *

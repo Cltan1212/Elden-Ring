@@ -6,6 +6,7 @@ import game.weapons.GiantCrabSlam;
 
 /**
  * Class representing a physical Giant Crab in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see WaterType
  * @see GiantCrabSlam
  */

@@ -8,7 +8,7 @@ import game.behaviours.WanderBehaviour;
  * BEHOLD, DOG!
  *
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see DogType
  */
 public class LoneWolf extends DogType {

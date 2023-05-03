@@ -6,7 +6,7 @@ import game.actors.enemies.water.WaterType;
 
 /**
  * An interface for creating different type of enemies.
- *
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  */
 public interface EnemyFactory {
     /**

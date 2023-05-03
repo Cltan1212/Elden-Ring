@@ -10,7 +10,7 @@ import java.util.List;
  * A reset manager class that manages a list of resettables.
  * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  *
  */
 public class ResetManager {

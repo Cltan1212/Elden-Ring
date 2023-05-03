@@ -14,6 +14,7 @@ import game.utils.Status;
  * It resets the game by calling ResetManager.getInstance().run(), and moves the actor to the last visited location,
  * adding a Rune to the location where the actor died if the actor is not in a resting state.
  * This action is called when the player dies, or when the game is reset for other reasons.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see ResetManager
  * @see Runes
  */

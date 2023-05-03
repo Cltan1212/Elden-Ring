@@ -6,6 +6,7 @@ import game.weapons.GiantCrayFishPincer;
 
 /**
  * Class representing a physical Giant Cray Fish in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see WaterType
  * @see GiantCrayFishPincer
  */

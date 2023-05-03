@@ -2,20 +2,17 @@ package game.weapons;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.actorActions.AttackAction;
 import game.actions.actorActions.QuickStepAction;
 import game.actions.runesActions.PurchaseAction;
 import game.actions.runesActions.SellAction;
-import game.actors.MerchantKale;
 import game.items.Purchasable;
 import game.items.Sellable;
-import game.utils.Status;
 
 /**
  * A weapon item representing a great knife.
  * Implements Purchasable and Sellable interfaces.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see WeaponItem
  * @see Purchasable
  * @see Sellable

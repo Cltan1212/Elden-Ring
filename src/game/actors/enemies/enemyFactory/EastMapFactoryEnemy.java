@@ -9,6 +9,7 @@ import game.actors.enemies.water.GiantCrayFish;
 
 /**
  * A class that creates different type of enemies on east side of the map.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see EnemyFactory
  */
 public class EastMapFactoryEnemy implements EnemyFactory{

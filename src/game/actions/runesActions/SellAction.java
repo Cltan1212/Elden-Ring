@@ -8,6 +8,7 @@ import game.runes.RunesManager;
 
 /**
  * A class that represents an action of selling a {@link WeaponItem} object to get runes
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Action
  */
 public class SellAction extends Action {

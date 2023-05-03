@@ -13,6 +13,8 @@ import game.utils.Status;
  * A class that represents the behaviour of attacking a target. This class implements the Behaviour interface
  * and defines the getAction method, which returns an AttackAction if there are hostile actors within the
  * GameMap or if there is a designated target. If there is no target, this class returns null.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @see Behaviour
  */
 public class AttackBehaviour implements Behaviour {
 
@@ -21,19 +23,19 @@ public class AttackBehaviour implements Behaviour {
     /**
      * Constructor.
      *
-     * @param target the target actor that this behaviour should attack
+     * @param target the target {@link Actor} that this behaviour should attack
      */
     public AttackBehaviour(Actor target){
         this.target = target;
     }
 
     /**
-     * Returns an AttackAction if there are hostile actors within the GameMap or if there is a designated target.
+     * Returns an {@link AttackAction} if there are hostile actors within the {@link GameMap} or if there is a designated target.
      * If there is no target, this method returns null.
      *
-     * @param actor the Actor acting
-     * @param map the GameMap containing the Actor
-     * @return
+     * @param actor the {@link Actor} acting
+     * @param map the {@link GameMap} containing the Actor
+     * @return the corresponding actions.
      */
     @Override
     public Action getAction(Actor actor, GameMap map) {

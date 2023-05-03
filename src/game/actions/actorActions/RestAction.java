@@ -11,6 +11,7 @@ import java.awt.*;
 
 /**
  * Special action for an {@link Actor} to rest at a Site of Lost Grace.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Action
  */
 public class RestAction extends Action {

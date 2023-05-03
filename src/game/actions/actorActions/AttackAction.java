@@ -9,9 +9,8 @@ import edu.monash.fit2099.engine.weapons.Weapon;
 
 /**
  * An Action to attack another Actor.
- * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Action
  *
  */

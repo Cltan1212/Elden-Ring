@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
  * An action that removes an actor from the game map, typically used when the actor is despawned.
  * Actors with a certain condition (e.g. HeavySkeletalSwordsman, LoneWolf, and GiantCrabs) have a 10% chance of being
  * despawned from the map unless they are following the player.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Action
  */
 public class DespawnedAction extends Action {

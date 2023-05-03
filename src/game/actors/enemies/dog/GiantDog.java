@@ -6,6 +6,7 @@ import game.weapons.GiantDogHead;
 
 /**
  * Class representing a physical GiantDog in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see DogType
  */
 public class GiantDog extends DogType {

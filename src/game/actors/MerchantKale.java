@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 /**
  * Class representing the Merchant Kale. Merchant Kale is a trader in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Actor
  * @see Sellable
  * @see Purchasable

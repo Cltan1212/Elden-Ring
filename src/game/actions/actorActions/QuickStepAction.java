@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * QuickStepAction, the special skill of weapon GreatKnife
  * It extends Action class
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Action
  * @see game.weapons.GreatKnife
  */

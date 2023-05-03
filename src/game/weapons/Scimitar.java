@@ -11,6 +11,7 @@ import game.items.Sellable;
 
 /**
  * A weapon item representing a Scimitar.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see WeaponItem
  * @see Purchasable
  * @see Sellable

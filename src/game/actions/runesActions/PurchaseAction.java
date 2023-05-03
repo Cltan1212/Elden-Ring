@@ -8,12 +8,13 @@ import game.runes.RunesManager;
 
 /**
  * A class that represents the action of purchasing a Purchasable item from a MerchantKale
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Action
  */
 public class PurchaseAction extends Action {
 
-    private WeaponItem purchasableItem;
-    private int price;
+    private final WeaponItem purchasableItem;
+    private final int price;
 
     /**
      * Constructor.

@@ -4,6 +4,7 @@ import game.weapons.Scimitar;
 
 /**
  * Class representing a physical Skeletal Bandit in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see SkeletalType
  */
 public class SkeletalBandit extends SkeletalType {

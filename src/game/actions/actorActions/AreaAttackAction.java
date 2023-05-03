@@ -14,6 +14,7 @@ import java.util.Random;
 
 /**
  * A class that represents an area attack action, which allows the actor to attack any adjacent actors with a given weapon.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Action
  */
 public class AreaAttackAction extends Action {

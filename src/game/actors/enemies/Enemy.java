@@ -24,6 +24,7 @@ import java.util.Map;
 
 /**
  * Abstract base class representing a physical enemy in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Actor
  * @see Resettable
  * @see RuneSource

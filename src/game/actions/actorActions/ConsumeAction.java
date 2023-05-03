@@ -9,6 +9,7 @@ import game.items.ConsumableItem;
 /**
  * A class that represents the action of an actor consuming a consumable item.
  * This action allows the actor to consume the item, which triggers its effect.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Action
  */
 public class ConsumeAction extends Action {

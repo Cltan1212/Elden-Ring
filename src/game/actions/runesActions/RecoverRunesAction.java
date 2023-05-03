@@ -8,6 +8,7 @@ import game.runes.RunesManager;
 
 /**
  * A class that represents an action of recovering runes from a {@link Runes} object
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Action
  */
 public class RecoverRunesAction extends Action {

@@ -8,6 +8,7 @@ import game.utils.RandomNumberGenerator;
 
 /**
  * Special Action class that allows an actor to unsheathe a WeaponItem on an enemy Actor.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Action
  * @see game.weapons.Uchigatana
  */

@@ -1,13 +1,8 @@
 package game.weapons;
 
-import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.actorActions.AttackAction;
 import game.actions.runesActions.PurchaseAction;
 import game.actions.runesActions.SellAction;
-import game.actors.MerchantKale;
 import game.items.Purchasable;
 import game.items.Sellable;
 
@@ -16,7 +11,7 @@ import game.items.Sellable;
  * It deals 103 damage with 80% hit rate
  * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see WeaponItem
  * @see Sellable
  * @see Purchasable

@@ -16,6 +16,7 @@ import game.weapons.Grossmesser;
 
 /**
  * Class representing a physical Pile of Bones in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Enemy
  */
 public class PileOfBones extends Enemy{

@@ -4,12 +4,12 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.actorActions.AreaAttackAction;
-import game.actions.actorActions.AttackAction;
 
 /**
  * A weapon item representing the skill "Giant Crab Slam".
  * It deals 208 damage with 90% hit rate when attacking a single target,
  * or performs an area attack when attacking with no target.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see WeaponItem
  */
 public class GiantCrabSlam extends WeaponItem {

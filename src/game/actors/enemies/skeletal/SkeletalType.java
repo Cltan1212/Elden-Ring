@@ -15,6 +15,7 @@ import game.utils.Status;
 
 /**
  * Abstract class representing a physical SkeletalType enemy in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Enemy
  */
 public abstract class SkeletalType extends Enemy {

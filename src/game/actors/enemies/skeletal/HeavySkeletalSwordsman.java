@@ -5,6 +5,7 @@ import game.weapons.Grossmesser;
 
 /**
  * Class representing a physical Heavy Skeletal Swordsman in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see SkeletalType
  */
 
