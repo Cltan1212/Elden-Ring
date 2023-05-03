@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
  * FlaskOfCrimsonTears
  * This class represents an item in the game
  * The starting weapon of the player
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see ConsumableItem
  */
 public class FlaskOfCrimsonTears extends ConsumableItem{
@@ -29,7 +30,7 @@ public class FlaskOfCrimsonTears extends ConsumableItem{
      * Can only be consumed twice
      * Each time the player uses it, their health will be restored by 250 points
      * Display the message if the player has reached maximum consumption
-     * @param actor The player using the Flask of Crimson Tears
+     * @param actor The {@link Actor} using the Flask of Crimson Tears
      */
     @Override
     public void consume(Actor actor){
@@ -51,4 +52,9 @@ public class FlaskOfCrimsonTears extends ConsumableItem{
         return super.toString() + " (" + remainingConsume + "/" + maximumUse + ")";
     }
 
+    @Override
+    public void reset(GameMap map){
+        this.remainingConsume = maximumUse;
+        new Display().println("Flask of Crimson Tears reset to maximum consumption.");
+    }
 }

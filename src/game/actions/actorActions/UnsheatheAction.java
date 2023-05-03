@@ -8,6 +8,9 @@ import game.utils.RandomNumberGenerator;
 
 /**
  * Special Action class that allows an actor to unsheathe a WeaponItem on an enemy Actor.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @see Action
+ * @see game.weapons.Uchigatana
  */
 public class UnsheatheAction extends Action {
 
@@ -18,8 +21,8 @@ public class UnsheatheAction extends Action {
     /**
      * Constructor.
      *
-     * @param weapon The WeaponItem to use in the attack
-     * @param target The target Actor to attack
+     * @param weapon The {@link WeaponItem} to use in the attack
+     * @param target The target {@link Actor} to attack
      */
     public UnsheatheAction(WeaponItem weapon, Actor target){
         this.weapon = weapon;
@@ -28,10 +31,10 @@ public class UnsheatheAction extends Action {
     }
 
     /**
-     * Method that executes the UnsheatheAction, allowing the actor to attack the target Actor.
+     * Method that executes the UnsheatheAction, allowing the {@link Actor} to attack the target {@link Actor}.
      *
-     * @param actor The actor performing the action.
-     * @param map The map the actor is on.
+     * @param actor The {@link Actor} performing the action.
+     * @param map The {@link GameMap} the {@link Actor} is on.
      * @return A string describing the result of the action
      */
     @Override
@@ -54,7 +57,7 @@ public class UnsheatheAction extends Action {
     /**
      * Method that returns a string description of the action for display in the menu.
      *
-     * @param actor The actor performing the action.
+     * @param actor The {@link Actor} performing the action.
      * @return A string describing the action
      */
     @Override

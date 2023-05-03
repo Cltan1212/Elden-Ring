@@ -8,12 +8,13 @@ import game.runes.RunesManager;
 
 /**
  * A class that represents the action of purchasing a Purchasable item from a MerchantKale
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Action
  */
 public class PurchaseAction extends Action {
 
-    private WeaponItem purchasableItem;
-    private int price;
+    private final WeaponItem purchasableItem;
+    private final int price;
 
     /**
      * Constructor.
@@ -29,8 +30,8 @@ public class PurchaseAction extends Action {
     /**
      * Executes the action of purchasing a {@link WeaponItem}.
      *
-     * @param actor The actor performing the action.
-     * @param map The map the actor is on.
+     * @param actor The {@link Actor} performing the action.
+     * @param map The {@link GameMap} the {@link Actor} is on.
      * @return a message describing the result of the action.
      */
     @Override
@@ -51,7 +52,7 @@ public class PurchaseAction extends Action {
     /**
      * Returns a description of the action that can be displayed in the menu.
      *
-     * @param actor The actor performing the action.
+     * @param actor The {@link Actor} performing the action.
      * @return a string describing the action.
      */
     @Override

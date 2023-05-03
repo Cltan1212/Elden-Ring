@@ -17,7 +17,9 @@ import game.utils.Status;
  */
 public class SiteOfLostGrace extends Ground {
 
-    // allow player to rest on it, when this happens, the entire game will be reset
+    /**
+     * allow player to rest on it, when this happens, the entire game will be reset
+     */
     private String name;
 
     /**
@@ -45,7 +47,7 @@ public class SiteOfLostGrace extends Ground {
 
     /**
      * This method serve to check if an actor can enter the ground
-     * @param actor the Actor to check
+     * @param actor the {@link Actor} to check
      * @return boolean, true if it can enter, false otherwise
      */
     @Override
@@ -54,11 +56,12 @@ public class SiteOfLostGrace extends Ground {
     }
 
     /**
-     * A method that allows adds Rest action as one of the allowable action for player to choose from
-     * @param actor the Actor acting
-     * @param location the current Location
-     * @param direction the direction of the Ground from the Actor
+     * A method that allows adds {@link RestAction} as one of the allowable action for player to choose from
+     * @param actor the {@link Actor} acting
+     * @param location the current {@link Location}
+     * @param direction the direction of the Ground from the {@link Actor}
      * @return a collection of actions
+     * @see RestAction
      */
     public ActionList allowableActions(Actor actor, Location location, String direction){
         ActionList actions = new ActionList();

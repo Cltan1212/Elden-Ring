@@ -10,7 +10,9 @@ import game.utils.Status;
 import java.awt.*;
 
 /**
- * Special action for an actor to rest at a Site of Lost Grace.
+ * Special action for an {@link Actor} to rest at a Site of Lost Grace.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @see Action
  */
 public class RestAction extends Action {
 
@@ -19,7 +21,7 @@ public class RestAction extends Action {
     /**
      * Constructor.
      *
-     * @param siteOfLostGrace the Site of Lost Grace where the actor will rest
+     * @param siteOfLostGrace the {@link SiteOfLostGrace} where the {@link Actor} will rest
      *
      */
     public RestAction(SiteOfLostGrace siteOfLostGrace){
@@ -27,7 +29,7 @@ public class RestAction extends Action {
     }
 
     /**
-     * Adds the Site of Lost Grace to the list of visited sites, makes the actor rest, and executes a ResetAction.
+     * Adds the {@link SiteOfLostGrace} to the list of visited sites, makes the actor rest, and executes a ResetAction.
      * Removes the resting capability after the actor is done resting.
      *
      * @param actor The actor performing the action.
@@ -44,9 +46,9 @@ public class RestAction extends Action {
     }
 
     /**
-     * A String indicating that the actor can rest at the Site of Lost Grace.
+     * A String indicating that the {@link Actor} can rest at the {@link SiteOfLostGrace}.
      *
-     * @param actor the actor that can rest at the Site of Lost Grace
+     * @param actor the {@link Actor} that can rest at the {@link SiteOfLostGrace}
      * @return a String indicating that the actor can rest at the Site of Lost Grace
      */
     @Override

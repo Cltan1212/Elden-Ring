@@ -21,6 +21,7 @@ public class GustOfWind extends SpawnGround {
      * This is the constructor for GustOfWind
      * It sets the displayCharacter and also pass in the enemyLocation
      * @param enemyLocation the type of enemies that will spawn on the ground
+     * @see EnemyFactory
      */
     public GustOfWind(EnemyFactory enemyLocation) {
         super('&', enemyLocation);

@@ -32,7 +32,7 @@ public abstract class SpawnGround extends Ground {
     /**
      * Ground can also experience the joy of time.
      * It will spawn enemies if the random spawn chance generated is less than or equal to the spawn chance of each enemy.
-     * @param location The location of the Ground
+     * @param location The {@link Location} of the Ground
      */
     @Override
     public void tick(Location location){
@@ -46,7 +46,7 @@ public abstract class SpawnGround extends Ground {
 
     /**
      * This method serve to check if an actor can enter the ground
-     * @param actor the Actor to check
+     * @param actor the {@link Actor} to check
      * @return boolean, true if it can enter, false otherwise
      */
     @Override

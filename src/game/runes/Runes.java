@@ -15,6 +15,10 @@ import java.util.List;
 
 /**
  * Class representing items that can be used as Runes in the game world
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @see Item
+ * @see RuneSource
+ * @see Resettable
  */
 
 public class Runes extends Item implements RuneSource, Resettable{
@@ -25,8 +29,8 @@ public class Runes extends Item implements RuneSource, Resettable{
 
     /** Constructor
      *
-     * @param runesHolder the actor who drops this item
-     * @param location the location this item present
+     * @param runesHolder the {@link Actor} who drops this item
+     * @param location the {@link Location} this item present
      */
     public Runes(Actor runesHolder, Location location){
 
@@ -52,7 +56,7 @@ public class Runes extends Item implements RuneSource, Resettable{
     /**
      * Accessor for runesHolder for this item
      *
-     * @return the actor who drops this item
+     * @return the {@link Actor} who drops this item
      */
     public Actor getRunesHolder() {
         return runesHolder;
@@ -69,8 +73,9 @@ public class Runes extends Item implements RuneSource, Resettable{
     }
 
     /**
+     * Resets the Runes to their initial state.
      *
-     * @param map
+     * @param map the {@link GameMap} containing the Runes
      */
     @Override
     public void reset(GameMap map) {

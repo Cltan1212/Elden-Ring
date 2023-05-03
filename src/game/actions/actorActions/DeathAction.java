@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.reset.ResetManager;
 import game.runes.RunesManager;
 import game.utils.Status;
 
@@ -16,6 +17,7 @@ import game.utils.Status;
  * This action displays a menu description stating that the actor is killed.
  * @author Adrian Kristanto
  * Modified by: Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @see Action
  *
  */
 public class DeathAction extends Action {
@@ -29,8 +31,8 @@ public class DeathAction extends Action {
      * When the target is killed, the items & weapons carried by target
      * will be dropped to the location in the game map where the target was
      *
-     * @param target The actor performing the action.
-     * @param map The map the actor is on.
+     * @param target The {@link Actor} performing the action.
+     * @param map The {@link GameMap} the actor is on.
      * @return result of the action to be displayed on the UI
      */
     @Override
@@ -78,7 +80,7 @@ public class DeathAction extends Action {
     /**
      * Returns a menu description stating that the actor is killed.
      *
-     * @param actor The actor performing the action.
+     * @param actor The {@link Actor} performing the action.
      * @return A String describing the menu description of the action
      */
     @Override

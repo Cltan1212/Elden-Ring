@@ -12,7 +12,7 @@ import edu.monash.fit2099.engine.positions.Location;
 /**
  * Created by:
  * @author Riordan D. Alfredo
- * Modified by:
+ * Modified by: Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  *
  */
 public class WanderBehaviour implements Behaviour {
