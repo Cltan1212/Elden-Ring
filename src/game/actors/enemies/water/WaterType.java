@@ -11,7 +11,8 @@ import game.utils.Status;
 
 /**
  * Abstract class representing a physical WaterType enemy in the game world.
- *
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @see Enemy
  */
 public abstract class WaterType extends Enemy {
 
@@ -21,6 +22,7 @@ public abstract class WaterType extends Enemy {
      * @param name        the name of the Actor
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
+     * @see WanderBehaviour
      */
     public WaterType(String name, char displayChar, int hitPoints, int spawnChance) {
         super(name, displayChar, hitPoints, spawnChance);
@@ -30,6 +32,15 @@ public abstract class WaterType extends Enemy {
         this.behaviours.put(999, new WanderBehaviour());
     }
 
+    /**
+     * The enemy can be attacked by any actor that has the HOSTILE_WATER_TYPE_ENEMY capability
+     *
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return a list of Actions that allowed otherActor to perform
+     * @see AttackBehaviour
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         if (otherActor.hasCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY)){

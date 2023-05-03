@@ -5,13 +5,12 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.actorActions.AreaAttackAction;
 import game.actions.runesActions.SellAction;
-import game.actors.MerchantKale;
 import game.items.Purchasable;
 import game.items.Sellable;
-import game.utils.Status;
 
 /**
  * A heavy sword that deals high damage and can perform an area attack.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see WeaponItem
  * @see Purchasable
  */

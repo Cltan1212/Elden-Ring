@@ -17,6 +17,7 @@ public class Graveyard extends SpawnGround {
      * This is the constructor for Graveyard
      * It sets the displayCharacter and also pass in the enemyLocation
      * @param enemyLocation the type of enemies that will spawn on the ground
+     * @see EnemyFactory
      */
     public Graveyard(EnemyFactory enemyLocation) {
         super('n', enemyLocation);

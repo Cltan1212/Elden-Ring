@@ -13,19 +13,22 @@ import game.runes.RunesManager;
 import game.utils.Status;
 
 /**
- * Class representing the Player. It implements the Resettable interface.
- * It carries around an item called FlaskOfCrimsonTears that can be consumed to restore its own hitPoints.
+ * Class representing the Player. It implements the {@link Resettable} interface.
+ * It carries around an item called {@link FlaskOfCrimsonTears} that can be consumed to restore its own hitPoints.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @see Actor
+ * @see Resettable
  *
  */
 public class Player extends Actor implements Resettable {
 
 	/**
-	 * The menu used by the Player for selecting actions.
+	 * The {@link Menu} used by the Player for selecting actions.
 	 */
 	private final Menu menu = new Menu();
 
 	/**
-	 * The CombatArchetypes of the Player.
+	 * The {@link CombatArchetypes} of the Player.
 	 */
 	public CombatArchetypes role;
 
@@ -35,18 +38,25 @@ public class Player extends Actor implements Resettable {
 	 * @param name        the name of the Player
 	 * @param displayChar the character used to represent the Player in the map
 	 * @param hitPoints   the Player's hit points
-	 * @param role        the CombatArchetypes of the Player
+	 * @param role        the {@link CombatArchetypes} of the Player
 	 */
 	public Player(String name, char displayChar, int hitPoints, CombatArchetypes role) {
+
 		super(name, displayChar, hitPoints);
 		this.role = role;
 		RunesManager.getInstance().registerRunesHeld(this, 0);
+
+		// capabilities
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.CONSUMABLE);
 		this.addCapability(Status.RESTABLE);
+
+		// set weapon and item
 		resetMaxHp(role.getStartingHitPoint());
 		this.addItemToInventory(new FlaskOfCrimsonTears());
 		this.addWeaponToInventory(role.getStartingWeapon());
+
+		// for reset actions
 		this.registerInstance();
 	}
 
@@ -72,7 +82,7 @@ public class Player extends Actor implements Resettable {
 	/**
 	 * Resets the Player to their initial state.
 	 *
-	 * @param map the map containing the Player
+	 * @param map the {@link GameMap} containing the Player
 	 */
 	@Override
 	public void reset(GameMap map) {

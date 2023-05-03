@@ -18,6 +18,7 @@ public class PuddleOfWater extends SpawnGround {
      * Constructor for PuddleOfWater
      * It sets the displayCharacter and also pass in the enemyLocation
      * @param enemyLocation the type of enemies that will spawn on the ground
+     * @see EnemyFactory
      */
     public PuddleOfWater(EnemyFactory enemyLocation) {
         super('~', enemyLocation);

@@ -15,10 +15,17 @@ import java.util.ArrayList;
 
 /**
  * Class representing the Merchant Kale. Merchant Kale is a trader in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @see Actor
+ * @see Sellable
+ * @see Purchasable
  *
  */
 public class MerchantKale extends Actor {
 
+    /**
+     * The ArrayList that contains {@link Sellable} items.
+     */
     private final ArrayList<Sellable> sellableItemList;
 
     /**
@@ -27,6 +34,11 @@ public class MerchantKale extends Actor {
     public MerchantKale() {
         super("Merchant Kale", 'K', 100);
         sellableItemList = new ArrayList<>();
+        sellableItemList.add(new Club());
+        sellableItemList.add(new GreatKnife());
+        sellableItemList.add(new Uchigatana());
+        sellableItemList.add(new Grossmesser());
+        sellableItemList.add(new Scimitar());
     }
 
     /**

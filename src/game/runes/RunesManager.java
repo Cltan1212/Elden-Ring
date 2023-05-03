@@ -10,6 +10,7 @@ import java.util.Map;
 /**
  * Class representing to manage all the runes inside the system.
  * This class manage to add, deduct, transfer and get runes in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  */
 public class RunesManager {
 
@@ -51,7 +52,7 @@ public class RunesManager {
     }
 
     /**
-     * Register all the runeSource in the game world.
+     * Register all the {@link RuneSource} in the game world.
      *
      * @param runeSource the ability of generating runes.
      */
@@ -60,7 +61,7 @@ public class RunesManager {
     }
 
     /**
-     * Remove the runeSource in the game world.
+     * Remove the {@link RuneSource} in the game world.
      *
      * @param runeSource the ability of generating runes.
      */
@@ -69,10 +70,10 @@ public class RunesManager {
     }
 
     /**
-     * Find the corresponding runeSource for this actor.
+     * Find the corresponding {@link RuneSource} for this actor.
      *
-     * @param actor the actor have this ability of generating runeSource
-     * @return the corresponding runeSource of this actor.
+     * @param actor the {@link Actor} have this ability of generating {@link RuneSource}
+     * @return the corresponding {@link RuneSource} of this actor.
      */
     private RuneSource findRuneSource(Actor actor){
         for (RuneSource runeSource : runeSourceList){
@@ -86,8 +87,8 @@ public class RunesManager {
     /**
      * Register all the runeHolder and the amount in the game world.
      *
-     * @param runeHolder the actor who holds the current runes
-     * @param amount the current amount where the actor holds
+     * @param runeHolder the {@link Actor} who holds the current runes
+     * @param amount the current amount where the {@link Actor} holds
      */
     public void registerRunesHeld(Actor runeHolder, int amount){
         runesHeld.put(runeHolder, amount);
@@ -116,7 +117,7 @@ public class RunesManager {
     /**
      * Deduct the specific amount of runes from runeHolder.
      *
-     * @param runeHolder the actor that hold the runes.
+     * @param runeHolder the {@link Actor} that hold the runes.
      * @param amount the amount that needed to be deducted.
      */
     public void deductRunes(Actor runeHolder, int amount){
@@ -130,7 +131,7 @@ public class RunesManager {
     /**
      * Add the specific amount of runes to runeHolder.
      *
-     * @param runeHolder the actor that hold the runes.
+     * @param runeHolder the {@link Actor} that hold the runes.
      * @param amount the amount that needed to be added.
      */
     public void addRunes(Actor runeHolder, int amount){
@@ -144,7 +145,7 @@ public class RunesManager {
     /**
      *  Accessor of the runes amount of an runesHolder.
      *
-     * @param runeHolder the actor who holds the runes.
+     * @param runeHolder the {@link Actor} who holds the runes.
      * @return the amount that the runeHolder holds.
      */
     public int getRunes(Actor runeHolder){

@@ -3,17 +3,14 @@ package game;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.MerchantKale;
 import game.actors.Player;
 import game.actors.enemies.enemyFactory.EastMapFactoryEnemy;
 import game.actors.enemies.enemyFactory.WestMapFactoryEnemy;
-import game.actors.enemies.skeletal.SkeletalBandit;
 import game.combat.Bandit;
 import game.combat.CombatArchetypes;
 import game.combat.Samurai;
@@ -32,8 +29,8 @@ import game.utils.FancyMessage;
  * The main class to start the game.
  * Created by:
  * @author Adrian Kristanto
- * Modified by:
- *
+ * Modified by: Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @version 3.0
  */
 public class Application {
 
@@ -83,11 +80,13 @@ public class Application {
 			}
 		}
 
+		// map the character to its corresponding class
 		HashMap<Character, CombatArchetypes> characterToRoleMap = new HashMap<Character, CombatArchetypes>();
 		characterToRoleMap.put('s', new Samurai());
 		characterToRoleMap.put('b', new Bandit());
 		characterToRoleMap.put('w', new Wretch());
 
+		// Display the role choices for user to select and pass the choiceChar to Player constructor
 		Display display = new Display();
 		display.println("Select your role: ");
 		for (Character key: characterToRoleMap.keySet()){
@@ -158,6 +157,6 @@ public class Application {
 		// add GameMap to ResetManager
 		ResetManager.getInstance().addSiteOfLostGrace(theFirstStep);
 		ResetManager.getInstance().addMap(gameMap);
-		world.run();
+		world.run(); // run the whole game
 	}
 }

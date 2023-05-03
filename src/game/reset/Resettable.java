@@ -4,21 +4,20 @@ import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
  * A resettable interface
- * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  *
  */
 public interface Resettable {
 
     /**
      * Resets the object to its initial state on a given map.
-     * @param map the map to reset the object on.
+     * @param map the {@link GameMap} to reset the object on.
      */
     void reset(GameMap map);
 
     /**
-     * Registers an instance of a resettable object with the reset manager.
+     * Registers an instance of a resettable object with the {@link ResetManager}.
      * This allows the object to be automatically reset when the reset manager runs.
      */
     default void registerInstance(){

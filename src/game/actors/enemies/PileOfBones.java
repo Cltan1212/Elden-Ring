@@ -8,25 +8,32 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.enemies.Enemy;
+import game.actors.enemies.skeletal.SkeletalType;
 import game.reset.Resettable;
 import game.utils.RandomNumberGenerator;
+import game.utils.Status;
 import game.weapons.Grossmesser;
 
 /**
  * Class representing a physical Pile of Bones in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @see Enemy
  */
 public class PileOfBones extends Enemy{
 
-    private final Actor skeletalEnemy;
+    private final SkeletalType skeletalEnemy;
     private int remaining;
 
     /**
      * Constructor.
      *
-     * @param skeletalEnemy The skeletal type enemy that turn into pile of bones.
+     * @param skeletalEnemy The {@link SkeletalType} enemy that turn into pile of bones.
      */
-    public PileOfBones(Actor skeletalEnemy) {
+    public PileOfBones(SkeletalType skeletalEnemy) {
         super("Pile Of Bones",'X',1, 0);
+        System.out.println("TURN INTO PILE OF BONES");
+        this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
+        this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
         this.addWeaponToInventory(new Grossmesser());
         this.skeletalEnemy = skeletalEnemy;
         this.remaining = 3;

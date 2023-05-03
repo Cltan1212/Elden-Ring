@@ -2,12 +2,10 @@ package game.weapons;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.actorActions.UnsheatheAction;
 import game.actions.runesActions.PurchaseAction;
 import game.actions.runesActions.SellAction;
-import game.actors.MerchantKale;
 import game.items.Purchasable;
 import game.items.Sellable;
 
@@ -15,6 +13,7 @@ import game.items.Sellable;
  * A weapon item representing a Uchigatana.
  * A Uchigatana can be unsheathed by an actor, allowing them to perform a powerful attack on their target.
  * It can also be purchased from a merchant, or sold by the player.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see WeaponItem
  * @see Purchasable
  * @see Sellable

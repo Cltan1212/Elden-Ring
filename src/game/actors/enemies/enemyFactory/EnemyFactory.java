@@ -6,24 +6,24 @@ import game.actors.enemies.water.WaterType;
 
 /**
  * An interface for creating different type of enemies.
- *
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  */
 public interface EnemyFactory {
     /**
      *
-     * @return the instance of DogType enemy
+     * @return the instance of {@link DogType} enemy
      */
     DogType createDog();
 
     /**
      *
-     * @return the instance of SkeletalType enemy
+     * @return the instance of {@link SkeletalType} enemy
      */
     SkeletalType createSkeletal();
 
     /**
      *
-     * @return the instance of WaterType enemy
+     * @return the instance of {@link WaterType} enemy
      */
     WaterType createWaterType();
 }

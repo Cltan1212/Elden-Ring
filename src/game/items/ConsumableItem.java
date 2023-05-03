@@ -10,6 +10,10 @@ import game.reset.Resettable;
 /**
  * Abstract class representing a Consumable Item. It extends the Item class and implements the Consumable and Resettable interfaces.
  * It provides a default implementation of the consume() method and overrides the reset() method to do nothing.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @see Item
+ * @see Resettable
+ * @see Consumable
  */
 public abstract class ConsumableItem extends Item implements Resettable, Consumable {
 
@@ -21,6 +25,7 @@ public abstract class ConsumableItem extends Item implements Resettable, Consuma
      * @param name         a String, the name of this ConsumableItem
      * @param displayChar  a char, the character to use to represent this ConsumableItem when it is on the ground
      * @param portable     a boolean, indicating whether this ConsumableItem is portable or not
+     * @see ConsumeAction
      */
     public ConsumableItem(String name, char displayChar, boolean portable){
         super(name, displayChar, portable);
@@ -30,7 +35,7 @@ public abstract class ConsumableItem extends Item implements Resettable, Consuma
 
     /**
      * A method that reset the remaining consume to maximum consume
-     * @param map the map in which the Flask Of Crimson is on
+     * @param map the {@link GameMap} in which the consumable item.
      */
     @Override
     public void reset(GameMap map){
