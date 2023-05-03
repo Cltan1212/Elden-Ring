@@ -13,7 +13,7 @@ public class GiantDog extends DogType {
      * Constructor.
      */
     public GiantDog() {
-        super("Giant Dog",'G',693, 4);
+        super("Giant Dog",'G',60, 4);
         this.addWeaponToInventory(new GiantDogHead());
     }
 

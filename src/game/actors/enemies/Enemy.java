@@ -119,5 +119,6 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
     @Override
     public void reset(GameMap map) {
         map.removeActor(this);
+        new Display().println(this.toString() + " is removed.");
     }
 }

@@ -51,4 +51,9 @@ public class FlaskOfCrimsonTears extends ConsumableItem{
         return super.toString() + " (" + remainingConsume + "/" + maximumUse + ")";
     }
 
+    @Override
+    public void reset(GameMap map){
+        this.remainingConsume = maximumUse;
+        new Display().println("Flask of Crimson Tears reset to maximum consumption.");
+    }
 }
