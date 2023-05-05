@@ -14,7 +14,7 @@ public interface Resettable {
      * Resets the object to its initial state on a given map.
      * @param map the {@link GameMap} to reset the object on.
      */
-    void reset(GameMap map);
+    String reset(GameMap map);
 
     /**
      * Registers an instance of a resettable object with the {@link ResetManager}.

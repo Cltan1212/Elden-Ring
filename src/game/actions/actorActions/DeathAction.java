@@ -25,13 +25,18 @@ import game.utils.Status;
 public class DeathAction extends Action {
     private Actor attacker;
 
+    /**
+     * Constructor.
+     *
+     * @param actor The {@link Actor} perform death action.
+     */
     public DeathAction(Actor actor) {
         this.attacker = actor;
     }
 
     /**
-     * When the target is killed, the items & weapons carried by target
-     * will be dropped to the location in the game map where the target was
+     * When the target is killed, the items and weapons carried by target
+     * will be dropped to the location in the game map where the target.
      *
      * @param target The {@link Actor} performing the action.
      * @param map The {@link GameMap} the actor is on.
@@ -59,6 +64,7 @@ public class DeathAction extends Action {
                 // transfer runes to target
                 result += "\n" +target + " drops " + RunesManager.getInstance().transferRunes(target, attacker) + " runes.";
                 target.removeCapability(Status.DESPAWNABLE);
+                result += System.lineSeparator() + menuDescription(target);
                 map.removeActor(target);
             }
         }
@@ -67,17 +73,21 @@ public class DeathAction extends Action {
         else if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
             // reset the game
-            new Display().println(FancyMessage.YOU_DIED);
+            result += System.lineSeparator() + menuDescription(target);
+            result += "\n" + FancyMessage.YOU_DIED;
+//            new Display().println(FancyMessage.YOU_DIED);
+            result += new ResetAction(map.locationOf(target)).execute(target, map);
 
         }
         // enemy attacks enemy
         else {
             if (!target.hasCapability(Status.SPECIAL_DEATH)) {
                 target.removeCapability(Status.DESPAWNABLE);
+                result += System.lineSeparator() + menuDescription(target);
                 map.removeActor(target);
             }
         }
-        result += new ResetAction(map.locationOf(target)).execute(target, map);
+//        result += System.lineSeparator() + menuDescription(target);
         return result;
     }
 

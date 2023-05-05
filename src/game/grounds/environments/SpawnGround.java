@@ -18,6 +18,9 @@ import game.utils.Status;
  * @see Ground
  */
 public abstract class SpawnGround extends Ground {
+    /**
+     * The factory to create different type of enemy.
+     */
     public final EnemyFactory enemyFactory;
 
     /**

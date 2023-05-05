@@ -16,8 +16,13 @@ import game.reset.Resettable;
  * @see Consumable
  */
 public abstract class ConsumableItem extends Item implements Resettable, Consumable {
-
+    /**
+     * The maximum use of the consumable item.
+     */
     protected int maximumUse;
+    /**
+     * The remaining consume of the consumable item.
+     */
     protected int remainingConsume;
     /**
      * Constructor.
@@ -38,7 +43,8 @@ public abstract class ConsumableItem extends Item implements Resettable, Consuma
      * @param map the {@link GameMap} in which the consumable item.
      */
     @Override
-    public void reset(GameMap map){
+    public String reset(GameMap map){
         this.remainingConsume = maximumUse;
+        return "\n" + this +  "reset to maximum consumption";
     }
 }

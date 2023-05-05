@@ -13,7 +13,7 @@ public class RandomNumberGenerator {
 
     /**
      * Static method to generate random number between the bound
-     * @param bound
+     * @param bound the upper bound range for generated int
      * @return the random integer generated
      */
     public static int getRandomInt(int bound) {

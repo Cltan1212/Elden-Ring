@@ -32,7 +32,6 @@ public class PileOfBones extends Enemy{
      */
     public PileOfBones(SkeletalType skeletalEnemy) {
         super("Pile Of Bones",'X',1, 0);
-        System.out.println("TURN INTO PILE OF BONES");
         this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
         this.addWeaponToInventory(new Grossmesser());

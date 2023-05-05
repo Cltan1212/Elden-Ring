@@ -83,13 +83,15 @@ public class ResetManager {
     /**
      * Resets all objects that implement the {@link Resettable} interface in all the maps in the reset manager's list.
      */
-    public void run() {
+    public String run() {
+        String result = "";
         for (GameMap map : allMap){
             for (Resettable resettable: resettables){
-                resettable.reset(map);
+                result += resettable.reset(map);
             }
         }
         resettables.clear();
+        return result;
     }
 
     /**
