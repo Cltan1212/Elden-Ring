@@ -52,7 +52,8 @@ public class Player extends Actor implements Resettable {
 		this.addCapability(Status.RESTABLE);
 
 		// set weapon and item
-		resetMaxHp(role.getStartingHitPoint());
+		maxHitPoints = role.getStartingHitPoint();
+		this.resetMaxHp(getMaxHp());
 		this.addItemToInventory(new FlaskOfCrimsonTears());
 		this.addWeaponToInventory(role.getStartingWeapon());
 
@@ -86,7 +87,7 @@ public class Player extends Actor implements Resettable {
 	 */
 	@Override
 	public String reset(GameMap map) {
-		this.resetMaxHp(this.getMaxHp());
+		hitPoints = maxHitPoints;
 		return "\n" + "Player is restored to full health.";
 	}
 }

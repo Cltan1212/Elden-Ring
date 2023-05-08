@@ -1,19 +1,21 @@
 package game.reset;
 
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.actors.Player;
 import game.grounds.SiteOfLostGrace;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A reset manager class that manages a list of resettables.
+ * A reset manager class that manages a list of resettable.
  * Created by:
  * @author Adrian Kristanto
  * Modified by: Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  *
  */
 public class ResetManager {
+    private List<Player> players;
     /**
      * A list of {@link Resettable} objects to be reset.
      */
@@ -40,6 +42,7 @@ public class ResetManager {
     private ResetManager() {
         this.resettables = new ArrayList<>();
         this.allMap = new ArrayList<>();
+        this.players = new ArrayList<>();
     }
 
     /**
@@ -91,6 +94,9 @@ public class ResetManager {
             }
         }
         resettables.clear();
+        for (Player player: players){
+            player.registerInstance();
+        }
         return result;
     }
 
@@ -109,5 +115,9 @@ public class ResetManager {
      */
     public void removeResettable(Resettable resettable) {
         resettables.remove(resettable);
+    }
+
+    public void addPlayer(Player player){
+        players.add(player);
     }
 }
