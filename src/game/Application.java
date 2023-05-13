@@ -1,4 +1,4 @@
-package game;
+    package game;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import edu.monash.fit2099.engine.weapons.Weapon;
 import game.actors.MerchantKale;
 import game.actors.Player;
 import game.actors.enemies.enemyFactory.EastMapFactoryEnemy;
@@ -15,10 +16,7 @@ import game.combat.Bandit;
 import game.combat.CombatArchetypes;
 import game.combat.Samurai;
 import game.combat.Wretch;
-import game.grounds.Dirt;
-import game.grounds.Floor;
-import game.grounds.SiteOfLostGrace;
-import game.grounds.Wall;
+import game.grounds.*;
 import game.grounds.environments.Graveyard;
 import game.grounds.environments.GustOfWind;
 import game.grounds.environments.PuddleOfWater;
@@ -125,24 +123,39 @@ public class Application {
 		}
 
 		// puddle of water
-		int value = 0;
-		for (int y = 9; y < 12; y++){
-			value++;
-			for (int x = 0; x < 10 + value; x ++){
-				gameMap.at(x,y).setGround(new PuddleOfWater(new WestMapFactoryEnemy()));
-			}
+//		int value = 0;
+//		for (int y = 9; y < 12; y++){
+//			value++;
+//			for (int x = 0; x < 10 + value; x ++){
+//				gameMap.at(x,y).setGround(new PuddleOfWater(new WestMapFactoryEnemy()));
+//			}
+//		}
+//
+//		for (int y = 12; y < 15; y++){
+//			value--;
+//			for (int x = 0; x < 10 + value; x ++){
+//				gameMap.at(x,y).setGround(new PuddleOfWater(new WestMapFactoryEnemy()));
+//			}
+//		}
+
+//		for (int y = 0; y < 6; y++){
+//			for (int x = 54 + y; x < 54 + 21; x++){
+//				gameMap.at(x,y).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
+//			}
+//		}
+		for (int x = 54; x < 59; x ++){
+			gameMap.at(x,0).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
+			gameMap.at(x,1).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
+			gameMap.at(x,2).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
+			gameMap.at(x,3).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
 		}
 
+
+
+		// new added
 		for (int y = 12; y < 15; y++){
-			value--;
-			for (int x = 0; x < 10 + value; x ++){
+			for (int x = 0; x < 4; x++){
 				gameMap.at(x,y).setGround(new PuddleOfWater(new WestMapFactoryEnemy()));
-			}
-		}
-
-		for (int y = 0; y < 6; y++){
-			for (int x = 54 + y; x < 54 + 21; x++){
-				gameMap.at(x,y).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
 			}
 		}
 
@@ -153,11 +166,64 @@ public class Application {
 			}
 		}
 
-		for (int y = 20; y < 23; y++){
-			for (int x = 20; x < 23; x++){
-				gameMap.at(x,y).setGround(new GustOfWind(new WestMapFactoryEnemy()));
-			}
+//		for (int y = 20; y < 23; y++){
+//			for (int x = 20; x < 23; x++){
+//				gameMap.at(x,y).setGround(new GustOfWind(new WestMapFactoryEnemy()));
+//			}
+//		}
+
+		// cliff (new added)
+		int value = 0;
+		for (int x =0; x < 4; x++){
+			gameMap.at(18 + value, 18).setGround(new Cliff());
+			gameMap.at(19 + value, 20).setGround(new Cliff());
+			gameMap.at(8+ value, 9).setGround(new Cliff());
+			gameMap.at(8 + value, 10).setGround(new Cliff());
+			value++;
 		}
+
+		value = 0;
+		for (int x= 0; x<3; x++){
+			gameMap.at(12 + value, 10).setGround(new Cliff());
+			gameMap.at(10+ value, 11).setGround(new Cliff());
+			gameMap.at(12 + value, 12).setGround(new Cliff());
+			gameMap.at(63 + value, 0).setGround(new Cliff());
+			gameMap.at(66 + value, 4).setGround(new Cliff());
+			gameMap.at(67 + value, 5).setGround(new Cliff());
+			gameMap.at(44 + value, 18).setGround(new Cliff());
+			gameMap.at(47 + value, 19).setGround(new Cliff());
+			gameMap.at(48+ value, 22).setGround(new Cliff());
+			value++;
+		}
+
+		value = 0;
+		for (int x =0; x < 2; x++){
+			gameMap.at(12 + value, 14).setGround(new Cliff());
+			gameMap.at(14 + value, 16).setGround(new Cliff());
+			gameMap.at(18 + value, 19).setGround(new Cliff());
+			gameMap.at(24 + value, 21).setGround(new Cliff());
+			gameMap.at(27 + value, 23).setGround(new Cliff());
+			gameMap.at(46 + value, 17).setGround(new Cliff());
+			gameMap.at(50 + value,21).setGround(new Cliff());
+			gameMap.at(65 + value, 3).setGround(new Cliff());
+			value++;
+		}
+		value = 0;
+		for (int x= 0; x<5; x++) {
+			gameMap.at(60+ value, 1).setGround(new Cliff());
+			gameMap.at(62+ value, 2).setGround(new Cliff());
+			value++;
+		}
+
+		// those alone Cliff
+		gameMap.at(13,13).setGround(new Cliff());
+		gameMap.at(14,15).setGround(new Cliff());
+		gameMap.at(19, 21).setGround(new Cliff());
+		gameMap.at(23, 22).setGround(new Cliff());
+		gameMap.at(26, 22).setGround(new Cliff());
+		gameMap.at(49, 20).setGround(new Cliff());
+
+
 
 		// add GameMap to ResetManager
 		ResetManager.getInstance().addSiteOfLostGrace(theFirstStep);
