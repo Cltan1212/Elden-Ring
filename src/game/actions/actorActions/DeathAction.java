@@ -34,6 +34,10 @@ public class DeathAction extends Action {
         this.attacker = actor;
     }
 
+    public DeathAction(){   // if want the player alone to die (no attacker) (e.g. Death from cliff)
+
+    }
+
     /**
      * When the target is killed, the items and weapons carried by target
      * will be dropped to the location in the game map where the target.
@@ -47,7 +51,7 @@ public class DeathAction extends Action {
         String result = "";
 
         // if the attacker is player
-        if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+        if (attacker != null && attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
             if (!target.hasCapability(Status.SPECIAL_DEATH)){
 
