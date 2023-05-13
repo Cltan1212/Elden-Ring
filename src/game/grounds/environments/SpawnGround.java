@@ -21,8 +21,12 @@ public abstract class SpawnGround extends Ground {
     /**
      * The factory to create different type of enemy.
      */
-    public final EnemyFactory enemyFactory;
+    public EnemyFactory enemyFactory;
 
+    public SpawnGround(char displayChar){
+        super(displayChar);
+
+    }
     /**
      * Constructor
      * @param displayChar  character to display

@@ -47,6 +47,8 @@ public enum Status {
      */
     HOSTILE_TO_WATER_TYPE_ENEMY,
 
+    HOSTILE_TO_STORMVEIL_CASTLE_ENEMY,
+
     /**
      * The character that has a special death status.
      */
