@@ -1,5 +1,6 @@
     package game;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -137,6 +138,11 @@ public class Application {
 		GameMap roundtableHoldMap = new GameMap(groundFactory, roundtableHold);
 		GameMap stormveilCastleMap = new GameMap(groundFactory, stormveilCastle);
 
+//		ArrayList<GameMap> gameMapsAll = new ArrayList<GameMap>();
+//		gameMapsAll.add(gameMap);
+//		gameMapsAll.add(roundtableHoldMap);
+//		gameMapsAll.add(stormveilCastleMap);
+
 		world.addGameMap(gameMap);
 		world.addGameMap(roundtableHoldMap);
 		world.addGameMap(stormveilCastleMap);
@@ -182,9 +188,9 @@ public class Application {
 		gameMap.at(40,12).addActor(trader);
 
 		// GoldenFrogDoor
-		GoldenFogDoor FogDoorToRound = new GoldenFogDoor();
+		GoldenFogDoor FogDoorToRound = new GoldenFogDoor(roundtableHoldMap);
 		gameMap.at(6, 23).setGround(FogDoorToRound);
-		GoldenFogDoor FogDoorToStorm = new GoldenFogDoor();
+		GoldenFogDoor FogDoorToStorm = new GoldenFogDoor(stormveilCastleMap);
 		gameMap.at(30, 0).setGround(FogDoorToStorm);
 
 
