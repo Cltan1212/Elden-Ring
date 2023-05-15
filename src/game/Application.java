@@ -22,6 +22,7 @@ import game.grounds.Wall;
 import game.grounds.environments.Graveyard;
 import game.grounds.environments.GustOfWind;
 import game.grounds.environments.PuddleOfWater;
+import game.items.GoldenRunes;
 import game.reset.ResetManager;
 import game.utils.FancyMessage;
 
@@ -159,7 +160,12 @@ public class Application {
 				gameMap.at(x,y).setGround(new GustOfWind(new WestMapFactoryEnemy()));
 			}
 		}
-
+		gameMap.at(5, 12).addItem(new GoldenRunes());
+		gameMap.at(4, 1).addItem(new GoldenRunes());
+		gameMap.at(49, 11).addItem(new GoldenRunes());
+		gameMap.at(60, 3).addItem(new GoldenRunes());
+		gameMap.at(55, 20).addItem(new GoldenRunes());
+		gameMap.at(30, 10).addItem(new GoldenRunes());
 		// add GameMap to ResetManager
 		ResetManager.getInstance().addSiteOfLostGrace(theFirstStep);
 		ResetManager.getInstance().addMap(gameMap);

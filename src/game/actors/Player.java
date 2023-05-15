@@ -4,9 +4,12 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import game.actions.actorActions.ConsumeAction;
 import game.combat.CombatArchetypes;
+import game.items.ConsumableItem;
 import game.items.FlaskOfCrimsonTears;
 import game.reset.Resettable;
 import game.runes.RunesManager;
@@ -76,6 +79,7 @@ public class Player extends Actor implements Resettable {
 
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
+
 
 		return menu.showMenu(this, actions, display);
 	}
