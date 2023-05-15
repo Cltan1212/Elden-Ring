@@ -34,6 +34,7 @@ public abstract class ConsumableItem extends Item implements Resettable, Consuma
      */
     public ConsumableItem(String name, char displayChar, boolean portable){
         super(name, displayChar, portable);
+//        this.addAction(new ConsumeAction(this));
         ResetManager.getInstance().registerResettable(this);
     }
 
