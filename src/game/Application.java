@@ -182,6 +182,11 @@ public class Application {
 		MerchantKale trader = new MerchantKale();
 		gameMap.at(40,12).addActor(trader);
 
+		SummonSign summonSign = new SummonSign();
+		gameMap.at(28, 8).setGround(summonSign);
+		gameMap.at(35, 15).setGround(summonSign);
+		gameMap.at(66, 16).setGround(summonSign);
+
 		// GoldenFrogDoor
 		GoldenFogDoor FogDoorToRound = new GoldenFogDoor(roundtableHoldMap);
 		gameMap.at(6, 23).setGround(FogDoorToRound);
@@ -307,6 +312,34 @@ public class Application {
 		gameMap.at(26, 22).setGround(new Cliff());
 		gameMap.at(49, 20).setGround(new Cliff());
 
+		// Add Cliff at Stormveil Castle Map
+		// 26
+		value = 0;
+		for (int x = 0; x<27; x++){
+			stormveilCastleMap.at(value, 20).setGround(new Cliff());
+			stormveilCastleMap.at(value, 21).setGround(new Cliff());
+			stormveilCastleMap.at(value, 22).setGround(new Cliff());
+			stormveilCastleMap.at(value, 23).setGround(new Cliff());
+			stormveilCastleMap.at(48 + value, 20).setGround(new Cliff());
+			stormveilCastleMap.at(48 + value, 21).setGround(new Cliff());
+			stormveilCastleMap.at(48 + value, 22).setGround(new Cliff());
+			stormveilCastleMap.at(48 + value, 23).setGround(new Cliff());
+			value++;
+		}
+
+		// 12
+		value = 0;
+		for (int x = 0; x<12; x++){
+			stormveilCastleMap.at(16 + value, 10).setGround(new Cliff());
+			stormveilCastleMap.at(16 + value, 11).setGround(new Cliff());
+			stormveilCastleMap.at(16 + value, 12).setGround(new Cliff());
+			stormveilCastleMap.at(16 + value, 13).setGround(new Cliff());
+			stormveilCastleMap.at(46 + value, 10).setGround(new Cliff());
+			stormveilCastleMap.at(46 + value, 11).setGround(new Cliff());
+			stormveilCastleMap.at(46 + value, 12).setGround(new Cliff());
+			stormveilCastleMap.at(46 + value, 13).setGround(new Cliff());
+			value++;
+		}
 
 
 		// add GameMap to ResetManager

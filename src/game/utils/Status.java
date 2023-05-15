@@ -55,5 +55,16 @@ public enum Status {
     /**
      * The character that can be despawned.
      */
-    DESPAWNABLE
+    DESPAWNABLE,
+
+    /**
+     * The character that is hostile to invaders.
+     */
+    HOSTILE_TO_INVADERS,
+
+    /**
+     * The character that is hostile to allies.
+     */
+    HOSTILE_TO_ALLIES
+
 }
