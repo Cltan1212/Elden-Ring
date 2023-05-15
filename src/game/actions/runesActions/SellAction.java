@@ -2,6 +2,7 @@ package game.actions.runesActions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.runes.RunesManager;
@@ -12,18 +13,25 @@ import game.runes.RunesManager;
  * @see Action
  */
 public class SellAction extends Action {
-    private final WeaponItem sellableItem;
+    private WeaponItem sellableWeaponItem = null;
+
+    private Item sellableItem = null;
 
     private final int price;
 
     /**
      * Constructor.
      *
-     * @param sellableItem a {@link WeaponItem} object that is going to be sold
+     * @param sellableWeaponItem a {@link WeaponItem} object that is going to be sold
      * @param price the price of the item in runes
      */
-    public SellAction(WeaponItem sellableItem, int price){
-        this.sellableItem = sellableItem;
+    public SellAction(WeaponItem sellableWeaponItem, int price){
+        this.sellableWeaponItem = sellableWeaponItem;
+        this.price = price;
+    }
+
+    public SellAction(Item item, int price){
+        this.sellableItem = item;
         this.price = price;
     }
 
@@ -42,7 +50,7 @@ public class SellAction extends Action {
         // remove the weapon from inventory
         WeaponItem removeWeapon = null;
         for (WeaponItem weaponItem: actor.getWeaponInventory()){
-            if (weaponItem.toString().equals(sellableItem.toString())){
+            if (weaponItem.toString().equals(sellableWeaponItem.toString())){
                 removeWeapon = weaponItem;
             }
         }
@@ -53,7 +61,7 @@ public class SellAction extends Action {
         RunesManager.getInstance().addRunes(actor,price);
 
         // print the status
-        message = actor + " successfully sold " + sellableItem.toString();
+        message = actor + " successfully sold " + sellableWeaponItem.toString();
 
         return message;
     }
@@ -66,6 +74,6 @@ public class SellAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " sell " + sellableItem.toString() + " with $" + price;
+        return actor + " sell " + sellableWeaponItem.toString() + " with $" + price;
     }
 }
