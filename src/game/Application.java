@@ -188,6 +188,12 @@ public class Application {
 		GoldenFogDoor FogDoorToStorm = new GoldenFogDoor(stormveilCastleMap);
 		gameMap.at(30, 0).setGround(FogDoorToStorm);
 
+		// set the ground in roundtableHoldMap
+		GoldenFogDoor FogDoorToLimgrave = new GoldenFogDoor(gameMap);
+		roundtableHoldMap.at(9,10).setGround(FogDoorToLimgrave);
+		stormveilCastleMap.at(38, 23).setGround(FogDoorToLimgrave);
+
+
 
 		// graveyard
 		for (int x = 2; x < 6; x ++){
