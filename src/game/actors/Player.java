@@ -80,7 +80,6 @@ public class Player extends Actor implements Resettable {
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
-
 		return menu.showMenu(this, actions, display);
 	}
 

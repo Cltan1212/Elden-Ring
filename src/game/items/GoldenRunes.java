@@ -42,7 +42,7 @@ public class GoldenRunes extends ConsumableItem implements RuneSource {
 
     @Override
     public void consume(Actor actor) {
-        RunesManager.getInstance().addRunes(actor,this.generateRunes());
+        RunesManager.getInstance().addRunes(actor, this.generateRunes());
         actor.removeItemFromInventory(this);
         this.removeAction(consumeAction);
     }
