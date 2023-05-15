@@ -28,7 +28,6 @@ public abstract class DogType extends Enemy {
         super(name, displayChar, hitPoints, spawnChance);
         this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY);
-        this.addCapability(Status.HOSTILE_TO_STORMVEIL_CASTLE_ENEMY);
     }
 
     /**

@@ -1,24 +1,24 @@
-package game.actors.enemies.stormveilCastleEnemy;
+package game.actors.enemies.sky;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.utils.RandomNumberGenerator;
 
-public class Dog extends StormveilCastleEnemy {
+public class Owl extends BirdType {
     /**
      * Constructor.
      *
      */
-    public Dog() {
-        super("Dog",'a',104, 10);
+    public Owl() {
+        super("Owl",'O',88,10);
     }
 
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(101, "bites", 93);
+        return new IntrinsicWeapon(20, "bites", 99);
     }
 
     @Override
     public int generateRunes() {
-        return RandomNumberGenerator.getRandomInt(52,1390);
+        return RandomNumberGenerator.getRandomInt(4,16);
     }
 }

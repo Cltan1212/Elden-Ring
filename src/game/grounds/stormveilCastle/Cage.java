@@ -1,7 +1,7 @@
 package game.grounds.stormveilCastle;
 
 import game.actors.enemies.Enemy;
-import game.actors.enemies.stormveilCastleEnemy.Dog;
+import game.actors.enemies.dog.Dog;
 import game.grounds.environments.SpawnGround;
 
 public class Cage extends SpawnGround {

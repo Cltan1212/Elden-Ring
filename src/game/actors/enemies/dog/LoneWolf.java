@@ -3,6 +3,7 @@ package game.actors.enemies.dog;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.utils.RandomNumberGenerator;
 import game.behaviours.WanderBehaviour;
+import game.utils.Status;
 
 /**
  * BEHOLD, DOG!
@@ -21,6 +22,7 @@ public class LoneWolf extends DogType {
     public LoneWolf() {
         super("Lone Wolf", 'h', 102, 33);
         this.behaviours.put(999, new WanderBehaviour());
+        this.addCapability(Status.HOSTILE_TO_STORMVEIL_CASTLE_ENEMY);
     }
 
     /**

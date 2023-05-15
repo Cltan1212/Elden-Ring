@@ -3,17 +3,15 @@ package game.actors.enemies;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actors.enemies.Enemy;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.enemies.skeletal.SkeletalType;
 import game.reset.ResetManager;
-import game.reset.Resettable;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
-import game.weapons.Grossmesser;
+import game.weapons.skeletalDropable.Grossmesser;
 
 /**
  * Class representing a physical Pile of Bones in the game world.
@@ -34,7 +32,9 @@ public class PileOfBones extends Enemy{
         super("Pile Of Bones",'X',1, 0);
         this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
-        this.addWeaponToInventory(new Grossmesser());
+        for (WeaponItem weaponItem: skeletalEnemy.getWeaponInventory()){
+            this.addWeaponToInventory(weaponItem);
+        }
         ResetManager.getInstance().registerResettable(this);
         this.skeletalEnemy = skeletalEnemy;
         this.remaining = 3;
@@ -55,6 +55,7 @@ public class PileOfBones extends Enemy{
         remaining -= 1;
         if (remaining == 0){
             Location previousLocation = map.locationOf(this);
+            this.getWeaponInventory().clear();
             map.removeActor(this);
             previousLocation.addActor(skeletalEnemy);
         }

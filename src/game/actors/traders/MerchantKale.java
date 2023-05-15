@@ -10,6 +10,8 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.items.Purchasable;
 import game.items.Sellable;
 import game.weapons.*;
+import game.weapons.skeletalDropable.Grossmesser;
+import game.weapons.skeletalDropable.Scimitar;
 
 import java.util.ArrayList;
 

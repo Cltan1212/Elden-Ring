@@ -2,6 +2,7 @@ package game.actors.enemies.dog;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.utils.RandomNumberGenerator;
+import game.utils.Status;
 import game.weapons.GiantDogHead;
 
 /**
@@ -17,6 +18,7 @@ public class GiantDog extends DogType {
     public GiantDog() {
         super("Giant Dog",'G',60, 4);
         this.addWeaponToInventory(new GiantDogHead());
+        this.addCapability(Status.HOSTILE_TO_STORMVEIL_CASTLE_ENEMY);
     }
 
     /**

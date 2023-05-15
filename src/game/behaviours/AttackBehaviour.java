@@ -71,6 +71,12 @@ public class AttackBehaviour implements Behaviour {
             }  // use their intrinsic weapon
             return new AttackAction(target, direction);
         }
+
+//        else if ()
         return null;
+    }
+
+    private int distance(Location a, Location b){
+        return Math.abs(a.x() - b.x()) + Math.abs(a.y() - b.y());
     }
 }
