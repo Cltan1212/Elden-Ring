@@ -77,9 +77,12 @@ public class DeathAction extends Action {
         else if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
             // reset the game
-            result += System.lineSeparator() + menuDescription(target);
+
+            // added line 81 & 82
+            Display display = new Display();
+            map.draw(display);
+//            result += System.lineSeparator() + menuDescription(target);
             result += "\n" + FancyMessage.YOU_DIED;
-//            new Display().println(FancyMessage.YOU_DIED);
             result += new ResetAction(map.locationOf(target)).execute(target, map);
 
         }
