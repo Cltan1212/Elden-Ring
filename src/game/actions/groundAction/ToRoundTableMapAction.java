@@ -10,7 +10,7 @@ public class ToRoundTableMapAction extends Action {
 
     GameMap newLocation;
     public ToRoundTableMapAction(GameMap map) {
-        newLocation = map;
+        newLocation = map;  // the map to travel to
     }
 
     @Override
@@ -22,6 +22,6 @@ public class ToRoundTableMapAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + "travels to Roundtable Hold";
+        return actor + " travels to Roundtable Hold";
     }
 }

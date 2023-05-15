@@ -138,11 +138,6 @@ public class Application {
 		GameMap roundtableHoldMap = new GameMap(groundFactory, roundtableHold);
 		GameMap stormveilCastleMap = new GameMap(groundFactory, stormveilCastle);
 
-//		ArrayList<GameMap> gameMapsAll = new ArrayList<GameMap>();
-//		gameMapsAll.add(gameMap);
-//		gameMapsAll.add(roundtableHoldMap);
-//		gameMapsAll.add(stormveilCastleMap);
-
 		world.addGameMap(gameMap);
 		world.addGameMap(roundtableHoldMap);
 		world.addGameMap(stormveilCastleMap);

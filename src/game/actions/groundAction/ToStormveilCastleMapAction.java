@@ -9,13 +9,13 @@ public class ToStormveilCastleMapAction extends Action {
 
     GameMap newLocation;
     public ToStormveilCastleMapAction(GameMap map) {
-        newLocation = map;
+        newLocation = map;  // the map to travel to
     }
     @Override
     public String execute(Actor actor, GameMap map) {
         // moves the player to the map
 
-        Action moveAction = new MoveActorAction(newLocation.at(9, 10),"");
+        Action moveAction = new MoveActorAction(newLocation.at(38, 23),"");
         moveAction.execute(actor, newLocation);
         return menuDescription(actor);
     }
