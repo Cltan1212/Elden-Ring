@@ -40,7 +40,6 @@ public class ResetAction extends Action {
         result += ResetManager.getInstance().run();
         if(!actor.hasCapability(Status.RESTING)){
             Location previousLocation = ResetManager.getInstance().getPlayer(actor).lastLocation;
-            System.out.println(previousLocation);
             Runes runes = new Runes(actor, previousLocation);
             previousLocation.addItem(runes);
             map.moveActor(actor, lastSite);
