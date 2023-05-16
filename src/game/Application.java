@@ -1,6 +1,5 @@
 package game;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +18,7 @@ import game.grounds.*;
 import game.grounds.environments.Graveyard;
 import game.grounds.environments.GustOfWind;
 import game.grounds.environments.PuddleOfWater;
+import game.grounds.environments.ThunderStorm;
 import game.grounds.stormveilCastle.Barrack;
 import game.grounds.stormveilCastle.Cage;
 import game.reset.ResetManager;
@@ -135,6 +135,7 @@ public class Application {
 		characterToRoleMap.put('b', new Bandit());
 		characterToRoleMap.put('w', new Wretch());
 		characterToRoleMap.put('a', new Astrologer());
+		characterToRoleMap.put('D', new Developer());
 
 		// Display the role choices for user to select and pass the choiceChar to Player constructor
 		Display display = new Display();
@@ -194,7 +195,6 @@ public class Application {
 			gameMap.at(x,3).setGround(new PuddleOfWater(new NorthEastMapFactory()));
 		}
 
-		// new added
 		for (int y = 12; y < 15; y++){
 			for (int x = 0; x < 4; x++){
 				gameMap.at(x,y).setGround(new PuddleOfWater(new SouthWestEnemy()));
@@ -207,6 +207,27 @@ public class Application {
 				gameMap.at(x,y).setGround(new GustOfWind(new SouthEastFactory()));
 			}
 		}
+
+		// thunder storm
+		for (int x = 1; x <= 5; x++){
+			gameMap.at(x, 5).setGround(new ThunderStorm(new NorthEastMapFactory()));
+			gameMap.at(x, 7).setGround(new ThunderStorm(new NorthEastMapFactory()));
+		}
+		for (int x = 56; x <= 60; x++){
+			gameMap.at(x, 10).setGround(new ThunderStorm(new SouthEastFactory()));
+			gameMap.at(x, 12).setGround(new ThunderStorm(new SouthEastFactory()));
+		}
+
+		for (int x = 7; x <= 10; x++){
+			gameMap.at(x, 16).setGround(new ThunderStorm(new SouthWestEnemy()));
+			gameMap.at(x, 17).setGround(new ThunderStorm(new SouthWestEnemy()));
+
+		}
+
+		for (int x = 70; x <= 73; x++) {
+			gameMap.at(x, 17).setGround(new ThunderStorm(new SouthEastFactory()));
+		}
+
 
 		// cliff (new added)
 		int value = 0;

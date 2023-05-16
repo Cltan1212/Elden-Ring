@@ -5,7 +5,7 @@ import game.actors.enemies.enemyFactory.EnemyFactory;
 
 public class ThunderStorm extends SpawnGround{
     public ThunderStorm(EnemyFactory enemyFactory) {
-        super('Ω', enemyFactory);
+        super('%', enemyFactory);
     }
 
     @Override
