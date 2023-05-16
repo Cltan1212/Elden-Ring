@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -8,14 +9,16 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
-import game.combat.Bandit;
-import game.combat.CombatArchetypes;
-import game.combat.Samurai;
-import game.combat.Wretch;
-import game.grounds.Cliff;
-import game.grounds.Dirt;
-import game.grounds.Floor;
-import game.grounds.Wall;
+import game.actors.enemies.enemyFactory.NorthEastMapFactory;
+import game.actors.enemies.enemyFactory.NorthWestMapFactory;
+import game.actors.enemies.enemyFactory.SouthEastFactory;
+import game.actors.enemies.enemyFactory.SouthWestEnemy;
+import game.actors.traders.MerchantKale;
+import game.combat.*;
+import game.grounds.*;
+import game.grounds.environments.Graveyard;
+import game.grounds.environments.GustOfWind;
+import game.grounds.environments.PuddleOfWater;
 import game.grounds.stormveilCastle.Barrack;
 import game.grounds.stormveilCastle.Cage;
 import game.reset.ResetManager;
@@ -39,14 +42,13 @@ public class Application {
 
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(),
-				new Barrack(), new Cage(), new Cliff());
-
-
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Cage(), new Barrack(), new Cliff());
+//
+//
 //		List<String> map = Arrays.asList(
 //				"...........................................................................",
 //				"......................#####....######......................................",
-//				".................*....#..___....____#......................................",
+//				"......................#..___....____#......................................",
 //				"..................................__#......................................",
 //				"......................._____........#......................................",
 //				"......................#............_#......................................",
@@ -68,6 +70,45 @@ public class Application {
 //				"..####__###..................................................._.....__.#...",
 //				"..............................................................###..__###...",
 //				"...........................................................................");
+
+		List<String> map = Arrays.asList(
+				"......................#.............#......................................",
+				"......................#.............#......................................",
+				"......................#..___....____#......................................",
+				"......................#...........__#......................................",
+				"......................#_____........#......................................",
+				"......................#............_#......................................",
+				"......................######...######......................................",
+				"...........................................................................",
+				"...........................................................................",
+				"..................................###___###................................",
+				"..................................________#................................",
+				"..................................#________................................",
+				"..................................#_______#................................",
+				"..................................###___###................................",
+				"....................................#___#..................................",
+				"...........................................................................",
+				"...........................................................................",
+				"...........................................................................",
+				"#####___#####.................................................######..##...",
+				"____________#.................................................#....____....",
+				"____________#...................................................__.....#...",
+				"____________#................................................._.....__.#...",
+				"____________#.................................................###..__###...",
+				"____________#..............................................................");
+
+		List<String> roundtableHold = Arrays.asList(
+				"##################",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"########___#######");
 
 		List<String> stormveilCastle = Arrays.asList(
 				"...........................................................................",
@@ -95,10 +136,15 @@ public class Application {
 				"+++++++++++++++++++++++++++#....................+++++++++++++++++++++++++++",
 				"+++++++++++++++++++++++++++#...................#+++++++++++++++++++++++++++");
 
-//		GameMap gameMap = new GameMap(groundFactory, map);
+
+		GameMap gameMap = new GameMap(groundFactory, map);
+		GameMap roundtableHoldMap = new GameMap(groundFactory, roundtableHold);
 		GameMap stormveilCastleMap = new GameMap(groundFactory, stormveilCastle);
-//		world.addGameMap(gameMap);
+
+		world.addGameMap(gameMap);
+		world.addGameMap(roundtableHoldMap);
 		world.addGameMap(stormveilCastleMap);
+
 
 		// BEHOLD, ELDEN RING
 		for (String line : FancyMessage.ELDEN_RING.split("\n")) {
@@ -115,6 +161,7 @@ public class Application {
 		characterToRoleMap.put('s', new Samurai());
 		characterToRoleMap.put('b', new Bandit());
 		characterToRoleMap.put('w', new Wretch());
+		characterToRoleMap.put('a', new Astrologer());
 
 		// Display the role choices for user to select and pass the choiceChar to Player constructor
 		Display display = new Display();
@@ -128,68 +175,150 @@ public class Application {
 		}
 
 		// site of lost grace
-//		SiteOfLostGrace theFirstStep = new SiteOfLostGrace("The First Step",38,11);
-//		gameMap.at(38,11).setGround(theFirstStep);
+		SiteOfLostGrace theFirstStep = new SiteOfLostGrace("The First Step",38,11);
+		gameMap.at(38,11).setGround(theFirstStep);
 
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
-		ResetManager.getInstance().addPlayer(player);
-		world.addPlayer(player,stormveilCastleMap.at(36,10));
-//		world.addPlayer(player, gameMap.at(36, 10));
+		world.addPlayer(player, gameMap.at(36, 10));
 
-//		MerchantKale trader = new MerchantKale();
-//		gameMap.at(40,12).addActor(trader);
-//
-//		// graveyard
-//		for (int x = 2; x < 6; x ++){
-//			gameMap.at(x,0).setGround(new Graveyard(new WestMapFactoryEnemy()));
-//			gameMap.at(x,2).setGround(new Graveyard(new WestMapFactoryEnemy()));
-//		}
-//
-//		for (int x = 47; x < 51; x++){
-//			gameMap.at(x,10).setGround(new Graveyard(new EastMapFactoryEnemy()));
-//			gameMap.at(x,12).setGround(new Graveyard(new EastMapFactoryEnemy()));
-//		}
-//
-//		// puddle of water
-//		int value = 0;
-//		for (int y = 9; y < 12; y++){
-//			value++;
-//			for (int x = 0; x < 10 + value; x ++){
-//				gameMap.at(x,y).setGround(new PuddleOfWater(new WestMapFactoryEnemy()));
-//			}
-//		}
-//
-//		for (int y = 12; y < 15; y++){
-//			value--;
-//			for (int x = 0; x < 10 + value; x ++){
-//				gameMap.at(x,y).setGround(new PuddleOfWater(new WestMapFactoryEnemy()));
-//			}
-//		}
-//
-//		for (int y = 0; y < 6; y++){
-//			for (int x = 54 + y; x < 54 + 21; x++){
-//				gameMap.at(x,y).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
-//			}
-//		}
-//
-//		// gust of wind
-//		for (int y = 18; y < 21; y++){
-//			for (int x = 53; x < 56; x ++){
-//				gameMap.at(x,y).setGround(new GustOfWind(new EastMapFactoryEnemy()));
-//			}
-//		}
-//
-//		for (int y = 20; y < 23; y++){
-//			for (int x = 20; x < 23; x++){
-//				gameMap.at(x,y).setGround(new GustOfWind(new WestMapFactoryEnemy()));
-//			}
-//		}
+		MerchantKale trader = new MerchantKale();
+		gameMap.at(40,12).addActor(trader);
+
+		SummonSign summonSign = new SummonSign();
+		gameMap.at(28, 8).setGround(summonSign);
+		gameMap.at(35, 15).setGround(summonSign);
+		gameMap.at(66, 16).setGround(summonSign);
+
+		// GoldenFrogDoor
+		GoldenFogDoor FogDoorToRound = new GoldenFogDoor(roundtableHoldMap);
+		gameMap.at(6, 23).setGround(FogDoorToRound);
+		GoldenFogDoor FogDoorToStorm = new GoldenFogDoor(stormveilCastleMap);
+		gameMap.at(30, 0).setGround(FogDoorToStorm);
+
+		// set the ground in roundtableHoldMap
+		GoldenFogDoor FogDoorToLimgrave = new GoldenFogDoor(gameMap);
+		roundtableHoldMap.at(9,10).setGround(FogDoorToLimgrave);
+		stormveilCastleMap.at(38, 23).setGround(FogDoorToLimgrave);
+
+
+		// graveyard
+		for (int x = 2; x < 6; x ++){
+			gameMap.at(x,0).setGround(new Graveyard(new NorthWestMapFactory()));
+			gameMap.at(x,2).setGround(new Graveyard(new NorthWestMapFactory()));
+		}
+
+		for (int x = 47; x < 51; x++){
+			gameMap.at(x,10).setGround(new Graveyard(new SouthEastFactory()));
+			gameMap.at(x,12).setGround(new Graveyard(new SouthEastFactory()));
+		}
+
+		// puddle of water
+		for (int x = 54; x < 59; x ++){
+			gameMap.at(x,0).setGround(new PuddleOfWater(new NorthEastMapFactory()));
+			gameMap.at(x,1).setGround(new PuddleOfWater(new NorthEastMapFactory()));
+			gameMap.at(x,2).setGround(new PuddleOfWater(new NorthEastMapFactory()));
+			gameMap.at(x,3).setGround(new PuddleOfWater(new NorthEastMapFactory()));
+		}
+
+		// new added
+		for (int y = 12; y < 15; y++){
+			for (int x = 0; x < 4; x++){
+				gameMap.at(x,y).setGround(new PuddleOfWater(new SouthWestEnemy()));
+			}
+		}
+
+		// gust of wind
+		for (int y = 18; y < 21; y++){
+			for (int x = 53; x < 56; x ++){
+				gameMap.at(x,y).setGround(new GustOfWind(new SouthEastFactory()));
+			}
+		}
+
+		// cliff (new added)
+		int value = 0;
+		for (int x =0; x < 4; x++){
+			gameMap.at(18 + value, 18).setGround(new Cliff());
+			gameMap.at(19 + value, 20).setGround(new Cliff());
+			gameMap.at(8+ value, 9).setGround(new Cliff());
+			gameMap.at(8 + value, 10).setGround(new Cliff());
+			value++;
+		}
+
+		value = 0;
+		for (int x= 0; x<3; x++){
+			gameMap.at(12 + value, 10).setGround(new Cliff());
+			gameMap.at(10+ value, 11).setGround(new Cliff());
+			gameMap.at(12 + value, 12).setGround(new Cliff());
+			gameMap.at(63 + value, 0).setGround(new Cliff());
+			gameMap.at(66 + value, 4).setGround(new Cliff());
+			gameMap.at(67 + value, 5).setGround(new Cliff());
+			gameMap.at(44 + value, 18).setGround(new Cliff());
+			gameMap.at(47 + value, 19).setGround(new Cliff());
+			gameMap.at(48+ value, 22).setGround(new Cliff());
+			value++;
+		}
+
+		value = 0;
+		for (int x =0; x < 2; x++){
+			gameMap.at(12 + value, 14).setGround(new Cliff());
+			gameMap.at(14 + value, 16).setGround(new Cliff());
+			gameMap.at(18 + value, 19).setGround(new Cliff());
+			gameMap.at(24 + value, 21).setGround(new Cliff());
+			gameMap.at(27 + value, 23).setGround(new Cliff());
+			gameMap.at(46 + value, 17).setGround(new Cliff());
+			gameMap.at(50 + value,21).setGround(new Cliff());
+			gameMap.at(65 + value, 3).setGround(new Cliff());
+			value++;
+		}
+		value = 0;
+		for (int x= 0; x<5; x++) {
+			gameMap.at(60+ value, 1).setGround(new Cliff());
+			gameMap.at(62+ value, 2).setGround(new Cliff());
+			value++;
+		}
+
+		// those alone Cliff
+		gameMap.at(13,13).setGround(new Cliff());
+		gameMap.at(14,15).setGround(new Cliff());
+		gameMap.at(19, 21).setGround(new Cliff());
+		gameMap.at(23, 22).setGround(new Cliff());
+		gameMap.at(26, 22).setGround(new Cliff());
+		gameMap.at(49, 20).setGround(new Cliff());
+
+		// Add Cliff at Stormveil Castle Map
+		// 26
+		value = 0;
+		for (int x = 0; x<27; x++){
+			stormveilCastleMap.at(value, 20).setGround(new Cliff());
+			stormveilCastleMap.at(value, 21).setGround(new Cliff());
+			stormveilCastleMap.at(value, 22).setGround(new Cliff());
+			stormveilCastleMap.at(value, 23).setGround(new Cliff());
+			stormveilCastleMap.at(48 + value, 20).setGround(new Cliff());
+			stormveilCastleMap.at(48 + value, 21).setGround(new Cliff());
+			stormveilCastleMap.at(48 + value, 22).setGround(new Cliff());
+			stormveilCastleMap.at(48 + value, 23).setGround(new Cliff());
+			value++;
+		}
+
+		// 12
+		value = 0;
+		for (int x = 0; x<12; x++){
+			stormveilCastleMap.at(16 + value, 10).setGround(new Cliff());
+			stormveilCastleMap.at(16 + value, 11).setGround(new Cliff());
+			stormveilCastleMap.at(16 + value, 12).setGround(new Cliff());
+			stormveilCastleMap.at(16 + value, 13).setGround(new Cliff());
+			stormveilCastleMap.at(46 + value, 10).setGround(new Cliff());
+			stormveilCastleMap.at(46 + value, 11).setGround(new Cliff());
+			stormveilCastleMap.at(46 + value, 12).setGround(new Cliff());
+			stormveilCastleMap.at(46 + value, 13).setGround(new Cliff());
+			value++;
+		}
+
 
 		// add GameMap to ResetManager
-//		ResetManager.getInstance().addSiteOfLostGrace(theFirstStep);
-//		ResetManager.getInstance().addMap(gameMap);
-		ResetManager.getInstance().addMap(stormveilCastleMap);
+		ResetManager.getInstance().addSiteOfLostGrace(theFirstStep);
+		ResetManager.getInstance().addMap(gameMap);
 		world.run(); // run the whole game
 	}
 }
