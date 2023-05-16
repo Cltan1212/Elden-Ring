@@ -1,5 +1,6 @@
 package game.reset;
 
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Player;
 import game.grounds.SiteOfLostGrace;
@@ -98,6 +99,15 @@ public class ResetManager {
             player.registerInstance();
         }
         return result;
+    }
+
+    public Player getPlayer(Actor actor){
+        for (Player player: players){
+            if (actor.equals(player)){
+                return player;
+            }
+        }
+        return null;
     }
 
     /**

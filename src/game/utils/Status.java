@@ -46,6 +46,7 @@ public enum Status {
      * The character that is hostile to water type enemy.
      */
     HOSTILE_TO_WATER_TYPE_ENEMY,
+    HOSTILE_TO_BIRD_TYPE_ENEMY,
 
     HOSTILE_TO_STORMVEIL_CASTLE_ENEMY,
 
@@ -58,5 +59,7 @@ public enum Status {
      * The character that can be despawned.
      */
     DESPAWNABLE,
-    HOSTILE_TO_INVADERS, HOSTILE_TO_ALLIES, SELL
+    HOSTILE_TO_INVADERS,
+    HOSTILE_TO_ALLIES,
+    SELL
 }

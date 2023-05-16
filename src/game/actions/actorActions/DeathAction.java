@@ -34,6 +34,8 @@ public class DeathAction extends Action {
         this.attacker = actor;
     }
 
+    public DeathAction(){
+    }
     /**
      * When the target is killed, the items and weapons carried by target
      * will be dropped to the location in the game map where the target.
@@ -47,7 +49,7 @@ public class DeathAction extends Action {
         String result = "";
 
         // if the attacker is player
-        if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+        if (attacker != null && attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
             if (!target.hasCapability(Status.SPECIAL_DEATH)){
 
@@ -73,10 +75,13 @@ public class DeathAction extends Action {
         else if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
             // reset the game
-            result += System.lineSeparator() + menuDescription(target);
+
+            // added line 81 & 82
+            Display display = new Display();
+            map.draw(display);
+//            result += System.lineSeparator() + menuDescription(target);
             result += "\n" + FancyMessage.YOU_DIED;
-//            new Display().println(FancyMessage.YOU_DIED);
-            result += new ResetAction(map.locationOf(target)).execute(target, map);
+            result += new ResetAction().execute(target, map);
 
         }
         // enemy attacks enemy

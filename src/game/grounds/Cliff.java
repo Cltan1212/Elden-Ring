@@ -34,7 +34,7 @@ public class Cliff extends Ground {
             Actor actor = location.getActor();
             if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
                 Display display = new Display();
-//                display.println(new DeathAction().execute(actor, location.map()));
+                display.println(new DeathAction().execute(actor, location.map()));
             }
         }
     }

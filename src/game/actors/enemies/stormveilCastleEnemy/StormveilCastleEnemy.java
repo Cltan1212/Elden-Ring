@@ -21,6 +21,7 @@ public abstract class StormveilCastleEnemy extends Enemy {
         this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
+        this.addCapability(Status.HOSTILE_TO_BIRD_TYPE_ENEMY);
     }
 
     @Override
