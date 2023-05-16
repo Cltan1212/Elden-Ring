@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.items.Exchangeable;
 import game.items.Purchasable;
 import game.items.Sellable;
+import game.utils.Status;
 import game.weapons.*;
 import game.weapons.skeletalDropable.Grossmesser;
 import game.weapons.skeletalDropable.Scimitar;
@@ -18,8 +19,6 @@ import java.util.ArrayList;
 
 public class FingerReaderEnia extends Actor {
 
-    private final ArrayList<Sellable> sellableItemList;
-    private final ArrayList<Exchangeable> exchangeWeaponItem;
     /**
      * Constructor.
      *
@@ -29,15 +28,7 @@ public class FingerReaderEnia extends Actor {
      */
     public FingerReaderEnia(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
-        sellableItemList = new ArrayList<>();
-        sellableItemList.add(new Club());
-        sellableItemList.add(new GreatKnife());
-        sellableItemList.add(new Uchigatana());
-        sellableItemList.add(new Grossmesser());
-        sellableItemList.add(new Scimitar());
-
-        exchangeWeaponItem = new ArrayList<>();
-        exchangeWeaponItem = new
+        this.addCapability(Status.SELL);
     }
 
     @Override
@@ -47,15 +38,6 @@ public class FingerReaderEnia extends Actor {
 
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actionList = new ActionList();
-
-        // sell weapon actions
-        for (WeaponItem weaponItem: otherActor.getWeaponInventory()){
-            for (Sellable sellableItem : sellableItemList){
-                if (weaponItem.toString().equals(sellableItem.toString())){
-                    actionList.add(sellableItem.createSellAction());
-                }
-            }
-        }
 
         // exchange weapon actions
         return actionList;
