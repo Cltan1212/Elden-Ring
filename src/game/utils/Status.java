@@ -57,5 +57,6 @@ public enum Status {
     /**
      * The character that can be despawned.
      */
-    DESPAWNABLE
+    DESPAWNABLE,
+    SELL
 }

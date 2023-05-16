@@ -1,10 +1,15 @@
 package game.weapons;
 
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.Exit;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.runesActions.PurchaseAction;
 import game.actions.runesActions.SellAction;
 import game.items.Purchasable;
 import game.items.Sellable;
+import game.runes.RunesManager;
+import game.utils.Status;
 
 /**
  * A simple weapon that can be used to attack the enemy.
@@ -18,6 +23,8 @@ import game.items.Sellable;
  */
 public class Club extends WeaponItem implements Sellable, Purchasable {
 
+    private final int price = 100;
+    private final SellAction sellAction = new SellAction(this, price);
     /**
      * Constructor
      */
@@ -43,8 +50,25 @@ public class Club extends WeaponItem implements Sellable, Purchasable {
      * @see SellAction
      */
     @Override
-    public SellAction createSellAction() {
-        return new SellAction(this,100);
+    public void createSellAction(Actor actor, Integer price) {
+        RunesManager.getInstance().addRunes(actor, price);
+        actor.removeWeaponFromInventory(this);
+
+    }
+
+    @Override
+    public void tick(Location currentLocation, Actor actor) {
+
+        if (this.getAllowableActions().contains(sellAction)){
+            this.removeAction(sellAction);
+        }
+        for (Exit exit: currentLocation.getExits()){
+            Location destination = exit.getDestination();
+
+            if (destination.containsAnActor() && destination.getActor().hasCapability(Status.SELL)){
+                this.addAction(sellAction);
+            }
+        }
 
     }
 }

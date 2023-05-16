@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class FingerReaderEnia extends Actor {
 
-    private final ArrayList<Sellable> sellableItemList;
     /**
      * Constructor.
      *
@@ -23,12 +22,6 @@ public class FingerReaderEnia extends Actor {
      */
     public FingerReaderEnia(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
-        sellableItemList = new ArrayList<>();
-        sellableItemList.add(new Club());
-        sellableItemList.add(new GreatKnife());
-        sellableItemList.add(new Uchigatana());
-        sellableItemList.add(new Grossmesser());
-        sellableItemList.add(new Scimitar());
     }
 
     @Override

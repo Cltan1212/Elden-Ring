@@ -11,10 +11,7 @@ import game.actors.traders.MerchantKale;
 import game.actors.Player;
 import game.actors.enemies.enemyFactory.EastMapFactoryEnemy;
 import game.actors.enemies.enemyFactory.WestMapFactoryEnemy;
-import game.combat.Bandit;
-import game.combat.CombatArchetypes;
-import game.combat.Samurai;
-import game.combat.Wretch;
+import game.combat.*;
 import game.grounds.Dirt;
 import game.grounds.Floor;
 import game.grounds.SiteOfLostGrace;
@@ -91,6 +88,7 @@ public class Application {
 		characterToRoleMap.put('s', new Samurai());
 		characterToRoleMap.put('b', new Bandit());
 		characterToRoleMap.put('w', new Wretch());
+		characterToRoleMap.put('D', new Developer());
 
 		// Display the role choices for user to select and pass the choiceChar to Player constructor
 		Display display = new Display();

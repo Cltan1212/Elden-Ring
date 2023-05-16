@@ -2,12 +2,16 @@ package game.weapons;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.Exit;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.actorActions.QuickStepAction;
 import game.actions.runesActions.PurchaseAction;
 import game.actions.runesActions.SellAction;
 import game.items.Purchasable;
 import game.items.Sellable;
+import game.runes.RunesManager;
+import game.utils.Status;
 
 /**
  * A weapon item representing a great knife.
@@ -18,6 +22,9 @@ import game.items.Sellable;
  * @see Sellable
  */
 public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
+
+    private final int price = 350;
+    private final SellAction sellAction = new SellAction(this, price);
 
     /**
      * Constructor.
@@ -55,8 +62,26 @@ public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
      * @return a SellAction for this GreatKnife
      */
     @Override
-    public SellAction createSellAction() {
-        return new SellAction(this,350);
+    public void createSellAction(Actor actor, Integer price) {
+        RunesManager.getInstance().addRunes(actor, price);
+        actor.removeWeaponFromInventory(this);
+
+    }
+
+    @Override
+    public void tick(Location currentLocation, Actor actor) {
+
+        if (this.getAllowableActions().contains(sellAction)){
+            this.removeAction(sellAction);
+        }
+        for (Exit exit: currentLocation.getExits()){
+            Location destination = exit.getDestination();
+
+            if (destination.containsAnActor() && destination.getActor().hasCapability(Status.SELL)){
+                this.addAction(sellAction);
+            }
+        }
+
     }
 
 }

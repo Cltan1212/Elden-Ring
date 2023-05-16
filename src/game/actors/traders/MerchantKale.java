@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.items.Purchasable;
 import game.items.Sellable;
+import game.utils.Status;
 import game.weapons.*;
 
 import java.util.ArrayList;
@@ -24,21 +25,11 @@ import java.util.ArrayList;
 public class MerchantKale extends Actor {
 
     /**
-     * The ArrayList that contains {@link Sellable} items.
-     */
-    private final ArrayList<Sellable> sellableItemList;
-
-    /**
      * Constructor.
      */
     public MerchantKale() {
         super("Merchant Kale", 'K', 100);
-        sellableItemList = new ArrayList<>();
-        sellableItemList.add(new Club());
-        sellableItemList.add(new GreatKnife());
-        sellableItemList.add(new Uchigatana());
-        sellableItemList.add(new Grossmesser());
-        sellableItemList.add(new Scimitar());
+        this.addCapability(Status.SELL);
     }
 
     /**
@@ -74,15 +65,6 @@ public class MerchantKale extends Actor {
         // purchase weapon actions
         for (Purchasable purchasableItem : purchasableItemList){
             actionList.add(purchasableItem.createPurchaseAction());
-        }
-
-        // sell weapon actions
-        for (WeaponItem weaponItem: otherActor.getWeaponInventory()){
-            for (Sellable sellableItem : sellableItemList){
-                if (weaponItem.toString().equals(sellableItem.toString())){
-                    actionList.add(sellableItem.createSellAction());
-                }
-            }
         }
         return actionList;
     }
