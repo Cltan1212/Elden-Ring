@@ -55,7 +55,6 @@ public class PileOfBones extends Enemy{
         remaining -= 1;
         if (remaining == 0){
             Location previousLocation = map.locationOf(this);
-            this.getWeaponInventory().clear();
             map.removeActor(this);
             previousLocation.addActor(skeletalEnemy);
         }
