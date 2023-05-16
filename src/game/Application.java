@@ -177,17 +177,33 @@ public class Application {
 
 
 		// graveyard
+		// NORTH WEST
 		for (int x = 2; x < 6; x ++){
 			gameMap.at(x,0).setGround(new Graveyard(new NorthWestMapFactory()));
 			gameMap.at(x,2).setGround(new Graveyard(new NorthWestMapFactory()));
 		}
 
+		// SOUTH EAST
 		for (int x = 47; x < 51; x++){
 			gameMap.at(x,10).setGround(new Graveyard(new SouthEastFactory()));
 			gameMap.at(x,12).setGround(new Graveyard(new SouthEastFactory()));
 		}
 
+		// NORTH EAST
+		for (int x = 50; x <= 54; x++) {
+			gameMap.at(x, 5).setGround(new Graveyard(new NorthEastMapFactory()));
+			gameMap.at(x, 6).setGround(new Graveyard(new NorthEastMapFactory()));
+		}
+
+		// SOUTH WEST
+		for (int x = 30; x <= 35; x++){
+			gameMap.at(x, 23).setGround(new Graveyard(new SouthWestEnemy()));
+			gameMap.at(x, 23).setGround(new Graveyard(new SouthWestEnemy()));
+
+		}
+
 		// puddle of water
+		// NORTH EAST
 		for (int x = 54; x < 59; x ++){
 			gameMap.at(x,0).setGround(new PuddleOfWater(new NorthEastMapFactory()));
 			gameMap.at(x,1).setGround(new PuddleOfWater(new NorthEastMapFactory()));
@@ -195,10 +211,22 @@ public class Application {
 			gameMap.at(x,3).setGround(new PuddleOfWater(new NorthEastMapFactory()));
 		}
 
+		// SOUTH WEST
 		for (int y = 12; y < 15; y++){
 			for (int x = 0; x < 4; x++){
 				gameMap.at(x,y).setGround(new PuddleOfWater(new SouthWestEnemy()));
 			}
+		}
+
+		// NORTH WEST
+		for (int x = 16; x <= 20; x++) {
+			gameMap.at(x, 2).setGround(new PuddleOfWater(new NorthWestMapFactory()));
+			gameMap.at(x, 2).setGround(new PuddleOfWater(new NorthWestMapFactory()));
+		}
+
+		// SOUTH EAST
+		for (int x = 65; x <= 70; x++) {
+			gameMap.at(x, 23).setGround(new PuddleOfWater(new SouthEastFactory()));
 		}
 
 		// gust of wind
@@ -206,6 +234,20 @@ public class Application {
 			for (int x = 53; x < 56; x ++){
 				gameMap.at(x,y).setGround(new GustOfWind(new SouthEastFactory()));
 			}
+		}
+
+		for (int x = 10; x<= 14; x++){
+			gameMap.at(x,4).setGround(new GustOfWind(new NorthWestMapFactory()));
+			gameMap.at(x,5).setGround(new GustOfWind(new NorthWestMapFactory()));
+		}
+
+		for (int x = 40; x <= 44; x++){
+			gameMap.at(x,1).setGround(new GustOfWind(new NorthEastMapFactory()));
+			gameMap.at(x,2).setGround(new GustOfWind(new NorthEastMapFactory()));
+		}
+
+		for (int x = 16; x <= 20; x++) {
+			gameMap.at(x, 23).setGround(new GustOfWind(new NorthEastMapFactory()));
 		}
 
 		// thunder storm
@@ -221,13 +263,18 @@ public class Application {
 		for (int x = 7; x <= 10; x++){
 			gameMap.at(x, 16).setGround(new ThunderStorm(new SouthWestEnemy()));
 			gameMap.at(x, 17).setGround(new ThunderStorm(new SouthWestEnemy()));
-
 		}
 
 		for (int x = 70; x <= 73; x++) {
-			gameMap.at(x, 17).setGround(new ThunderStorm(new SouthEastFactory()));
+			gameMap.at(x, 17).setGround(new ThunderStorm(new SouthWestEnemy()));
+			gameMap.at(x, 18).setGround(new ThunderStorm(new SouthWestEnemy()));
 		}
 
+		// add enemy for stormveil castle
+		for (int x = 20; x <= 24; x++) {
+			stormveilCastleMap.at(20, 17).setGround(new GustOfWind(new SouthWestEnemy()));
+			stormveilCastleMap.at(20, 19).setGround(new GustOfWind(new SouthWestEnemy()));
+		}
 
 		// cliff (new added)
 		int value = 0;
