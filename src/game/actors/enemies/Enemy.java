@@ -121,7 +121,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
         // enemy attack player and other enemies
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) || otherActor.hasCapability(Status.HOSTILE_TO_INVADERS)) {
             actions.add(new AttackAction(this, direction));
             following = true;
             this.behaviours.put(0, new AttackBehaviour(otherActor));
