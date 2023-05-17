@@ -1,6 +1,6 @@
-package game.items;
+package game.items.trading;
 
-import game.actions.runesActions.PurchaseAction;
+import game.actions.traderActions.PurchaseAction;
 
 /**
  * An interface for creating different type of purchase action.

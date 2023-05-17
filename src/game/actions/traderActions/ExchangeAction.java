@@ -1,11 +1,10 @@
-package game.actions.actorActions;
+package game.actions.traderActions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.weapons.Weapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.items.Exchangeable;
+import game.items.trading.Exchangeable;
 
 public class ExchangeAction extends Action {
     private Exchangeable exchangeableItem;

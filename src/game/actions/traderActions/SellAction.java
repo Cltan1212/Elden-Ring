@@ -1,12 +1,10 @@
-package game.actions.runesActions;
+package game.actions.traderActions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.items.Sellable;
-import game.runes.RunesManager;
+import game.items.trading.Sellable;
 
 /**
  * A class that represents an action of selling a {@link WeaponItem} object to get runes

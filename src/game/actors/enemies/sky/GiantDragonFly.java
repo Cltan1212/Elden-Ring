@@ -2,7 +2,7 @@ package game.actors.enemies.sky;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.utils.RandomNumberGenerator;
-import game.weapons.GiantDragonFlyHead;
+import game.weapons.enemySpecial.GiantDragonFlyHead;
 
 public class GiantDragonFly extends FlyingType {
     /**

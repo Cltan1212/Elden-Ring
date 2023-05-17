@@ -1,4 +1,4 @@
-package game.actions.runesActions;
+package game.actions.resetActions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;

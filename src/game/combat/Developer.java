@@ -1,7 +1,6 @@
 package game.combat;
 
-import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.weapons.Uchigatana;
+import game.weapons.combat.Uchigatana;
 
 public class Developer extends CombatArchetypes{
     /**

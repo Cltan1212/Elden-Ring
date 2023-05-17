@@ -1,13 +1,12 @@
-package game.actions.actorActions;
+package game.actions.resetActions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.actions.resetActions.ResetAction;
 import game.grounds.SiteOfLostGrace;
 import game.reset.ResetManager;
 import game.utils.Status;
-
-import java.awt.*;
 
 /**
  * Special action for an {@link Actor} to rest at a Site of Lost Grace.

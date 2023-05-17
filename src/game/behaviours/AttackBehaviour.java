@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.actorActions.AttackAction;
+import game.actions.actorActions.attackActions.AttackAction;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 

@@ -6,12 +6,12 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.items.Purchasable;
-import game.items.Sellable;
+import game.items.trading.Purchasable;
+import game.items.trading.Sellable;
 import game.utils.Status;
-import game.weapons.*;
-import game.weapons.skeletalDropable.Grossmesser;
+import game.weapons.combat.Club;
+import game.weapons.combat.GreatKnife;
+import game.weapons.combat.Uchigatana;
 import game.weapons.skeletalDropable.Scimitar;
 
 import java.util.ArrayList;

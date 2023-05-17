@@ -1,18 +1,12 @@
 package game.runes;
 
-import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.*;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.runesActions.RecoverRunesAction;
+import game.actions.resetActions.RecoverRunesAction;
 import game.reset.Resettable;
 import game.utils.Status;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class representing items that can be used as Runes in the game world

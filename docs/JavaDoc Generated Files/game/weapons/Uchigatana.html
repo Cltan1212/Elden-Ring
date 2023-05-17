@@ -79,7 +79,7 @@ loadScripts(document, 'script');</script>
 <div class="inheritance" title="Inheritance Tree">java.lang.Object
 <div class="inheritance">edu.monash.fit2099.engine.items.Item
 <div class="inheritance">edu.monash.fit2099.engine.weapons.WeaponItem
-<div class="inheritance">game.weapons.Uchigatana</div>
+<div class="inheritance">game.weapons.combat.Uchigatana</div>
 </div>
 </div>
 </div>
@@ -157,14 +157,14 @@ implements <a href="../items/Purchasable.html" title="interface in game.items">P
 </thead>
 <tbody>
 <tr class="alt-color" id="i0">
-<td class="col-first"><code><a href="../actions/runesActions/PurchaseAction.html" title="class in game.actions.runesActions">PurchaseAction</a></code></td>
+<td class="col-first"><code><a href="../actions/runesActions/PurchaseAction.html" title="class in game.actions.traderActions">PurchaseAction</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#createPurchaseAction()">createPurchaseAction</a></span>()</code></th>
 <td class="col-last">
 <div class="block">Creates a PurchaseAction that allows this Uchigatana to be purchased from a MerchantKale for 5000 runes.</div>
 </td>
 </tr>
 <tr class="row-color" id="i1">
-<td class="col-first"><code><a href="../actions/runesActions/SellAction.html" title="class in game.actions.runesActions">SellAction</a></code></td>
+<td class="col-first"><code><a href="../actions/runesActions/SellAction.html" title="class in game.actions.traderActions">SellAction</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#createSellAction()">createSellAction</a></span>()</code></th>
 <td class="col-last">
 <div class="block">Creates a SellAction that allows this Uchigatana to be sold to a MerchantKale for 500 gold.</div>
@@ -242,7 +242,7 @@ java.lang.String&nbsp;direction)</span></div>
 <li>
 <section class="detail" id="createPurchaseAction()">
 <h3>createPurchaseAction</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../actions/runesActions/PurchaseAction.html" title="class in game.actions.runesActions">PurchaseAction</a></span>&nbsp;<span class="member-name">createPurchaseAction</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../actions/runesActions/PurchaseAction.html" title="class in game.actions.traderActions">PurchaseAction</a></span>&nbsp;<span class="member-name">createPurchaseAction</span>()</div>
 <div class="block">Creates a PurchaseAction that allows this Uchigatana to be purchased from a MerchantKale for 5000 runes.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
@@ -250,14 +250,14 @@ java.lang.String&nbsp;direction)</span></div>
 <dt>Returns:</dt>
 <dd>a PurchaseAction for this Uchigatana</dd>
 <dt>See Also:</dt>
-<dd><a href="../actions/runesActions/PurchaseAction.html" title="class in game.actions.runesActions"><code>PurchaseAction</code></a></dd>
+<dd><a href="../actions/runesActions/PurchaseAction.html" title="class in game.actions.traderActions"><code>PurchaseAction</code></a></dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="createSellAction()">
 <h3>createSellAction</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../actions/runesActions/SellAction.html" title="class in game.actions.runesActions">SellAction</a></span>&nbsp;<span class="member-name">createSellAction</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../actions/runesActions/SellAction.html" title="class in game.actions.traderActions">SellAction</a></span>&nbsp;<span class="member-name">createSellAction</span>()</div>
 <div class="block">Creates a SellAction that allows this Uchigatana to be sold to a MerchantKale for 500 gold.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
@@ -265,7 +265,7 @@ java.lang.String&nbsp;direction)</span></div>
 <dt>Returns:</dt>
 <dd>a SellAction for this Uchigatana</dd>
 <dt>See Also:</dt>
-<dd><a href="../actions/runesActions/SellAction.html" title="class in game.actions.runesActions"><code>SellAction</code></a></dd>
+<dd><a href="../actions/runesActions/SellAction.html" title="class in game.actions.traderActions"><code>SellAction</code></a></dd>
 </dl>
 </section>
 </li>

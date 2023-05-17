@@ -1,6 +1,6 @@
 package game.combat;
 
-import game.weapons.Uchigatana;
+import game.weapons.combat.Uchigatana;
 
 /**
  * Samurai

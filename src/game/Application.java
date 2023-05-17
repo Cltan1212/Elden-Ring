@@ -26,7 +26,7 @@ import game.maps.RoundTableHold;
 import game.maps.StormVeilCastle;
 import game.reset.ResetManager;
 import game.utils.FancyMessage;
-import game.weapons.GraftedDragon;
+import game.weapons.bossWeapons.GraftedDragon;
 
 /**
  * The main class to start the game.

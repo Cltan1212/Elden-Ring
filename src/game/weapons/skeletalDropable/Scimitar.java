@@ -5,11 +5,11 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.actorActions.AreaAttackAction;
-import game.actions.runesActions.PurchaseAction;
-import game.actions.runesActions.SellAction;
-import game.items.Purchasable;
-import game.items.Sellable;
+import game.actions.actorActions.attackActions.AreaAttackAction;
+import game.actions.traderActions.PurchaseAction;
+import game.actions.traderActions.SellAction;
+import game.items.trading.Purchasable;
+import game.items.trading.Sellable;
 import game.runes.RunesManager;
 import game.utils.Status;
 

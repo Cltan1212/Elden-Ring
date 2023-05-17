@@ -1,66 +1,65 @@
-package game.weapons;
+package game.weapons.combat;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.actorActions.UnsheatheAction;
-import game.actions.runesActions.PurchaseAction;
-import game.actions.runesActions.SellAction;
-import game.items.Purchasable;
-import game.items.Sellable;
+import game.actions.actorActions.attackActions.QuickStepAction;
+import game.actions.traderActions.PurchaseAction;
+import game.actions.traderActions.SellAction;
+import game.items.trading.Purchasable;
+import game.items.trading.Sellable;
 import game.runes.RunesManager;
 import game.utils.Status;
 
 /**
- * A weapon item representing a Uchigatana.
- * A Uchigatana can be unsheathed by an actor, allowing them to perform a powerful attack on their target.
- * It can also be purchased from a merchant, or sold by the player.
+ * A weapon item representing a great knife.
+ * Implements Purchasable and Sellable interfaces.
  * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see WeaponItem
  * @see Purchasable
  * @see Sellable
  */
-public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
+public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
+
     private final int price = 350;
     private final SellAction sellAction = new SellAction(this, price);
+
     /**
      * Constructor.
      */
-    public Uchigatana (){
-        super("Uchigatana", ')', 115,"unsheathe", 80);
+    public GreatKnife(){
+        super("Great Knife", '/', 75,"quick step", 70);
     }
 
     /**
-     * The special skill of Uchigatana.
+     * Returns a QuickStepAction with target and direction.
      *
      * @param target target actor
      * @param direction the direction in which the Actor is being attacked
-     * @return a UnsheatheAction
-     * @see UnsheatheAction
+     * @return a QuickStepAction with target and direction
+     * @see QuickStepAction
      */
     @Override
     public Action getSkill(Actor target, String direction) {
-        return new UnsheatheAction(this, target);
+        return new QuickStepAction(target, direction, this);
     }
 
     /**
-     * Creates a PurchaseAction that allows this Uchigatana to be purchased from a MerchantKale for 5000 runes.
+     * Creates a PurchaseAction that allows this GreatKnife to be purchased from a MerchantKale for 3500 runes.
      *
-     * @return a PurchaseAction for this Uchigatana
-     * @see PurchaseAction
+     * @return a PurchaseAction for this GreatKnife
      */
     @Override
     public PurchaseAction createPurchaseAction() {
-        return new PurchaseAction(this, 5000);
+        return new PurchaseAction(this,3500);
     }
 
     /**
-     * Creates a SellAction that allows this Uchigatana to be sold to a MerchantKale for 500 gold.
+     * Creates a SellAction that allows this GreatKnife to be sold to a MerchantKale for 350 gold.
      *
-     * @return a SellAction for this Uchigatana
-     * @see SellAction
+     * @return a SellAction for this GreatKnife
      */
     @Override
     public void createSellAction(Actor actor, Integer price) {
@@ -85,4 +84,5 @@ public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
         }
 
     }
+
 }

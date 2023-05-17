@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.actorActions.AttackAction;
+import game.actions.actorActions.attackActions.AttackAction;
 import game.actions.actorActions.DespawnedAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
@@ -96,6 +96,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
             if (action != null) {
+                System.out.println(behaviours);
                 // remove attack behaviour after execution
                 this.behaviours.remove(0);
                 this.behaviours.remove(3);

@@ -1,4 +1,4 @@
-package game.actions.actorActions;
+package game.actions.actorActions.attackActions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.reset.ResetManager;
+import game.actions.resetActions.ResetAction;
 import game.runes.RunesManager;
 import game.utils.FancyMessage;
 import game.utils.Status;

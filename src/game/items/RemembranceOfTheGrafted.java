@@ -5,13 +5,14 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.actorActions.ExchangeAction;
-import game.actions.runesActions.SellAction;
-import game.runes.Runes;
+import game.actions.traderActions.ExchangeAction;
+import game.actions.traderActions.SellAction;
+import game.items.trading.Exchangeable;
+import game.items.trading.Sellable;
 import game.runes.RunesManager;
 import game.utils.Status;
-import game.weapons.AxeOfGodrick;
-import game.weapons.GraftedDragon;
+import game.weapons.bossWeapons.AxeOfGodrick;
+import game.weapons.bossWeapons.GraftedDragon;
 
 public class RemembranceOfTheGrafted extends Item implements Exchangeable, Sellable {
     private final int price = 20000;

@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.behaviours.AttackBehaviour;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
-import game.weapons.GiantDogHead;
+import game.weapons.enemySpecial.GiantDogHead;
 
 /**
  * Class representing a physical GiantDog in the game world.

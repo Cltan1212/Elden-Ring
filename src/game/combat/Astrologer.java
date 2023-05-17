@@ -1,6 +1,6 @@
 package game.combat;
 
-import game.weapons.GreatKnife;
+import game.weapons.combat.GreatKnife;
 
 public class Astrologer extends CombatArchetypes {
 

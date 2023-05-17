@@ -1,4 +1,4 @@
-package game.actions.actorActions;
+package game.actions.actorActions.attackActions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -6,7 +6,10 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.actorActions.attackActions.AttackAction;
 import game.utils.RandomNumberGenerator;
+import game.weapons.combat.GreatKnife;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +18,7 @@ import java.util.List;
  * It extends Action class
  * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Action
- * @see game.weapons.GreatKnife
+ * @see GreatKnife
  */
 public class QuickStepAction extends Action {
 
