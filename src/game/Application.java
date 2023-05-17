@@ -222,9 +222,9 @@ public class Application {
 		}
 
 		// add enemy for stormveil castle
-		for (int x = 20; x <= 24; x++) {
-			stormveilCastleMap.at(20, 17).setGround(new GustOfWind(new SouthWestEnemy()));
-			stormveilCastleMap.at(20, 19).setGround(new GustOfWind(new SouthWestEnemy()));
+		for (int x = 20; x <= 22; x++) {
+			stormveilCastleMap.at(x, 17).setGround(new GustOfWind(new SouthWestEnemy()));
+			stormveilCastleMap.at(x, 18).setGround(new GustOfWind(new SouthWestEnemy()));
 		}
 
 		// cliff (new added)

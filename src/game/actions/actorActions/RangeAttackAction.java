@@ -32,7 +32,7 @@ public class RangeAttackAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return target.toString();
     }
 
     private int distance(Location a, Location b){

@@ -22,8 +22,8 @@ public class ConversationAction extends Action {
             display.println("Hey, I am Finger Reader Enia. I have a give to you.");
 
             display.println("Tarnished:");
-            display.println("a. Oh really? What is it?");
-            display.println("b. I am not interested.");
+            display.println("a: Oh really? What is it?");
+            display.println("b: I am not interested.");
             char choiceChar = display.readChar();
 
             if (choiceChar == 'a') {
@@ -31,8 +31,8 @@ public class ConversationAction extends Action {
                 display.println("I noticed that your HP is insufficient. Allow me to boost your HP.");
 
                 display.println("Tarnished:");
-                display.println("a. Sure.");
-                display.println("b. I am not interested.");
+                display.println("a: Sure.");
+                display.println("b: I am not interested.");
 
                 char choiceChar2 = display.readChar();
 
@@ -53,6 +53,6 @@ public class ConversationAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return this.target + " make a conversation with " + actor;
     }
 }
