@@ -1,4 +1,4 @@
-package game.map;
+package game.maps;
 
 import java.util.Arrays;
 

@@ -19,9 +19,9 @@ import game.grounds.environments.PuddleOfWater;
 import game.grounds.environments.ThunderStorm;
 import game.grounds.stormveilCastle.Barrack;
 import game.grounds.stormveilCastle.Cage;
-import game.map.Limgrave;
-import game.map.RoundTableHold;
-import game.map.StormVeilCastle;
+import game.maps.Limgrave;
+import game.maps.RoundTableHold;
+import game.maps.StormVeilCastle;
 import game.reset.ResetManager;
 import game.utils.FancyMessage;
 
