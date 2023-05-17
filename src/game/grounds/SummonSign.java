@@ -2,17 +2,13 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.actorActions.AllyInvaderSpawnAction;
-import game.actors.enemies.allyInvader.Ally;
-import game.actors.enemies.allyInvader.Invader;
+import game.actors.allyInvader.Ally;
+import game.actors.allyInvader.Invader;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SummonSign extends Ground {
 
@@ -44,4 +40,8 @@ public class SummonSign extends Ground {
         return actions;
     }
 
+    @Override
+    public boolean canActorEnter(Actor actor) {
+        return actor.hasCapability(Status.HOSTILE_TO_ENEMY);  // actor can step on summon sign
+    }
 }

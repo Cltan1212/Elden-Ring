@@ -12,6 +12,7 @@ import game.actors.enemies.enemyFactory.NorthEastMapFactory;
 import game.actors.enemies.enemyFactory.NorthWestMapFactory;
 import game.actors.enemies.enemyFactory.SouthEastFactory;
 import game.actors.enemies.enemyFactory.SouthWestEnemy;
+import game.actors.traders.FingerReaderEnia;
 import game.actors.traders.MerchantKale;
 import game.combat.*;
 import game.grounds.*;
@@ -21,8 +22,13 @@ import game.grounds.environments.PuddleOfWater;
 import game.grounds.environments.ThunderStorm;
 import game.grounds.stormveilCastle.Barrack;
 import game.grounds.stormveilCastle.Cage;
+import game.items.RemembranceOfTheGrafted;
+import game.maps.Limgrave;
+import game.maps.RoundTableHold;
+import game.maps.StormVeilCastle;
 import game.reset.ResetManager;
 import game.utils.FancyMessage;
+import game.weapons.GraftedDragon;
 
 /**
  * The main class to start the game.
@@ -44,75 +50,15 @@ public class Application {
 
 		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Cage(), new Barrack(), new Cliff());
 
-		List<String> map = Arrays.asList(
-				"......................#.............#......................................",
-				"......................#.............#......................................",
-				"......................#..___....____#......................................",
-				"......................#...........__#......................................",
-				"......................#_____........#......................................",
-				"......................#............_#......................................",
-				"......................######...######......................................",
-				"...........................................................................",
-				"...........................................................................",
-				"..................................###___###................................",
-				"..................................________#................................",
-				"..................................#________................................",
-				"..................................#_______#................................",
-				"..................................###___###................................",
-				"....................................#___#..................................",
-				"...........................................................................",
-				"...........................................................................",
-				"...........................................................................",
-				"#####___#####.................................................######..##...",
-				"____________#.................................................#....____....",
-				"____________#...................................................__.....#...",
-				"____________#................................................._.....__.#...",
-				"____________#.................................................###..__###...",
-				"____________#..............................................................");
-
-		List<String> roundtableHold = Arrays.asList(
-				"##################",
-				"#________________#",
-				"#________________#",
-				"#________________#",
-				"#________________#",
-				"#________________#",
-				"#________________#",
-				"#________________#",
-				"#________________#",
-				"#________________#",
-				"########___#######");
-
-		List<String> stormveilCastle = Arrays.asList(
-				"...........................................................................",
-				"..................<...............<........................................",
-				"...........................................................................",
-				"##############################################...##########################",
-				"............................#................#.......B..............B......",
-				".....B...............B......#................#.............................",
-				"...............................<.........<.................................",
-				".....B...............B......#................#.......B..............B......",
-				"............................#................#.............................",
-				"#####################..#############...############.####..#########...#####",
-				"...............#++++++++++++#................#++++++++++++#................",
-				"...............#++++++++++++...<.........<...#++++++++++++#................",
-				"...............#++++++++++++..................++++++++++++#................",
-				"...............#++++++++++++#................#++++++++++++#................",
-				"#####...##########.....#############...#############..#############...#####",
-				".._______........................B......B........................B.....B...",
-				"_____..._..____..............<..............<..............................",
-				".........____..............................................................",
-				"...._______..................<..............<....................<.....<...",
-				"#####....##...###..#####...##########___###############......##.....####...",
-				"+++++++++++++++++++++++++++#...................#+++++++++++++++++++++++++++",
-				"+++++++++++++++++++++++++++....................#+++++++++++++++++++++++++++",
-				"+++++++++++++++++++++++++++#....................+++++++++++++++++++++++++++",
-				"+++++++++++++++++++++++++++#...................#+++++++++++++++++++++++++++");
+		Limgrave limgrave = new Limgrave();
+		RoundTableHold roundTableHold = new RoundTableHold();
+		StormVeilCastle stormveilCastle = new StormVeilCastle();
 
 
-		GameMap gameMap = new GameMap(groundFactory, map);
-		GameMap roundtableHoldMap = new GameMap(groundFactory, roundtableHold);
-		GameMap stormveilCastleMap = new GameMap(groundFactory, stormveilCastle);
+		GameMap gameMap = new GameMap(groundFactory, limgrave.getMap());
+		GameMap roundtableHoldMap = new GameMap(groundFactory, roundTableHold.getMap());
+		GameMap stormveilCastleMap = new GameMap(groundFactory, stormveilCastle.getMap());
+
 
 		world.addGameMap(gameMap);
 		world.addGameMap(roundtableHoldMap);
@@ -155,9 +101,14 @@ public class Application {
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
 		world.addPlayer(player, gameMap.at(36, 10));
+		player.addItemToInventory(new RemembranceOfTheGrafted());
+		player.addItemToInventory(new GraftedDragon());
 
 		MerchantKale trader = new MerchantKale();
 		gameMap.at(40,12).addActor(trader);
+
+		FingerReaderEnia enia = new FingerReaderEnia();
+		gameMap.at(41, 10).addActor(enia);
 
 		SummonSign summonSign = new SummonSign();
 		gameMap.at(28, 8).setGround(summonSign);

@@ -1,22 +1,22 @@
-package game.actors.enemies.dog;
+package game.actors.enemies.stormveilCastleEnemy;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.actors.enemies.dog.DogType;
 import game.actors.enemies.stormveilCastleEnemy.StormveilCastleEnemy;
 import game.behaviours.AttackBehaviour;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
-public class Dog extends DogType {
+public class Dog extends StormveilCastleEnemy{
     /**
      * Constructor.
      *
      */
     public Dog() {
         super("Dog",'a',104, 10);
-        this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
     }
 
     @Override
