@@ -5,19 +5,11 @@ import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
-public class ToRoundTableMapAction extends Action {
+public class ToRoundTableMapAction extends ToMapAction {
 
 
-    GameMap newLocation;
-    public ToRoundTableMapAction(GameMap map) {
-        newLocation = map;  // the map to travel to
-    }
-
-    @Override
-    public String execute(Actor actor, GameMap map) {
-        Action moveAction = new MoveActorAction(newLocation.at(9, 10),"");
-        moveAction.execute(actor, newLocation);
-        return menuDescription(actor);
+    public ToRoundTableMapAction(GameMap map, int xInput, int yInput) {
+        super(map, xInput, yInput);  // map -> the map to travel
     }
 
     @Override

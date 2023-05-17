@@ -29,9 +29,9 @@ public class GoldenFogDoor extends Ground {
         if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
             if (location.x() == 6 && location.y() == 23) {  // from Limgrave to RoundTable Hold
-                actions.add(new ToRoundTableMapAction(map));
+                actions.add(new ToRoundTableMapAction(map, 9, 10));
             } else if (location.x() == 30 && location.y() == 0) {  // from Limgrave to Stormveil Castle
-                actions.add(new ToStormveilCastleMapAction(map));
+                actions.add(new ToStormveilCastleMapAction(map, 38, 23));
             } else if (location.x() == 9 && location.y() == 10){  // from RoundTable Hold to Limgrave
                 actions.add(new ToLimgraveMapAction(map, 6, 23));
             } else if (location.x() == 38 && location.y() == 23){ // from Stormveil Castle to Limgrace

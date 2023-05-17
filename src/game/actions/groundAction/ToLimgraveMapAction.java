@@ -5,24 +5,17 @@ import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
-public class ToLimgraveMapAction extends Action {
-
-
-    GameMap newLocation;
-    int x, y;
+public class ToLimgraveMapAction extends ToMapAction {
 
     public ToLimgraveMapAction(GameMap map, int xInput, int yInput) {
-        newLocation = map;  // the map to travel to
-        x = xInput;
-        y = yInput;
+        super(map, xInput, yInput);  //map -> the map to travel
     }
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        Action moveAction = new MoveActorAction(newLocation.at(x, y), "");
-        moveAction.execute(actor, newLocation);
-        return menuDescription(actor);
+        return super.execute(actor, map);
     }
+
 
     @Override
     public String menuDescription(Actor actor) {
