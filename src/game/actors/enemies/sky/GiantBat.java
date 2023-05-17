@@ -3,7 +3,7 @@ package game.actors.enemies.sky;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.utils.RandomNumberGenerator;
 
-public class GiantBat extends BirdType {
+public class GiantBat extends FlyingType {
     /**
      * Constructor.
      *

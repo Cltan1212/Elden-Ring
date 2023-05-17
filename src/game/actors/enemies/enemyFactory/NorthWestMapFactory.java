@@ -4,7 +4,7 @@ import game.actors.enemies.dog.DogType;
 import game.actors.enemies.dog.LoneWolf;
 import game.actors.enemies.skeletal.HeavySkeletalSwordsman;
 import game.actors.enemies.skeletal.SkeletalType;
-import game.actors.enemies.sky.BirdType;
+import game.actors.enemies.sky.FlyingType;
 import game.actors.enemies.sky.Owl;
 import game.actors.enemies.water.GiantCrab;
 import game.actors.enemies.water.WaterType;
@@ -41,7 +41,7 @@ public class NorthWestMapFactory implements EnemyFactory{
     }
 
     @Override
-    public BirdType createBirdType() {
+    public FlyingType createBirdType() {
         return new Owl();
     }
 }

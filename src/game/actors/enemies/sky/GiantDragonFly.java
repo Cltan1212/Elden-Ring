@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.utils.RandomNumberGenerator;
 import game.weapons.GiantDragonFlyHead;
 
-public class GiantDragonFly extends BirdType {
+public class GiantDragonFly extends FlyingType {
     /**
      * Constructor.
      *

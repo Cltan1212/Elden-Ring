@@ -10,6 +10,6 @@ public class Developer extends CombatArchetypes{
      * For testing purpose
      */
     public Developer() {
-        super('D',"Developer",new Uchigatana(),1000000000);
+        super('D',"Developer",new Uchigatana(),2147483647);
     }
 }

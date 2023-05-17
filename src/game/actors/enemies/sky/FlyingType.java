@@ -7,7 +7,7 @@ import game.actors.enemies.Enemy;
 import game.behaviours.AttackBehaviour;
 import game.utils.Status;
 
-public abstract class BirdType extends Enemy {
+public abstract class FlyingType extends Enemy {
     /**
      * Constructor.
      *
@@ -16,7 +16,7 @@ public abstract class BirdType extends Enemy {
      * @param hitPoints   the Actor's starting hit points
      * @param spawnChance the spawning rate
      */
-    public BirdType(String name, char displayChar, int hitPoints, int spawnChance) {
+    public FlyingType(String name, char displayChar, int hitPoints, int spawnChance) {
         super(name, displayChar, hitPoints, spawnChance);
         this.addCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);

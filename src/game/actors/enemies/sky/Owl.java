@@ -3,13 +3,13 @@ package game.actors.enemies.sky;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.utils.RandomNumberGenerator;
 
-public class Owl extends BirdType {
+public class Owl extends FlyingType {
     /**
      * Constructor.
      *
      */
     public Owl() {
-        super("Owl",'O',88,10);
+        super("Owl",'W',88,10);
     }
 
     @Override

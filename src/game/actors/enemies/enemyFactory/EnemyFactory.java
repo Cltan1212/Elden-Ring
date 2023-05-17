@@ -2,7 +2,7 @@ package game.actors.enemies.enemyFactory;
 
 import game.actors.enemies.dog.DogType;
 import game.actors.enemies.skeletal.SkeletalType;
-import game.actors.enemies.sky.BirdType;
+import game.actors.enemies.sky.FlyingType;
 import game.actors.enemies.water.WaterType;
 
 /**
@@ -28,5 +28,5 @@ public interface EnemyFactory {
      */
     WaterType createWaterType();
 
-    BirdType createBirdType();
+    FlyingType createBirdType();
 }

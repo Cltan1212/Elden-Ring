@@ -3,13 +3,13 @@ package game.actors.enemies.sky;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.utils.RandomNumberGenerator;
 
-public class Eagle extends BirdType {
+public class Eagle extends FlyingType {
     /**
      * Constructor.
      *
      */
     public Eagle() {
-        super("Eagle",'E',100,10);
+        super("Eagle",'Q',100,10);
     }
 
     @Override
