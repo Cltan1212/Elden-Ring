@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.actorActions.ConversationAction;
 import game.items.Exchangeable;
 import game.items.Purchasable;
 import game.items.Sellable;
@@ -38,8 +39,9 @@ public class FingerReaderEnia extends Actor {
 
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actionList = new ActionList();
-
-        // exchange weapon actions
+        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+            actionList.add(new ConversationAction(otherActor));
+        }
         return actionList;
     }
 }

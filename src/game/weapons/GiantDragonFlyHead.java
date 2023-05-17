@@ -19,7 +19,7 @@ public class GiantDragonFlyHead extends WeaponItem implements Sellable {
      *
      */
     public GiantDragonFlyHead() {
-        super("Giant Dragon Fly Head",'¶',131,"slams",98);
+        super("Giant Dragon Fly Head",'>',131,"slams",98);
     }
 
     /**

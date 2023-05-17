@@ -247,7 +247,7 @@ public class Application {
 		}
 
 		for (int x = 16; x <= 20; x++) {
-			gameMap.at(x, 23).setGround(new GustOfWind(new NorthEastMapFactory()));
+			gameMap.at(x, 23).setGround(new GustOfWind(new SouthEastFactory()));
 		}
 
 		// thunder storm
