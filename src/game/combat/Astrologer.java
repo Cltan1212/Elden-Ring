@@ -1,5 +1,6 @@
 package game.combat;
 
+import game.weapons.AstrologerStaff;
 import game.weapons.GreatKnife;
 
 public class Astrologer extends CombatArchetypes {
@@ -10,8 +11,7 @@ public class Astrologer extends CombatArchetypes {
      * Set the display character, the starting weapon and starting hit point for this game mode
      */
     public Astrologer(){
-        // starting weapon is Great Knife
-        // since we didn't implement New Weapon (optional) we choose GreatKnife as the starting weapon of Astrologer
-        super('a', "Astrologer", new GreatKnife(), 396);
+        // starting weapon is Staff
+        super('a', "Astrologer", new AstrologerStaff(), 396);
     }
 }
