@@ -1,4 +1,4 @@
-package game.actors.enemies.allyInvader;
+package game.actors.allyInvader;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
