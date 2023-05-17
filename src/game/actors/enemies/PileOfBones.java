@@ -33,7 +33,6 @@ public class PileOfBones extends Enemy{
         this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
         for (WeaponItem weaponItem: skeletalEnemy.getWeaponInventory()){
-            System.out.println(weaponItem);
             this.addWeaponToInventory(weaponItem);
         }
         ResetManager.getInstance().registerResettable(this);

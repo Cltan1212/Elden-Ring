@@ -1,8 +1,6 @@
 package game;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -48,7 +46,8 @@ public class Application {
 
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Cage(), new Barrack(), new Cliff());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(),
+				new Cage(), new Barrack(), new Cliff(), new SummonSign());
 
 		Limgrave limgrave = new Limgrave();
 		RoundTableHold roundTableHold = new RoundTableHold();
@@ -108,12 +107,7 @@ public class Application {
 		gameMap.at(40,12).addActor(trader);
 
 		FingerReaderEnia enia = new FingerReaderEnia();
-		gameMap.at(41, 10).addActor(enia);
-
-		SummonSign summonSign = new SummonSign();
-		gameMap.at(28, 8).setGround(summonSign);
-		gameMap.at(35, 15).setGround(summonSign);
-		gameMap.at(66, 16).setGround(summonSign);
+		roundtableHoldMap.at(10, 2).addActor(enia);
 
 		// GoldenFrogDoor
 		GoldenFogDoor FogDoorToRound = new GoldenFogDoor(roundtableHoldMap);
@@ -181,41 +175,50 @@ public class Application {
 		}
 
 		// gust of wind
+		// SOUTH EAST
 		for (int y = 18; y < 21; y++){
 			for (int x = 53; x < 56; x ++){
 				gameMap.at(x,y).setGround(new GustOfWind(new SouthEastFactory()));
 			}
 		}
 
+		// NORTH WEST
 		for (int x = 10; x<= 14; x++){
 			gameMap.at(x,4).setGround(new GustOfWind(new NorthWestMapFactory()));
 			gameMap.at(x,5).setGround(new GustOfWind(new NorthWestMapFactory()));
 		}
 
+		// NORTH EAST
 		for (int x = 40; x <= 44; x++){
 			gameMap.at(x,1).setGround(new GustOfWind(new NorthEastMapFactory()));
 			gameMap.at(x,2).setGround(new GustOfWind(new NorthEastMapFactory()));
 		}
 
+		// SOUTH WEST
 		for (int x = 16; x <= 20; x++) {
-			gameMap.at(x, 23).setGround(new GustOfWind(new SouthEastFactory()));
+			gameMap.at(x, 23).setGround(new GustOfWind(new SouthWestEnemy()));
 		}
 
 		// thunder storm
+		// NORTH EAST
 		for (int x = 1; x <= 5; x++){
 			gameMap.at(x, 5).setGround(new ThunderStorm(new NorthEastMapFactory()));
 			gameMap.at(x, 7).setGround(new ThunderStorm(new NorthEastMapFactory()));
 		}
+
+		// SOUTH EAST
 		for (int x = 56; x <= 60; x++){
 			gameMap.at(x, 10).setGround(new ThunderStorm(new SouthEastFactory()));
 			gameMap.at(x, 12).setGround(new ThunderStorm(new SouthEastFactory()));
 		}
 
+		// NORTH WEST
 		for (int x = 7; x <= 10; x++){
-			gameMap.at(x, 16).setGround(new ThunderStorm(new SouthWestEnemy()));
-			gameMap.at(x, 17).setGround(new ThunderStorm(new SouthWestEnemy()));
+			gameMap.at(x, 16).setGround(new ThunderStorm(new NorthWestMapFactory()));
+			gameMap.at(x, 17).setGround(new ThunderStorm(new NorthWestMapFactory()));
 		}
 
+		// SOUTH WEST
 		for (int x = 70; x <= 73; x++) {
 			gameMap.at(x, 17).setGround(new ThunderStorm(new SouthWestEnemy()));
 			gameMap.at(x, 18).setGround(new ThunderStorm(new SouthWestEnemy()));
@@ -225,86 +228,6 @@ public class Application {
 		for (int x = 20; x <= 22; x++) {
 			stormveilCastleMap.at(x, 17).setGround(new GustOfWind(new SouthWestEnemy()));
 			stormveilCastleMap.at(x, 18).setGround(new GustOfWind(new SouthWestEnemy()));
-		}
-
-		// cliff (new added)
-		int value = 0;
-		for (int x =0; x < 4; x++){
-			gameMap.at(18 + value, 18).setGround(new Cliff());
-			gameMap.at(19 + value, 20).setGround(new Cliff());
-			gameMap.at(8+ value, 9).setGround(new Cliff());
-			gameMap.at(8 + value, 10).setGround(new Cliff());
-			value++;
-		}
-
-		value = 0;
-		for (int x= 0; x<3; x++){
-			gameMap.at(12 + value, 10).setGround(new Cliff());
-			gameMap.at(10+ value, 11).setGround(new Cliff());
-			gameMap.at(12 + value, 12).setGround(new Cliff());
-			gameMap.at(63 + value, 0).setGround(new Cliff());
-			gameMap.at(66 + value, 4).setGround(new Cliff());
-			gameMap.at(67 + value, 5).setGround(new Cliff());
-			gameMap.at(44 + value, 18).setGround(new Cliff());
-			gameMap.at(47 + value, 19).setGround(new Cliff());
-			gameMap.at(48+ value, 22).setGround(new Cliff());
-			value++;
-		}
-
-		value = 0;
-		for (int x =0; x < 2; x++){
-			gameMap.at(12 + value, 14).setGround(new Cliff());
-			gameMap.at(14 + value, 16).setGround(new Cliff());
-			gameMap.at(18 + value, 19).setGround(new Cliff());
-			gameMap.at(24 + value, 21).setGround(new Cliff());
-			gameMap.at(27 + value, 23).setGround(new Cliff());
-			gameMap.at(46 + value, 17).setGround(new Cliff());
-			gameMap.at(50 + value,21).setGround(new Cliff());
-			gameMap.at(65 + value, 3).setGround(new Cliff());
-			value++;
-		}
-		value = 0;
-		for (int x= 0; x<5; x++) {
-			gameMap.at(60+ value, 1).setGround(new Cliff());
-			gameMap.at(62+ value, 2).setGround(new Cliff());
-			value++;
-		}
-
-		// those alone Cliff
-		gameMap.at(13,13).setGround(new Cliff());
-		gameMap.at(14,15).setGround(new Cliff());
-		gameMap.at(19, 21).setGround(new Cliff());
-		gameMap.at(23, 22).setGround(new Cliff());
-		gameMap.at(26, 22).setGround(new Cliff());
-		gameMap.at(49, 20).setGround(new Cliff());
-
-		// Add Cliff at Stormveil Castle Map
-		// 26
-		value = 0;
-		for (int x = 0; x<27; x++){
-			stormveilCastleMap.at(value, 20).setGround(new Cliff());
-			stormveilCastleMap.at(value, 21).setGround(new Cliff());
-			stormveilCastleMap.at(value, 22).setGround(new Cliff());
-			stormveilCastleMap.at(value, 23).setGround(new Cliff());
-			stormveilCastleMap.at(48 + value, 20).setGround(new Cliff());
-			stormveilCastleMap.at(48 + value, 21).setGround(new Cliff());
-			stormveilCastleMap.at(48 + value, 22).setGround(new Cliff());
-			stormveilCastleMap.at(48 + value, 23).setGround(new Cliff());
-			value++;
-		}
-
-		// 12
-		value = 0;
-		for (int x = 0; x<12; x++){
-			stormveilCastleMap.at(16 + value, 10).setGround(new Cliff());
-			stormveilCastleMap.at(16 + value, 11).setGround(new Cliff());
-			stormveilCastleMap.at(16 + value, 12).setGround(new Cliff());
-			stormveilCastleMap.at(16 + value, 13).setGround(new Cliff());
-			stormveilCastleMap.at(46 + value, 10).setGround(new Cliff());
-			stormveilCastleMap.at(46 + value, 11).setGround(new Cliff());
-			stormveilCastleMap.at(46 + value, 12).setGround(new Cliff());
-			stormveilCastleMap.at(46 + value, 13).setGround(new Cliff());
-			value++;
 		}
 
 
