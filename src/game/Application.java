@@ -1,6 +1,5 @@
     package game;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -8,16 +7,20 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import edu.monash.fit2099.engine.weapons.Weapon;
-import game.actors.MerchantKale;
+import game.actors.traders.MerchantKale;
 import game.actors.Player;
-import game.actors.enemies.enemyFactory.EastMapFactoryEnemy;
-import game.actors.enemies.enemyFactory.WestMapFactoryEnemy;
+import game.actors.enemies.enemyFactory.NorthEastMapFactory;
+import game.actors.enemies.enemyFactory.NorthWestMapFactory;
+import game.actors.enemies.enemyFactory.SouthEastFactory;
+import game.actors.enemies.enemyFactory.SouthWestEnemy;
 import game.combat.*;
 import game.grounds.*;
 import game.grounds.environments.Graveyard;
 import game.grounds.environments.GustOfWind;
 import game.grounds.environments.PuddleOfWater;
+import game.grounds.environments.ThunderStorm;
+import game.grounds.stormveilCastle.Barrack;
+import game.grounds.stormveilCastle.Cage;
 import game.reset.ResetManager;
 import game.utils.FancyMessage;
 
@@ -39,7 +42,7 @@ public class Application {
 
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Cliff(), new Cage(), new Barrack());
 //
 //
 //		List<String> map = Arrays.asList(
@@ -109,29 +112,30 @@ public class Application {
 
 		List<String> stormveilCastle = Arrays.asList(
 				"...........................................................................",
-				"...........................................................................",
+				"..................<...............<........................................",
 				"...........................................................................",
 				"##############################################...##########################",
-				"............................#................#.............................",
-				"............................#................#.............................",
-				"...........................................................................",
-				"............................#................#.............................",
+				"............................#................#.......B..............B......",
+				".....B...............B......#................#.............................",
+				"...............................<.........<.................................",
+				".....B...............B......#................#.......B..............B......",
 				"............................#................#.............................",
 				"#####################..#############...############.####..#########...#####",
-				"...............#............#................#............#................",
-				"...............#.............................#............#................",
-				"...............#..........................................#................",
-				"...............#............#................#............#................",
+				"...............#++++++++++++#................#++++++++++++#................",
+				"...............#++++++++++++...<.........<...#++++++++++++#................",
+				"...............#++++++++++++..................++++++++++++#................",
+				"...............#++++++++++++#................#++++++++++++#................",
 				"#####...##########.....#############...#############..#############...#####",
-				".._______..................................................................",
-				"_____..._..____............................................................",
+				".._______........................B......B........................B.....B...",
+				"_____..._..____..............<..............<..............................",
 				".........____..............................................................",
-				"...._______................................................................",
+				"...._______..................<..............<....................<.....<...",
 				"#####....##...###..#####...##########___###############......##.....####...",
-				"...........................#...................#...........................",
-				"...............................................#...........................",
-				"...........................#...............................................",
-				"...........................#...................#...........................");
+				"+++++++++++++++++++++++++++#...................#+++++++++++++++++++++++++++",
+				"+++++++++++++++++++++++++++....................#+++++++++++++++++++++++++++",
+				"+++++++++++++++++++++++++++#....................+++++++++++++++++++++++++++",
+				"+++++++++++++++++++++++++++#...................#+++++++++++++++++++++++++++");
+
 
 
 		GameMap gameMap = new GameMap(groundFactory, map);
@@ -198,18 +202,117 @@ public class Application {
 		roundtableHoldMap.at(9,10).setGround(FogDoorToLimgrave);
 		stormveilCastleMap.at(38, 23).setGround(FogDoorToLimgrave);
 
-
-
 		// graveyard
+		// NORTH WEST
 		for (int x = 2; x < 6; x ++){
-			gameMap.at(x,0).setGround(new Graveyard(new WestMapFactoryEnemy()));
-			gameMap.at(x,2).setGround(new Graveyard(new WestMapFactoryEnemy()));
+			gameMap.at(x,0).setGround(new Graveyard(new NorthWestMapFactory()));
+			gameMap.at(x,2).setGround(new Graveyard(new NorthWestMapFactory()));
 		}
 
+		// SOUTH EAST
 		for (int x = 47; x < 51; x++){
-			gameMap.at(x,10).setGround(new Graveyard(new EastMapFactoryEnemy()));
-			gameMap.at(x,12).setGround(new Graveyard(new EastMapFactoryEnemy()));
+			gameMap.at(x,10).setGround(new Graveyard(new SouthEastFactory()));
+			gameMap.at(x,12).setGround(new Graveyard(new SouthEastFactory()));
 		}
+
+		// NORTH EAST
+		for (int x = 50; x <= 54; x++) {
+			gameMap.at(x, 5).setGround(new Graveyard(new NorthEastMapFactory()));
+			gameMap.at(x, 6).setGround(new Graveyard(new NorthEastMapFactory()));
+		}
+
+		// SOUTH WEST
+		for (int x = 30; x <= 35; x++){
+			gameMap.at(x, 23).setGround(new Graveyard(new SouthWestEnemy()));
+			gameMap.at(x, 23).setGround(new Graveyard(new SouthWestEnemy()));
+
+		}
+
+		// puddle of water
+		// NORTH EAST
+		for (int x = 54; x < 59; x ++){
+			gameMap.at(x,0).setGround(new PuddleOfWater(new NorthEastMapFactory()));
+			gameMap.at(x,1).setGround(new PuddleOfWater(new NorthEastMapFactory()));
+			gameMap.at(x,2).setGround(new PuddleOfWater(new NorthEastMapFactory()));
+			gameMap.at(x,3).setGround(new PuddleOfWater(new NorthEastMapFactory()));
+		}
+
+		// SOUTH WEST
+		for (int y = 12; y < 15; y++){
+			for (int x = 0; x < 4; x++){
+				gameMap.at(x,y).setGround(new PuddleOfWater(new SouthWestEnemy()));
+			}
+		}
+
+		// NORTH WEST
+		for (int x = 16; x <= 20; x++) {
+			gameMap.at(x, 2).setGround(new PuddleOfWater(new NorthWestMapFactory()));
+			gameMap.at(x, 2).setGround(new PuddleOfWater(new NorthWestMapFactory()));
+		}
+
+		// SOUTH EAST
+		for (int x = 65; x <= 70; x++) {
+			gameMap.at(x, 23).setGround(new PuddleOfWater(new SouthEastFactory()));
+		}
+
+		// gust of wind
+		for (int y = 18; y < 21; y++){
+			for (int x = 53; x < 56; x ++){
+				gameMap.at(x,y).setGround(new GustOfWind(new SouthEastFactory()));
+			}
+		}
+
+		for (int x = 10; x<= 14; x++){
+			gameMap.at(x,4).setGround(new GustOfWind(new NorthWestMapFactory()));
+			gameMap.at(x,5).setGround(new GustOfWind(new NorthWestMapFactory()));
+		}
+
+		for (int x = 40; x <= 44; x++){
+			gameMap.at(x,1).setGround(new GustOfWind(new NorthEastMapFactory()));
+			gameMap.at(x,2).setGround(new GustOfWind(new NorthEastMapFactory()));
+		}
+
+		for (int x = 16; x <= 20; x++) {
+			gameMap.at(x, 23).setGround(new GustOfWind(new SouthEastFactory()));
+		}
+
+		// thunder storm
+		for (int x = 1; x <= 5; x++){
+			gameMap.at(x, 5).setGround(new ThunderStorm(new NorthEastMapFactory()));
+			gameMap.at(x, 7).setGround(new ThunderStorm(new NorthEastMapFactory()));
+		}
+		for (int x = 56; x <= 60; x++){
+			gameMap.at(x, 10).setGround(new ThunderStorm(new SouthEastFactory()));
+			gameMap.at(x, 12).setGround(new ThunderStorm(new SouthEastFactory()));
+		}
+
+		for (int x = 7; x <= 10; x++){
+			gameMap.at(x, 16).setGround(new ThunderStorm(new SouthWestEnemy()));
+			gameMap.at(x, 17).setGround(new ThunderStorm(new SouthWestEnemy()));
+		}
+
+		for (int x = 70; x <= 73; x++) {
+			gameMap.at(x, 17).setGround(new ThunderStorm(new SouthWestEnemy()));
+			gameMap.at(x, 18).setGround(new ThunderStorm(new SouthWestEnemy()));
+		}
+
+		// add enemy for stormveil castle
+		for (int x = 20; x <= 24; x++) {
+			stormveilCastleMap.at(20, 17).setGround(new GustOfWind(new SouthWestEnemy()));
+			stormveilCastleMap.at(20, 19).setGround(new GustOfWind(new SouthWestEnemy()));
+		}
+
+
+//		// graveyard
+//		for (int x = 2; x < 6; x ++){
+//			gameMap.at(x,0).setGround(new Graveyard(new WestMapFactoryEnemy()));
+//			gameMap.at(x,2).setGround(new Graveyard(new WestMapFactoryEnemy()));
+//		}
+//
+//		for (int x = 47; x < 51; x++){
+//			gameMap.at(x,10).setGround(new Graveyard(new EastMapFactoryEnemy()));
+//			gameMap.at(x,12).setGround(new Graveyard(new EastMapFactoryEnemy()));
+//		}
 
 		// puddle of water
 //		int value = 0;
@@ -232,28 +335,28 @@ public class Application {
 //				gameMap.at(x,y).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
 //			}
 //		}
-		for (int x = 54; x < 59; x ++){
-			gameMap.at(x,0).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
-			gameMap.at(x,1).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
-			gameMap.at(x,2).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
-			gameMap.at(x,3).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
-		}
+//		for (int x = 54; x < 59; x ++){
+//			gameMap.at(x,0).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
+//			gameMap.at(x,1).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
+//			gameMap.at(x,2).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
+//			gameMap.at(x,3).setGround(new PuddleOfWater(new EastMapFactoryEnemy()));
+//		}
 
 
 
-		// new added
-		for (int y = 12; y < 15; y++){
-			for (int x = 0; x < 4; x++){
-				gameMap.at(x,y).setGround(new PuddleOfWater(new WestMapFactoryEnemy()));
-			}
-		}
+//		// new added
+//		for (int y = 12; y < 15; y++){
+//			for (int x = 0; x < 4; x++){
+//				gameMap.at(x,y).setGround(new PuddleOfWater(new WestMapFactoryEnemy()));
+//			}
+//		}
 
 		// gust of wind
-		for (int y = 18; y < 21; y++){
-			for (int x = 53; x < 56; x ++){
-				gameMap.at(x,y).setGround(new GustOfWind(new EastMapFactoryEnemy()));
-			}
-		}
+//		for (int y = 18; y < 21; y++){
+//			for (int x = 53; x < 56; x ++){
+//				gameMap.at(x,y).setGround(new GustOfWind(new EastMapFactoryEnemy()));
+//			}
+//		}
 
 //		for (int y = 20; y < 23; y++){
 //			for (int x = 20; x < 23; x++){

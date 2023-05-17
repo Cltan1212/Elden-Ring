@@ -62,6 +62,10 @@ public enum Status {
      */
     HOSTILE_TO_INVADERS,
 
+    HOSTILE_TO_STORMVEIL_CASTLE_ENEMY,
+    HOSTILE_TO_BIRD_TYPE_ENEMY,
+    SECRET_ENIA,
+    SELL,
     /**
      * The character that is hostile to allies.
      */

@@ -3,17 +3,14 @@ package game.actors.enemies;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actors.enemies.Enemy;
 import game.actors.enemies.skeletal.SkeletalType;
 import game.reset.ResetManager;
-import game.reset.Resettable;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
-import game.weapons.Grossmesser;
+import game.weapons.skeletalDropable.Grossmesser;
 
 /**
  * Class representing a physical Pile of Bones in the game world.

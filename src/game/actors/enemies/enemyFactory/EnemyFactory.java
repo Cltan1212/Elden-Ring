@@ -2,6 +2,7 @@ package game.actors.enemies.enemyFactory;
 
 import game.actors.enemies.dog.DogType;
 import game.actors.enemies.skeletal.SkeletalType;
+import game.actors.enemies.sky.BirdType;
 import game.actors.enemies.water.WaterType;
 
 /**
@@ -26,4 +27,7 @@ public interface EnemyFactory {
      * @return the instance of {@link WaterType} enemy
      */
     WaterType createWaterType();
+
+    BirdType createBirdType();
 }
+

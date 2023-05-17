@@ -83,7 +83,7 @@ public class DeathAction extends Action {
             map.draw(display);
 //            result += System.lineSeparator() + menuDescription(target);
             result += "\n" + FancyMessage.YOU_DIED;
-            result += new ResetAction(map.locationOf(target)).execute(target, map);
+            result += new ResetAction().execute(target, map);
 
         }
         // enemy attacks enemy

@@ -1,7 +1,6 @@
 package game.actors.enemies.skeletal;
 
-import game.utils.RandomNumberGenerator;
-import game.weapons.Grossmesser;
+import game.weapons.skeletalDropable.Grossmesser;
 
 /**
  * Class representing a physical Heavy Skeletal Swordsman in the game world.

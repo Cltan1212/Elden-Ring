@@ -20,21 +20,10 @@ import game.utils.Status;
  */
 public class ResetAction extends Action {
 
-    private Location lastLocation;
-
     /**
      * Default constructor for the ResetAction.
      */
     public ResetAction(){
-    }
-
-    /**
-     * Constructor for the ResetAction that takes in the last location of the actor.
-     *
-     * @param lastLocation lastLocation the last location of the actor
-     */
-    public ResetAction(Location lastLocation){
-        this.lastLocation = lastLocation;
     }
 
     /**
@@ -50,8 +39,9 @@ public class ResetAction extends Action {
         String result = "";
         result += ResetManager.getInstance().run();
         if(!actor.hasCapability(Status.RESTING)){
-            Runes runes = new Runes(actor, lastLocation);
-            lastLocation.addItem(runes);
+            Location previousLocation = ResetManager.getInstance().getPlayer(actor).lastLocation;
+            Runes runes = new Runes(actor, previousLocation);
+            previousLocation.addItem(runes);
             map.moveActor(actor, lastSite);
 
         }

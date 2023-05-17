@@ -5,12 +5,13 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.utils.RandomNumberGenerator;
+import game.weapons.Uchigatana;
 
 /**
  * Special Action class that allows an actor to unsheathe a WeaponItem on an enemy Actor.
  * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  * @see Action
- * @see game.weapons.Uchigatana
+ * @see Uchigatana
  */
 public class UnsheatheAction extends Action {
 
