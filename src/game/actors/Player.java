@@ -47,7 +47,7 @@ public class Player extends Actor implements Resettable {
 
 		super(name, displayChar, hitPoints);
 		this.role = role;
-		RunesManager.getInstance().registerRunesHeld(this, 1000000);
+		RunesManager.getInstance().registerRunesHeld(this, 100000000);
 
 		// capabilities
 		this.addCapability(Status.HOSTILE_TO_ENEMY);

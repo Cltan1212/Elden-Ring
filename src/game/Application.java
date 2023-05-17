@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.traders.FingerReaderEnia;
 import game.actors.traders.MerchantKale;
 import game.actors.Player;
 import game.actors.enemies.enemyFactory.EastMapFactoryEnemy;
@@ -20,6 +21,7 @@ import game.grounds.environments.Graveyard;
 import game.grounds.environments.GustOfWind;
 import game.grounds.environments.PuddleOfWater;
 import game.items.GoldenRunes;
+import game.items.RemembranceOfTheGrafted;
 import game.reset.ResetManager;
 import game.utils.FancyMessage;
 
@@ -109,10 +111,11 @@ public class Application {
 		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
 		ResetManager.getInstance().addPlayer(player);
 		world.addPlayer(player, gameMap.at(36, 10));
-
+		player.addItemToInventory(new RemembranceOfTheGrafted());
 		MerchantKale trader = new MerchantKale();
+		FingerReaderEnia enia = new FingerReaderEnia();
 		gameMap.at(40,12).addActor(trader);
-
+		gameMap.at(41, 10).addActor(enia);
 		// graveyard
 		for (int x = 2; x < 6; x ++){
 			gameMap.at(x,0).setGround(new Graveyard(new WestMapFactoryEnemy()));

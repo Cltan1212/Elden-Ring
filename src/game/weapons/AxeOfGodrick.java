@@ -1,63 +1,32 @@
 package game.weapons;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.actorActions.AreaAttackAction;
 import game.actions.runesActions.SellAction;
-import game.items.Purchasable;
+import game.items.Exchangeable;
 import game.items.Sellable;
 import game.runes.RunesManager;
 import game.utils.Status;
 
-/**
- * A heavy sword that deals high damage and can perform an area attack.
- * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
- * @see WeaponItem
- * @see Purchasable
- */
-/**
- * A heavy sword that deals high damage and can perform an area attack.
- * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
- * @see WeaponItem
- * @see Purchasable
- */
-public class Grossmesser extends WeaponItem implements Sellable {
-
+public class AxeOfGodrick extends WeaponItem implements Sellable {
     private final int price = 100;
     private final SellAction sellAction = new SellAction(this, price);
+
     /**
      * Constructor.
      */
-    public Grossmesser() {
-        super("Grossmesser", '?',115, "perform spinning attack", 85);
+    public AxeOfGodrick() {
+        super("Axe of Godrick", 'T', 142, "hits the surrounding", 84);
     }
 
-    /**
-     * Returns the area attack action for the grossmesser.
-     *
-     * @param holder the actor holding the grossmesser
-     * @return an AreaAttackAction object
-     * @see AreaAttackAction
-     */
-    @Override
-    public Action getSkill(Actor holder) {
-        return new AreaAttackAction(this);
-    }
 
-    /**
-     * Creates a SellAction that allows this Grossmesser to be sold to a MerchantKale for 100 gold.
-     *
-     * @return a SellAction for this Grossmesser
-     */
     @Override
     public void createSellAction(Actor actor, Integer price) {
         RunesManager.getInstance().addRunes(actor, price);
         actor.removeWeaponFromInventory(this);
     }
-
     @Override
     public void tick(Location currentLocation, Actor actor) {
 
@@ -74,4 +43,3 @@ public class Grossmesser extends WeaponItem implements Sellable {
 
     }
 }
-
