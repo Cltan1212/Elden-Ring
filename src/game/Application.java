@@ -26,7 +26,6 @@ import game.maps.RoundTableHold;
 import game.maps.StormVeilCastle;
 import game.reset.ResetManager;
 import game.utils.FancyMessage;
-import game.weapons.bossWeapons.GraftedDragon;
 
 /**
  * The main class to start the game.
@@ -101,7 +100,6 @@ public class Application {
 		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
 		world.addPlayer(player, gameMap.at(36, 10));
 		player.addItemToInventory(new RemembranceOfTheGrafted());
-		player.addItemToInventory(new GraftedDragon());
 
 		MerchantKale trader = new MerchantKale();
 		gameMap.at(40,12).addActor(trader);

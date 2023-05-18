@@ -48,9 +48,17 @@ public class DeathAction extends Action {
     public String execute(Actor target, GameMap map) {
         String result = "";
 
-        // if the attacker is player
-        if (attacker != null && attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+        // if player die
+        if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 
+            // reset the game
+            Display display = new Display();
+            map.draw(display);
+            result += "\n" + FancyMessage.YOU_DIED;
+            result += new ResetAction().execute(target, map);
+
+            // if other actor die
+        } else {
             if (!target.hasCapability(Status.SPECIAL_DEATH)){
 
                 ActionList dropActions = new ActionList();
@@ -63,30 +71,11 @@ public class DeathAction extends Action {
                 for (Action drop : dropActions)
                     drop.execute(target, map);
 
-                // transfer runes to target
-                result += "\n" +target + " drops " + RunesManager.getInstance().transferRunes(target, attacker) + " runes.";
-                target.removeCapability(Status.DESPAWNABLE);
-                result += System.lineSeparator() + menuDescription(target);
-                map.removeActor(target);
-            }
-        }
+                if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+                    // transfer runes to target
+                    result += "\n" + target + " drops " + RunesManager.getInstance().transferRunes(target, attacker) + " runes.";
+                }
 
-        // if player die, and the attacker is enemy
-        else if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-
-            // reset the game
-
-            // added line 81 & 82
-            Display display = new Display();
-            map.draw(display);
-//            result += System.lineSeparator() + menuDescription(target);
-            result += "\n" + FancyMessage.YOU_DIED;
-            result += new ResetAction().execute(target, map);
-
-        }
-        // enemy attacks enemy
-        else {
-            if (!target.hasCapability(Status.SPECIAL_DEATH)) {
                 target.removeCapability(Status.DESPAWNABLE);
                 result += System.lineSeparator() + menuDescription(target);
                 map.removeActor(target);

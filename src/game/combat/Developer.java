@@ -1,6 +1,6 @@
 package game.combat;
 
-import game.weapons.combat.Uchigatana;
+import game.weapons.Eraser;
 
 public class Developer extends CombatArchetypes{
     /**
@@ -9,6 +9,6 @@ public class Developer extends CombatArchetypes{
      * For testing purpose
      */
     public Developer() {
-        super('D',"Developer",new Uchigatana(),2147483647);
+        super('D',"Developer",new Eraser(),2147483647);
     }
 }
