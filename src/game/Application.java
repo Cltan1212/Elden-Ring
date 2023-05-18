@@ -21,6 +21,7 @@ import game.grounds.environments.ThunderStorm;
 import game.grounds.stormveilCastle.Barrack;
 import game.grounds.stormveilCastle.Cage;
 import game.items.RemembranceOfTheGrafted;
+import game.maps.BossRoom;
 import game.maps.Limgrave;
 import game.maps.RoundTableHold;
 import game.maps.StormVeilCastle;
@@ -51,11 +52,13 @@ public class Application {
 		Limgrave limgrave = new Limgrave();
 		RoundTableHold roundTableHold = new RoundTableHold();
 		StormVeilCastle stormveilCastle = new StormVeilCastle();
+		BossRoom bossRoom = new BossRoom();
 
 
 		GameMap gameMap = new GameMap(groundFactory, limgrave.getMap());
 		GameMap roundtableHoldMap = new GameMap(groundFactory, roundTableHold.getMap());
 		GameMap stormveilCastleMap = new GameMap(groundFactory, stormveilCastle.getMap());
+		GameMap bossRoomMap = new GameMap(groundFactory, bossRoom.getMap());
 
 
 		world.addGameMap(gameMap);
@@ -93,12 +96,12 @@ public class Application {
 		}
 
 		// site of lost grace
-		SiteOfLostGrace theFirstStep = new SiteOfLostGrace("The First Step",38,11);
+		SiteOfLostGrace theFirstStep = new SiteOfLostGrace("The First Step",38,11, gameMap);
 		gameMap.at(38,11).setGround(theFirstStep);
 
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
-		world.addPlayer(player, gameMap.at(36, 10));
+		world.addPlayer(player, gameMap.at(26, 9));
 		player.addItemToInventory(new RemembranceOfTheGrafted());
 
 		MerchantKale trader = new MerchantKale();
@@ -107,17 +110,25 @@ public class Application {
 		FingerReaderEnia enia = new FingerReaderEnia();
 		roundtableHoldMap.at(10, 2).addActor(enia);
 
-		// GoldenFrogDoor
-		GoldenFogDoor FogDoorToRound = new GoldenFogDoor(roundtableHoldMap);
+		// GoldenFrogDoor To RoundTableHold map
+		GoldenFogDoor FogDoorToRound = new GoldenFogDoor(roundtableHoldMap,roundtableHoldMap.at(9,10), "Round Table Map");
 		gameMap.at(6, 23).setGround(FogDoorToRound);
-		GoldenFogDoor FogDoorToStorm = new GoldenFogDoor(stormveilCastleMap);
+
+
+		// GoldenFogDoor to Stormveil Castle
+		GoldenFogDoor FogDoorToStorm = new GoldenFogDoor(stormveilCastleMap, stormveilCastleMap.at(38, 23), "Stormveil Castle");
 		gameMap.at(30, 0).setGround(FogDoorToStorm);
 
-		// set the ground in roundtableHoldMap
-		GoldenFogDoor FogDoorToLimgrave = new GoldenFogDoor(gameMap);
-		roundtableHoldMap.at(9,10).setGround(FogDoorToLimgrave);
-		stormveilCastleMap.at(38, 23).setGround(FogDoorToLimgrave);
+		//GoldenFogDoor to Limgrave
+		GoldenFogDoor FogDoorToLimgraveFromRound = new GoldenFogDoor(gameMap, gameMap.at(6,23), "Limgrave");
+		roundtableHoldMap.at(9,10).setGround(FogDoorToLimgraveFromRound);
+		GoldenFogDoor FogDoorToLimgraveFromStorm = new GoldenFogDoor(gameMap, gameMap.at(30,0), "Limgrave");
+		stormveilCastleMap.at(38, 23).setGround(FogDoorToLimgraveFromStorm);
 
+
+		// GoldenFogDoor to BossRoom and no door back from Boss Door to limgrave
+		GoldenFogDoor FogDoorToBossRoom = new GoldenFogDoor(bossRoomMap, bossRoomMap.at(0, 4), "Godrick the Grafted");
+		stormveilCastleMap.at(5, 0).setGround(FogDoorToBossRoom);
 
 		// graveyard
 		// NORTH WEST

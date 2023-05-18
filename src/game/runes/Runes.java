@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.items.*;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.resetActions.RecoverRunesAction;
+import game.reset.ResetManager;
 import game.reset.Resettable;
 import game.utils.Status;
 
@@ -78,6 +79,9 @@ public class Runes extends Item implements RuneSource, Resettable{
             RunesManager.getInstance().removeRuneSource(this);
             location.removeItem(this);
             return "\n" + this +  " is removed.";
+        }
+        else{
+            ResetManager.getInstance().updateResettable(this);
         }
         return "";
     }

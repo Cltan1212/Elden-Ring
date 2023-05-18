@@ -13,6 +13,7 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
+import game.reset.ResetManager;
 import game.reset.Resettable;
 import game.runes.RuneSource;
 import game.runes.RunesManager;
@@ -66,6 +67,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         RunesManager.getInstance().registerRuneSource(this);
         this.addCapability(Status.RESPAWNABLE);
         this.addCapability(Status.DESPAWNABLE);
+        this.addCapability(Status.HOSTILE_TO_ALLIES);
         this.behaviours.put(999, new WanderBehaviour());
         this.spawnChance = spawnChance;
 //        this.registerInstance();
@@ -143,11 +145,6 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
 
     @Override
     public String reset(GameMap map) {
-        if (this.hasCapability(Status.DESPAWNABLE)){
-            return "\n" + new DespawnedAction().execute(this, map);
-        }
-        return "";
-//        map.removeActor(this);
-//        new Display().println(this.toString() + " is removed.");
+        return "\n" + new DespawnedAction().execute(this, map);
     }
 }

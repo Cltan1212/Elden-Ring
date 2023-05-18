@@ -37,11 +37,13 @@ public class RestAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
+        String result = "";
         ResetManager.getInstance().addSiteOfLostGrace(siteOfLostGrace);
         actor.addCapability(Status.RESTING);
-        new ResetAction().execute(actor, map);
+        result += new ResetAction().execute(actor, map);
         actor.removeCapability(Status.RESTING);
-        return actor + " rested at " + siteOfLostGrace;
+        result += "\n" + actor + " rested at " + siteOfLostGrace;
+        return result;
     }
 
     /**

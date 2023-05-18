@@ -8,7 +8,9 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.actorActions.DespawnedAction;
 import game.behaviours.Behaviour;
+import game.behaviours.WanderBehaviour;
 import game.combat.*;
+import game.reset.ResetManager;
 import game.reset.Resettable;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AllyOrInvaderType extends Actor implements Resettable {
+public abstract class AllyOrInvaderType extends Actor implements Resettable {
 
     protected Map<Integer, Behaviour> behaviours = new HashMap<>();
 
@@ -39,6 +41,7 @@ public class AllyOrInvaderType extends Actor implements Resettable {
         allRoles.add(new Bandit());
         allRoles.add(new Astrologer());
         int randomChance = RandomNumberGenerator.getRandomInt(0, 3);
+        this.behaviours.put(999, new WanderBehaviour());
         role = allRoles.get(randomChance);
 
         resetMaxHp(role.getStartingHitPoint());
@@ -55,7 +58,9 @@ public class AllyOrInvaderType extends Actor implements Resettable {
             Action action = behaviour.getAction(this, map);
             if (action != null) {
                 // remove attack behaviour after execution
+                System.out.println(this.behaviours);
                 this.behaviours.remove(0);
+                this.behaviours.remove(3);
                 return action;
             }
         }
@@ -65,8 +70,11 @@ public class AllyOrInvaderType extends Actor implements Resettable {
 
     @Override
     public String reset(GameMap map) {
-        if (this.hasCapability(Status.DESPAWNABLE)){
+        if (!ResetManager.getInstance().getPlayer().hasCapability(Status.RESTING)){
             return "\n" + new DespawnedAction().execute(this, map);
+        }
+        else{
+            ResetManager.getInstance().updateResettable(this);
         }
         return "";
     }

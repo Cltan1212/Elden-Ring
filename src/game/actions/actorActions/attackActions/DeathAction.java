@@ -59,7 +59,7 @@ public class DeathAction extends Action {
 
             // if other actor die
         } else {
-            if (!target.hasCapability(Status.SPECIAL_DEATH)){
+            if (!target.hasCapability(Status.SPECIAL_DEATH) && (map.locationOf(target) != null)){
 
                 ActionList dropActions = new ActionList();
 

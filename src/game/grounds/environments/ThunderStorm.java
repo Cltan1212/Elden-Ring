@@ -10,5 +10,5 @@ public class ThunderStorm extends SpawnGround{
 
     @Override
     public Enemy spawn(){
-        return enemyFactory.createBirdType();}
+        return enemyFactory.createFlyingType();}
 }

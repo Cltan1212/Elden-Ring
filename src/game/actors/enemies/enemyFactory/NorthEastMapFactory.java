@@ -41,7 +41,7 @@ public class NorthEastMapFactory implements EnemyFactory{
     }
 
     @Override
-    public FlyingType createBirdType() {
+    public FlyingType createFlyingType() {
         return new GiantBat();
     }
 }

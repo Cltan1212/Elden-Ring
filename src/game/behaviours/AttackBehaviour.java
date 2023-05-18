@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.actorActions.attackActions.AttackAction;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
@@ -66,8 +67,12 @@ public class AttackBehaviour implements Behaviour {
         if (numEnemies != 0) {
             if (!actor.getWeaponInventory().isEmpty()) { // enemy have special skill
                 if (RandomNumberGenerator.getRandomInt(100) < 50) { // enemy have 50% chance to perform special skill
+                    for (WeaponItem weaponItem: actor.getWeaponInventory()){
+                        System.out.println(weaponItem);
+                    }
                     return actor.getWeaponInventory().get(0).getSkill(actor);
                 }
+                return new AttackAction(target, direction, actor.getWeaponInventory().get(0));
             }  // use their intrinsic weapon
             return new AttackAction(target, direction);
         }

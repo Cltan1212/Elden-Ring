@@ -1,5 +1,6 @@
 package game.weapons.combat;
 
+import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
@@ -30,6 +31,11 @@ public class Club extends WeaponItem implements Sellable, Purchasable {
      */
     public Club() {
         super("Club", '!', 103, "bonks", 80);
+    }
+
+    @Override
+    public Action getSkill(Actor target, String direction) {
+        return null;
     }
 
     /**

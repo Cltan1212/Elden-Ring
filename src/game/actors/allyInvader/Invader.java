@@ -36,22 +36,6 @@ public class Invader extends AllyOrInvaderType implements RuneSource {
         super("Invader", 'ඞ', 0);
         RunesManager.getInstance().registerRuneSource(this);
         this.addCapability(Status.HOSTILE_TO_ALLIES);
-        this.behaviours.put(999, new WanderBehaviour());
-    }
-
-    @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        // add valid behaviour to the list of behaviours
-        for (Behaviour behaviour : behaviours.values()) {
-            Action action = behaviour.getAction(this, map);
-            if (action != null) {
-                // remove attack behaviour after execution
-                this.behaviours.remove(0);
-                this.behaviours.remove(3);
-                return action;
-            }
-        }
-        return new DoNothingAction();
     }
 
     @Override
@@ -60,13 +44,14 @@ public class Invader extends AllyOrInvaderType implements RuneSource {
 
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             following = true;
+            this.behaviours.put(0, new AttackBehaviour(otherActor));
             this.behaviours.put(1, new FollowBehaviour(otherActor));  // invader will follow the player
         }
 
         // invader can attack player, also other hostile creatures
-        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) || otherActor.hasCapability(Status.RESPAWNABLE) || otherActor.hasCapability(Status.HOSTILE_TO_INVADERS)){
+        if (otherActor.hasCapability(Status.RESPAWNABLE) || otherActor.hasCapability(Status.HOSTILE_TO_INVADERS)){
             actions.add(new AttackAction(this, direction));
-            this.behaviours.put(0, new AttackBehaviour(otherActor));
+            this.behaviours.put(3, new AttackBehaviour(otherActor));
             for (WeaponItem weaponItem: otherActor.getWeaponInventory()){
 
                 // attack action for normal weapon

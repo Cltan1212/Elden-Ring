@@ -21,30 +21,13 @@ public class Ally extends AllyOrInvaderType {
 
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        ActionList actions = new ActionList();
         // allies can attack other hostile creatures
+        ActionList actionList = new ActionList();
         if  (otherActor.hasCapability(Status.RESPAWNABLE) || otherActor.hasCapability(Status.HOSTILE_TO_ALLIES)){
-            actions.add(new AttackAction(this, direction));
             this.behaviours.put(0, new AttackBehaviour(otherActor));
-            for (WeaponItem weaponItem: otherActor.getWeaponInventory()){
-
-                // attack action for normal weapon
-                actions.add(new AttackAction(this, direction, weaponItem));
-                // special skill for area attack
-                actions.add(weaponItem.getSkill(otherActor));
-                // special skill for target attack
-                actions.add(weaponItem.getSkill(this, direction));
-            }
         }
-        return actions;
+        return actionList;
 
-    }
-
-    // allies removed from the map ONLY if the player dies.
-    // If the player rests, no removal from map
-    @Override
-    public String reset(GameMap map) {
-        return null;
     }
 
 

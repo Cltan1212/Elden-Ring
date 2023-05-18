@@ -47,13 +47,14 @@ public class Player extends Actor implements Resettable {
 
 		super(name, displayChar, hitPoints);
 		this.role = role;
-		ResetManager.getInstance().addPlayer(this);
+		ResetManager.getInstance().setPlayers(this);
 		RunesManager.getInstance().registerRunesHeld(this, 0);
 
 		// capabilities
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.CONSUMABLE);
 		this.addCapability(Status.RESTABLE);
+		this.addCapability(Status.HOSTILE_TO_INVADERS);
 
 		// set weapon and item
 		maxHitPoints = role.getStartingHitPoint();
@@ -93,6 +94,7 @@ public class Player extends Actor implements Resettable {
 	 */
 	@Override
 	public String reset(GameMap map) {
+		ResetManager.getInstance().updateResettable(this);
 		hitPoints = maxHitPoints;
 		return "\n" + "Player is restored to full health.";
 	}

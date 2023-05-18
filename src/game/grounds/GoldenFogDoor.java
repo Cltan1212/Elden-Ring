@@ -5,9 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.groundAction.ToLimgraveMapAction;
-import game.actions.groundAction.ToRoundTableMapAction;
-import game.actions.groundAction.ToStormveilCastleMapAction;
+import game.actions.actorActions.PlayerToMapAction;
 import game.utils.Status;
 
 public class GoldenFogDoor extends Ground {
@@ -15,29 +13,29 @@ public class GoldenFogDoor extends Ground {
      * Constructor.
      */
 
-    GameMap map;
-    public GoldenFogDoor(GameMap thisMap) {
+    GameMap newMap;
+    Location newLocation;
+    String newMapName;
+    public GoldenFogDoor(GameMap map, Location location, String mapName) {
         super('D');
-        map = thisMap;
+        newMap = map;
+        newLocation = location;
+        newMapName = mapName;
     }
+
 
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
 
-        // only Player can travel to another map
         if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-
-            if (location.x() == 6 && location.y() == 23) {  // from Limgrave to RoundTable Hold
-                actions.add(new ToRoundTableMapAction(map, 9, 10));
-            } else if (location.x() == 30 && location.y() == 0) {  // from Limgrave to Stormveil Castle
-                actions.add(new ToStormveilCastleMapAction(map, 38, 23));
-            } else if (location.x() == 9 && location.y() == 10){  // from RoundTable Hold to Limgrave
-                actions.add(new ToLimgraveMapAction(map, 6, 23));
-            } else if (location.x() == 38 && location.y() == 23){ // from Stormveil Castle to Limgrace
-                actions.add(new ToLimgraveMapAction(map, 30,0));
-            }
+            actions.add(new PlayerToMapAction(newMap, newLocation, newMapName));
         }
         return actions;
+    }
+
+    @Override
+    public boolean canActorEnter(Actor actor) {
+        return actor.hasCapability(Status.HOSTILE_TO_ENEMY);  // only Player can step on GoldenFogDoor
     }
 }

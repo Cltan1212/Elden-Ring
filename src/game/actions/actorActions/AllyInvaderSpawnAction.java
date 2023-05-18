@@ -5,6 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actors.allyInvader.Ally;
+import game.actors.allyInvader.Invader;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 import java.util.ArrayList;
@@ -12,9 +14,7 @@ import java.util.List;
 
 public class AllyInvaderSpawnAction extends Action {
 
-    public Actor spawnAllyOrInvader;
-    public AllyInvaderSpawnAction(Actor actorSpawn) {
-        spawnAllyOrInvader = actorSpawn;
+    public AllyInvaderSpawnAction() {
     }
 
     @Override
@@ -31,7 +31,14 @@ public class AllyInvaderSpawnAction extends Action {
             }
             if (!emptyLocations.isEmpty()) {
                 Location newLocation = emptyLocations.get(RandomNumberGenerator.getRandomInt(emptyLocations.size()));
-                newLocation.addActor(spawnAllyOrInvader);
+                int randomChance = RandomNumberGenerator.getRandomInt(0, 1);
+                if (randomChance == 0) {
+                    // spawn Ally 50%
+                    newLocation.addActor(new Ally());
+                } else {
+                    // spawn Invader 50%
+                    newLocation.addActor(new Invader());
+                }
             }
         }
         return menuDescription(actor);

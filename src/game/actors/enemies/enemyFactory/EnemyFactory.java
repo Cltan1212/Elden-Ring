@@ -28,5 +28,5 @@ public interface EnemyFactory {
      */
     WaterType createWaterType();
 
-    FlyingType createBirdType();
+    FlyingType createFlyingType();
 }

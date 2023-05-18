@@ -23,11 +23,6 @@ public abstract class FlyingType extends Enemy {
         this.addCapability(Status.HOSTILE_TO_STORMVEIL_CASTLE_ENEMY); // special: bird type enemy will not attack water type enemy
     }
 
-    @Override
-    public int generateRunes() {
-        return 0;
-    }
-
     /**
      * The enemy can be attacked by any actor that has the HOSTILE_WATER_TYPE_ENEMY capability
      *

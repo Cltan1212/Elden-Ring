@@ -26,7 +26,7 @@ public class SouthWestEnemy implements EnemyFactory{
     }
 
     @Override
-    public FlyingType createBirdType() {
+    public FlyingType createFlyingType() {
         return new Eagle();
     }
 }
