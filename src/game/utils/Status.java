@@ -66,6 +66,7 @@ public enum Status {
     HOSTILE_TO_BIRD_TYPE_ENEMY,
     SECRET_ENIA,
     SELL,
+    EXCHANGE,
     /**
      * The character that is hostile to allies.
      */
