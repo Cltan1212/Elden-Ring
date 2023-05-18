@@ -6,7 +6,7 @@ import game.actors.enemies.skeletal.SkeletalMage;
 import game.actors.enemies.skeletal.SkeletalType;
 import game.actors.enemies.sky.FlyingType;
 import game.actors.enemies.sky.Eagle;
-import game.actors.enemies.water.GiantCrab;
+import game.actors.enemies.water.GiantCrayFish;
 import game.actors.enemies.water.WaterType;
 
 public class SouthWestEnemy implements EnemyFactory{
@@ -22,7 +22,7 @@ public class SouthWestEnemy implements EnemyFactory{
 
     @Override
     public WaterType createWaterType() {
-        return new GiantCrab();
+        return new GiantCrayFish();
     }
 
     @Override
