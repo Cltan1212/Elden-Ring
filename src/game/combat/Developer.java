@@ -9,6 +9,6 @@ public class Developer extends CombatArchetypes{
      * For testing purpose
      */
     public Developer() {
-        super('D',"Developer",new Eraser(),2147483647);
+        super('D',"Developer",new Eraser(),2147483547);
     }
 }
