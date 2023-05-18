@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.traders.FingerReaderEnia;
 import game.actors.traders.MerchantKale;
 import game.actors.Player;
 import game.actors.enemies.enemyFactory.NorthEastMapFactory;
@@ -19,6 +20,7 @@ import game.grounds.environments.PuddleOfWater;
 import game.grounds.environments.ThunderStorm;
 import game.grounds.stormveilCastle.Barrack;
 import game.grounds.stormveilCastle.Cage;
+import game.maps.BossRoom;
 import game.maps.Limgrave;
 import game.maps.RoundTableHold;
 import game.maps.StormVeilCastle;
@@ -43,20 +45,25 @@ public class Application {
 
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Cliff(), new Cage(), new Barrack());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(),
+				new Cage(), new Barrack(), new Cliff(), new SummonSign());
+
 
 		Limgrave limgrave = new Limgrave();
 		RoundTableHold roundTableHold = new RoundTableHold();
 		StormVeilCastle stormveilCastle = new StormVeilCastle();
+		BossRoom bossRoom = new BossRoom();
 
 
 		GameMap gameMap = new GameMap(groundFactory, limgrave.getMap());
 		GameMap roundtableHoldMap = new GameMap(groundFactory, roundTableHold.getMap());
 		GameMap stormveilCastleMap = new GameMap(groundFactory, stormveilCastle.getMap());
+		GameMap bossRoomMap = new GameMap(groundFactory, bossRoom.getMap());
 
 		world.addGameMap(gameMap);
 		world.addGameMap(roundtableHoldMap);
 		world.addGameMap(stormveilCastleMap);
+		world.addGameMap(bossRoomMap);
 
 
 		// BEHOLD, ELDEN RING
@@ -98,21 +105,34 @@ public class Application {
 		MerchantKale trader = new MerchantKale();
 		gameMap.at(40,12).addActor(trader);
 
-		SummonSign summonSign = new SummonSign();
-		gameMap.at(28, 8).setGround(summonSign);
-		gameMap.at(35, 15).setGround(summonSign);
-		gameMap.at(66, 16).setGround(summonSign);
+		FingerReaderEnia enia = new FingerReaderEnia();
+		roundtableHoldMap.at(10, 2).addActor(enia);
 
-		// GoldenFrogDoor
-		GoldenFogDoor FogDoorToRound = new GoldenFogDoor(roundtableHoldMap);
+		// GoldenFrogDoor To RoundTableHold map
+		GoldenFogDoor FogDoorToRound = new GoldenFogDoor(roundtableHoldMap,roundtableHoldMap.at(9,10), "Round Table Map");
 		gameMap.at(6, 23).setGround(FogDoorToRound);
-		GoldenFogDoor FogDoorToStorm = new GoldenFogDoor(stormveilCastleMap);
+
+
+		// GoldenFogDoor to Stormveil Castle
+		GoldenFogDoor FogDoorToStorm = new GoldenFogDoor(stormveilCastleMap, stormveilCastleMap.at(38, 23), "Stormveil Castle");
 		gameMap.at(30, 0).setGround(FogDoorToStorm);
 
-		// set the ground in roundtableHoldMap
-		GoldenFogDoor FogDoorToLimgrave = new GoldenFogDoor(gameMap);
-		roundtableHoldMap.at(9,10).setGround(FogDoorToLimgrave);
-		stormveilCastleMap.at(38, 23).setGround(FogDoorToLimgrave);
+		//GoldenFogDoor to Limgrave
+		GoldenFogDoor FogDoorToLimgraveFromRound = new GoldenFogDoor(gameMap, gameMap.at(6,23), "Limgrave");
+		roundtableHoldMap.at(9,10).setGround(FogDoorToLimgraveFromRound);
+		GoldenFogDoor FogDoorToLimgraveFromStorm = new GoldenFogDoor(gameMap, gameMap.at(30,0), "Limgrave");
+		stormveilCastleMap.at(38, 23).setGround(FogDoorToLimgraveFromStorm);
+
+
+		// GoldenFogDoor to BossRoom and no door back from Boss Door to limgrave
+		GoldenFogDoor FogDoorToBossRoom = new GoldenFogDoor(bossRoomMap, bossRoomMap.at(0, 4), "Godrick the Grafted");
+		stormveilCastleMap.at(5, 0).setGround(FogDoorToBossRoom);
+
+//      stormveilCastleMap.at(38, 23).setGround(FogDoorToLimgrave);  // testing purpose
+//		gameMap.at(34, 10).setGround(FogDoorToStorm); // testing purpose
+// 		gameMap.at(34, 10).setGround(FogDoorToRound);  // for  testing purpose
+//		stormveilCastleMap.at(38, 20).setGround(FogDoorToBossRoom);  // set a closer door for testing
+
 
 		// graveyard
 		// NORTH WEST
@@ -168,51 +188,74 @@ public class Application {
 		}
 
 		// gust of wind
+		// SOUTH EAST
 		for (int y = 18; y < 21; y++){
 			for (int x = 53; x < 56; x ++){
 				gameMap.at(x,y).setGround(new GustOfWind(new SouthEastFactory()));
 			}
 		}
 
+		// NORTH WEST
 		for (int x = 10; x<= 14; x++){
 			gameMap.at(x,4).setGround(new GustOfWind(new NorthWestMapFactory()));
 			gameMap.at(x,5).setGround(new GustOfWind(new NorthWestMapFactory()));
 		}
 
+		// NORTH EAST
 		for (int x = 40; x <= 44; x++){
 			gameMap.at(x,1).setGround(new GustOfWind(new NorthEastMapFactory()));
 			gameMap.at(x,2).setGround(new GustOfWind(new NorthEastMapFactory()));
 		}
 
+		// SOUTH WEST
 		for (int x = 16; x <= 20; x++) {
-			gameMap.at(x, 23).setGround(new GustOfWind(new SouthEastFactory()));
+			gameMap.at(x, 23).setGround(new GustOfWind(new SouthWestEnemy()));
 		}
 
 		// thunder storm
-		for (int x = 1; x <= 5; x++){
-			gameMap.at(x, 5).setGround(new ThunderStorm(new NorthEastMapFactory()));
-			gameMap.at(x, 7).setGround(new ThunderStorm(new NorthEastMapFactory()));
-		}
-		for (int x = 56; x <= 60; x++){
-			gameMap.at(x, 10).setGround(new ThunderStorm(new SouthEastFactory()));
-			gameMap.at(x, 12).setGround(new ThunderStorm(new SouthEastFactory()));
-		}
-
-		for (int x = 7; x <= 10; x++){
-			gameMap.at(x, 16).setGround(new ThunderStorm(new SouthWestEnemy()));
-			gameMap.at(x, 17).setGround(new ThunderStorm(new SouthWestEnemy()));
-		}
-
-		for (int x = 70; x <= 73; x++) {
-			gameMap.at(x, 17).setGround(new ThunderStorm(new SouthWestEnemy()));
-			gameMap.at(x, 18).setGround(new ThunderStorm(new SouthWestEnemy()));
-		}
+		// NORTH EAST
+//		for (int x = 1; x <= 5; x++){
+//			gameMap.at(x, 5).setGround(new ThunderStorm(new NorthEastMapFactory()));
+//			gameMap.at(x, 7).setGround(new ThunderStorm(new NorthEastMapFactory()));
+//		}
+//
+//		// SOUTH EAST
+//		for (int x = 56; x <= 60; x++){
+//			gameMap.at(x, 10).setGround(new ThunderStorm(new SouthEastFactory()));
+//			gameMap.at(x, 12).setGround(new ThunderStorm(new SouthEastFactory()));
+//		}
+//
+//		// NORTH WEST
+//		for (int x = 7; x <= 10; x++){
+//			gameMap.at(x, 16).setGround(new ThunderStorm(new NorthWestMapFactory()));
+//			gameMap.at(x, 17).setGround(new ThunderStorm(new NorthWestMapFactory()));
+//		}
+//
+//		// SOUTH WEST
+//		for (int x = 70; x <= 73; x++) {
+//			gameMap.at(x, 17).setGround(new ThunderStorm(new SouthWestEnemy()));
+//			gameMap.at(x, 18).setGround(new ThunderStorm(new SouthWestEnemy()));
+//		}
 
 		// add enemy for stormveil castle
-		for (int x = 20; x <= 24; x++) {
-			stormveilCastleMap.at(20, 17).setGround(new GustOfWind(new SouthWestEnemy()));
-			stormveilCastleMap.at(20, 19).setGround(new GustOfWind(new SouthWestEnemy()));
+		for (int x = 20; x <= 22; x++) {
+			stormveilCastleMap.at(x, 17).setGround(new GustOfWind(new SouthWestEnemy()));
+			stormveilCastleMap.at(x, 18).setGround(new GustOfWind(new SouthWestEnemy()));
 		}
+
+		// add GameMap to ResetManager
+		ResetManager.getInstance().addSiteOfLostGrace(theFirstStep);
+		ResetManager.getInstance().addMap(gameMap);
+		world.run(); // run the whole game
+	}
+}
+
+
+
+//	SummonSign summonSign = new SummonSign();
+//		gameMap.at(28, 8).setGround(summonSign);
+//				gameMap.at(35, 15).setGround(summonSign);
+//				gameMap.at(66, 16).setGround(summonSign);
 
 
 //		// graveyard
@@ -277,89 +320,84 @@ public class Application {
 //		}
 
 		// cliff (new added)
-		int value = 0;
-		for (int x =0; x < 4; x++){
-			gameMap.at(18 + value, 18).setGround(new Cliff());
-			gameMap.at(19 + value, 20).setGround(new Cliff());
-			gameMap.at(8+ value, 9).setGround(new Cliff());
-			gameMap.at(8 + value, 10).setGround(new Cliff());
-			value++;
-		}
+//		int value = 0;
+//		for (int x =0; x < 4; x++){
+//			gameMap.at(18 + value, 18).setGround(new Cliff());
+//			gameMap.at(19 + value, 20).setGround(new Cliff());
+//			gameMap.at(8+ value, 9).setGround(new Cliff());
+//			gameMap.at(8 + value, 10).setGround(new Cliff());
+//			value++;
+//		}
+//
+//		value = 0;
+//		for (int x= 0; x<3; x++){
+//			gameMap.at(12 + value, 10).setGround(new Cliff());
+//			gameMap.at(10+ value, 11).setGround(new Cliff());
+//			gameMap.at(12 + value, 12).setGround(new Cliff());
+//			gameMap.at(63 + value, 0).setGround(new Cliff());
+//			gameMap.at(66 + value, 4).setGround(new Cliff());
+//			gameMap.at(67 + value, 5).setGround(new Cliff());
+//			gameMap.at(44 + value, 18).setGround(new Cliff());
+//			gameMap.at(47 + value, 19).setGround(new Cliff());
+//			gameMap.at(48+ value, 22).setGround(new Cliff());
+//			value++;
+//		}
+//
+//		value = 0;
+//		for (int x =0; x < 2; x++){
+//			gameMap.at(12 + value, 14).setGround(new Cliff());
+//			gameMap.at(14 + value, 16).setGround(new Cliff());
+//			gameMap.at(18 + value, 19).setGround(new Cliff());
+//			gameMap.at(24 + value, 21).setGround(new Cliff());
+//			gameMap.at(27 + value, 23).setGround(new Cliff());
+//			gameMap.at(46 + value, 17).setGround(new Cliff());
+//			gameMap.at(50 + value,21).setGround(new Cliff());
+//			gameMap.at(65 + value, 3).setGround(new Cliff());
+//			value++;
+//		}
+//		value = 0;
+//		for (int x= 0; x<5; x++) {
+//			gameMap.at(60+ value, 1).setGround(new Cliff());
+//			gameMap.at(62+ value, 2).setGround(new Cliff());
+//			value++;
+//		}
+//
+//		// those alone Cliff
+//		gameMap.at(13,13).setGround(new Cliff());
+//		gameMap.at(14,15).setGround(new Cliff());
+//		gameMap.at(19, 21).setGround(new Cliff());
+//		gameMap.at(23, 22).setGround(new Cliff());
+//		gameMap.at(26, 22).setGround(new Cliff());
+//		gameMap.at(49, 20).setGround(new Cliff());
+//
+//		// Add Cliff at Stormveil Castle Map
+//		// 26
+//		value = 0;
+//		for (int x = 0; x<27; x++){
+//			stormveilCastleMap.at(value, 20).setGround(new Cliff());
+//			stormveilCastleMap.at(value, 21).setGround(new Cliff());
+//			stormveilCastleMap.at(value, 22).setGround(new Cliff());
+//			stormveilCastleMap.at(value, 23).setGround(new Cliff());
+//			stormveilCastleMap.at(48 + value, 20).setGround(new Cliff());
+//			stormveilCastleMap.at(48 + value, 21).setGround(new Cliff());
+//			stormveilCastleMap.at(48 + value, 22).setGround(new Cliff());
+//			stormveilCastleMap.at(48 + value, 23).setGround(new Cliff());
+//			value++;
+//		}
+//
+//		// 12
+//		value = 0;
+//		for (int x = 0; x<12; x++){
+//			stormveilCastleMap.at(16 + value, 10).setGround(new Cliff());
+//			stormveilCastleMap.at(16 + value, 11).setGround(new Cliff());
+//			stormveilCastleMap.at(16 + value, 12).setGround(new Cliff());
+//			stormveilCastleMap.at(16 + value, 13).setGround(new Cliff());
+//			stormveilCastleMap.at(46 + value, 10).setGround(new Cliff());
+//			stormveilCastleMap.at(46 + value, 11).setGround(new Cliff());
+//			stormveilCastleMap.at(46 + value, 12).setGround(new Cliff());
+//			stormveilCastleMap.at(46 + value, 13).setGround(new Cliff());
+//			value++;
+//		}
 
-		value = 0;
-		for (int x= 0; x<3; x++){
-			gameMap.at(12 + value, 10).setGround(new Cliff());
-			gameMap.at(10+ value, 11).setGround(new Cliff());
-			gameMap.at(12 + value, 12).setGround(new Cliff());
-			gameMap.at(63 + value, 0).setGround(new Cliff());
-			gameMap.at(66 + value, 4).setGround(new Cliff());
-			gameMap.at(67 + value, 5).setGround(new Cliff());
-			gameMap.at(44 + value, 18).setGround(new Cliff());
-			gameMap.at(47 + value, 19).setGround(new Cliff());
-			gameMap.at(48+ value, 22).setGround(new Cliff());
-			value++;
-		}
-
-		value = 0;
-		for (int x =0; x < 2; x++){
-			gameMap.at(12 + value, 14).setGround(new Cliff());
-			gameMap.at(14 + value, 16).setGround(new Cliff());
-			gameMap.at(18 + value, 19).setGround(new Cliff());
-			gameMap.at(24 + value, 21).setGround(new Cliff());
-			gameMap.at(27 + value, 23).setGround(new Cliff());
-			gameMap.at(46 + value, 17).setGround(new Cliff());
-			gameMap.at(50 + value,21).setGround(new Cliff());
-			gameMap.at(65 + value, 3).setGround(new Cliff());
-			value++;
-		}
-		value = 0;
-		for (int x= 0; x<5; x++) {
-			gameMap.at(60+ value, 1).setGround(new Cliff());
-			gameMap.at(62+ value, 2).setGround(new Cliff());
-			value++;
-		}
-
-		// those alone Cliff
-		gameMap.at(13,13).setGround(new Cliff());
-		gameMap.at(14,15).setGround(new Cliff());
-		gameMap.at(19, 21).setGround(new Cliff());
-		gameMap.at(23, 22).setGround(new Cliff());
-		gameMap.at(26, 22).setGround(new Cliff());
-		gameMap.at(49, 20).setGround(new Cliff());
-
-		// Add Cliff at Stormveil Castle Map
-		// 26
-		value = 0;
-		for (int x = 0; x<27; x++){
-			stormveilCastleMap.at(value, 20).setGround(new Cliff());
-			stormveilCastleMap.at(value, 21).setGround(new Cliff());
-			stormveilCastleMap.at(value, 22).setGround(new Cliff());
-			stormveilCastleMap.at(value, 23).setGround(new Cliff());
-			stormveilCastleMap.at(48 + value, 20).setGround(new Cliff());
-			stormveilCastleMap.at(48 + value, 21).setGround(new Cliff());
-			stormveilCastleMap.at(48 + value, 22).setGround(new Cliff());
-			stormveilCastleMap.at(48 + value, 23).setGround(new Cliff());
-			value++;
-		}
-
-		// 12
-		value = 0;
-		for (int x = 0; x<12; x++){
-			stormveilCastleMap.at(16 + value, 10).setGround(new Cliff());
-			stormveilCastleMap.at(16 + value, 11).setGround(new Cliff());
-			stormveilCastleMap.at(16 + value, 12).setGround(new Cliff());
-			stormveilCastleMap.at(16 + value, 13).setGround(new Cliff());
-			stormveilCastleMap.at(46 + value, 10).setGround(new Cliff());
-			stormveilCastleMap.at(46 + value, 11).setGround(new Cliff());
-			stormveilCastleMap.at(46 + value, 12).setGround(new Cliff());
-			stormveilCastleMap.at(46 + value, 13).setGround(new Cliff());
-			value++;
-		}
 
 
-		// add GameMap to ResetManager
-		ResetManager.getInstance().addSiteOfLostGrace(theFirstStep);
-		ResetManager.getInstance().addMap(gameMap);
-		world.run(); // run the whole game
-	}
-}
