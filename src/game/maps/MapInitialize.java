@@ -2,7 +2,7 @@ package game.maps;
 
 import java.util.List;
 
-public class MapInitialize {
+public abstract class MapInitialize {
 
     List<String> map;
 
