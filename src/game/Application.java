@@ -99,14 +99,16 @@ public class Application {
 		SiteOfLostGrace theFirstStep = new SiteOfLostGrace("The First Step",38,11, gameMap);
 		gameMap.at(38,11).setGround(theFirstStep);
 
-		// HINT: what does it mean to prefer composition to inheritance?
+		// add player
 		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
 		world.addPlayer(player, gameMap.at(26, 9));
 		player.addItemToInventory(new RemembranceOfTheGrafted());
 
+		// add Merchant Kale
 		MerchantKale trader = new MerchantKale();
 		gameMap.at(40,12).addActor(trader);
 
+		// Add Finger Reader Enia
 		FingerReaderEnia enia = new FingerReaderEnia();
 		roundtableHoldMap.at(10, 2).addActor(enia);
 

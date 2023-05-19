@@ -4,10 +4,9 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.groundAction.ToMapAction;
+import game.actions.actorActions.PlayerToMapAction;
 import game.reset.ResetManager;
 import game.runes.Runes;
-import game.utils.FancyMessage;
 import game.utils.Status;
 
 /**
@@ -43,8 +42,7 @@ public class ResetAction extends Action {
             Location previousLocation = ResetManager.getInstance().getPlayer().lastLocation;
             Runes runes = new Runes(actor, previousLocation);
             previousLocation.addItem(runes);
-            new ToMapAction(ResetManager.getInstance().getLastVisited().map, lastSite.x(), lastSite.y()).execute(actor, ResetManager.getInstance().getLastVisited().map);
-
+            result += new PlayerToMapAction(ResetManager.getInstance().getLastVisited().map, lastSite, ResetManager.getInstance().getLastVisited().toString()).execute(actor, ResetManager.getInstance().getLastVisited().map);
         }
 
         return result;
