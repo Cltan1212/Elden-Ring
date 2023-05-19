@@ -53,6 +53,9 @@ public class GiantDragonFlyHead extends WeaponItem implements Sellable {
 
     @Override
     public void tick(Location currentLocation, Actor actor) {
+        if (this.getAllowableActions().contains(sellAction)){
+            this.removeAction(sellAction);
+        }
         for (Exit exit : currentLocation.getExits()) {
             Location destination = exit.getDestination();
 

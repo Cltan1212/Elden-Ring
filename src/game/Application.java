@@ -107,13 +107,7 @@ public class Application {
 
 		// add player
 		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
-		world.addPlayer(player, gameMap.at(26, 9));
-		player.addItemToInventory(new RemembranceOfTheGrafted());
-		player.addWeaponToInventory(new GraveScythe());
-		player.addWeaponToInventory(new GiantDogHead());
-		player.addWeaponToInventory(new Scimitar());
-		player.addWeaponToInventory(new Grossmesser());
-		player.addWeaponToInventory(new AxeOfGodrick());
+		world.addPlayer(player, gameMap.at(39, 12));
 
 		// add Merchant Kale
 		MerchantKale trader = new MerchantKale();

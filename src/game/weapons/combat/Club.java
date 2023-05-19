@@ -63,11 +63,14 @@ public class Club extends WeaponItem implements Sellable, Purchasable {
     }
 
     @Override
-    public void tick(Location currentLocation, Actor actor) {
+    public void tick(Location currentLocation) {
+        this.removeAction(sellAction);
+    }
 
+    @Override
+    public void tick(Location currentLocation, Actor actor) {
         if (this.getAllowableActions().contains(sellAction)){
             this.removeAction(sellAction);
-            return;
         }
         for (Exit exit: currentLocation.getExits()){
             Location destination = exit.getDestination();
