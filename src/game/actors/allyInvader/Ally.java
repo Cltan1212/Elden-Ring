@@ -15,6 +15,11 @@ public class Ally extends AllyOrInvaderType {
     public Ally() {
         super("Ally", 'A', 0);
         this.addCapability(Status.HOSTILE_TO_INVADERS);
+        this.addCapability(Status.HOSTILE_TO_BIRD_TYPE_ENEMY);
+        this.addCapability(Status.HOSTILE_TO_STORMVEIL_CASTLE_ENEMY);
+        this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
+        this.addCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY);
+        this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
     }
 
     // no runes generated for Ally
