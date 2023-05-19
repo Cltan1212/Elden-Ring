@@ -26,12 +26,14 @@ public class AxeOfGodrick extends WeaponItem implements Sellable {
         RunesManager.getInstance().addRunes(actor, price);
         actor.removeWeaponFromInventory(this);
     }
+
+    @Override
+    public void tick(Location currentLocation) {
+        this.removeAction(sellAction);
+    }
+
     @Override
     public void tick(Location currentLocation, Actor actor) {
-
-        if (this.getAllowableActions().contains(sellAction)){
-            this.removeAction(sellAction);
-        }
         for (Exit exit: currentLocation.getExits()){
             Location destination = exit.getDestination();
 

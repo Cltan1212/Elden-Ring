@@ -69,12 +69,12 @@ public class Scimitar extends WeaponItem implements Purchasable, Sellable {
     }
 
     @Override
-    public void tick(Location currentLocation, Actor actor) {
+    public void tick(Location currentLocation) {
+        this.removeAction(sellAction);
+    }
 
-        if (this.getAllowableActions().contains(sellAction)){
-            this.removeAction(sellAction);
-            return;
-        }
+    @Override
+    public void tick(Location currentLocation, Actor actor) {
         for (Exit exit: currentLocation.getExits()){
             Location destination = exit.getDestination();
 
