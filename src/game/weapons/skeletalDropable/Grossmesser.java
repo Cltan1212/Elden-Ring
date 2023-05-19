@@ -41,6 +41,11 @@ public class Grossmesser extends WeaponItem implements Sellable {
         return new AreaAttackAction(this);
     }
 
+    @Override
+    public Action getSkill(Actor target, String direction) {
+        return null;
+    }
+
     /**
      * Creates a SellAction that allows this Grossmesser to be sold to a MerchantKale for 100 gold.
      *

@@ -1,5 +1,6 @@
 package game.weapons.bossWeapons;
 
+import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
@@ -24,6 +25,11 @@ public class GraftedDragon extends WeaponItem implements Sellable {
     public void createSellAction(Actor actor, Integer price) {
         RunesManager.getInstance().addRunes(actor, price);
         actor.removeWeaponFromInventory(this);
+    }
+
+    @Override
+    public Action getSkill(Actor target, String direction) {
+        return null;
     }
 
     @Override

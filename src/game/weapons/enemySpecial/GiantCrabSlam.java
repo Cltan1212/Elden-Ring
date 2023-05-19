@@ -21,6 +21,11 @@ public class GiantCrabSlam extends WeaponItem {
         portable = false;
     }
 
+    @Override
+    public Action getSkill(Actor target, String direction) {
+        return null;
+    }
+
     /**
      * Returns an AreaAttackAction for this weapon.
      *

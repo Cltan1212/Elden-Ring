@@ -35,6 +35,11 @@ public class GiantDragonFlyHead extends WeaponItem implements Sellable {
     }
 
     @Override
+    public Action getSkill(Actor target, String direction) {
+        return null;
+    }
+
+    @Override
     public void createSellAction(Actor actor, Integer price) {
         RunesManager.getInstance().addRunes(actor, price);
         actor.removeWeaponFromInventory(this);

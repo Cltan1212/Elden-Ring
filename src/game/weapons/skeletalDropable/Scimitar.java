@@ -69,6 +69,11 @@ public class Scimitar extends WeaponItem implements Purchasable, Sellable {
     }
 
     @Override
+    public Action getSkill(Actor target, String direction) {
+        return null;
+    }
+
+    @Override
     public void tick(Location currentLocation) {
         this.removeAction(sellAction);
     }

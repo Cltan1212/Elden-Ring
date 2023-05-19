@@ -21,6 +21,11 @@ public class GiantCrayFishPincer extends WeaponItem {
         portable = false;
     }
 
+    @Override
+    public Action getSkill(Actor target, String direction) {
+        return null;
+    }
+
     /**
      * Returns an AreaAttackAction using this GiantCrayFishPincer.
      *

@@ -27,6 +27,11 @@ import game.maps.RoundTableHold;
 import game.maps.StormVeilCastle;
 import game.reset.ResetManager;
 import game.utils.FancyMessage;
+import game.weapons.bossWeapons.AxeOfGodrick;
+import game.weapons.enemySpecial.GiantDogHead;
+import game.weapons.skeletalDropable.GraveScythe;
+import game.weapons.skeletalDropable.Grossmesser;
+import game.weapons.skeletalDropable.Scimitar;
 
 /**
  * The main class to start the game.
@@ -104,6 +109,11 @@ public class Application {
 		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
 		world.addPlayer(player, gameMap.at(26, 9));
 		player.addItemToInventory(new RemembranceOfTheGrafted());
+		player.addWeaponToInventory(new GraveScythe());
+		player.addWeaponToInventory(new GiantDogHead());
+		player.addWeaponToInventory(new Scimitar());
+		player.addWeaponToInventory(new Grossmesser());
+		player.addWeaponToInventory(new AxeOfGodrick());
 
 		// add Merchant Kale
 		MerchantKale trader = new MerchantKale();

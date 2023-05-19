@@ -22,6 +22,11 @@ public class GiantDogHead extends WeaponItem {
         portable = false;
     }
 
+    @Override
+    public Action getSkill(Actor target, String direction) {
+        return null;
+    }
+
     /**
      * Returns a new AreaAttackAction.
      *
