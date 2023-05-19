@@ -64,6 +64,7 @@ public class Application {
 		world.addGameMap(gameMap);
 		world.addGameMap(roundtableHoldMap);
 		world.addGameMap(stormveilCastleMap);
+		world.addGameMap(bossRoomMap);
 
 
 		// BEHOLD, ELDEN RING
