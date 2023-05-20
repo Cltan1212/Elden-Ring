@@ -13,7 +13,6 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
-import game.reset.ResetManager;
 import game.reset.Resettable;
 import game.runes.RuneSource;
 import game.runes.RunesManager;
@@ -142,6 +141,11 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         return actions;
     }
 
+    /**
+     * This method is used for resetting purpose
+     * @param map the {@link GameMap} to reset the object on.
+     * @return A String showing that the enemy have been reset (removed from the map)
+     */
     @Override
     public String reset(GameMap map) {
         return "\n" + new DespawnedAction().execute(this, map);

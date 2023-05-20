@@ -3,6 +3,11 @@ package game.maps;
 import java.util.Arrays;
 
 public class Limgrave extends MapInitialize{
+
+    /**
+     * Constructor
+     * for initializing the game map
+     */
     public Limgrave() {
         super(Arrays.asList(
                 "......................#.............#..........................+++.........",

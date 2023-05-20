@@ -12,11 +12,29 @@ import game.utils.Status;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class that represents the spawning action of ally and invader
+ * This action which be available if the player stands on Summon Sign ground and selected to spawn
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @see Action
+ */
 public class AllyInvaderSpawnAction extends Action {
 
+    /**
+     * Constructor
+     */
     public AllyInvaderSpawnAction() {
     }
 
+    /**
+     * Execute the AllyInvaderSpawnAction.
+     * Spawning either an Ally or Invader will have 50% chance
+     * It will be spawned at the location around the actor
+     *
+     * @param actor The {@link Actor} performing the action.
+     * @param map The {@link GameMap} the actor is on.
+     * @return A string describing the outcome of the action.
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
@@ -44,6 +62,11 @@ public class AllyInvaderSpawnAction extends Action {
         return menuDescription(actor);
     }
 
+    /**
+     * Return a string describing this action in the menu.
+     *
+     * @param actor The {@link Actor} performing the action.
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + " summons a guest from another realm.";

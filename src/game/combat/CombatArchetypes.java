@@ -10,9 +10,24 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
  */
 public abstract class CombatArchetypes {
 
+    /**
+     * A character that represents a game role
+     */
     private char key;
+
+    /**
+     * The name of the game role
+     */
     private String role;
+
+    /**
+     * The starting weapon in this game mode
+     */
     private WeaponItem startingWeapon;
+
+    /**
+     * The starting hit point in this game mode
+     */
     private int startingHitPoint;
 
 

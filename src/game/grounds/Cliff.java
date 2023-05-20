@@ -7,14 +7,27 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.actorActions.attackActions.DeathAction;
 import game.utils.Status;
 
+/**
+ * Cliff
+ * The Cliff class is one of the ground in this game
+ * It extends Ground class
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @version 3.0
+ * @see Ground
+ */
 public class Cliff extends Ground {
     /**
-     * Constructor.
+     * Constructor
      */
     public Cliff() {
         super('+');
     }
 
+    /**
+     * This method serve to check if an actor can enter the ground
+     * @param actor the {@link Actor} to check
+     * @return boolean, true if it can enter, false otherwise
+     */
     @Override
     public boolean canActorEnter(Actor actor) {
         // only player can step on it
@@ -23,7 +36,10 @@ public class Cliff extends Ground {
 
     /**
      * Ground can also experience the joy of time.
-     * @param location The location of the Ground
+     * This method will result in a checking if the actor on the Cliff is a player
+     * If it has the Status Hostile_TO_ENEMY, it will immediately falls off the cliff and die
+     * @param location The location {@link Location} of the Ground
+     * @see DeathAction
      */
     public void tick(Location location) {
         if (location.containsAnActor()){

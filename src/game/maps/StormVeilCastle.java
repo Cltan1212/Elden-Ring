@@ -2,8 +2,19 @@ package game.maps;
 
 import java.util.Arrays;
 
+/**
+ * StormVeilCastle
+ * Represent one of the game map
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @version 3.0
+ * @see MapInitialize
+ */
 public class StormVeilCastle extends MapInitialize{
 
+    /**
+     * Constructor
+     * for initializing the game map
+     */
     public StormVeilCastle() {
         super(Arrays.asList(
                 "...........................................................................",

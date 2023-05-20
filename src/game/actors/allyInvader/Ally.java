@@ -6,9 +6,17 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.behaviours.AttackBehaviour;
 import game.utils.Status;
 
+
+/**
+ * Class representing an Ally actor in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @see AllyOrInvaderType
+ */
 public class Ally extends AllyOrInvaderType {
+
     /**
      * Constructor.
+     *
      */
     public Ally() {
         super("Ally", 'A', 0);

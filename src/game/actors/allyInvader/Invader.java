@@ -1,23 +1,23 @@
 package game.actors.allyInvader;
 
-import edu.monash.fit2099.engine.actions.Action;
+
 import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.actorActions.attackActions.AttackAction;
 import game.behaviours.AttackBehaviour;
-import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
-import game.behaviours.WanderBehaviour;
-import game.combat.CombatArchetypes;
 import game.runes.RuneSource;
 import game.runes.RunesManager;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
+/**
+ * Class representing an Invader actor in the game world.
+ * @author Tan Chun Ling, Wan Jack Liang, King Jean Lynn
+ * @see AllyOrInvaderType
+ */
 public class Invader extends AllyOrInvaderType implements RuneSource {
 
 
@@ -25,8 +25,6 @@ public class Invader extends AllyOrInvaderType implements RuneSource {
      * The status to indicate if invader is following the player.
      */
     public boolean following = false;
-
-    public CombatArchetypes role;
 
 
     /**
@@ -37,6 +35,17 @@ public class Invader extends AllyOrInvaderType implements RuneSource {
         RunesManager.getInstance().registerRuneSource(this);
         this.addCapability(Status.HOSTILE_TO_ALLIES);
     }
+
+    /**
+     * The Invader can arracj any {@link Actor} that has the HOSTILE_TO_ENEMY and RESPAWNABLE capability
+     *
+     * @param otherActor the {@link Actor} that might be performing attack
+     * @param direction  String representing the direction of the other {@link Actor}
+     * @param map        current {@link GameMap}
+     * @return a list of Actions that allowed otherActor to perform
+     * @see AttackBehaviour
+     * @see FollowBehaviour
+     */
 
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
@@ -63,9 +72,14 @@ public class Invader extends AllyOrInvaderType implements RuneSource {
             }
         }
         return actions;
-
     }
 
+    /**
+     * Generate a random amount of runes.
+     *
+     * @return an integer that represent an amount of runes
+     * @see RuneSource
+     */
     @Override
     public int generateRunes() {
         return RandomNumberGenerator.getRandomInt(1358,5578);

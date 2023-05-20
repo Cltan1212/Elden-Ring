@@ -20,18 +20,12 @@ import game.grounds.environments.PuddleOfWater;
 import game.grounds.environments.ThunderStorm;
 import game.grounds.stormveilCastle.Barrack;
 import game.grounds.stormveilCastle.Cage;
-import game.items.RemembranceOfTheGrafted;
 import game.maps.BossRoom;
 import game.maps.Limgrave;
 import game.maps.RoundTableHold;
 import game.maps.StormVeilCastle;
 import game.reset.ResetManager;
 import game.utils.FancyMessage;
-import game.weapons.bossWeapons.AxeOfGodrick;
-import game.weapons.enemySpecial.GiantDogHead;
-import game.weapons.skeletalDropable.GraveScythe;
-import game.weapons.skeletalDropable.Grossmesser;
-import game.weapons.skeletalDropable.Scimitar;
 
 /**
  * The main class to start the game.
