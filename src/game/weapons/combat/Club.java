@@ -24,8 +24,16 @@ import game.utils.Status;
  */
 public class Club extends WeaponItem implements Sellable, Purchasable {
 
+    /**
+     * The price of this weapon.
+     */
     private final int price = 100;
+
+    /**
+     * The sell action with this weapon.
+     */
     private final SellAction sellAction = new SellAction(this, price);
+
     /**
      * Constructor
      */
@@ -33,6 +41,9 @@ public class Club extends WeaponItem implements Sellable, Purchasable {
         super("Club", '!', 103, "bonks", 80);
     }
 
+    /**
+     * This weapon does not have special skill.
+     */
     @Override
     public Action getSkill(Actor target, String direction) {
         return null;
@@ -50,10 +61,8 @@ public class Club extends WeaponItem implements Sellable, Purchasable {
     }
 
     /**
-     * Creates a SellAction that allows this Club to be sold to a MerchantKale for 100 gold.
+     * Creates a SellAction that allows this Club to be sold to trader for 100 gold.
      *
-     * @return a SellAction for this Club
-     * @see SellAction
      */
     @Override
     public void createSellAction(Actor actor, Integer price) {
@@ -62,11 +71,13 @@ public class Club extends WeaponItem implements Sellable, Purchasable {
 
     }
 
-    @Override
-    public void tick(Location currentLocation) {
-        this.removeAction(sellAction);
-    }
-
+    /**
+     * Inform a carried Item of the passage of time.
+     *
+     * This method is called once per turn, if the Item is being carried.
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor The actor carrying this Item.
+     */
     @Override
     public void tick(Location currentLocation, Actor actor) {
         if (this.getAllowableActions().contains(sellAction)){

@@ -107,7 +107,7 @@ public class Application {
 
 		// add player
 		Player player = new Player("Tarnished", '@', 300, characterToRoleMap.get(choiceChar));
-		world.addPlayer(player, gameMap.at(39, 12));
+		world.addPlayer(player, gameMap.at(36, 10));
 
 		// add Merchant Kale
 		MerchantKale trader = new MerchantKale();

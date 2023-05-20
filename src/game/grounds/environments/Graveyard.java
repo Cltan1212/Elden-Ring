@@ -25,7 +25,7 @@ public class Graveyard extends SpawnGround {
 
     /**
      * A method to return the enemies spawn at Graveyard
-     * @return new HeavySkeletalSwordsman() or new SkeletalBandit() depend on the west or east side of map
+     * @return new SkeletalType enemy
      */
     @Override
     public Enemy spawn(){

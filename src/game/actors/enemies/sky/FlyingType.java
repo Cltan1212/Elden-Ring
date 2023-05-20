@@ -24,7 +24,7 @@ public abstract class FlyingType extends Enemy {
     }
 
     /**
-     * The enemy can be attacked by any actor that has the HOSTILE_WATER_TYPE_ENEMY capability
+     * The enemy can be attacked by any actor that has the HOSTILE_BIRD_TYPE_ENEMY capability
      *
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
@@ -34,7 +34,7 @@ public abstract class FlyingType extends Enemy {
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        if (otherActor.hasCapability(Status.HOSTILE_TO_BIRD_TYPE_ENEMY)){
+        if (otherActor.hasCapability(Status.HOSTILE_TO_FLYING_TYPE_ENEMY)){
             this.behaviours.put(3, new AttackBehaviour(otherActor));
         }
         return super.allowableActions(otherActor, direction, map);

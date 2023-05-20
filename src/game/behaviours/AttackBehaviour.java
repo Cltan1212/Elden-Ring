@@ -67,9 +67,6 @@ public class AttackBehaviour implements Behaviour {
         if (numEnemies != 0) {
             if (!actor.getWeaponInventory().isEmpty()) { // enemy have special skill
                 if (RandomNumberGenerator.getRandomInt(100) < 50) { // enemy have 50% chance to perform special skill
-                    for (WeaponItem weaponItem: actor.getWeaponInventory()){
-                        System.out.println(weaponItem);
-                    }
                     return actor.getWeaponInventory().get(0).getSkill(actor);
                 }
                 return new AttackAction(target, direction, actor.getWeaponInventory().get(0));

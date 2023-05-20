@@ -3,8 +3,6 @@ package game.actors.allyInvader;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.actorActions.attackActions.AttackAction;
 import game.behaviours.AttackBehaviour;
 import game.utils.Status;
 
@@ -15,7 +13,7 @@ public class Ally extends AllyOrInvaderType {
     public Ally() {
         super("Ally", 'A', 0);
         this.addCapability(Status.HOSTILE_TO_INVADERS);
-        this.addCapability(Status.HOSTILE_TO_BIRD_TYPE_ENEMY);
+        this.addCapability(Status.HOSTILE_TO_FLYING_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_STORMVEIL_CASTLE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_DOG_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY);

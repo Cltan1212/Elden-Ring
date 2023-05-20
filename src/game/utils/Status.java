@@ -46,9 +46,26 @@ public enum Status {
      * The character that is hostile to water type enemy.
      */
     HOSTILE_TO_WATER_TYPE_ENEMY,
-    HOSTILE_TO_BIRD_TYPE_ENEMY,
 
+    /**
+     * The character that is hostile to flying type enemy.
+     */
+    HOSTILE_TO_FLYING_TYPE_ENEMY,
+
+    /**
+     * The character that is hostile to stormveil castle type enemy.
+     */
     HOSTILE_TO_STORMVEIL_CASTLE_ENEMY,
+
+    /**
+     * The character that is hostile to invaders.
+     */
+    HOSTILE_TO_INVADERS,
+
+    /**
+     * The character that is hostile to allies.
+     */
+    HOSTILE_TO_ALLIES,
 
     /**
      * The character that has a special death status.
@@ -59,9 +76,19 @@ public enum Status {
      * The character that can be despawned.
      */
     DESPAWNABLE,
-    HOSTILE_TO_INVADERS,
-    HOSTILE_TO_ALLIES,
+
+    /**
+     * The character that allow player to sell their weapon or item.
+     */
     SELL,
+
+    /**
+     * The character that allow player to exchange weapon.
+     */
     EXCHANGE,
+
+    /**
+     * The character that can conversation with enia
+     */
     SECRET_ENIA
 }

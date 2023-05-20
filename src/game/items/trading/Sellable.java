@@ -11,7 +11,8 @@ public interface Sellable {
 
     /**
      *
-     * @return the instance of {@link SellAction}
+     * @param actor The actor perform sell action
+     * @param price The price of the item
      */
     void createSellAction(Actor actor, Integer price);
 }

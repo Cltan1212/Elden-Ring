@@ -26,7 +26,7 @@ public class PuddleOfWater extends SpawnGround {
 
     /**
      * A method to return the enemies spawn at GustOfWind
-     * @return new GiantCrab() or new GiantCrayFish() depend on the west or east side of map
+     * @return new WaterType Enemy
      */
     @Override
     public Enemy spawn(){

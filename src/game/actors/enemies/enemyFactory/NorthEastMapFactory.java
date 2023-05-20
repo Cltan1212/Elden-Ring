@@ -12,7 +12,7 @@ import game.actors.enemies.water.WaterType;
 public class NorthEastMapFactory implements EnemyFactory{
     /**
      *
-     * @return the instance of {@link DogType} enemy on the east side of the map
+     * @return the instance of {@link DogType} enemy on the north-east side of the map
      * @see GiantDog
      */
     @Override
@@ -22,7 +22,7 @@ public class NorthEastMapFactory implements EnemyFactory{
 
     /**
      *
-     * @return the instance of {@link SkeletalType} enemy on the east side of the map
+     * @return the instance of {@link SkeletalType} enemy on the north-east side of the map
      * @see SkeletalBandit
      */
     @Override
@@ -32,7 +32,7 @@ public class NorthEastMapFactory implements EnemyFactory{
 
     /**
      *
-     * @return the instance of{@link WaterType} enemy on the east side of the map
+     * @return the instance of{@link WaterType} enemy on the north-east side of the map
      * @see GiantCrayFish
      */
     @Override
@@ -40,6 +40,11 @@ public class NorthEastMapFactory implements EnemyFactory{
         return new GiantCrayFish();
     }
 
+    /**
+     *
+     * @return the instance of{@link FlyingType} enemy on the north-east side of the map
+     * @see GiantBat
+     */
     @Override
     public FlyingType createFlyingType() {
         return new GiantBat();

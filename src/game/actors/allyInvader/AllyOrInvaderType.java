@@ -58,7 +58,6 @@ public abstract class AllyOrInvaderType extends Actor implements Resettable {
             Action action = behaviour.getAction(this, map);
             if (action != null) {
                 // remove attack behaviour after execution
-                System.out.println(this.behaviours);
                 this.behaviours.remove(0);
                 this.behaviours.remove(3);
                 return action;

@@ -4,7 +4,9 @@ import game.weapons.skeletalDropable.GraveScythe;
 
 public class SkeletalMage extends SkeletalType{
     /**
-     * Constructor.
+     * Constructor. Skeletal Mage carries {@link GraveScythe} as its weapon.
+     *
+     * @see GraveScythe
      */
     public SkeletalMage() {
         super("Skeletal Mage",'|',677,21);

@@ -26,7 +26,7 @@ public class GustOfWind extends SpawnGround {
 
     /**
      * A method to return the enemies spawn at GustOfWind
-     * @return new LoneWolf() or new GiantDog() depend on the west or east side of map
+     * @return new DogType enemy
      */
     @Override
     public Enemy spawn(){

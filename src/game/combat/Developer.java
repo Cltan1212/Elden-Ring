@@ -6,7 +6,8 @@ public class Developer extends CombatArchetypes{
     /**
      * Constructor
      *
-     * For testing purpose
+     * For testing purpose.
+     * @see Eraser
      */
     public Developer() {
         super('D',"Developer",new Eraser(),2147483547);

@@ -23,7 +23,15 @@ import game.utils.Status;
  * @see Sellable
  */
 public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
+
+    /**
+     * The price of this weapon.
+     */
     private final int price = 350;
+
+    /**
+     * The sell action with this weapon.
+     */
     private final SellAction sellAction = new SellAction(this, price);
     /**
      * Constructor.
@@ -69,11 +77,13 @@ public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
 
     }
 
-    @Override
-    public void tick(Location currentLocation) {
-        this.removeAction(sellAction);
-    }
-
+    /**
+     * Inform a carried Item of the passage of time.
+     *
+     * This method is called once per turn, if the Item is being carried.
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor The actor carrying this Item.
+     */
     @Override
     public void tick(Location currentLocation, Actor actor) {
         if (this.getAllowableActions().contains(sellAction)){

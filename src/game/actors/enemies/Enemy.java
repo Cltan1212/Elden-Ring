@@ -98,7 +98,6 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
             if (action != null) {
-                System.out.println(behaviours);
                 // remove attack behaviour after execution
                 this.behaviours.remove(0);
                 this.behaviours.remove(3);

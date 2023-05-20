@@ -4,7 +4,9 @@ import game.weapons.skeletalDropable.Grossmesser;
 
 public class SkeletalMilitiaman extends SkeletalType{
     /**
-     * Constructor.
+     * Constructor. Skeletal Militiaman carries {@link Grossmesser} as their weapon.
+     *
+     * @see Grossmesser
      */
     public SkeletalMilitiaman() {
         super("Skeletal Militiaman",'I',788,25);
