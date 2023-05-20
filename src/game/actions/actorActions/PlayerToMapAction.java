@@ -10,7 +10,6 @@ public class PlayerToMapAction extends Action {
 
     GameMap map;
     Location newLocation;
-//    String this_direction;
 
     String newMapName;
 

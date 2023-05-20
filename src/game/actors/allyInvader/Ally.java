@@ -40,12 +40,5 @@ public class Ally extends AllyOrInvaderType {
 
     }
 
-    // allies removed from the map ONLY if the player dies.
-    // If the player rests, no removal from map
-    @Override
-    public String reset(GameMap map) {
-        return null;
-    }
-
 
 }

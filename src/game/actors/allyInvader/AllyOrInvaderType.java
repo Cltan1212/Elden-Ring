@@ -44,6 +44,8 @@ public class AllyOrInvaderType extends Actor implements Resettable {
         resetMaxHp(role.getStartingHitPoint());
         this.addWeaponToInventory(role.getStartingWeapon());
 
+        this.addCapability(Status.DESPAWNABLE);
+
         // for reset actions
         this.registerInstance();
     }
@@ -63,12 +65,19 @@ public class AllyOrInvaderType extends Actor implements Resettable {
         return new DoNothingAction();
     }
 
+    // allies and invaders removed from the map ONLY if the player dies.
+    // If the player rests, no removal from map
     @Override
     public String reset(GameMap map) {
+        // both die and reset will activate this lol
+        // how to check if it is rest or die
+
+        // death -> reset (vanish)
+        // rest -> reset (not vanish)
         if (this.hasCapability(Status.DESPAWNABLE)){
             return "\n" + new DespawnedAction().execute(this, map);
         }
         return "";
-    }
 
+    }
 }
