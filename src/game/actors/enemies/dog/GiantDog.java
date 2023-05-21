@@ -1,8 +1,13 @@
 package game.actors.enemies.dog;
 
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.behaviours.AttackBehaviour;
 import game.utils.RandomNumberGenerator;
-import game.weapons.GiantDogHead;
+import game.utils.Status;
+import game.weapons.enemySpecial.GiantDogHead;
 
 /**
  * Class representing a physical GiantDog in the game world.

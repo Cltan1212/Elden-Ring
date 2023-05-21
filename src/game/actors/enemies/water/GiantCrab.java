@@ -2,7 +2,7 @@ package game.actors.enemies.water;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.utils.RandomNumberGenerator;
-import game.weapons.GiantCrabSlam;
+import game.weapons.enemySpecial.GiantCrabSlam;
 
 /**
  * Class representing a physical Giant Crab in the game world.

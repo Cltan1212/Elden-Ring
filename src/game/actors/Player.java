@@ -6,8 +6,10 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.positions.Location;
 import game.combat.CombatArchetypes;
 import game.items.FlaskOfCrimsonTears;
+import game.reset.ResetManager;
 import game.reset.Resettable;
 import game.runes.RunesManager;
 import game.utils.Status;
@@ -26,6 +28,7 @@ public class Player extends Actor implements Resettable {
 	 * The {@link Menu} used by the Player for selecting actions.
 	 */
 	private final Menu menu = new Menu();
+	public Location lastLocation;
 
 	/**
 	 * The {@link CombatArchetypes} of the Player.
@@ -44,15 +47,17 @@ public class Player extends Actor implements Resettable {
 
 		super(name, displayChar, hitPoints);
 		this.role = role;
+		ResetManager.getInstance().setPlayers(this);
 		RunesManager.getInstance().registerRunesHeld(this, 0);
 
 		// capabilities
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
-		this.addCapability(Status.CONSUMABLE);
 		this.addCapability(Status.RESTABLE);
+		this.addCapability(Status.HOSTILE_TO_INVADERS);
 
 		// set weapon and item
-		resetMaxHp(role.getStartingHitPoint());
+		maxHitPoints = role.getStartingHitPoint();
+		this.resetMaxHp(getMaxHp());
 		this.addItemToInventory(new FlaskOfCrimsonTears());
 		this.addWeaponToInventory(role.getStartingWeapon());
 
@@ -73,6 +78,8 @@ public class Player extends Actor implements Resettable {
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		display.println(name + " " + printHp() + ", runes: " + RunesManager.getInstance().getRunes(this));
 
+		lastLocation = map.locationOf(this);
+
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
@@ -86,7 +93,8 @@ public class Player extends Actor implements Resettable {
 	 */
 	@Override
 	public String reset(GameMap map) {
-		this.resetMaxHp(this.getMaxHp());
+		ResetManager.getInstance().updateResettable(this);
+		hitPoints = maxHitPoints;
 		return "\n" + "Player is restored to full health.";
 	}
 }

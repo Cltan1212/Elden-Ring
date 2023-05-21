@@ -1,6 +1,6 @@
 package game.combat;
 
-import game.weapons.Club;
+import game.weapons.combat.Club;
 
 /**
  * Wretch

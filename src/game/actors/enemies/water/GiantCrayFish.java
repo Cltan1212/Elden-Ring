@@ -2,7 +2,7 @@ package game.actors.enemies.water;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.utils.RandomNumberGenerator;
-import game.weapons.GiantCrayFishPincer;
+import game.weapons.enemySpecial.GiantCrayFishPincer;
 
 /**
  * Class representing a physical Giant Cray Fish in the game world.

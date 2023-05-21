@@ -5,8 +5,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.enemies.Enemy;
 import game.behaviours.AttackBehaviour;
-import game.runes.RunesManager;
-import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
 /**
@@ -28,7 +26,8 @@ public abstract class DogType extends Enemy {
         super(name, displayChar, hitPoints, spawnChance);
         this.addCapability(Status.HOSTILE_TO_WATER_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_SKELETAL_TYPE_ENEMY);
-        RunesManager.getInstance().registerRuneSource(this);
+        this.addCapability(Status.HOSTILE_TO_FLYING_TYPE_ENEMY);
+        this.addCapability(Status.HOSTILE_TO_STORMVEIL_CASTLE_ENEMY);
     }
 
     /**

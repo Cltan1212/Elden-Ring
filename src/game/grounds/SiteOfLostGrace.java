@@ -2,9 +2,10 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.actorActions.RestAction;
+import game.actions.resetActions.RestAction;
 import game.utils.Status;
 
 /**
@@ -32,17 +33,20 @@ public class SiteOfLostGrace extends Ground {
      */
     public int locationY;
 
+    public GameMap map;
+
     /**
      * Constructor
      * @param name The name of the ground
      * @param locationX  The x-coordinate of the location of SiteOfLostGrace
      * @param locationY The y-coordinate of the location of SiteOfLostGrace
      */
-    public SiteOfLostGrace(String name, int locationX, int locationY) {
+    public SiteOfLostGrace(String name, int locationX, int locationY, GameMap map) {
         super('U');
         this.name = name;
         this.locationX = locationX;
         this.locationY = locationY;
+        this.map = map;
     }
 
     /**

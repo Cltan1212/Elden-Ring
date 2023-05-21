@@ -5,7 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.actorActions.AttackAction;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.actorActions.attackActions.AttackAction;
 import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 
@@ -53,7 +54,7 @@ public class AttackBehaviour implements Behaviour {
             }
 
             // check if an exit contains an actor that is hostile to enemy
-            if (exit.getDestination().containsAnActor() && exit.getDestination().getActor().hasCapability(Status.HOSTILE_TO_ENEMY)) {
+            if (exit.getDestination().containsAnActor() && exit.getDestination().getActor().hasCapability(Status.HOSTILE_TO_ENEMY) && !actor.hasCapability(Status.FRIENDLY)) {
                 numEnemies++;
                 target = exit.getDestination().getActor();
                 direction = exit.toString();
@@ -68,9 +69,16 @@ public class AttackBehaviour implements Behaviour {
                 if (RandomNumberGenerator.getRandomInt(100) < 50) { // enemy have 50% chance to perform special skill
                     return actor.getWeaponInventory().get(0).getSkill(actor);
                 }
+                return new AttackAction(target, direction, actor.getWeaponInventory().get(0));
             }  // use their intrinsic weapon
             return new AttackAction(target, direction);
         }
+
+//        else if ()
         return null;
+    }
+
+    private int distance(Location a, Location b){
+        return Math.abs(a.x() - b.x()) + Math.abs(a.y() - b.y());
     }
 }

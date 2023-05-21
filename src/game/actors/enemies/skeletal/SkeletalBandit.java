@@ -1,6 +1,6 @@
 package game.actors.enemies.skeletal;
 
-import game.weapons.Scimitar;
+import game.weapons.skeletalDropable.Scimitar;
 
 /**
  * Class representing a physical Skeletal Bandit in the game world.

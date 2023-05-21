@@ -3,8 +3,7 @@ package game.actions.actorActions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.items.Consumable;
-import game.items.ConsumableItem;
+import game.items.trading.Consumable;
 
 /**
  * A class that represents the action of an actor consuming a consumable item.

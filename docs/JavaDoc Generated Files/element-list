@@ -1,6 +1,6 @@
 game
 game.actions.actorActions
-game.actions.runesActions
+game.actions.traderActions
 game.actors
 game.actors.enemies
 game.actors.enemies.dog

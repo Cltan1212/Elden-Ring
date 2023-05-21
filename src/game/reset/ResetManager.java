@@ -1,23 +1,29 @@
 package game.reset;
 
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.actors.Player;
 import game.grounds.SiteOfLostGrace;
+import game.utils.Status;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A reset manager class that manages a list of resettables.
+ * A reset manager class that manages a list of resettable.
  * Created by:
  * @author Adrian Kristanto
  * Modified by: Tan Chun Ling, Wan Jack Liang, King Jean Lynn
  *
  */
 public class ResetManager {
+    private Player player;
     /**
      * A list of {@link Resettable} objects to be reset.
      */
     private List<Resettable> resettables;
+
+    private List<Resettable> resettableUpdate;
 
     /**
      * A list of {@link GameMap} objects that the reset manager can reset.
@@ -39,6 +45,7 @@ public class ResetManager {
      */
     private ResetManager() {
         this.resettables = new ArrayList<>();
+        this.resettableUpdate = new ArrayList<>();
         this.allMap = new ArrayList<>();
     }
 
@@ -90,7 +97,14 @@ public class ResetManager {
                 result += resettable.reset(map);
             }
         }
-        resettables.clear();
+        this.resettables.clear();
+        if (ResetManager.getInstance().getPlayer().hasCapability(Status.RESTING)){
+            this.resettables.addAll(this.resettableUpdate);
+            this.resettableUpdate.clear();
+        }
+        else{
+            player.registerInstance();
+        }
         return result;
     }
 
@@ -103,11 +117,15 @@ public class ResetManager {
         resettables.add(resettable);
     }
 
-    /**
-     * Removes a {@link Resettable} object from the reset manager's list of objects to reset.
-     * @param resettable The {@link Resettable} object to remove.
-     */
-    public void removeResettable(Resettable resettable) {
-        resettables.remove(resettable);
+    public void updateResettable(Resettable resettable){
+        this.resettableUpdate.add(resettable);
+    }
+
+    public void setPlayers(Player player) {
+        this.player = player;
+    }
+
+    public Player getPlayer(){
+        return this.player;
     }
 }

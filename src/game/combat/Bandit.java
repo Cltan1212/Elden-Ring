@@ -1,5 +1,5 @@
 package game.combat;
-import game.weapons.GreatKnife;
+import game.weapons.combat.GreatKnife;
 
 /**
  * Bandit

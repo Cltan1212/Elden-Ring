@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.actorActions.AttackAction;
+import game.actions.actorActions.attackActions.AttackAction;
 import game.actions.actorActions.DespawnedAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
@@ -66,6 +66,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         RunesManager.getInstance().registerRuneSource(this);
         this.addCapability(Status.RESPAWNABLE);
         this.addCapability(Status.DESPAWNABLE);
+        this.addCapability(Status.HOSTILE_TO_ALLIES);
         this.behaviours.put(999, new WanderBehaviour());
         this.spawnChance = spawnChance;
 //        this.registerInstance();
@@ -121,7 +122,7 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
         // enemy attack player and other enemies
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) || otherActor.hasCapability(Status.HOSTILE_TO_INVADERS)) {
             actions.add(new AttackAction(this, direction));
             following = true;
             this.behaviours.put(0, new AttackBehaviour(otherActor));
@@ -140,13 +141,13 @@ public abstract class Enemy extends Actor implements Resettable, RuneSource {
         return actions;
     }
 
+    /**
+     * This method is used for resetting purpose
+     * @param map the {@link GameMap} to reset the object on.
+     * @return A String showing that the enemy have been reset (removed from the map)
+     */
     @Override
     public String reset(GameMap map) {
-        if (this.hasCapability(Status.DESPAWNABLE)){
-            return "\n" + new DespawnedAction().execute(this, map);
-        }
-        return "";
-//        map.removeActor(this);
-//        new Display().println(this.toString() + " is removed.");
+        return "\n" + new DespawnedAction().execute(this, map);
     }
 }

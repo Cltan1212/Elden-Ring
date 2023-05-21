@@ -1,9 +1,9 @@
 package game.items;
 
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.actorActions.ConsumeAction;
+import game.items.trading.Consumable;
 import game.reset.ResetManager;
 import game.reset.Resettable;
 
@@ -34,7 +34,6 @@ public abstract class ConsumableItem extends Item implements Resettable, Consuma
      */
     public ConsumableItem(String name, char displayChar, boolean portable){
         super(name, displayChar, portable);
-        this.addAction(new ConsumeAction(this));
         ResetManager.getInstance().registerResettable(this);
     }
 
