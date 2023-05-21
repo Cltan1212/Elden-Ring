@@ -21,6 +21,7 @@ import game.grounds.environments.ThunderStorm;
 import game.grounds.stormveilCastle.Barrack;
 import game.grounds.stormveilCastle.Cage;
 import game.items.GoldenRunes;
+import game.items.RemembranceOfTheGrafted;
 import game.maps.BossRoom;
 import game.maps.Limgrave;
 import game.maps.RoundTableHold;
@@ -111,6 +112,8 @@ public class Application {
 		// Add Finger Reader Enia
 		FingerReaderEnia enia = new FingerReaderEnia();
 		roundtableHoldMap.at(10, 2).addActor(enia);
+		roundtableHoldMap.at(8,2).addItem(new RemembranceOfTheGrafted());
+		roundtableHoldMap.at(8,3).addItem(new RemembranceOfTheGrafted());
 
 		// GoldenFrogDoor To RoundTableHold map
 		GoldenFogDoor FogDoorToRound = new GoldenFogDoor(roundtableHoldMap,roundtableHoldMap.at(9,10), "Round Table Map");

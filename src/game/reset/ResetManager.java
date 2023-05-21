@@ -99,9 +99,6 @@ public class ResetManager {
         }
         this.resettables.clear();
         if (ResetManager.getInstance().getPlayer().hasCapability(Status.RESTING)){
-            for (Resettable resettable: this.resettableUpdate){
-                System.out.println(resettable);
-            }
             this.resettables.addAll(this.resettableUpdate);
             this.resettableUpdate.clear();
         }
