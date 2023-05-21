@@ -13,6 +13,10 @@ import java.util.List;
 
 public abstract class MapInitialize {
 
+    /**
+     * The String in List representing the map
+     */
+
     public List<String> map;
 
     /**

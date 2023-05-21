@@ -14,9 +14,9 @@ import edu.monash.fit2099.engine.positions.Location;
  */
 public class PlayerToMapAction extends Action {
 
-    public GameMap map;
-    public Location newLocation;
-    public String newMapName;
+    private GameMap map;
+    private Location newLocation;
+    private String newMapName;
 
     /**
      * Constructor
