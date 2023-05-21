@@ -20,6 +20,7 @@ public class Ally extends AllyOrInvaderType {
      */
     public Ally() {
         super("Ally", 'A', 0);
+        this.addCapability(Status.FRIENDLY);
         this.addCapability(Status.HOSTILE_TO_INVADERS);
         this.addCapability(Status.HOSTILE_TO_FLYING_TYPE_ENEMY);
         this.addCapability(Status.HOSTILE_TO_STORMVEIL_CASTLE_ENEMY);
@@ -35,7 +36,7 @@ public class Ally extends AllyOrInvaderType {
         // allies can attack other hostile creatures
         ActionList actionList = new ActionList();
         if  (otherActor.hasCapability(Status.RESPAWNABLE) || otherActor.hasCapability(Status.HOSTILE_TO_ALLIES)){
-            this.behaviours.put(0, new AttackBehaviour(otherActor));
+            this.behaviours.put(3, new AttackBehaviour(otherActor));
         }
         return actionList;
 

@@ -54,7 +54,7 @@ public class AttackBehaviour implements Behaviour {
             }
 
             // check if an exit contains an actor that is hostile to enemy
-            if (exit.getDestination().containsAnActor() && exit.getDestination().getActor().hasCapability(Status.HOSTILE_TO_ENEMY)) {
+            if (exit.getDestination().containsAnActor() && exit.getDestination().getActor().hasCapability(Status.HOSTILE_TO_ENEMY) && !actor.hasCapability(Status.FRIENDLY)) {
                 numEnemies++;
                 target = exit.getDestination().getActor();
                 direction = exit.toString();

@@ -67,6 +67,8 @@ public enum Status {
      */
     HOSTILE_TO_ALLIES,
 
+    FRIENDLY,
+
     /**
      * The character that has a special death status.
      */
