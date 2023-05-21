@@ -23,7 +23,15 @@ public class GoldenFogDoor extends Ground {
      */
 
     public GameMap newMap;
+
+    /**
+     * the location on the game map in which the player will be landing on
+     */
     public Location newLocation;
+
+    /**
+     * the name of the map (e.g. Limgrave/RoundTableHold/StormveilCastle)
+     */
     public String newMapName;
 
     /**

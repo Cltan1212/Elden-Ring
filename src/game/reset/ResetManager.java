@@ -89,6 +89,7 @@ public class ResetManager {
 
     /**
      * Resets all objects that implement the {@link Resettable} interface in all the maps in the reset manager's list.
+     * @return The string output after resetting
      */
     public String run() {
         String result = "";
@@ -117,14 +118,26 @@ public class ResetManager {
         resettables.add(resettable);
     }
 
+    /**
+     * UpdateResettable method
+     * @param resettable
+     */
     public void updateResettable(Resettable resettable){
         this.resettableUpdate.add(resettable);
     }
 
+    /**
+     * Setter
+     * @param player
+     */
     public void setPlayers(Player player) {
         this.player = player;
     }
 
+    /**
+     * Getter
+     * @return the player
+     */
     public Player getPlayer(){
         return this.player;
     }
