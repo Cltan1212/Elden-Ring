@@ -67,6 +67,10 @@ public enum Status {
      */
     HOSTILE_TO_ALLIES,
 
+    /**
+     * The character that is friendly.
+     */
+
     FRIENDLY,
 
     /**
