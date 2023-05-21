@@ -244,7 +244,6 @@ public class Application {
 			stormveilCastleMap.at(x, 18).setGround(new GustOfWind(new SouthWestEnemy()));
 		}
 
-
 		// add GameMap to ResetManager
 		ResetManager.getInstance().addSiteOfLostGrace(theFirstStep);
 		ResetManager.getInstance().addMap(gameMap);
