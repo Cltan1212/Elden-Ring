@@ -51,12 +51,9 @@ public class GoldenRunes extends ConsumableItem implements RuneSource {
      */
     @Override
     public void tick(Location currentLocation, Actor actor) {
-
-        if(!this.added){
-            this.added = true;
+        if (actor.getItemInventory().contains(this)){
             this.addAction(consumeAction);
         }
-
     }
 
     /**
@@ -80,7 +77,6 @@ public class GoldenRunes extends ConsumableItem implements RuneSource {
     public void consume(Actor actor) {
         RunesManager.getInstance().addRunes(actor, this.generateRunes());
         actor.removeItemFromInventory(this);
-        this.removeAction(consumeAction);
     }
 
     /**
@@ -93,6 +89,4 @@ public class GoldenRunes extends ConsumableItem implements RuneSource {
     public int generateRunes() {
         return RandomNumberGenerator.getRandomInt(200,10000);
     }
-
-
 }
