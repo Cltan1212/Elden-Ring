@@ -35,7 +35,7 @@ public class ResetAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        Location lastSite = map.at(ResetManager.getInstance().getLastVisited().locationX, ResetManager.getInstance().getLastVisited().locationY);
+        Location lastSite = ResetManager.getInstance().getLastVisited().map.at(ResetManager.getInstance().getLastVisited().locationX, ResetManager.getInstance().getLastVisited().locationY);
         String result = "";
         result += ResetManager.getInstance().run();
         if(!actor.hasCapability(Status.RESTING)){
