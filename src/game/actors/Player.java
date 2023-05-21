@@ -52,7 +52,6 @@ public class Player extends Actor implements Resettable {
 
 		// capabilities
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
-		this.addCapability(Status.CONSUMABLE);
 		this.addCapability(Status.RESTABLE);
 		this.addCapability(Status.HOSTILE_TO_INVADERS);
 

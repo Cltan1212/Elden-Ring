@@ -3,6 +3,7 @@ package game.items;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.actions.actorActions.ConsumeAction;
 import game.utils.Status;
 
 /**
@@ -21,6 +22,7 @@ public class FlaskOfCrimsonTears extends ConsumableItem{
      */
     public FlaskOfCrimsonTears(){
         super("Flask Of Crimson Tears", 'c', false);
+        this.addAction(new ConsumeAction(this));
         this.maximumUse = 2;
         this.remainingConsume = maximumUse;
         this.healPoints = 250;
