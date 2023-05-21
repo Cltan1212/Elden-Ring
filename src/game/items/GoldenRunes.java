@@ -51,7 +51,7 @@ public class GoldenRunes extends ConsumableItem implements RuneSource {
      */
     @Override
     public void tick(Location currentLocation, Actor actor) {
-        if (actor.getItemInventory().contains(this)){
+        if (actor.getItemInventory().contains(this) && (!getAllowableActions().contains(consumeAction))){
             this.addAction(consumeAction);
         }
     }
