@@ -20,6 +20,7 @@ import game.grounds.environments.PuddleOfWater;
 import game.grounds.environments.ThunderStorm;
 import game.grounds.stormveilCastle.Barrack;
 import game.grounds.stormveilCastle.Cage;
+import game.items.GoldenRunes;
 import game.maps.BossRoom;
 import game.maps.Limgrave;
 import game.maps.RoundTableHold;
@@ -130,6 +131,17 @@ public class Application {
 		// GoldenFogDoor to BossRoom and no door back from Boss Door to limgrave
 		GoldenFogDoor FogDoorToBossRoom = new GoldenFogDoor(bossRoomMap, bossRoomMap.at(0, 4), "Godrick the Grafted");
 		stormveilCastleMap.at(5, 0).setGround(FogDoorToBossRoom);
+
+		gameMap.at(1,1).addItem(new GoldenRunes());
+		gameMap.at(49,11).addItem(new GoldenRunes());
+		gameMap.at(31,10).addItem(new GoldenRunes());
+		gameMap.at(57,4).addItem(new GoldenRunes());
+		gameMap.at(67,20).addItem(new GoldenRunes());
+		roundtableHoldMap.at(8,5).addItem(new GoldenRunes());
+		stormveilCastleMap.at(8,5).addItem(new GoldenRunes());
+		stormveilCastleMap.at(2,2).addItem(new GoldenRunes());
+		stormveilCastleMap.at(38,12).addItem(new GoldenRunes());
+		stormveilCastleMap.at(40,18).addItem(new GoldenRunes());
 
 		// graveyard
 		// NORTH WEST

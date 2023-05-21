@@ -39,7 +39,7 @@ public class GoldenRunes extends ConsumableItem implements RuneSource {
         super("Golden Runes", '*', true);
         this.added = false;
         this.consumeAction = new ConsumeAction(this);
-        RunesManager.getInstance().registerRuneSource(this);
+//        RunesManager.getInstance().registerRuneSource(this);
     }
 
     /**
