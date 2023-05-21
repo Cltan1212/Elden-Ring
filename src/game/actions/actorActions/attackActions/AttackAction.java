@@ -85,7 +85,6 @@ public class AttackAction extends Action {
 		if (!target.isConscious()) {
 			result += new DeathAction(actor).execute(target, map);
 		}
-
 		return result;
 	}
 

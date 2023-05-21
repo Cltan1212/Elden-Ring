@@ -62,12 +62,13 @@ public class DeathAction extends Action {
             if (!target.hasCapability(Status.SPECIAL_DEATH) && (map.locationOf(target) != null)){
 
                 ActionList dropActions = new ActionList();
-
                 // drop all items
                 for (Item item : target.getItemInventory())
                     dropActions.add(item.getDropAction(target));
+
                 for (WeaponItem weapon : target.getWeaponInventory())
                     dropActions.add(weapon.getDropAction(target));
+
                 for (Action drop : dropActions)
                     drop.execute(target, map);
 

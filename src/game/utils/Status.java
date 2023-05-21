@@ -61,6 +61,7 @@ public enum Status {
     DESPAWNABLE,
     HOSTILE_TO_INVADERS,
     HOSTILE_TO_ALLIES,
+
     SELL,
     EXCHANGE,
     SECRET_ENIA
