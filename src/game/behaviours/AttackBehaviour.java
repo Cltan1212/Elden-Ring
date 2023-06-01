@@ -26,7 +26,7 @@ public class AttackBehaviour implements Behaviour {
      *
      * @param target the target {@link Actor} that this behaviour should attack
      */
-    public AttackBehaviour(Actor target){
+    public AttackBehaviour(Actor target) {
         this.target = target;
     }
 
@@ -35,7 +35,7 @@ public class AttackBehaviour implements Behaviour {
      * If there is no target, this method returns null.
      *
      * @param actor the {@link Actor} acting
-     * @param map the {@link GameMap} containing the Actor
+     * @param map   the {@link GameMap} containing the Actor
      * @return the corresponding actions.
      */
     @Override
@@ -58,11 +58,10 @@ public class AttackBehaviour implements Behaviour {
                 numEnemies++;
                 target = exit.getDestination().getActor();
                 direction = exit.toString();
-            }
-            else if (exit.getDestination().containsAnActor()){
+            } else if (exit.getDestination().containsAnActor()) {
                 numEnemies++;
             }
-        }   
+        }
 
         if (numEnemies != 0) {
             if (!actor.getWeaponInventory().isEmpty()) { // enemy have special skill
@@ -76,9 +75,5 @@ public class AttackBehaviour implements Behaviour {
 
 //        else if ()
         return null;
-    }
-
-    private int distance(Location a, Location b){
-        return Math.abs(a.x() - b.x()) + Math.abs(a.y() - b.y());
     }
 }
